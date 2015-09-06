@@ -1,0 +1,26 @@
+# Header
+menu: #导航栏连接
+  Home: /
+  Archives: /archives
+rss: /atom.xml #rss地址  默认即可
+
+# Content
+excerpt_link: Read More #阅读更多的文字显示
+fancybox: true #开启fancybox效果
+
+# Sidebar #侧边栏设置
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+# Miscellaneous #社交网络和统计连接地址
+google_analytics: #google analytics ID
+favicon: /favicon.png #网站的favicon
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
