@@ -74,7 +74,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: landscape #主题设置
+theme: jacman #主题设置
+stylus:
+  compress: true
 
 plugins:
 - hexo-generator-feed
