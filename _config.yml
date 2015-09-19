@@ -99,7 +99,5 @@ deploy:
 backup:
     type: git
     repository:
-       github: git@github.com:gdky005/gdky005-Blog.git
-       branch: master
-       gitcafe: git@gitcafe.com:gdky005/gdky005-Blog.git
-       branch: master
+       github: git@github.com:gdky005/gdky005-Blog.git,master
+       gitcafe: git@gitcafe.com:gdky005/gdky005-Blog.git,master
