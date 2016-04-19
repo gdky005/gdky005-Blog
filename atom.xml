@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>孤独狂饮</title>
+  <subtitle>只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://gdky005.com/"/>
+  <updated>2016-04-19T10:29:37.000Z</updated>
+  <id>http://gdky005.com/</id>
+  
+  <author>
+    <name>gdky005</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代码面试最常用的10大算法</title>
+    <link href="http://gdky005.com/2016/03/12/%E4%BB%A3%E7%A0%81%E9%9D%A2%E8%AF%95%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%8410%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
+    <id>http://gdky005.com/2016/03/12/代码面试最常用的10大算法/</id>
+    <published>2016-03-12T00:32:44.000Z</published>
+    <updated>2016-04-19T10:29:37.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;代码面试最常用的10大算法&quot;&gt;&lt;a href=&quot;#代码面试最常用的10大算法&quot; class=&quot;headerlink&quot; title=&quot;代码面试最常用的10大算法&quot;&gt;&lt;/a&gt;代码面试最常用的10大算法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;面试也是一门学问，在面试之前做好充分的准备则是成功的必须条件，而程序员在代码面试时，常会遇到编写算法的相关问题，比如排序、二叉树遍历等等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在程序员的职业生涯中，算法亦算是一门基础课程，尤其是在面试的时候，很多公司都会让程序员编写一些算法实例，例如快速排序、二叉树查找等等。&lt;br&gt;本文总结了程序员在代码面试中最常遇到的10大算法类型，想要真正了解这些算法的原理，还需程序员们花些功夫。&lt;/p&gt;
+&lt;h3 id=&quot;1-String-Array-Matrix&quot;&gt;&lt;a href=&quot;#1-String-Array-Matrix&quot; class=&quot;headerlink&quot; title=&quot;1. String/Array/Matrix&quot;&gt;&lt;/a&gt;1. String/Array/Matrix&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;toCharArray() //get char array of a String
+Arrays.sort()  //sort an array
+Arrays.toString(char[] a) //convert to string
+charAt(int x) //get a char at the specific index
+length() //string length
+length //array size 
+substring(int beginIndex) 
+substring(int beginIndex, int endIndex)
+Integer.valueOf()//string to integer
+String.valueOf()/integer to string
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;String/arrays很容易理解，但与它们有关的问题常常需要高级的算法去解决，例如动态编程、递归等。&lt;br&gt;下面列出一些需要高级算法才能解决的经典问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Evaluate Reverse Polish Notation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2013/12/leetcode-solution-of-longest-palindromic-substring-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Longest Palindromic Substring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-solution-word-break/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;单词分割&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-word-ladder/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;字梯&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-median-of-two-sorted-arrays-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Median of Two Sorted Arrays&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-regular-expression-matching-in-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式匹配￼Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://merge%20intervals/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;合并间隔&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-insert-interval/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;插入间隔&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.programcreek.com/2012/12/leetcode-solution-of-two-sum-in-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Two Sum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3Sum&lt;/li&gt;
+&lt;li&gt;4Sum&lt;/li&gt;
+&lt;li&gt;3Sum Closest&lt;/li&gt;
+&lt;li&gt;String to Integer&lt;/li&gt;
+&lt;li&gt;合并排序数组&lt;/li&gt;
+&lt;li&gt;Valid Parentheses&lt;/li&gt;
+&lt;li&gt;实现strStr()&lt;/li&gt;
+&lt;li&gt;Set Matrix Zeroes&lt;/li&gt;
+&lt;li&gt;搜索插入位置&lt;/li&gt;
+&lt;li&gt;Longest Consecutive Sequence&lt;/li&gt;
+&lt;li&gt;Valid Palindrome&lt;/li&gt;
+&lt;li&gt;螺旋矩阵&lt;/li&gt;
+&lt;li&gt;搜索一个二维矩阵&lt;/li&gt;
+&lt;li&gt;旋转图像&lt;/li&gt;
+&lt;li&gt;三角形&lt;/li&gt;
+&lt;li&gt;Distinct Subsequences Total&lt;/li&gt;
+&lt;li&gt;Maximum Subarray&lt;/li&gt;
+&lt;li&gt;删除重复的排序数组&lt;/li&gt;
+&lt;li&gt;删除重复的排序数组2&lt;/li&gt;
+&lt;li&gt;查找没有重复的最长子串&lt;/li&gt;
+&lt;li&gt;包含两个独特字符的最长子串&lt;/li&gt;
+&lt;li&gt;Palindrome Partitioning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-链表&quot;&gt;&lt;a href=&quot;#2-链表&quot; class=&quot;headerlink&quot; title=&quot;2. 链表&quot;&gt;&lt;/a&gt;2. 链表&lt;/h3&gt;&lt;p&gt;在Java中实现链表是非常简单的，每个节点都有一个值，然后把它链接到下一个节点。   &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Node {
+    int val;
+    Node next;
+
+    Node(int x) {
+        val = x;
+        next = null;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比较流行的两个链表例子就是栈和队列。&lt;/p&gt;
+&lt;h4 id=&quot;栈（Stack）&quot;&gt;&lt;a href=&quot;#栈（Stack）&quot; class=&quot;headerlink&quot; title=&quot;栈（Stack）&quot;&gt;&lt;/a&gt;栈（Stack）&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;class Stack{
+    Node top; 
+
+    public Node peek(){
+        if(top != null){
+            return top;
+        }
+
+        return null;
+    }
+
+    public Node pop(){
+        if(top == null){
+            return null;
+        }else{
+            Node temp = new Node(top.val);
+            top = top.next;
+            return temp;    
+        }
+    }
+
+    public void push(Node n){
+        if(n != null){
+            n.next = top;
+            top = n;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;队列（Queue）&quot;&gt;&lt;a href=&quot;#队列（Queue）&quot; class=&quot;headerlink&quot; title=&quot;队列（Queue）&quot;&gt;&lt;/a&gt;队列（Queue）&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;class Queue{
+    Node first, last;
+&amp;amp;nbsp;
+    public void enqueue(Node n){
+        if(first == null){
+            first = n;
+            last = first;
+        }else{
+            last.next = n;
+            last = n;
+        }
+    }
+&amp;amp;nbsp;
+    public Node dequeue(){
+        if(first == null){
+            return null;
+        }else{
+            Node temp = new Node(first.val);
+            first = first.next;
+            return temp;
+        }   
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;值得一提的是，Java标准库中已经包含一个叫做Stack的类，链表也可以作为一个队列使用（add()和remove()）。（链表实现队列接口）如果你在面试过程中，需要用到栈或队列解决问题时，你可以直接使用它们。&lt;br&gt;在实际中，需要用到链表的算法有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插入两个数字&lt;/li&gt;
+&lt;li&gt;重新排序列表&lt;/li&gt;
+&lt;li&gt;链表周期&lt;/li&gt;
+&lt;li&gt;Copy List with Random Pointer&lt;/li&gt;
+&lt;li&gt;合并两个有序列表&lt;/li&gt;
+&lt;li&gt;合并多个排序列表&lt;/li&gt;
+&lt;li&gt;从排序列表中删除重复的&lt;/li&gt;
+&lt;li&gt;分区列表&lt;/li&gt;
+&lt;li&gt;LRU缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-树-amp-堆&quot;&gt;&lt;a href=&quot;#3-树-amp-堆&quot; class=&quot;headerlink&quot; title=&quot;3. 树&amp;amp;堆&quot;&gt;&lt;/a&gt;3. 树&amp;amp;堆&lt;/h3&gt;&lt;p&gt;这里的树通常是指二叉树。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class TreeNode{
+    int value;
+    TreeNode left;
+    TreeNode right;
+} 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是一些与二叉树有关的概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二叉树搜索：对于所有节点，顺序是：left children \&amp;lt;= current node \&amp;lt;= right children；&lt;/li&gt;
+&lt;li&gt;平衡vs.非平衡：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树；&lt;/li&gt;
+&lt;li&gt;满二叉树：除最后一层无任何子节点外，每一层上的所有结点都有两个子结点；&lt;/li&gt;
+&lt;li&gt;完美二叉树（Perfect Binary Tree）：一个满二叉树，所有叶子都在同一个深度或同一级，并且每个父节点都有两个子节点；&lt;/li&gt;
+&lt;li&gt;完全二叉树：若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;堆（Heap）是一个基于树的数据结构，也可以称为优先队列（ PriorityQueue），在队列中，调度程序反复提取队列中第一个作业并运行，因而实际情况中某些时间较短的任务将等待很长时间才能结束，或者某些不短小，但具有重要性的作业，同样应当具有优先权。堆即为解决此类问题设计的一种数据结构。&lt;/p&gt;
+&lt;p&gt;下面列出一些基于二叉树和堆的算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二叉树前序遍历&lt;/li&gt;
+&lt;li&gt;二叉树中序遍历&lt;/li&gt;
+&lt;li&gt;二叉树后序遍历&lt;/li&gt;
+&lt;li&gt;字梯&lt;/li&gt;
+&lt;li&gt;验证二叉查找树&lt;/li&gt;
+&lt;li&gt;把二叉树变平放到链表里&lt;/li&gt;
+&lt;li&gt;二叉树路径和&lt;/li&gt;
+&lt;li&gt;从前序和后序构建二叉树&lt;/li&gt;
+&lt;li&gt;把有序数组转换为二叉查找树&lt;/li&gt;
+&lt;li&gt;把有序列表转为二叉查找树&lt;/li&gt;
+&lt;li&gt;最小深度二叉树&lt;/li&gt;
+&lt;li&gt;二叉树最大路径和&lt;/li&gt;
+&lt;li&gt;平衡二叉树&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-Graph&quot;&gt;&lt;a href=&quot;#4-Graph&quot; class=&quot;headerlink&quot; title=&quot;4. Graph&quot;&gt;&lt;/a&gt;4. Graph&lt;/h3&gt;&lt;p&gt;与Graph相关的问题主要集中在深度优先搜索和宽度优先搜索。深度优先搜索非常简单，你可以从根节点开始循环整个邻居节点。下面是一个非常简单的宽度优先搜索例子，核心是用队列去存储节点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://cms.csdnimg.cn/article/201404/10/534655cfcf7a0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第一步，定义一个GraphNode&quot;&gt;&lt;a href=&quot;#第一步，定义一个GraphNode&quot; class=&quot;headerlink&quot; title=&quot;第一步，定义一个GraphNode&quot;&gt;&lt;/a&gt;第一步，定义一个GraphNode&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;class GraphNode{ 
+    int val;
+    GraphNode next;
+    GraphNode[] neighbors;
+    boolean visited;
+
+    GraphNode(int x) {
+        val = x;
+    }
+
+    GraphNode(int x, GraphNode[] n){
+        val = x;
+        neighbors = n;
+    }
+
+    public String toString(){
+        return &amp;quot;value: &amp;quot;+ this.val; 
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;第二步，定义一个队列&quot;&gt;&lt;a href=&quot;#第二步，定义一个队列&quot; class=&quot;headerlink&quot; title=&quot;第二步，定义一个队列&quot;&gt;&lt;/a&gt;第二步，定义一个队列&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;class Queue{
+    GraphNode first, last;
+
+    public void enqueue(GraphNode n){
+        if(first == null){
+            first = n;
+            last = first;
+        }else{
+            last.next = n;
+            last = n;
+        }
+    }
+
+    public GraphNode dequeue(){
+        if(first == null){
+            return null;
+        }else{
+            GraphNode temp = new GraphNode(first.val, first.neighbors);
+            first = first.next;
+            return temp;
+        }   
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;第三步，使用队列进行宽度优先搜索&quot;&gt;&lt;a href=&quot;#第三步，使用队列进行宽度优先搜索&quot; class=&quot;headerlink&quot; title=&quot;第三步，使用队列进行宽度优先搜索&quot;&gt;&lt;/a&gt;第三步，使用队列进行宽度优先搜索&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;public class GraphTest {
+
+    public static void main(String[] args) {
+        GraphNode n1 = new GraphNode(1); 
+        GraphNode n2 = new GraphNode(2); 
+        GraphNode n3 = new GraphNode(3); 
+        GraphNode n4 = new GraphNode(4); 
+        GraphNode n5 = new GraphNode(5); 
+
+        n1.neighbors = new GraphNode[]{n2,n3,n5};
+        n2.neighbors = new GraphNode[]{n1,n4};
+        n3.neighbors = new GraphNode[]{n1,n4,n5};
+        n4.neighbors = new GraphNode[]{n2,n3,n5};
+        n5.neighbors = new GraphNode[]{n1,n3,n4};
+
+        breathFirstSearch(n1, 5);
+    }
+
+    public static void breathFirstSearch(GraphNode root, int x){
+        if(root.val == x)
+            System.out.println(&amp;quot;find in root&amp;quot;);
+
+        Queue queue = new Queue();
+        root.visited = true;
+        queue.enqueue(root);
+
+        while(queue.first != null){
+            GraphNode c = (GraphNode) queue.dequeue();
+            for(GraphNode n: c.neighbors){
+
+                if(!n.visited){
+                    System.out.print(n + &amp;quot; &amp;quot;);
+                    n.visited = true;
+                    if(n.val == x)
+                        System.out.println(&amp;quot;Find &amp;quot;+n);
+                    queue.enqueue(n);
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;输出结果：&quot;&gt;&lt;a href=&quot;#输出结果：&quot; class=&quot;headerlink&quot; title=&quot;输出结果：&quot;&gt;&lt;/a&gt;输出结果：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;value: 2 value: 3 value: 5 Find value: 5 
+value: 4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;实际中，基于Graph需要经常用到的算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;克隆Graph&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5-排序&quot;&gt;&lt;a href=&quot;#5-排序&quot; class=&quot;headerlink&quot; title=&quot;5. 排序&quot;&gt;&lt;/a&gt;5. 排序&lt;/h3&gt;&lt;p&gt;不同排序算法的时间复杂度，大家可以到wiki上查看它们的基本思想。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://cms.csdnimg.cn/article/201404/10/53465710a87e6.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;BinSort、Radix Sort和CountSort使用了不同的假设，所有，它们不是一般的排序方法。   &lt;/p&gt;
+&lt;p&gt;下面是这些算法的具体实例，另外，你还可以阅读： &lt;a href=&quot;http://www.programcreek.com/2014/03/how-developers-sort-in-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java开发者在实际操作中是如何排序的&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;归并排序&lt;/li&gt;
+&lt;li&gt;快速排序&lt;/li&gt;
+&lt;li&gt;插入排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;6-递归和迭代&quot;&gt;&lt;a href=&quot;#6-递归和迭代&quot; class=&quot;headerlink&quot; title=&quot;6. 递归和迭代&quot;&gt;&lt;/a&gt;6. 递归和迭代&lt;/h3&gt;&lt;p&gt;下面通过一个例子来说明什么是递归。&lt;/p&gt;
+&lt;h4 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;这里有n个台阶，每次能爬1或2节，请问有多少种爬法？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;步骤1：查找n和n-1之间的关系&quot;&gt;&lt;a href=&quot;#步骤1：查找n和n-1之间的关系&quot; class=&quot;headerlink&quot; title=&quot;步骤1：查找n和n-1之间的关系&quot;&gt;&lt;/a&gt;步骤1：查找n和n-1之间的关系&lt;/h4&gt;&lt;p&gt;为了获得n，这里有两种方法：一个是从第一节台阶到n-1或者从2到n-2。如果f(n)种爬法刚好是爬到n节，那么f(n)=f(n-1)+f(n-2)。   &lt;/p&gt;
+&lt;h4 id=&quot;步骤2：确保开始条件是正确的&quot;&gt;&lt;a href=&quot;#步骤2：确保开始条件是正确的&quot; class=&quot;headerlink&quot; title=&quot;步骤2：确保开始条件是正确的&quot;&gt;&lt;/a&gt;步骤2：确保开始条件是正确的&lt;/h4&gt;&lt;p&gt;f(0) = 0;&lt;br&gt;f(1) = 1; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static int f(int n){
+    if(n &amp;lt;= 2) return n;
+    int x = f(n-1) + f(n-2);
+    return x;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;递归方法的时间复杂度指数为n，这里会有很多冗余计算。&lt;br&gt;    f(5)&lt;br&gt;    f(4) + f(3)&lt;br&gt;    f(3) + f(2) + f(2) + f(1)&lt;br&gt;    f(2) + f(1) + f(2) + f(2) + f(1)&lt;/p&gt;
+&lt;p&gt;该递归可以很简单地转换为迭代。&lt;br&gt;    public static int f(int n) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    if (n &amp;lt;= 2){
+        return n;
+    }
+
+    int first = 1, second = 2;
+    int third = 0;
+
+    for (int i = 3; i &amp;lt;= n; i++) {
+        third = first + second;
+        first = second;
+        second = third;
+    }
+
+    return third;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这个例子中，迭代花费的时间要少些。关于迭代和递归，你可以去 &lt;a href=&quot;http://www.programcreek.com/2012/10/iteration-vs-recursion-in-java/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;看看。&lt;/p&gt;
+&lt;h3 id=&quot;7-动态规划&quot;&gt;&lt;a href=&quot;#7-动态规划&quot; class=&quot;headerlink&quot; title=&quot;7. 动态规划&quot;&gt;&lt;/a&gt;7. 动态规划&lt;/h3&gt;&lt;p&gt;动态规划主要用来解决如下技术问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过较小的子例来解决一个实例；&lt;/li&gt;
+&lt;li&gt;对于一个较小的实例，可能需要许多个解决方案；&lt;/li&gt;
+&lt;li&gt;把较小实例的解决方案存储在一个表中，一旦遇上，就很容易解决；&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;附加空间用来节省时间。&lt;br&gt;上面所列的爬台阶问题完全符合这四个属性，因此，可以使用动态规划来解决：&lt;br&gt;  public static int[] A = new int[100];&lt;/p&gt;
+&lt;p&gt;  public static int f3(int n) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (n &amp;lt;= 2)
+    A[n]= n;
+
+if(A[n] &amp;gt; 0)
+    return A[n];
+else
+    A[n] = f3(n-1) + f3(n-2);//store results so only calculate once!
+return A[n];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  }&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一些基于动态规划的算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;编辑距离&lt;/li&gt;
+&lt;li&gt;最长回文子串&lt;/li&gt;
+&lt;li&gt;单词分割&lt;/li&gt;
+&lt;li&gt;最大的子数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;8-位操作&quot;&gt;&lt;a href=&quot;#8-位操作&quot; class=&quot;headerlink&quot; title=&quot;8. 位操作&quot;&gt;&lt;/a&gt;8. 位操作&lt;/h3&gt;&lt;p&gt;位操作符：&lt;br&gt;&lt;img src=&quot;http://cms.csdnimg.cn/article/201404/10/53465e7bc51e0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从一个给定的数n中找位i（i从0开始，然后向右开始）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static boolean getBit(int num, int i){
+    int result = num &amp;amp; (1&amp;lt;&amp;lt;i);
+
+    if(result == 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如，获取10的第二位：&lt;br&gt;    i=1, n=10&lt;br&gt;    1&amp;lt;&amp;lt;1= 10&lt;br&gt;    1010&amp;amp;10=10&lt;br&gt;    10 is not 0, so return true;&lt;/p&gt;
+&lt;p&gt;典型的位算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Find Single Number&lt;/li&gt;
+&lt;li&gt;Maximum Binary Gap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;9-概率&quot;&gt;&lt;a href=&quot;#9-概率&quot; class=&quot;headerlink&quot; title=&quot;9. 概率&quot;&gt;&lt;/a&gt;9. 概率&lt;/h3&gt;&lt;p&gt;通常要解决概率相关问题，都需要很好地格式化问题，下面提供一个简单的例子： &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有50个人在一个房间，那么有两个人是同一天生日的可能性有多大？（忽略闰年，即一年有365天）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;public static double caculateProbability(int n){
+    double x = 1; 
+
+    for(int i=0; i&amp;lt;n; i++){
+        x *=  (365.0-i)/365.0;
+    }
+
+    double pro = Math.round((1-x) * 100);
+    return pro/100;
+}I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;calculateProbability(50) = 0.97&lt;/p&gt;
+&lt;h3 id=&quot;10-组合和排列&quot;&gt;&lt;a href=&quot;#10-组合和排列&quot; class=&quot;headerlink&quot; title=&quot;10. 组合和排列&quot;&gt;&lt;/a&gt;10. 组合和排列&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;p&gt;组合和排列的主要差别在于顺序是否重要。&lt;br&gt;例1：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、2、3、4、5这5个数字，输出不同的顺序，其中4不可以排在第三位，3和5不能相邻，请问有多少种组合？&lt;br&gt;例2：&lt;br&gt;有5个香蕉、4个梨、3个苹果，假设每种水果都是一样的，请问有多少种不同的组合？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;基于它们的一些常见算法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;排列&lt;/li&gt;
+&lt;li&gt;排列2&lt;/li&gt;
+&lt;li&gt;排列顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来自：&lt;a href=&quot;http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码面试最常用的10大算法&quot;&gt;&lt;a href=&quot;#代码面试最常用的10大算法&quot; class=&quot;headerlink&quot; title=&quot;代码面试最常用的10大算法&quot;&gt;&lt;/a&gt;代码面试最常用的10大算法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;面试也是一门学问，在面试之
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://gdky005.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐processon 让流程图也可以共享</title>
+    <link href="http://gdky005.com/2016/02/25/%E6%8E%A8%E8%8D%90processon-%E8%AE%A9%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%85%B1%E4%BA%AB/"/>
+    <id>http://gdky005.com/2016/02/25/推荐processon-让流程图也可以共享/</id>
+    <published>2016-02-25T02:32:02.000Z</published>
+    <updated>2016-04-19T10:29:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;推荐一个流程图共享的网站：&lt;br&gt;&lt;a href=&quot;https://www.processon.com/popular&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.processon.com/popular&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一次偶然的机会在微博里面看到 一图学git 的时候，发现这个图很实用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/bmiddle/c5131475jw1f1batea592j21kw0fy0wn.jpg&quot; alt=&quot;https://www.processon.com/view/56ca927ce4b0362f22d848b5&quot;&gt;&lt;br&gt;&lt;a href=&quot;https://www.processon.com/view/56ca927ce4b0362f22d848b5&quot; title=&quot;原样图&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原样图&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后在里面可以看出常用的流程，对于某些方面的需求还是很有必要的。&lt;/p&gt;
+&lt;h3 id=&quot;例如：&quot;&gt;&lt;a href=&quot;#例如：&quot; class=&quot;headerlink&quot; title=&quot;例如：&quot;&gt;&lt;/a&gt;例如：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/557051bee4b0d6a77d619124&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IOS开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55783184e4b0d6a77d9f9560&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端技能树&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/555097e7e4b09739f4652bf3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Service总结1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/5550a05ee4b09739f46585b0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Service总结2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55b4e86ce4b0d2cdb5356e08&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android测试工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55f69023e4b0a8c6fae84984&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android中主要类的关系图 Activity Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55110a6ee4b00af64b0c3cba&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;APP开发人员技能树&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/568bc9eae4b002e52c0fb427&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EventBus源码分析简要图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/561ccd9de4b07efc017ca19b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android小说阅读器部分计划及流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/562847b4e4b04931dccccbfe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;View绘制流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/550cf083e4b0b74dae7c2c7d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Drawable分类汇总&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;推荐一个流程图共享的网站：&lt;br&gt;&lt;a href=&quot;https://www.processon.com/popular&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.processon.com/popular&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JADX反编译源码更easy</title>
+    <link href="http://gdky005.com/2016/02/24/APK%E5%8F%8D%E7%BC%96%E8%AF%91Jadx/"/>
+    <id>http://gdky005.com/2016/02/24/APK反编译Jadx/</id>
+    <published>2016-02-24T03:54:09.000Z</published>
+    <updated>2016-04-19T10:29:37.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;JADX反编译源码更easy&quot;&gt;&lt;a href=&quot;#JADX反编译源码更easy&quot; class=&quot;headerlink&quot; title=&quot;JADX反编译源码更easy&quot;&gt;&lt;/a&gt;JADX反编译源码更easy&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;一个Android反编译神器,不同于常见的 dex2jar,这个反编译器生成代码的 try/catch 次数更少, View也不再是数字id了,可读性更高&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Command line and GUI tools for produce Java source code from Android Dex and Apk files&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Downloads&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://drone.io/github.com/skylot/jadx/files&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;unstable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;from &lt;a href=&quot;https://github.com/skylot/jadx/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;from &lt;a href=&quot;http://sourceforge.net/projects/jadx/files/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sourceforge&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考地址：&lt;a href=&quot;#&quot;&gt; https://github.com/skylot/jadx &lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JADX反编译源码更easy&quot;&gt;&lt;a href=&quot;#JADX反编译源码更easy&quot; class=&quot;headerlink&quot; title=&quot;JADX反编译源码更easy&quot;&gt;&lt;/a&gt;JADX反编译源码更easy&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;一个Android
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发者提升技能水平的大招</title>
+    <link href="http://gdky005.com/2016/02/19/Android%E5%BC%80%E5%8F%91%E8%80%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3%E7%9A%84%E5%A4%A7%E6%8B%9B/"/>
+    <id>http://gdky005.com/2016/02/19/Android开发者提升技能水平的大招/</id>
+    <published>2016-02-19T09:40:14.000Z</published>
+    <updated>2016-04-19T10:29:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;br&gt;&lt;br&gt;国外的技术佬们是怎么提升技能的？我翻了翻，发现跟国内的同学差不多。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文是Denis Gobo做的一个调查表，调查程序员/开发者一般都是通过哪些途径来提升自己在技术领域的技能水平的《How Did You Improve Your Tech Skills》，文中给出了一些对程序员有用的方式方法，但是每个人的喜好不一样，所以各有偏重。不过，要是真的能按照所列出的这些方式方法去做，提升效果一定很大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;参加活动，沙龙，技术聚会：&quot;&gt;&lt;a href=&quot;#参加活动，沙龙，技术聚会：&quot; class=&quot;headerlink&quot; title=&quot;参加活动，沙龙，技术聚会：&quot;&gt;&lt;/a&gt;参加活动，沙龙，技术聚会：&lt;/h3&gt;&lt;p&gt;参加一些高质量的沙龙，总是有一些专家出席做相关演讲，比如最近的Node.js线下沙龙。&lt;/p&gt;
+&lt;h3 id=&quot;参加培训：&quot;&gt;&lt;a href=&quot;#参加培训：&quot; class=&quot;headerlink&quot; title=&quot;参加培训：&quot;&gt;&lt;/a&gt;参加培训：&lt;/h3&gt;&lt;p&gt;公司总会为员工的科技技术做一些培训，有兴趣的可以参加提升自己的技能。培训就是一个最快的入门途径。&lt;/p&gt;
+&lt;h3 id=&quot;参加讨论会：&quot;&gt;&lt;a href=&quot;#参加讨论会：&quot; class=&quot;headerlink&quot; title=&quot;参加讨论会：&quot;&gt;&lt;/a&gt;参加讨论会：&lt;/h3&gt;&lt;p&gt;参加一些类似于Google IO、Build、JavaWorld、WWDC、SQLPass等等，去接触一下你所使用的产品的真正的创造者。&lt;/p&gt;
+&lt;h3 id=&quot;回答问题：&quot;&gt;&lt;a href=&quot;#回答问题：&quot; class=&quot;headerlink&quot; title=&quot;回答问题：&quot;&gt;&lt;/a&gt;回答问题：&lt;/h3&gt;&lt;p&gt;个人举得最有效的提升办法就是回答别人的问题，就像QA网站StackOverflow。&lt;/p&gt;
+&lt;h3 id=&quot;边吃边学：&quot;&gt;&lt;a href=&quot;#边吃边学：&quot; class=&quot;headerlink&quot; title=&quot;边吃边学：&quot;&gt;&lt;/a&gt;边吃边学：&lt;/h3&gt;&lt;p&gt;如果你有吃饭的时间，那你就有学习的时间；如果你有和团队成员编写代码的时间，那你就有开发设计的时间。同理，蹲坑的时候也可以翻翻osc和eoe的客户端，想了解一些运营知识的，还可以关注知乎的运营问题。&lt;/p&gt;
+&lt;h3 id=&quot;加入一个开源项目：&quot;&gt;&lt;a href=&quot;#加入一个开源项目：&quot; class=&quot;headerlink&quot; title=&quot;加入一个开源项目：&quot;&gt;&lt;/a&gt;加入一个开源项目：&lt;/h3&gt;&lt;p&gt;开源项目是最能锻炼人的一个途径，在这个过程里，你可以思考很多东西，比如说这个代码为什么要这样写？为什么要用这样的方式？使用了多少个设计模板等等，github账号你得有一个。&lt;/p&gt;
+&lt;h3 id=&quot;读书，读代码，读博客：&quot;&gt;&lt;a href=&quot;#读书，读代码，读博客：&quot; class=&quot;headerlink&quot; title=&quot;读书，读代码，读博客：&quot;&gt;&lt;/a&gt;读书，读代码，读博客：&lt;/h3&gt;&lt;p&gt;可供程序员阅读的书可以说是汗牛充栋，这里就不列举了。阅读代码可以让你见识到更多的框架；可以让你发掘出更多的API。阅读你所关心的专家的博客，可以 帮助你学习到更多的代码组合和技巧，同时遇到不解的问题还可以留言提问，何乐而不为呢？。&lt;/p&gt;
+&lt;h3 id=&quot;发表博客：&quot;&gt;&lt;a href=&quot;#发表博客：&quot; class=&quot;headerlink&quot; title=&quot;发表博客：&quot;&gt;&lt;/a&gt;发表博客：&lt;/h3&gt;&lt;p&gt;编写博客也可以让人保持清醒、更有斗志。在发表博客之后，读者会就你的错误提出指正，为了避免这样的情况，在发表之前会通读好多遍，并做一些研究，以防出现问题，这也是技能的一种进步和拓展。&lt;/p&gt;
+&lt;h3 id=&quot;通过做Kata来实践：&quot;&gt;&lt;a href=&quot;#通过做Kata来实践：&quot; class=&quot;headerlink&quot; title=&quot;通过做Kata来实践：&quot;&gt;&lt;/a&gt;通过做Kata来实践：&lt;/h3&gt;&lt;p&gt;Kata是空手道里的招式，也可以用在编程技术里。可以阅读这篇博文加以理解，Using Code Katas to Improve Programming Skills。这个事情，臣妾搞不懂啊。&lt;/p&gt;
+&lt;h3 id=&quot;写书：&quot;&gt;&lt;a href=&quot;#写书：&quot; class=&quot;headerlink&quot; title=&quot;写书：&quot;&gt;&lt;/a&gt;写书：&lt;/h3&gt;&lt;p&gt;在技术领域的大多数人都会写一本书，因为写一本书需要花很多时间去做调查和研究，除了要确保你的代码是正确的之外，你还要做很多其他的事情，在这之前你可 能只是个码农，但是一旦你出版了这本书之后你就是这方面的专家了。当然，写书最糟糕的地方就是最初的反馈信息里有很多别人指出的错误，如果脸皮不够厚的话 可能是一个棘手的问题。&lt;/p&gt;
+&lt;p&gt;这是一个伟大的事情。Android开发入门与实战（第2版）就是由eoe社区数十名版主和会员共同编著而成。&lt;/p&gt;
+&lt;h3 id=&quot;看视频教程，听播客，看在线研讨会：&quot;&gt;&lt;a href=&quot;#看视频教程，听播客，看在线研讨会：&quot; class=&quot;headerlink&quot; title=&quot;看视频教程，听播客，看在线研讨会：&quot;&gt;&lt;/a&gt;看视频教程，听播客，看在线研讨会：&lt;/h3&gt;&lt;p&gt;从播客和在线研讨会上也能学到很多东西，关键是在自己的电脑上将播客和研讨会力学来的知识进行代码验证是最好的进步环节。&lt;/p&gt;
+&lt;p&gt;在给出这个调查表之后有很多程序员/开发者给出了回复和选择，一起来看看他们平时都是怎么来提高自己的技术水平的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://s9.51cto.com/wyfs01/M01/32/AB/wKioJlKK1tLCQHKLAABzCAW0Jwk321.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;很明显，大多数人喜欢把阅读书本、代码和博客作为一种提高技能的手段。同时也有让人惊讶的现象：那就是通过做Kata来实践、参与开源项目、订阅科 技读物的比例实在是太低了，因为这三项在大部分人看来是最容易的，而且效率也是最显著的。另外，写一本书的竟然占到了8%，也很让人吃惊。除了这些，你觉 得还有哪些方式是可以提高你的技术水平的呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;来自：&lt;a href=&quot;#&quot;&gt; http://mobile.51cto.com/anews-417838.htm &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;#&quot;&gt; https://www.zhihu.com/question/20217218 &lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;br&gt;&lt;br&gt;国外的技术佬们是怎么提升技能的？我翻了翻，发现跟国内的同学差不多。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文是Denis Gobo做的一个调查表，调查程序员/开发者一般都是通过哪些途径来提升自己在技术领域的技能水平的《How Did You Improv
+    
+    </summary>
+    
+    
+      <category term="技能提升" scheme="http://gdky005.com/tags/%E6%8A%80%E8%83%BD%E6%8F%90%E5%8D%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fragment not attached to Activity 异常</title>
+    <link href="http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-%E5%BC%82%E5%B8%B8/"/>
+    <id>http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-异常/</id>
+    <published>2015-11-27T02:48:17.000Z</published>
+    <updated>2016-04-19T10:29:37.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot;&gt;&lt;a href=&quot;#关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot; class=&quot;headerlink&quot; title=&quot;关于Fragment（XXFragment） not attached to Activity 异常&quot;&gt;&lt;/a&gt;关于Fragment（XXFragment） not attached to Activity 异常&lt;/h3&gt;&lt;p&gt;出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：&lt;a href=&quot;http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity%C2%A0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity &lt;/a&gt; 回答的主要是在调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getResources().getString(R.string.app_name); 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之前增加一个判断isAdded(),两外说这个异常解决办法的有&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个是针对另外一种情况下的解决方式。&lt;/p&gt;
+&lt;h3 id=&quot;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot;&gt;&lt;a href=&quot;#在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot; class=&quot;headerlink&quot; title=&quot;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot;&gt;&lt;/a&gt;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Bundle b = new Bundle(); 
+b.putParcelable(&amp;quot;bitmap&amp;quot;, bitmap2); 
+imageRecognitionFragment.setArguments(b); 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;设置好参数，并且添加hide(),add(),方法之后，需要commit()，来实现两个Fragment跳转的时候，这种情形下参数需要进行系统保存，但是这个时候你已经实现了跳转，系统参数却没有保存。此时就会报异常:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;分析原因：&quot;&gt;&lt;a href=&quot;#分析原因：&quot; class=&quot;headerlink&quot; title=&quot;分析原因：&quot;&gt;&lt;/a&gt;分析原因：&lt;/h3&gt;&lt;p&gt;你并不需要系统保存的参数，只要你自己设置的参数能够传递过去，在另外一个Fragment里能够顺利接受就行了，现在android里提供了另外一种形式的提交方式commitAllowingStateLoss()，从名字上就能看出，这种提交是允许状态值丢失的。到此问题得到完美解决，值的传递是你自己控制的。&lt;/p&gt;
+&lt;p&gt;这里也说一下另外一个问题，bitmap 也可以通过Bundle传递的，使用putParacelable就可以了&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot;&gt;&lt;a href=&quot;#关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot; class=&quot;headerlink&quot;
+    
+    </summary>
+    
+    
+      <category term="android" scheme="http://gdky005.com/tags/android/"/>
+    
+  </entry>
+  
+</feed>
