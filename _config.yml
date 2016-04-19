@@ -7,7 +7,7 @@ title: 孤独狂饮
 subtitle: 只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！
 description: 创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!
 author: gdky005 #作者名字
-language: zh-CN #语言 中国大陆简体中文的标准语系地区码是zh-CN 台灣是正體中文zh-TW
+language: zh-Hans #语言 中国大陆简体中文的标准语系地区码是zh-CN 台灣是正體中文zh-TW, Next zh-Hans; #http://theme-next.iissnan.com/getting-started.html
 timezone: PRC #设置为中华人民共和国
 
 # URL
@@ -49,9 +49,9 @@ category_map:
 tag_map:
 
 # Archives
-#archive: 1 #设置为1 是全部展示
-#category: 2
-#tag: 2
+# archive: 0 #设置为1 是全部展示
+# category: 2
+# tag: 2
 
 # Server
 # port: 4000 #本地服务器端口是4000
@@ -74,13 +74,16 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: jacman #主题设置
+theme: next #主题设置
 stylus:
   compress: true
 
-plugins:
-- hexo-generator-feed
-- hexo-generator-sitemap
+# plugins:
+# - hexo-generator-feed
+# - hexo-generator-sitemap
+
+# baidusitemap:
+#     path: baidusitemap.xml
 
 # # Deployment
 # ## Docs: http://hexo.io/docs/deployment.html
