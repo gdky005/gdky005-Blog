@@ -1,0 +1,1311 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
+看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta property="og:type" content="article">
+<meta property="og:title" content="凯哥高质量文章系列">
+<meta property="og:url" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/index.html">
+<meta property="og:site_name" content="孤独狂饮">
+<meta property="og:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
+看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta property="og:image" content="http://gdky005.com/DraggedImage.png">
+<meta property="og:image" content="http://gdky005.com/DraggedImage-1.png">
+<meta property="og:image" content="http://gdky005.com/Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png">
+<meta property="og:updated_time" content="2015-11-20T08:30:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="凯哥高质量文章系列">
+<meta name="twitter:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
+看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta name="twitter:image" content="http://gdky005.com/DraggedImage.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+<script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
+
+  <title> 凯哥高质量文章系列 | 孤独狂饮 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">孤独狂饮</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                凯哥高质量文章系列
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-20T12:17:18+08:00" content="2015-11-20">
+              2015-11-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/20/凯哥高质量文章系列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/凯哥高质量文章系列/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h1 id="凯哥系列："><a href="#凯哥系列：" class="headerlink" title="凯哥系列："></a>凯哥系列：</h1><h2 id="1-Activity启动过程全解析"><a href="#1-Activity启动过程全解析" class="headerlink" title="1. Activity启动过程全解析"></a>1. <a href="http://www.devtf.cn/?p=1101" target="_blank" rel="external">Activity启动过程全解析</a></h2><h2 id="2-framework-Activity界面显示全解析"><a href="#2-framework-Activity界面显示全解析" class="headerlink" title="2. framework-Activity界面显示全解析"></a>2. <a href="http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287" target="_blank" rel="external">framework-Activity界面显示全解析</a></h2><p>注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念</p>
+<h3 id="看文章的记录："><a href="#看文章的记录：" class="headerlink" title="看文章的记录："></a>看文章的记录：</h3><p>1.App启动<br>2.App入口<br>3.Launcher?<br>4.AMS??<br>5.Binder是神马？怎么进行IPC通信？<br>6.Activity生命周期是被谁 什么时候调用的？</p>
+<h3 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h3><p>1.开机第一个zygote（受精卵的意思） 进程创建 —》点击桌面图标 —》进入App的流程，从源码的角度<br>2.ActivityManagerServices(即：AMS)， ActivityStack, ActivityThread, Instrumentation等 framework 基础类的作用和相互关系</p>
+<p>3.AMS和ActivityThread 利用Binder 进行IPC通信， AMS和ActivityThread控制Activity生命周期的作用于配合</p>
+<p>4.Activity相关的framework问题</p>
+<h3 id="主要对象功能介绍："><a href="#主要对象功能介绍：" class="headerlink" title="主要对象功能介绍："></a>主要对象功能介绍：</h3><p>1.ActivityManagerServices（AMS):服务对象，负责所有的Activity的生命周期；<br>2.ActivityThread:App的真正入口。打开App->main(),开始消息队列循环，传说中的UI线程或者是主线程，与AMS配合，一起完成Activity的管理工作；<br>3.ApplicationThread: 实现AMS和ActivityThread交互，在AMS需要管理相关Application中的Activity的生命周期时，通过ApplicationThread的代理对象与ActivityThread通信。<br>4.ApplicationThreadProxy: 是ApplicationThread 在服务器端的代理，负责和客户端中的ApplicationThread通信，AMS就是通过该代理与ActivityThread进行通信。<br>5.Instrumentation: 每个应用只有一个对象，每个Activity都有一个该对象的引用，它可以理解为 应用进程管家 ，ActivityThread 要创建或暂停某个Activity时，都需要通过Instrumentation进行操作。<br>6.ActivityStack： Activity在AMS中的栈管理，用来记录启动的Activity的先后关系，状态信息。通过ActivityStack决定是否需要启动新的进程。<br>7.ActivityRecord: ActivityStack的管理对象，每个Activity在AMS对应一个ActivityRecord，记录Activity的状态和其他管理信息，其实就是服务器端的Activity对象的映像。<br>8.TaskRecord: AMS 抽象出来的一个 『任务』概念，是记录ActivityRecord的栈，一个『Task』 包含若干个 ActivityRecord，AMS用TaskRecord确保Activity启动和退出的顺序，如果你清楚 Activity的4中launchMode,那么对这个概念就不会太陌生。</p>
+<h3 id="主要流程介绍"><a href="#主要流程介绍" class="headerlink" title="主要流程介绍"></a>主要流程介绍</h3><ul>
+<li>zygote 是神马？<br>程序 Crash 的时候，打印红色的log通常带有这个<br>Android基于Linux系统，在linux中，所以的进程都是init进行直接或是间接fork出来的，zygote进行也是！</li>
+</ul>
+<p>Android 是基于Linux System的，当我们的手机 开机的时候，Linux,内核加载成功后 就会启动一个 『init』进程</p>
+<p>我们都知道，每一个App其实都是：</p>
+<ul>
+<li>一个单独的dalvik 虚拟机<ul>
+<li>单独的进程</li>
+</ul>
+</li>
+</ul>
+<p>当前系统 里面的第一个 zygote 进程 运行后，再开 App, 就相当于 开启了一个新的进程。而为了实现资源共用 和 更快 启动速度，Android系统开启新进程方式，通过fork第一个zygote进程实现。所以说，除了第一个zygote进程，其他应用所在的进程都是 zygote 的子进程。 这下就明白为什么这个进程叫做 『受精卵』了，一万年就像受精卵一样，它快速分裂，并且产生遗传物质一样的细胞！</p>
+<h3 id="SystemServer是什么？-作用？它与zygote有什么样的一重关系？"><a href="#SystemServer是什么？-作用？它与zygote有什么样的一重关系？" class="headerlink" title="SystemServer是什么？ 作用？它与zygote有什么样的一重关系？"></a>SystemServer是什么？ 作用？它与zygote有什么样的一重关系？</h3><p>首先，要告诉你的是 SystemServer 也是一个进程，而且是由zygote进程fork出来的！</p>
+<p>这个进程是 Android Framework 里面两个非常重要的进程之一 ——- 另外一个就是 上面的 zygote 进程。</p>
+<p>为什么说 SystemServer 非常重要？因为系统 里面的重要服务器都在这个进程里面开启，比如： ActivityManagerService、 PackageManagerService, WindowManagerService 等等，看着是不是都很眼熟？</p>
+<p>那么这些服务是怎么开启起来的呢?</p>
+<p>在zygote 开启的时候，会调用 ZygoteInit.main初始化</p>
+<pre><code>public static void main(String argv[]) {
+
+     ...ignore some code...
+
+    //在加载首个zygote的时候，会传入初始化参数，使得startSystemServer = true
+     boolean startSystemServer = false;
+     for (int i = 1; i &lt; argv.length; i++) {
+                if (&quot;start-system-server&quot;.equals(argv[i])) {
+                    startSystemServer = true;
+                } else if (argv[i].startsWith(ABI_LIST_ARG)) {
+                    abiList = argv[i].substring(ABI_LIST_ARG.length());
+                } else if (argv[i].startsWith(SOCKET_NAME_ARG)) {
+                    socketName = argv[i].substring(SOCKET_NAME_ARG.length());
+                } else {
+                    throw new RuntimeException(&quot;Unknown command line argument: &quot; + argv[i]);
+                }
+            }
+
+            ...ignore some code...
+
+         //开始fork我们的SystemServer进程
+     if (startSystemServer) {
+                startSystemServer(abiList, socketName);
+         }
+
+     ...ignore some code...
+
+}
+</code></pre><p>关键代码：<br>    if (“start-system-server”.equals(argv[i])) {<br>                        startSystemServer = true;<br>    }<br>    ~~~<br>    //开始fork我们的SystemServer进程<br>    if (startSystemServer) {<br>           startSystemServer(abiList, socketName);<br>    }</p>
+<p>我们看下startSystemServer()做了些什么:</p>
+<pre><code>public static void main(String argv[]) {
+
+     ...ignore some code...
+
+    //在加载首个zygote的时候，会传入初始化参数，使得startSystemServer = true
+     boolean startSystemServer = false;
+     for (int i = 1; i &lt; argv.length; i++) {
+                if (&quot;start-system-server&quot;.equals(argv[i])) {
+                    startSystemServer = true;
+                } else if (argv[i].startsWith(ABI_LIST_ARG)) {
+                    abiList = argv[i].substring(ABI_LIST_ARG.length());
+                } else if (argv[i].startsWith(SOCKET_NAME_ARG)) {
+                    socketName = argv[i].substring(SOCKET_NAME_ARG.length());
+                } else {
+                    throw new RuntimeException(&quot;Unknown command line argument: &quot; + argv[i]);
+                }
+            }
+
+            ...ignore some code...
+
+         //开始fork我们的SystemServer进程
+     if (startSystemServer) {
+                startSystemServer(abiList, socketName);
+         }
+
+     ...ignore some code...
+
+}
+</code></pre><p>我们看下startSystemServer()做了些什么</p>
+<pre><code>/**留着这个注释，就是为了说明SystemServer确实是被fork出来的
+ * Prepare the arguments and fork for the system server process.
+ */
+private static boolean startSystemServer(String abiList, String socketName)
+        throws MethodAndArgsCaller, RuntimeException {
+
+     ...ignore some code...
+
+    //留着这段注释，就是为了说明上面ZygoteInit.main(String argv[])里面的argv就是通过这种方式传递进来的
+    /* Hardcoded command line to start the system server */
+    String args[] = {
+        &quot;--setuid=1000&quot;,
+        &quot;--setgid=1000&quot;,
+        &quot;--setgroups=1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1018,1032,3001,3002,3003,3006,3007&quot;,
+        &quot;--capabilities=&quot; + capabilities + &quot;,&quot; + capabilities,
+        &quot;--runtime-init&quot;,
+        &quot;--nice-name=system_server&quot;,
+        &quot;com.android.server.SystemServer&quot;,
+    };
+
+    int pid;
+    try {
+        parsedArgs = new ZygoteConnection.Arguments(args);
+        ZygoteConnection.applyDebuggerSystemProperty(parsedArgs);
+        ZygoteConnection.applyInvokeWithSystemProperty(parsedArgs);
+
+    //确实是fuck出来的吧，我没骗你吧~不对，是fork出来的 -_-|||
+        /* Request to fork the system server process */
+        pid = Zygote.forkSystemServer(
+                parsedArgs.uid, parsedArgs.gid,
+                parsedArgs.gids,
+                parsedArgs.debugFlags,
+                null,
+                parsedArgs.permittedCapabilities,
+                parsedArgs.effectiveCapabilities);
+    } catch (IllegalArgumentException ex) {
+        throw new RuntimeException(ex);
+    }
+
+    /* For child process */
+    if (pid == 0) {
+        if (hasSecondZygote(abiList)) {
+            waitForSecondaryZygote(socketName);
+        }
+
+        handleSystemServerProcess(parsedArgs);
+    }
+
+    return true;
+}
+</code></pre><h3 id="ActivityManagerService是什么？什么时候创建？作用"><a href="#ActivityManagerService是什么？什么时候创建？作用" class="headerlink" title="ActivityManagerService是什么？什么时候创建？作用?"></a>ActivityManagerService是什么？什么时候创建？作用?</h3><p>ActivityManagerService,简称 AMS，服务器端对象，负责系统中所有Activity的生命周期。</p>
+<p>AMS 进行初始化的时机很明确，就是 SystemServer 进程开启的时候，就会初始化 ActivityManagerService </p>
+<pre><code>public final class SystemServer {
+
+    //zygote的主入口
+    public static void main(String[] args) {
+        new SystemServer().run();
+    }
+
+    public SystemServer() {
+        // Check for factory test mode.
+        mFactoryTestMode = FactoryTest.getMode();
+    }
+
+    private void run() {
+
+        ...ignore some code...
+
+        //加载本地系统服务库，并进行初始化 
+        System.loadLibrary(&quot;android_servers&quot;);
+        nativeInit();
+
+        // 创建系统上下文
+        createSystemContext();
+
+        //初始化SystemServiceManager对象，下面的系统服务开启都需要调用SystemServiceManager.startService(Class&lt;T&gt;)，这个方法通过反射来启动对应的服务
+        mSystemServiceManager = new SystemServiceManager(mSystemContext);
+
+        //开启服务
+        try {
+            startBootstrapServices();
+            startCoreServices();
+            startOtherServices();
+        } catch (Throwable ex) {
+            Slog.e(&quot;System&quot;, &quot;******************************************&quot;);
+            Slog.e(&quot;System&quot;, &quot;************ Failure starting system services&quot;, ex);
+            throw ex;
+        }
+
+        ...ignore some code...
+
+    }
+
+    //初始化系统上下文对象mSystemContext，并设置默认的主题,mSystemContext实际上是一个ContextImpl对象。调用ActivityThread.systemMain()的时候，会调用ActivityThread.attach(true)，而在attach()里面，则创建了Application对象，并调用了Application.onCreate()。
+    private void createSystemContext() {
+        ActivityThread activityThread = ActivityThread.systemMain();
+        mSystemContext = activityThread.getSystemContext();
+        mSystemContext.setTheme(android.R.style.Theme_DeviceDefault_Light_DarkActionBar);
+    }
+
+    //在这里开启了几个核心的服务，因为这些服务之间相互依赖，所以都放在了这个方法里面。
+    private void startBootstrapServices() {
+
+        ...ignore some code...
+
+        //初始化ActivityManagerService
+        mActivityManagerService = mSystemServiceManager.startService(
+                ActivityManagerService.Lifecycle.class).getService();
+        mActivityManagerService.setSystemServiceManager(mSystemServiceManager);
+
+        //初始化PowerManagerService，因为其他服务需要依赖这个Service，因此需要尽快的初始化
+        mPowerManagerService = mSystemServiceManager.startService(PowerManagerService.class);
+
+        // 现在电源管理已经开启，ActivityManagerService负责电源管理功能
+        mActivityManagerService.initPowerManagement();
+
+        // 初始化DisplayManagerService
+        mDisplayManagerService = mSystemServiceManager.startService(DisplayManagerService.class);
+
+    //初始化PackageManagerService
+    mPackageManagerService = PackageManagerService.main(mSystemContext, mInstaller,
+       mFactoryTestMode != FactoryTest.FACTORY_TEST_OFF, mOnlyCore);
+
+    ...ignore some code...
+
+    }
+
+}
+</code></pre><p>经过以上， ActivityManagerService对象已经创建好了，并且完成了成员变量初始化，在这之前，调用createSystemContext()创建系统上下文，也完成 mSystemContext 和 ActivityThread 的创建，注意，这是系统开启的流程，在这之后，会开启系统的Launcher 程序，完成系统界面的加载和显示。</p>
+<p>你可能会好奇，为什么上文说 AMS是服务端对象? 下面给你介绍 Android 系统里面的服务器 和 客户端的概念。</p>
+<p>其实B/S 不仅存在 web开发中，也存在 Android的框架设计里面。服务器端指的是所有App公用的系统服务，比如给提到的 ActivityManagerService， 和前面提到的 PackageManagerService、WindowManagerService等等，这些基础的系统服务 是被所有的App公用的，当某个App想实现某个操作的时候，要告诉这些系统服务，比如你打开一个App， 那么我们知道了 包名和 MainActivity类名 之后就可以打开</p>
+<pre><code>Intent intent = new Intent(Intent.ACTION_MAIN);  
+intent.addCategory(Intent.CATEGORY_LAUNCHER);              
+ComponentName cn = new ComponentName(packageName, className);              
+intent.setComponent(cn);  
+startActivity(intent); 
+</code></pre><p>但是，我们的app通过调用startActivity() 并不能直接打开另外一个App, 这个方法会通过一系列的调用，最后还告诉AMS ”我要打开这个App, 我知道他们的住址和名字，你帮我打开吧！” 所以 AMS来通知 zygote 进程来fork一个新进程，来开启我们的目标App。这就像是浏览器要打开一个超链接一样，浏览器把网址发送到服务器，然后服务器吧需要的资源文件发送到客户端。</p>
+<p>知道了 Android Framework的客户端服务器架构之后，我们还需要了解一件事，那就是我们的App 和 AMS（SystemServer进行） 还有zygote 进程分贝属于三个进程，他们怎么通信呢？</p>
+<p>App与AMS 通过binder进行IPC通信，AMS（进程） 与 zygote通过 Socket 进行IPC通信。</p>
+<p>那么AMS有什么用呢？  前面我们知道， 如果打开一个app, 需要AMS通知 zygote 进程，除此之后，其实所有的Activity 的开启、暂停、关闭 都需要 AMS来控制，所有我们说，ASM负责系统中所有的Activity的生命周期。</p>
+<p>在Android系统中，任何一个Activity 的启动都是由AMS和应用程序进程（主要是ActivityThread） 相互配合来完成的。 AMS服务统一调度系统中的所有进程的Activity启动，而每个Activity 的启动过程则由其所属的进程具体来完成。</p>
+<p>这样说可能比较抽象，没关系，下面专门来介绍 ASM和ActivityThread如果一起合作控制Activity 的生命周期。</p>
+<h3 id="Launche是什么？-什么时候启动？"><a href="#Launche是什么？-什么时候启动？" class="headerlink" title="Launche是什么？ 什么时候启动？"></a>Launche是什么？ 什么时候启动？</h3><p>当我们点击手机桌面上的图标的时候，App就由Launcher开始启动了。 但是，你有没有思考过 Launcher 到底一个什么东西呢？</p>
+<p>Launcher 本质也是一个应用程序，和我们的App一样，也是继承自Activity。</p>
+<p>packages/apps/Launcher2/src/com/android/launcher2/Launcher.java<br>    public final class Launcher extends Activity<br>            implements View.OnClickListener, OnLongClickListener, LauncherModel.Callbacks,<br>                       View.OnTouchListener {<br>                       }</p>
+<p>Launcher 实现了点击，长按等回到接口，来接受用户的输入。其实本质和我们的App一样，点击图标 然后 startActivity（） 发送到对应的Intent 请求呗！就是如此的简单。</p>
+<p><img src="DraggedImage.png" alt=""></p>
+<p>程序列表里面：<br><img src="DraggedImage-1.png" alt=""></p>
+<p>可以看到的是，调用的是：<br>    mLauncher.startActivitySafely(v, appInfo.intent, appInfo);</p>
+<p>和上面的一样，这叫什么？ 这叫殊途同归！</p>
+<p>所以现在我们明白了一件事：不管从哪里点击图标，调用的都是<br>    Launcher.startActivitySafely()</p>
+<p>下面来看看 Launcher.startActivitySafely()到底做了什么事情<br>    boolean startActivitySafely(View v, Intent intent, Object tag) {<br>            boolean success = false;<br>            try {<br>                success = startActivity(v, intent, tag);<br>            } catch (ActivityNotFoundException e) {<br>                Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();<br>                Log.e(TAG, “Unable to launch. tag=” + tag + “ intent=” + intent, e);<br>            }<br>            return success;<br>        }</p>
+<p>调用了startAcitivity(v,intent,tag)<br>    boolean startActivitySafely(View v, Intent intent, Object tag) {<br>            boolean success = false;<br>            try {<br>                success = startActivity(v, intent, tag);<br>            } catch (ActivityNotFoundException e) {<br>                Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();<br>                Log.e(TAG, “Unable to launch. tag=” + tag + “ intent=” + intent, e);<br>            }<br>            return success;<br>        }</p>
+<p>这里会调用Activity.startActivity(intent, ops.toBundle()) ,这个方法熟悉吗？ 这就是我们常用到的 Activity.startActivity(Intent)的重载函数，而且设置了：<br>    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</p>
+<h3 id="Instrumentation是什么？和ActivityThread-是什么关系？"><a href="#Instrumentation是什么？和ActivityThread-是什么关系？" class="headerlink" title="Instrumentation是什么？和ActivityThread 是什么关系？"></a>Instrumentation是什么？和ActivityThread 是什么关系？</h3><p>每个 Activity 都持有Instrumentation 对象的引用，但是整个进程 都只会存在一个Instrumentation 对象。 当 startActivityForResult()调用之后，时间还调用了 mInstrumentation.execStartActivity()</p>
+<pre><code>boolean startActivity(View v, Intent intent, Object tag) {
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            boolean useLaunchAnimation = (v != null) &amp;&amp;
+                    !intent.hasExtra(INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION);
+
+            if (useLaunchAnimation) {
+                if (user == null || user.equals(android.os.Process.myUserHandle())) {
+                    startActivity(intent, opts.toBundle());
+                } else {
+                    launcherApps.startMainActivity(intent.getComponent(), user,
+                            intent.getSourceBounds(),
+                            opts.toBundle());
+                }
+            } else {
+                if (user == null || user.equals(android.os.Process.myUserHandle())) {
+                    startActivity(intent);
+                } else {
+                    launcherApps.startMainActivity(intent.getComponent(), user,
+                            intent.getSourceBounds(), null);
+                }
+            }
+            return true;
+        } catch (SecurityException e) {
+        ...
+        }
+        return false;
+    }
+</code></pre><p>有一件事情必须说清楚，那就是 Instrumentation类这么重要，为啥我的开发过程中，没有发现他的踪迹呢？</p>
+<p>是的，Instrumentation 非常重要，对Activity 生命周期方法的调用根本就离不开他，他可以说是一个大管家，但是，这个大管家比较害羞，是一个女的，管内不管外，是老板娘！！</p>
+<p>那你可能要问老板是who?<br>老板当然是 大名鼎鼎的 ActivityThread了</p>
+<p>ActivityThread 就是传说中的 UI线程，前面提到， App和AMS是通过Binder 传递信息的，那么ActivityThread 就是专门与AMS 的外交工作。</p>
+<p>ASM说：『ActivityThread， 你给我暂停一个Activity！』</p>
+<p>ActivityThread 说:”没问题！” 然后转身 和 Instrumentation 说：『老婆，AMS 让暂停一个Activity ，我这里忙着呢，你快去帮我把这事办了吧』</p>
+<p>于是，Instrumentation 就去把事儿搞定了。<br>所以说，AMS是董事会， 负责 指挥和调度， Activity 是老板，虽然说家里的事情自己说了算，但是需要听ASM的指挥，而Instrumentation 则是老板娘，负责家里的大事小事，但是一般不抛头露面，听一家之主 ActivityThread 的安排。</p>
+<h3 id="如何理解-AMS-和-ActivityThread-之间的-Binder-通信？"><a href="#如何理解-AMS-和-ActivityThread-之间的-Binder-通信？" class="headerlink" title="如何理解 AMS 和 ActivityThread 之间的 Binder 通信？"></a>如何理解 AMS 和 ActivityThread 之间的 Binder 通信？</h3><p>前面提到 调用 startActivity()的时候，时间调用了<br>    mInstrumentation.execStartActivity()</p>
+<p>里面又调用了：<br>    ActivityManagerNative.getDefault()<br>                    .startActivity</p>
+<p>这里的ActivityManagerNative.getDefault返回的就是ActivityManagerService的远程接口，即ActivityManagerProxy。</p>
+<p>Binder 本质只是一种底层通信方式，和具体的服务没有关系。为了提供具体服务，Server 必须提供一套 接口函数，以便client 通过远程访问使用 各种服务。这时通常采用 Proxy 模式；将接口函数定义在一个 首先类中，Server 和 client 都会以抽象类为基准 实现所有 接口函数， 所不同的是Server 端 是真正 的功能实现，而Client 是对 这些 函数 远程调用请求的包装。</p>
+<p>为了更明白的说明 客户端 和 服务器端 之间的 Binder 通信，看下面的 ActivityManagerService 和他在 客户端的代理类  ActivityManagerProxy：</p>
+<p>AMS， 和 AMP 都实现利率同一个接口： IActivityManager。<br>    class ActivityManagerProxy implements IActivityManager{}</p>
+<pre><code>public final class ActivityManagerService extends ActivityManagerNative{}
+
+public abstract class ActivityManagerNative extends Binder implements IActivityManager{}
+</code></pre><p>虽然都实现了同一个接口，但是代理对象 ActivityManagerProxy 并不会对这些方法真正意义上的实现， ActivityManagerProxy 只是通过这种方式对方法的参数进行打包（因为都实现了相同的接口，所有可以保证 同一个方法有相同有相同的参数，即对要传输给服务器的数据进行打包），真正实现的是 ActivityManagerService。</p>
+<p>但是这个地方并不是直接由 客户端 传递给 服务器，而是通过Binder 驱动进行中转。其实对 Binder 驱动不了解，我们可以把它当做一个中转站， 客户端调用 ActivityManagerProxy接口里面的方法，把数据传递给 Binder驱动，然后Binder驱动就会把这些东西转发给 服务器的ActivityManagerService， 由AMS去真正 的是是具体的操作。</p>
+<p>但是 Binder 只能传递数据，并不知道 要调用AMS 哪个方法，所以在数据中会添加 方法的唯一标码，比如<br>    public int startActivity(IApplicationThread caller, String callingPackage, Intent intent,<br>                String resolvedType, IBinder resultTo, String resultWho, int requestCode,<br>                int startFlags, ProfilerInfo profilerInfo, Bundle options) throws RemoteException {<br>            Parcel data = Parcel.obtain();<br>            Parcel reply = Parcel.obtain();</p>
+<pre><code>    ...ignore some code...
+
+    mRemote.transact(START_ACTIVITY_TRANSACTION, data, reply, 0);
+    reply.readException();
+    int result = reply.readInt();
+    reply.recycle();
+    data.recycle();
+    return result;
+}
+</code></pre><p>上面的 START_ACTIVITY_TRANSACTION 就是方法的标示，data 是要传输给 Binder 驱动的数据，reply 是接受操作的返回值。</p>
+<p>即：<br>客户度：ActivityManagerProxy ====> Binder驱动 ====》ActivityManagerService：服务器</p>
+<p>而且由于继承了同样的公共接口类， ActivityManagerProxy 提供了 与 ActivityMangerService 一样的函数原型，使用户感觉不出 Server 是允许在本地还是原厂，从而可以更方便 的调用这些红药的服务器系统。</p>
+<p>但是！ 这里 Binder通信是单向的，即：ActivityManagerProxy 指向ActivityManagerService ，如果 AMS要通知 ActivityThread 做一些事情，应该怎么办呢？ </p>
+<p>还是通过 Binder 通信， 不过是换了 另外一对，换成了 ApplicationThread 和 ApplicationThreadProxy。</p>
+<p>客户端：ApplicationThread \&lt;=== Binder驱动 \&lt;=== ApplicationThreadProxy：服务器</p>
+<p>他们也实现了相同的接口 IApplicationThread:<br>    private class ApplicationThread extends ApplicationThreadNative {}</p>
+<pre><code>public abstract class ApplicationThreadNative extends Binder implements IApplicationThread{}
+
+class ApplicationThreadProxy implements IApplicationThread {}
+</code></pre><h3 id="AMS-接收到-客户端的请求后，如果开启一个Activity？"><a href="#AMS-接收到-客户端的请求后，如果开启一个Activity？" class="headerlink" title="AMS 接收到 客户端的请求后，如果开启一个Activity？"></a>AMS 接收到 客户端的请求后，如果开启一个Activity？</h3><p>OK，点击桌面图标调用 startActivity(), 终于把数据和要开启的Activity 请求发送到了AMS。说了这么多，其实这些都是在一瞬间完成，下面看看ASM到底做了什么？</p>
+<p>注：前方高能，方法调用链接很强！</p>
+<p>调用startActivity（）<br>    @Override<br>        public final int startActivity(IApplicationThread caller, String callingPackage,<br>                Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,<br>                int startFlags, ProfilerInfo profilerInfo, Bundle options) {<br>            return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,<br>                resultWho, requestCode, startFlags, profilerInfo, options,<br>                UserHandle.getCallingUserId());<br>        }</p>
+<p>调用startActivityAsUser（）<br>    @Override<br>        public final int startActivityAsUser(IApplicationThread caller, String callingPackage,<br>                Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,<br>                int startFlags, ProfilerInfo profilerInfo, Bundle options, int userId) {</p>
+<pre><code>        ...ignore some code...
+
+    return mStackSupervisor.startActivityMayWait(caller, -1, callingPackage, intent,
+            resolvedType, null, null, resultTo, resultWho, requestCode, startFlags,
+            profilerInfo, null, null, options, userId, null, null);
+}
+</code></pre><p>这里出现了一个 新对象ActivityStackSupervisor,通过这个类可以实现对 ActivityStack的部分操作<br>     final int startActivityMayWait(IApplicationThread caller, int callingUid,<br>                String callingPackage, Intent intent, String resolvedType,<br>                IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,<br>                IBinder resultTo, String resultWho, int requestCode, int startFlags,<br>                ProfilerInfo profilerInfo, WaitResult outResult, Configuration config,<br>                Bundle options, int userId, IActivityContainer iContainer, TaskRecord inTask) {</p>
+<pre><code>...ignore some code...
+
+  int res = startActivityLocked(caller, intent, resolvedType, aInfo,
+        voiceSession, voiceInteractor, resultTo, resultWho,
+        requestCode, callingPid, callingUid, callingPackage,
+        realCallingPid, realCallingUid, startFlags, options,
+        componentSpecified, null, container, inTask);
+
+...ignore some code...
+
+}
+</code></pre><p>继续调用 startActivityLocked()</p>
+<pre><code>final int startActivityLocked(IApplicationThread caller,
+            Intent intent, String resolvedType, ActivityInfo aInfo,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            IBinder resultTo, String resultWho, int requestCode,
+            int callingPid, int callingUid, String callingPackage,
+            int realCallingPid, int realCallingUid, int startFlags, Bundle options,
+            boolean componentSpecified, ActivityRecord[] outActivity, ActivityContainer container,
+            TaskRecord inTask) {
+
+              err = startActivityUncheckedLocked(r, sourceRecord, voiceSession, voiceInteractor,
+              startFlags, true, options, inTask);
+        if (err &lt; 0) {
+            notifyActivityDrawnForKeyguard();
+        }
+        return err;
+    }
+</code></pre><p>调用startActivityUncheckedLocked(),此时要启动的Activity已经通过检查，被认为是一个正常的请求。</p>
+<p>终于调用到 ActivityStack的 startActivityLocked(ActivityRecord r, boolean newTask,boolean doResume, boolean keepCurTransition, Bundle options)</p>
+<p>ActivityRecord代表的就是要开启的Activity对象， 里面分装了很多信息，比如所在 ActivityTask等，如果是首次打开应用，那么 这个Activity 会放到Activity Task 的栈顶，</p>
+<pre><code>final int startActivityUncheckedLocked(ActivityRecord r, ActivityRecord sourceRecord,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor, int startFlags,
+            boolean doResume, Bundle options, TaskRecord inTask) {
+
+            ...ignore some code...
+
+            targetStack.startActivityLocked(r, newTask, doResume, keepCurTransition, options);
+
+            ...ignore some code...
+
+             return ActivityManager.START_SUCCESS;
+            }
+</code></pre><p>调用 ActivityStack.startActivityLocked()</p>
+<pre><code>final void startActivityLocked(ActivityRecord r, boolean newTask,
+            boolean doResume, boolean keepCurTransition, Bundle options) {
+
+        //ActivityRecord中存储的TaskRecord信息
+        TaskRecord rTask = r.task;
+
+         ...ignore some code...
+
+        //如果不是在新的ActivityTask(也就是TaskRecord)中的话，就找出要运行在的TaskRecord对象
+     TaskRecord task = null;
+        if (!newTask) {
+            boolean startIt = true;
+            for (int taskNdx = mTaskHistory.size() - 1; taskNdx &gt;= 0; --taskNdx) {
+                task = mTaskHistory.get(taskNdx);
+                if (task.getTopActivity() == null) {
+                    // task中的所有Activity都结束了
+                    continue;
+                }
+                if (task == r.task) {
+                    // 找到了
+                    if (!startIt) {
+                        task.addActivityToTop(r);
+                        r.putInHistory();
+                        mWindowManager.addAppToken(task.mActivities.indexOf(r), r.appToken,
+                                r.task.taskId, mStackId, r.info.screenOrientation, r.fullscreen,
+                                (r.info.flags &amp; ActivityInfo.FLAG_SHOW_ON_LOCK_SCREEN) != 0,
+                                r.userId, r.info.configChanges, task.voiceSession != null,
+                                r.mLaunchTaskBehind);
+                        if (VALIDATE_TOKENS) {
+                            validateAppTokensLocked();
+                        }
+                        ActivityOptions.abort(options);
+                        return;
+                    }
+                    break;
+                } else if (task.numFullscreen &gt; 0) {
+                    startIt = false;
+                }
+            }
+        }
+
+      ...ignore some code...
+
+        // Place a new activity at top of stack, so it is next to interact
+        // with the user.
+        task = r.task;
+        task.addActivityToTop(r);
+        task.setFrontOfTask();
+
+        ...ignore some code...
+
+         if (doResume) {
+            mStackSupervisor.resumeTopActivitiesLocked(this, r, options);
+        }
+    }
+</code></pre><p>折腾不休！从 ActivityStackSupervisor 到 ActivityStack， 又调回 ActivityStackSupervisor </p>
+<p>淡定，淡定， 好奇！转了一圈又回来了，世界如此美妙，你却如此暴躁，这样不好，不好。。。</p>
+<p>一起看下StackSupervisor.resumeTopActivitiesLocked(this, r, options)：<br>    boolean resumeTopActivitiesLocked(ActivityStack targetStack, ActivityRecord target,<br>                Bundle targetOptions) {<br>            if (targetStack == null) {<br>                targetStack = getFocusedStack();<br>            }<br>            // Do targetStack first.<br>            boolean result = false;<br>            if (isFrontStack(targetStack)) {<br>                result = targetStack.resumeTopActivityLocked(target, targetOptions);<br>            }</p>
+<pre><code>      ...ignore some code...
+
+    return result;
+}
+</code></pre><p>又回到 ActivityStack了。。。</p>
+<p>ActivityStack.resumeTopActivityLocked()<br>    final boolean resumeTopActivityLocked(ActivityRecord prev, Bundle options) {<br>            if (inResumeTopActivity) {<br>                // Don’t even start recursing.<br>                return false;<br>            }</p>
+<pre><code>    boolean result = false;
+    try {
+        // Protect against recursion.
+        inResumeTopActivity = true;
+        result = resumeTopActivityInnerLocked(prev, options);
+    } finally {
+        inResumeTopActivity = false;
+    }
+    return result;
+}
+</code></pre><p>坚持住，看下 ActivityStack.resumeTopActivityInnerLocked() 到底执行了什么？</p>
+<pre><code>final boolean resumeTopActivityInnerLocked(ActivityRecord prev, Bundle options) {
+
+          ...ignore some code...
+      //找出还没结束的首个ActivityRecord
+     ActivityRecord next = topRunningActivityLocked(null);
+
+    //如果一个没结束的Activity都没有，就开启Launcher程序
+    if (next == null) {
+            ActivityOptions.abort(options);
+            if (DEBUG_STATES) Slog.d(TAG, &quot;resumeTopActivityLocked: No more activities go home&quot;);
+            if (DEBUG_STACK) mStackSupervisor.validateTopActivitiesLocked();
+            // Only resume home if on home display
+            final int returnTaskType = prevTask == null || !prevTask.isOverHomeStack() ?
+                    HOME_ACTIVITY_TYPE : prevTask.getTaskToReturnTo();
+            return isOnHomeDisplay() &amp;&amp;
+                    mStackSupervisor.resumeHomeStackTask(returnTaskType, prev);
+        }
+
+        //先需要暂停当前的Activity。因为我们是在Lancher中启动mainActivity，所以当前mResumedActivity！=null，调用startPausingLocked()使得Launcher进入Pausing状态
+          if (mResumedActivity != null) {
+            pausing |= startPausingLocked(userLeaving, false, true, dontWaitForPause);
+            if (DEBUG_STATES) Slog.d(TAG, &quot;resumeTopActivityLocked: Pausing &quot; + mResumedActivity);
+        }
+
+  }
+</code></pre><p>在Launcher 进程中消息传递， 调用 ActivityThread.handlePauseActivity()， 最终调用  ActivityThread.performPauseActivity() 暂停 指定 Activity，接着通过签名所说的 Binder 通信，通知AMS 已经完成暂停的操作。<br>    ActivityManagerNative.getDefault().activityPaused(token).</p>
+<p>上面的调用关系复杂，源码的判断条件很多，没记住没关系，但是要记住流程，理解了 Android 控制 Activity 的生命周期 是如何操作的，以及通过那几个关键的类进行就可以了。后续遇到问题 明白从什么地方处理就可以了。</p>
+<p>最后 来一张高清五码的大图，方便记忆</p>
+<p><img src="Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png" alt=""></p>
+<h3 id="一个App的程序入口是什么？"><a href="#一个App的程序入口是什么？" class="headerlink" title="一个App的程序入口是什么？"></a>一个App的程序入口是什么？</h3><p>是ActivityThread.main()</p>
+<h3 id="整个App的主线程的消息循环是在哪里创建的"><a href="#整个App的主线程的消息循环是在哪里创建的" class="headerlink" title="整个App的主线程的消息循环是在哪里创建的?"></a>整个App的主线程的消息循环是在哪里创建的?</h3><p>是在ActivityThread初始化的时候，就已经创建消息循环了，所以在主线程里面创建Hander不需要指定Looper,而如果在其他线程 使用 Handler ，则需要单独使用Looper.prepare() 和 Looper.loop()出埃及消息循环。</p>
+<pre><code>public static void main(String[] args) {
+
+          ...ignore some code...    
+
+      Looper.prepareMainLooper();
+
+        ActivityThread thread = new ActivityThread();
+        thread.attach(false);
+
+        if (sMainThreadHandler == null) {
+            sMainThreadHandler = thread.getHandler();
+        }
+
+        AsyncTask.init();
+
+        if (false) {
+            Looper.myLooper().setMessageLogging(new
+                    LogPrinter(Log.DEBUG, &quot;ActivityThread&quot;));
+        }
+
+        Looper.loop();
+
+          ...ignore some code...    
+
+ }
+</code></pre><p>Looper.prepareMainLooper();<br>准备完成后：</p>
+<p>Looper.loop()</p>
+<h3 id="Application-是在什么时候创建的？onCreate-什么时候调用的？"><a href="#Application-是在什么时候创建的？onCreate-什么时候调用的？" class="headerlink" title="Application 是在什么时候创建的？onCreate()什么时候调用的？"></a>Application 是在什么时候创建的？onCreate()什么时候调用的？</h3><p>也是在ActivityThread.main()的时候，再具体点就是 thread.attach(fase)的时候。</p>
+<p>不相信，一起看看去!</p>
+<p>先看下ActivityThead.attach()<br>    private void attach(boolean system) {<br>            sCurrentActivityThread = this;<br>            mSystemThread = system;<br>            //普通App进这里<br>            if (!system) {</p>
+<pre><code>        ...ignore some code...    
+
+        RuntimeInit.setApplicationObject(mAppThread.asBinder());
+        final IActivityManager mgr = ActivityManagerNative.getDefault();
+        try {
+            mgr.attachApplication(mAppThread);
+        } catch (RemoteException ex) {
+            // Ignore
+        }
+       } else {
+         //这个分支在SystemServer加载的时候会进入，通过调用
+         // private void createSystemContext() {
+         //    ActivityThread activityThread = ActivityThread.systemMain()；
+         //} 
+
+         // public static ActivityThread systemMain() {
+    //        if (!ActivityManager.isHighEndGfx()) {
+    //            HardwareRenderer.disable(true);
+    //        } else {
+    //            HardwareRenderer.enableForegroundTrimming();
+    //        }
+    //        ActivityThread thread = new ActivityThread();
+    //        thread.attach(true);
+    //        return thread;
+    //    }       
+       }
+}
+</code></pre><p>这里需要关注的是：mag.attachApplication(mAppThread),这个就会通过Binder 调用 AMS 里面对应的方法</p>
+<pre><code>@Override
+    public final void attachApplication(IApplicationThread thread) {
+        synchronized (this) {
+            int callingPid = Binder.getCallingPid();
+            final long origId = Binder.clearCallingIdentity();
+            attachApplicationLocked(thread, callingPid);
+            Binder.restoreCallingIdentity(origId);
+        }
+    }
+</code></pre><p>然后：</p>
+<pre><code>private final boolean attachApplicationLocked(IApplicationThread thread,
+            int pid) {
+
+
+             thread.bindApplication(processName, appInfo, providers, app.instrumentationClass,
+                    profilerInfo, app.instrumentationArguments, app.instrumentationWatcher,
+                    app.instrumentationUiAutomationConnection, testMode, enableOpenGlTrace,
+                    isRestrictedBackupMode || !normalMode, app.persistent,
+                    new Configuration(mConfiguration), app.compat, getCommonServicesLocked(),
+                    mCoreSettingsObserver.getCoreSettingsLocked());
+
+
+            }
+</code></pre><p>thread 就是 IApplicationThread ，实际上就是 ApplicationThead 在服务器的代理类，ApplicationThreadProxy,然后又通过IPC 就会调用到ApplicationThread的对应方法<br>    public final void bindApplication(String processName, ApplicationInfo appInfo,<br>                    List<providerinfo> providers, ComponentName instrumentationName,<br>                    ProfilerInfo profilerInfo, Bundle instrumentationArgs,<br>                    IInstrumentationWatcher instrumentationWatcher,<br>                    IUiAutomationConnection instrumentationUiConnection, int debugMode,<br>                    boolean enableOpenGlTrace, boolean isRestrictedBackupMode, boolean persistent,<br>                    Configuration config, CompatibilityInfo compatInfo, Map<string, ibinder=""> services,<br>                    Bundle coreSettings) {</string,></providerinfo></p>
+<pre><code>                 ...ignore some code...    
+
+             AppBindData data = new AppBindData();
+            data.processName = processName;
+            data.appInfo = appInfo;
+            data.providers = providers;
+            data.instrumentationName = instrumentationName;
+            data.instrumentationArgs = instrumentationArgs;
+            data.instrumentationWatcher = instrumentationWatcher;
+            data.instrumentationUiAutomationConnection = instrumentationUiConnection;
+            data.debugMode = debugMode;
+            data.enableOpenGlTrace = enableOpenGlTrace;
+            data.restrictedBackupMode = isRestrictedBackupMode;
+            data.persistent = persistent;
+            data.config = config;
+            data.compatInfo = compatInfo;
+            data.initProfilerInfo = profilerInfo;
+            sendMessage(H.BIND_APPLICATION, data);
+
+           }
+
+}
+</code></pre><p>其实我们最关注的就是sendMessage(),里面有函数的编号H.BIND_APPLICATION， 然后这个Message 会被H这个Handler处理<br>    private class H extends Handler {</p>
+<pre><code>     ...ignore some code... 
+
+    public static final int BIND_APPLICATION        = 110;
+
+   ...ignore some code... 
+
+    public void handleMessage(Message msg) {
+         switch (msg.what) {
+       ...ignore some code... 
+        case BIND_APPLICATION:
+                   Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;bindApplication&quot;);
+                   AppBindData data = (AppBindData)msg.obj;
+                   handleBindApplication(data);
+                   Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+                   break;
+       ...ignore some code... 
+       }
+}
+</code></pre><p>最后通过下面的方法，完成实例化，通过mInstrumentation.callApplicationOnCreate实现了onCreate()的调用。</p>
+<pre><code>private void handleBindApplication(AppBindData data) {
+
+ try {
+
+           ...ignore some code... 
+
+            Application app = data.info.makeApplication(data.restrictedBackupMode, null);
+            mInitialApplication = app;
+
+           ...ignore some code... 
+
+            try {
+                mInstrumentation.onCreate(data.instrumentationArgs);
+            }
+            catch (Exception e) {
+            }
+            try {
+                mInstrumentation.callApplicationOnCreate(app);
+            } catch (Exception e) {            }
+        } finally {
+            StrictMode.setThreadPolicy(savedPolicy);
+        }
+ }
+</code></pre><p>data.info 是一个LoadeApk 对象</p>
+<p>LoadeApk.data.info.makeApplication()</p>
+<pre><code>public Application makeApplication(boolean forceDefaultAppClass,
+            Instrumentation instrumentation) {
+        if (mApplication != null) {
+            return mApplication;
+        }
+
+        Application app = null;
+
+        String appClass = mApplicationInfo.className;
+        if (forceDefaultAppClass || (appClass == null)) {
+            appClass = &quot;android.app.Application&quot;;
+        }
+
+        try {
+            java.lang.ClassLoader cl = getClassLoader();
+            if (!mPackageName.equals(&quot;android&quot;)) {
+                initializeJavaContextClassLoader();
+            }
+            ContextImpl appContext = ContextImpl.createAppContext(mActivityThread, this);
+            app = mActivityThread.mInstrumentation.newApplication(
+                    cl, appClass, appContext);
+            appContext.setOuterContext(app);
+        } catch (Exception e) {        }
+        mActivityThread.mAllApplications.add(app);
+        mApplication = app;
+
+    //传进来的是null，所以这里不会执行，onCreate在上一层执行
+        if (instrumentation != null) {
+            try {
+                instrumentation.callApplicationOnCreate(app);
+            } catch (Exception e) {
+
+            }
+        }
+        ...ignore some code... 
+
+       }
+
+        return app;
+    }
+</code></pre><p>最后还是通过 Instrumentation.makeApplication（）实例化，这个老板娘真的很厉害！</p>
+<pre><code>static public Application newApplication(Class&lt;?&gt; clazz, Context context)
+            throws InstantiationException, IllegalAccessException, 
+            ClassNotFoundException {
+        Application app = (Application)clazz.newInstance();
+        app.attach(context);
+        return app;
+    }
+</code></pre><p>而且通过反射拿到Application 对象之后，直接调用 attach(),所以attache调用就在onCreate之前。</p>
+<p>参考文章</p>
+<p>下面的文章都是这方面的精品，希望你抽出实际研究下，这可能需要花费很长的时间，但是如果你想晋级成为中高级开发者，这一步是必须的。</p>
+<p>Binder:</p>
+<ul>
+<li><a href="http://blog.csdn.net/universus/article/details/6211589" target="_blank" rel="external">Android Bander设计与实现 - 设计篇</a></li>
+</ul>
+<p>zygote<br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6768304" target="_blank" rel="external">Android系统进程Zygote启动过程的源代码分析</a><br>•    <a href="http://blog.csdn.net/xieqibao/article/details/6581975" target="_blank" rel="external">Android 之 zygote 与进程创建</a><br>•    <a href="http://www.th7.cn/Program/Android/201404/187670.shtml" target="_blank" rel="external">Zygote浅谈</a><br>ActivityThread、Instrumentation、AMS<br>•    <a href="http://blog.csdn.net/myarrow/article/details/14224273" target="_blank" rel="external">Android Activity.startActivity流程简介</a><br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6747696#comments" target="_blank" rel="external">Android应用程序进程启动过程的源代码分析</a><br>•    <a href="http://laokaddk.blog.51cto.com/368606/1206840" target="_blank" rel="external">框架层理解Activity生命周期(APP启动过程)</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="external">Android应用程序窗口设计框架介绍</a><br>•    <a href="http://www.xuebuyuan.com/2172927.html" target="_blank" rel="external">ActivityManagerService分析一：AMS的启动</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="external">Android应用程序窗口设计框架介绍</a><br>Launcher<br>•    <a href="http://mobile.51cto.com/hot-312129.htm" target="_blank" rel="external">Android 4.0 Launcher源码分析系列(一)</a><br>•    <a href="http://www.cnblogs.com/mythou/p/3187881.html" target="_blank" rel="external">Android Launcher分析和修改9——Launcher启动APP流程</a></p>
+<p>结束语：<br>到了这里，我们回来看下开头的几个问题：</p>
+<ul>
+<li>ActivityManagerService：简称AMS，服务端对象，负责系统中所有Activity的生命周期</li>
+<li>ActivityThread:App正在的入口。 当开启App之后，会调用main()开始运行，开启消息循环队列，这就是我们所说的UI线程或者主线程，与ActivityManagerService配合，一起完成Activity的管理工作</li>
+<li>ApplicationThread:用来实现ActivityManagerService 与 ActivityThread 直接的交互，在iActivityManagerService 需要管理相关的Activity的生命周期，通过ApplicationThreadProxy的代理对象与ActivityThread通讯。</li>
+<li>ApplicationThreadProxy： 是ApplicationThread 在服务器端的代理，负责和客户端的ApplicationThreadProxy通讯，AMS就是通过该代理与ActivityThread通讯的</li>
+<li>Instrumentation： 每一个应用程序只有一个Instrumentation 对象，每个Activity 内都有一个该对象的引用。Instrumentation 可以理解为应用进程的管家，ActivityThread要创建或者暂停某个Activity时，都需要通过Instrumentation来进行具体操作</li>
+<li>ActivityStack, Activity在AMS的栈管理对象，每个Activity在AMS对应个ActivityRecord,来记录Activity的状态已经管理其他的信息。其实就是服务器端的Activity对象映射</li>
+<li>TaskRecord：AMS抽象出来一个『任务』对象的概念，是记录ActivityRecord的栈，一个『task』 包含若干个ActivityRecord。AMS用taskRecrod确保Activity启动和退出的顺序。如果清楚 Activity的4种launchMode，就不会陌生了。</li>
+</ul>
+<p>如果还是迷茫，就把这个篇文章多读几遍。信息量比较多，需要慢慢消化。 </p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/17/RecyclerView的基类写法/" rel="next" title="RecyclerView的基类写法">
+                <i class="fa fa-chevron-left"></i> RecyclerView的基类写法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/20/使用groovy读取excel里面内容/" rel="prev" title="使用groovy读取excel里面内容">
+                使用groovy读取excel里面内容 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/20/凯哥高质量文章系列/"
+     data-title="凯哥高质量文章系列"
+     data-content=""
+     data-url="http://gdky005.com/2015/11/20/凯哥高质量文章系列/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/20/凯哥高质量文章系列/"
+           data-title="凯哥高质量文章系列" data-url="http://gdky005.com/2015/11/20/凯哥高质量文章系列/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/author.jpg"
+               alt="gdky005" />
+          <p class="site-author-name" itemprop="name">gdky005</p>
+          <p class="site-description motion-element" itemprop="description">创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#凯哥系列："><span class="nav-number">1.</span> <span class="nav-text">凯哥系列：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Activity启动过程全解析"><span class="nav-number">1.1.</span> <span class="nav-text">1. Activity启动过程全解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-framework-Activity界面显示全解析"><span class="nav-number">1.2.</span> <span class="nav-text">2. framework-Activity界面显示全解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#看文章的记录："><span class="nav-number">1.2.1.</span> <span class="nav-text">看文章的记录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目的："><span class="nav-number">1.2.2.</span> <span class="nav-text">目的：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要对象功能介绍："><span class="nav-number">1.2.3.</span> <span class="nav-text">主要对象功能介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要流程介绍"><span class="nav-number">1.2.4.</span> <span class="nav-text">主要流程介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SystemServer是什么？-作用？它与zygote有什么样的一重关系？"><span class="nav-number">1.2.5.</span> <span class="nav-text">SystemServer是什么？ 作用？它与zygote有什么样的一重关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ActivityManagerService是什么？什么时候创建？作用"><span class="nav-number">1.2.6.</span> <span class="nav-text">ActivityManagerService是什么？什么时候创建？作用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Launche是什么？-什么时候启动？"><span class="nav-number">1.2.7.</span> <span class="nav-text">Launche是什么？ 什么时候启动？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instrumentation是什么？和ActivityThread-是什么关系？"><span class="nav-number">1.2.8.</span> <span class="nav-text">Instrumentation是什么？和ActivityThread 是什么关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何理解-AMS-和-ActivityThread-之间的-Binder-通信？"><span class="nav-number">1.2.9.</span> <span class="nav-text">如何理解 AMS 和 ActivityThread 之间的 Binder 通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMS-接收到-客户端的请求后，如果开启一个Activity？"><span class="nav-number">1.2.10.</span> <span class="nav-text">AMS 接收到 客户端的请求后，如果开启一个Activity？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个App的程序入口是什么？"><span class="nav-number">1.2.11.</span> <span class="nav-text">一个App的程序入口是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整个App的主线程的消息循环是在哪里创建的"><span class="nav-number">1.2.12.</span> <span class="nav-text">整个App的主线程的消息循环是在哪里创建的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-是在什么时候创建的？onCreate-什么时候调用的？"><span class="nav-number">1.2.13.</span> <span class="nav-text">Application 是在什么时候创建的？onCreate()什么时候调用的？</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gdky005</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gdky005"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

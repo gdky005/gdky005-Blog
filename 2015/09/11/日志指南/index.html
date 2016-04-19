@@ -1,0 +1,785 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android日志规范," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="参考：最佳日志实践
+
+前言
+几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
+
+日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
+
+日志作用：
+- 好的日志记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日志指南">
+<meta property="og:url" content="http://gdky005.com/2015/09/11/日志指南/index.html">
+<meta property="og:site_name" content="孤独狂饮">
+<meta property="og:description" content="参考：最佳日志实践
+
+前言
+几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
+
+日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
+
+日志作用：
+- 好的日志记">
+<meta property="og:updated_time" content="2015-09-11T02:38:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="日志指南">
+<meta name="twitter:description" content="参考：最佳日志实践
+
+前言
+几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
+
+日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
+
+日志作用：
+- 好的日志记">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+<script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
+
+  <title> 日志指南 | 孤独狂饮 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">孤独狂饮</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                日志指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-11T10:12:24+08:00" content="2015-09-11">
+              2015-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/11/日志指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/11/日志指南/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考：<a href="http://www.bitstech.net/2014/01/07/log-best-practice/" target="_blank" rel="external">最佳日志实践</a></p>
+<p><br></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><br></p>
+<pre><code>几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
+
+日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
+
+日志作用：
+- 好的日志记录系统出现问题时能快速定位
+- 可以通过对日志的观察和分析
+- 提前发现系统可能的风险
+- 避免线上事故的发生
+</code></pre><p><br></p>
+<h2 id="一、日志级别"><a href="#一、日志级别" class="headerlink" title="一、日志级别"></a>一、日志级别</h2><p><br></p>
+<h6 id="通常使用的日志库（如log4j-logback-等）"><a href="#通常使用的日志库（如log4j-logback-等）" class="headerlink" title="通常使用的日志库（如log4j, logback 等）"></a>通常使用的日志库（如<strong>log4j</strong>, <strong>logback</strong> 等）</h6><p><strong>日志基本分为以下几类（从低到高）：</strong></p>
+<p><strong>VERBOSE</strong> – <em>The VERBOSE Level designates finer-grained informational events than the DEBUG</em></p>
+<p><strong>DEBUG</strong> – <em>The DEBUG Level designates fine-grained informational events that are most useful to debug an application.</em></p>
+<p><strong>INFO</strong> – <em>The INFO level designates informational messages that highlight the progress of the application at coarse-grained level.</em></p>
+<p><strong>WARN</strong> – <em>The WARN level designates potentially harmful situations.</em></p>
+<p><strong>ERROR</strong> – <em>The ERROR level designates error events that might still allow the application to continue running.</em></p>
+<p><strong>FATAL</strong> – <em>The FATAL level designates very severe error events that will presumably lead the application to abort.</em></p>
+<ul>
+<li>一个项目各个log级别的定义应该是清楚明确的，是每个开发人员所遵循的；</li>
+<li>即使是TRACE或者DEBUG级别的日志，也应该有一定的规范，要保证除了开发人员自己以外，包括测试人员和运维人员都可以方便地通过日志定位问题;</li>
+<li>对于日志级别的分类，有以下参考：</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FATAL — 表示需要立即被处理的系统级错误。当该错误发生时，表示服务已经出现了某种程度的不可用，系统管理员需要立即介入。这属于最严重的日志级别，因此该日志级别必须慎用，如果这种级别的日志经常出现，则该日志也失去了意义。通常情况下，一个进程的生命周期中应该只记录一次FATAL级别的日志，即该进程遇到无法恢复的错误而退出时。当然，如果某个系统的子系统遇到了不可恢复的错误，那该子系统的调用方也可以记入FATAL级别日志，以便通过日志报警提醒系统管理员修复；</span><br><span class="line"></span><br><span class="line"><span class="built_in">ERROR</span> — 该级别的错误也需要马上被处理，但是紧急程度要低于FATAL级别。当<span class="built_in">ERROR</span>错误发生时，已经影响了用户的正常访问。从该意义上来说，实际上<span class="built_in">ERROR</span>错误和FATAL错误对用户的影响是相当的。FATAL相当于服务已经挂了，而<span class="built_in">ERROR</span>相当于好死不如赖活着，然而活着却无法提供正常的服务，只能不断地打印<span class="built_in">ERROR</span>日志。特别需要注意的是，<span class="built_in">ERROR</span>和FATAL都属于服务器自己的异常，是需要马上得到人工介入并处理的。而对于用户自己操作不当，如请求参数错误等等，是绝对不应该记为<span class="built_in">ERROR</span>日志的；</span><br><span class="line"></span><br><span class="line">WARN — 该日志表示系统可能出现问题，也可能没有，这种情况如网络的波动等。对于那些目前还不是错误，然而不及时处理也会变为错误的情况，也可以记为WARN日志，例如一个存储系统的磁盘使用量超过阀值，或者系统中某个用户的存储配额快用完等等。对于WARN级别的日志，虽然不需要系统管理员马上处理，也是需要即使查看并处理的。因此此种级别的日志也不应太多，能不打WARN级别的日志，就尽量不要打；</span><br><span class="line"></span><br><span class="line">INFO — 该种日志记录系统的正常运行状态，例如某个子系统的初始化，某个请求的成功执行等等。通过查看INFO级别的日志，可以很快地对系统中出现的WARN,<span class="built_in">ERROR</span>,FATAL错误进行定位。INFO日志不宜过多，通常情况下，INFO级别的日志应该不大于<span class="keyword">TRACE</span>日志的<span class="number">10</span>%；</span><br><span class="line"></span><br><span class="line"><span class="keyword">DEBUG</span> <span class="keyword">or</span> <span class="keyword">TRACE</span> — 这两种日志具体的规范应该由项目组自己定义，该级别日志的主要作用是对系统每一步的运行状态进行精确的记录。通过该种日志，可以查看某一个操作每一步的执行过程，可以准确定位是何种操作，何种参数，何种顺序导致了某种错误的发生。可以保证在不重现错误的情况下，也可以通过<span class="keyword">DEBUG</span>（或<span class="keyword">TRACE</span>）级别的日志对问题进行诊断。需要注意的是，<span class="keyword">DEBUG</span>日志也需要规范日志格式，应该保证除了记录日志的开发人员自己外，其他的如运维，测试人员等也可以通过<span class="keyword">DEBUG</span>（或<span class="keyword">TRACE</span>）日志来定位问题；</span><br></pre></td></tr></table></figure>
+<p><strong>Rule 1</strong>：整个团队（包括运维人员）需要对日志级别有明确的规定，什么日志记入什么级别的日志，什么级别的错误出现要如何处理等</p>
+<p><br></p>
+<h2 id="二、对记录的日志要进行更新维护"><a href="#二、对记录的日志要进行更新维护" class="headerlink" title="二、对记录的日志要进行更新维护"></a>二、对记录的日志要进行更新维护</h2><p><br></p>
+<p>由于DEBUG（或TRACE）级别的日志对于定位问题至关重要，因此该种日志记录是否完备且不冗余、格式是否规范等也需要花费大量精力来优化。此处有以下几个比较好的实践：</p>
+<ul>
+<li>定义好整个团队记录DEBUG（或TRACE）日志的规范，保证每个开发记录的日志格式统一；</li>
+<li>整个团队（包括开发，运维和测试）定期对记录的日志内容进行Review；</li>
+</ul>
+<p><strong>Rule 2</strong>：需要定期对日志内容进行优化更新，目的就是通过日志快速准确的定位问题</p>
+<p><br></p>
+<h2 id="三、关于日志分类"><a href="#三、关于日志分类" class="headerlink" title="三、关于日志分类"></a>三、关于日志分类</h2><p><br></p>
+<p>日志从功能来说，可分为诊断日志、统计日志、审计日志。</p>
+<p>诊断日志， 典型的有：</p>
+<ul>
+<li>请求入口和出口</li>
+<li>外部服务调用和返回</li>
+<li>资源消耗操作: 打开文件等</li>
+<li>容错行为： 譬如云硬盘的副本修复操作</li>
+<li>程序异常： 譬如数据库无法连接</li>
+<li>后台操作：清理程序</li>
+<li>启动、关闭、配置加载</li>
+<li>抛出异常时，不记录日志</li>
+</ul>
+<p>统计日志：</p>
+<ul>
+<li>用户访问统计</li>
+<li>计费日志（如记录用户使用的网络资源或磁盘占用，格式较为严格，便于统计）</li>
+</ul>
+<p>审计日志：</p>
+<ul>
+<li><p>管理操作</p>
+<p>  将不同需求的日志记入到不同的日志文件中，可以方便相关问题（管理平台操作审计，用户操作计费等）的处理。针对每一种需求，需要对日志的格式，日志记录的内容等进行特别的记录。</p>
+</li>
+</ul>
+<p><strong>Rule 3</strong>：要明确不同日志的用途，对日志内容进行分类</p>
+<p><br></p>
+<h2 id="四、日志中不要记录无用信息"><a href="#四、日志中不要记录无用信息" class="headerlink" title="四、日志中不要记录无用信息"></a>四、日志中不要记录无用信息</h2><p><br></p>
+<p>例如一些测试的log: log.i(“tag”, “数据加载成功”)，可以打印一些比较有实用价值的Log， 例如：<br>log.i(“tag”, “数据加载成功，数据是：{}”， “XXXX”)</p>
+<p><strong>Rule 4</strong>: 绝不要打印没有用的日志，防止无用日志淹没重要信息</p>
+<p><br></p>
+<h2 id="五、5-日志记录信息要完整"><a href="#五、5-日志记录信息要完整" class="headerlink" title="五、5. 日志记录信息要完整"></a>五、5. 日志记录信息要完整</h2><p><br></p>
+<p>问题描述：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> InitMultiUpload（生成一个UploadID）</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby">  ……</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> CompleteMultiUpload（AbortMultiUpload）</span><br><span class="line"></span></span><br><span class="line">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span><br><span class="line"></span><br><span class="line">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span><br><span class="line"></span><br><span class="line">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span><br><span class="line"></span><br><span class="line">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> 在系统启动或初始化时记录重要的系统初始化参数</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的错误</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的警告</span><br><span class="line"></span>-<span class="ruby"> 在持久化数据修改时记录修改前和修改后的值</span><br><span class="line"></span>-<span class="ruby"> 记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span><br><span class="line"></span>-<span class="ruby"> 重要的状态变化（如NOS中对系统白名单的修改等）</span><br><span class="line"></span>-<span class="ruby"> 系统中一些长期执行的任务的执行进度</span></span><br></pre></td></tr></table></figure>
+<p><strong>不推荐记录日志的内容有：</strong></p>
+<ul>
+<li>函数入口信息 —— 除非该函数入口表示了一个重要事件的开始，或者将该信息记入DEBUG级别日志</li>
+<li>文件内容或者一大段消息的内容 —— 如果实在需要记录，则可以截取其中一些重要的信息来记入日志</li>
+<li>“良性”错误 —— 有时候虽然出现了错误，然而错误处理的流程可以正确解决这种情况，例如插入数据库时有重复的记录，尽管是个错误，然而错误处理流程可以对这种情况进行处理</li>
+</ul>
+<p><strong>Rule 5</strong>：日志信息要准确全面，能做到仅凭日志就可以定位问题</p>
+<p><em>解决办法：整理所有的请求处理流程，针对每一个操作（去重，分块上传……）打印特定的日志。</em></p>
+<p><br></p>
+<h2 id="六、测试的日志"><a href="#六、测试的日志" class="headerlink" title="六、测试的日志"></a>六、测试的日志</h2><p><br></p>
+<p>测试代码（单元测试，接口测试……）的日志同样重要。特别是，当一个测试失败时，可以通过日志很快确定是测试代码有问题，还是系统出现了故障，如果做不到这一点，那就需要优化测试的日志了。</p>
+<p>测试日志应该包含以下内容：</p>
+<ul>
+<li>测试执行的环境</li>
+<li>测试执行前的初始状态</li>
+<li>测试的详细步骤</li>
+<li>测试和系统的交互信息</li>
+<li>测试期望的返回结果</li>
+<li>测试实际的返回结果</li>
+</ul>
+<p><strong>Rule 6</strong>：要以同样严格的要求对待测试程序的日志</p>
+<p><br></p>
+<h2 id="七、从问题中完善日志"><a href="#七、从问题中完善日志" class="headerlink" title="七、从问题中完善日志"></a>七、从问题中完善日志</h2><p><br></p>
+<p>在线上出现问题的时候，需要尽快发现问题并解决，而同时，需要借此机会好好思考一下当前系统的日志是否合理。需要考虑以下问题：</p>
+<ul>
+<li>如果定位问题花费了很长时间，那就说明系统日志还存在问题，需要进一步完善和优化</li>
+<li>需要思考是否可以通过优化日志，来提前预判该问题是否可能发生（如某种资源耗尽而导致的错误，可以对资源的使用情况进行记录）</li>
+</ul>
+<p>通过系统出现的问题来优化日志，应该是一项长期的实践，不断地从日志发现系统的问题，不断地从系统异常发现日志的问题。</p>
+<p><strong>Rule 7</strong>：日志的优化是一件持续不断需要投入精力的事，需要不断从错误中学习</p>
+<p><br></p>
+<h2 id="八、对日志进行监控报警，比客户先发现系统问题"><a href="#八、对日志进行监控报警，比客户先发现系统问题" class="headerlink" title="八、对日志进行监控报警，比客户先发现系统问题"></a>八、对日志进行监控报警，比客户先发现系统问题</h2><p><br></p>
+<p>crash关键字报警：</p>
+<p>程序崩溃的时候，会出现crash 字样，可以获取到相关日志，会严重影响用户的实用，可以动态获取崩溃日志</p>
+<p>类似的关键字报警还有很多：如对空指针， 数组越界，内存溢出 等等。</p>
+<p><strong>Rule 8</strong>：对日志进行监控报警，比客户先发现系统问题</p>
+<p><br></p>
+<h2 id="九、关于日志格式"><a href="#九、关于日志格式" class="headerlink" title="九、关于日志格式"></a>九、关于日志格式</h2><p><br></p>
+<p>日志格式一定要统一，不能任由开发人员的喜好来。举例来说，对于NOS视频截图超时的ERROR日志，有以下几种方式打印：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“Gearman timeout exception for request ” + getRequestID() + ” <span class="attribute">value</span>: ” + value, e);</span><br><span class="line"></span><br><span class="line">第二种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“<span class="attribute">RequestID</span>: ” + getRequestID() + “, Error <span class="attribute">Message</span>: Gearman timeout <span class="attribute">exception</span>: ” + e);</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">logger<span class="selector-class">.error</span>(getErrorMessage(getRequestID(), getErrorMessage(), e));</span><br></pre></td></tr></table></figure>
+<p>第一种方式打印日志即是开发人员按照自己的喜好来的，这种方法带来的问题是：</p>
+<ul>
+<li>系统中日志格式不统一，不利于自动化处理</li>
+<li>有些日志可能只有开发人员自己才能看懂</li>
+<li>代码规范性不好</li>
+</ul>
+<p>而第三种方式，通过一个函数来规范日志格式，所有开发人员便可以通过该接口实现统一的日志。</p>
+<p><strong>Rule 9</strong>：日志格式要统一规范</p>
+<p><br></p>
+<h2 id="十、错误日志输出到不同文件"><a href="#十、错误日志输出到不同文件" class="headerlink" title="十、错误日志输出到不同文件"></a>十、错误日志输出到不同文件</h2><p><br></p>
+<p>在性能测试中遇到的另一个问题是，当并发量很大时，可能会有一些请求处理失败（如0.5%），为了对这些错误进行分析，需要去查这些错误请求的日志。而由于这种情况下并发量很大，使得对错误日志的分析变得困难。</p>
+<p>这种情况下可以将所有的错误日志同时输出到一个单独的文件之中。</p>
+<p><strong>Rule 10</strong>：将错误日志输出到一个单独的文件中进行分析</p>
+<p><br></p>
+<h2 id="十一、关于日志文件大小"><a href="#十一、关于日志文件大小" class="headerlink" title="十一、关于日志文件大小"></a>十一、关于日志文件大小</h2><p><br></p>
+<p>日志文件不宜过大，过大的日志文件对于日志监控，问题定位等都会带来不便。因此需要进行日志文件的切分，日志文件的切分可以通过log4j等日志工具来配置，日志文件应该按天来分割，还是按照小时来分割，应该根据日志量来决定，原则就是方便开发或运维人员能快速查找日志。</p>
+<p>为了防止日志文件将整个磁盘空间占满，需要定期对日志文件进行删除。例如，在收到磁盘报警时，可以将两个月以前的日志文件删除。此处比较好的实践是：</p>
+<ul>
+<li>将所有日志文件收集起来，这样即使在记录日志的机器上删除，也可以通过收集的日志对之前的问题进行定位；</li>
+<li>每天通过定时任务来删除过期日志，如每天在凌晨4点删除60天前的日志</li>
+</ul>
+<p><strong>Rule 11</strong>：要把日志的大小，如何切分，如何删除等作为规范建立起来</p>
+<!--###参考示例
+
+![示例图][1]
+
+
+1. 封装控制系统原生Log，然后根据不同的级别分别输出到Logcat和文件中，主要有类LogcatLog和FileLog实现
+2. 收集手机其他信息，在将log上报到服务器时一同上报，这些信息包括Settings信息、DropBox打印的log、应用的SharedPreference、设备分辨率信息等。所有这些被时限为XXColector类，可以根据需要（后台配置控制）进行上传。
+3. 将FileLog信息、Crash信息、以及Collector收集的手机信息上报到服务器。上报的方式主要分为：通过Email发送和通过HTTP（以及后台CGI）发送，当然你也可以选择发送到Google Form等。
+4. Crash异常捕获处理（即：继承实现UncaughtExceptionHandler），有LogCenter中实现。
+5. 良好的可配置信息，即：系统中所有的日志收集、发送方式都是后台可配置的。-->
+<hr>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android日志规范/" rel="tag">#Android日志规范</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/" rel="prev" title="是什么使你无法完成工作？——番茄告诉你">
+                是什么使你无法完成工作？——番茄告诉你 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/09/11/日志指南/"
+     data-title="日志指南"
+     data-content=""
+     data-url="http://gdky005.com/2015/09/11/日志指南/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/09/11/日志指南/"
+           data-title="日志指南" data-url="http://gdky005.com/2015/09/11/日志指南/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/author.jpg"
+               alt="gdky005" />
+          <p class="site-author-name" itemprop="name">gdky005</p>
+          <p class="site-description motion-element" itemprop="description">创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、日志级别"><span class="nav-number"></span> <span class="nav-text">一、日志级别</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通常使用的日志库（如log4j-logback-等）"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">通常使用的日志库（如log4j, logback 等）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、对记录的日志要进行更新维护"><span class="nav-number"></span> <span class="nav-text">二、对记录的日志要进行更新维护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、关于日志分类"><span class="nav-number"></span> <span class="nav-text">三、关于日志分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、日志中不要记录无用信息"><span class="nav-number"></span> <span class="nav-text">四、日志中不要记录无用信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、5-日志记录信息要完整"><span class="nav-number"></span> <span class="nav-text">五、5. 日志记录信息要完整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、测试的日志"><span class="nav-number"></span> <span class="nav-text">六、测试的日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、从问题中完善日志"><span class="nav-number"></span> <span class="nav-text">七、从问题中完善日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、对日志进行监控报警，比客户先发现系统问题"><span class="nav-number"></span> <span class="nav-text">八、对日志进行监控报警，比客户先发现系统问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、关于日志格式"><span class="nav-number"></span> <span class="nav-text">九、关于日志格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、错误日志输出到不同文件"><span class="nav-number"></span> <span class="nav-text">十、错误日志输出到不同文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、关于日志文件大小"><span class="nav-number"></span> <span class="nav-text">十一、关于日志文件大小</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gdky005</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gdky005"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
