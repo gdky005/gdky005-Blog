@@ -106,12 +106,22 @@ search:
 # Deployment 部署配置
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
- type: git
- repository: git@github.com:gdky005/gdky005-Blog.git #你的github page 仓库
- branch: gh-pages
+  type: git
+  repo:
+    github: git@github.com:gdky005/gdky005-Blog.git,gh-pages
+    coding: git@git.coding.net:gdky005/gdky005-Bolg.git,coding-pages
+
+
+
+# type: git
+#   repo:
+#     github: https://github.com/micklong/micklong.github.io.git,gh-pages
+#     coding: https://git.coding.net/micklong/micklong.git,master
+# repository: git@github.com:gdky005/gdky005-Blog.git #你的github page 仓库
+# branch: gh-pages
 
 backup:
     type: git
     repository:
        github: git@github.com:gdky005/gdky005-Blog.git,backup
-       # gitcafe: git@gitcafe.com:gdky005/gdky005-Blog.git,master
+       coding: git@git.coding.net:gdky005/gdky005-Bolg.git,backup
