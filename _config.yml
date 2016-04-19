@@ -120,6 +120,6 @@ deploy:
 
 backup:
     type: git
-    repo:
+    repository:
        github: git@github.com:gdky005/gdky005-Blog.git,backup
        coding: git@git.coding.net:gdky005/gdky005-Bolg.git,backup
