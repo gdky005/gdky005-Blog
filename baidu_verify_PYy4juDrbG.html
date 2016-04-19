@@ -82,15 +82,16 @@
 
 
 
-<meta name="description" content="创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!">
+<meta name="description" content="PYy4juDrbG">
 <meta property="og:type" content="website">
 <meta property="og:title" content="孤独狂饮">
-<meta property="og:url" content="http://gdky005.com/tags/Android/index.html">
+<meta property="og:url" content="http://gdky005.com/baidu_verify_PYy4juDrbG.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!">
+<meta property="og:description" content="PYy4juDrbG">
+<meta property="og:updated_time" content="2016-04-19T13:08:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="孤独狂饮">
-<meta name="twitter:description" content="创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!">
+<meta name="twitter:description" content="PYy4juDrbG">
 
 
 
@@ -109,7 +110,13 @@
 </script>
 <script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
 
-  <title> 标签: Android | 孤独狂饮 </title>
+  <title>
+  
+
+  
+     | 孤独狂饮
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,46 +248,12 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Android
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/20/凯哥高质量文章系列/" itemprop="url">
-              
-                <span itemprop="name">凯哥高质量文章系列</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-20T12:17:18+08:00"
-              content="2015-11-20" >
-          11-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+      PYy4juDrbG
     
   </div>
-
-  
 
 
           </div>
@@ -288,6 +261,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="baidu_verify_PYy4juDrbG.html"
+           data-title="" data-url="http://gdky005.com/baidu_verify_PYy4juDrbG.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -553,96 +534,6 @@
                     var content_index = [];
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-  
-
-  
-
-  
-
-</body>
-</html>
-place(/<[^>]+>/g,"").toLowerCase();
                     var data_url = data.url;
                     var index_title = -1;
                     var index_content = -1;
