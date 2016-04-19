@@ -7,3 +7,6 @@ public/
 .deploy*/
 *.iml
 .idea
+/public
+/node_modules
+/themes

@@ -7,14 +7,14 @@ title: 孤独狂饮
 subtitle: 只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！
 description: 创建这个博客的目的是为了提炼技术能力。已经在Android 领域 四年多了，虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。但是精华因为杂碎的覆盖，不能凸显其价值，因此该博客就是了存储一些有价值的东西而存在!
 author: gdky005 #作者名字
-language: zh-CN #语言 中国大陆简体中文的标准语系地区码是zh-CN 台灣是正體中文zh-TW 
+language: zh-CN #语言 中国大陆简体中文的标准语系地区码是zh-CN 台灣是正體中文zh-TW
 timezone: PRC #设置为中华人民共和国
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://gdky005.com #博客地址
 root: / #博客根目录
-permalink: :year/:month/:day/:title/ #博客url地址结构 
+permalink: :year/:month/:day/:title/ #博客url地址结构
 permalink_defaults:
 
 # Directory
