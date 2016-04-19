@@ -364,3 +364,8 @@ images: images
 
 # Theme version
 version: 5.0.1
+
+widgets:
+- category
+- tagcloud
+

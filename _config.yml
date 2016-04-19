@@ -77,17 +77,24 @@ theme: next #主题设置
 stylus:
   compress: true
 
-# plugins:
-# - hexo-generator-feed
-# - hexo-generator-sitemap
-
-# baidusitemap:
-#     path: baidusitemap.xml
+# 订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 5
+  hub:
+# 生成 sitemap
+sitemap:
+    path: sitemap.xml
 # 添加百度统计
 baidu_analytics: 60604cb7585e80203a90adfb670d42bc
 # 多说分享服务
 duoshuo_share: true
 duoshuo_hotartical: true
+# hexo-generator-search
+search:
+  path: search.xml
+  field: post
 
 # # Deployment
 # ## Docs: http://hexo.io/docs/deployment.html
