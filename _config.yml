@@ -83,9 +83,12 @@ feed:
   path: atom.xml
   limit: 5
   hub:
-# 生成 sitemap
-sitemap:
-    path: sitemap.xml
+## 生成 sitemap
+#sitemap:
+#    path: sitemap.xml
+# 生成 百度的sitemap
+baidusitemap:
+path: baidusitemap.xml
 # 添加百度统计
 baidu_analytics: 60604cb7585e80203a90adfb670d42bc
 # 多说分享服务
