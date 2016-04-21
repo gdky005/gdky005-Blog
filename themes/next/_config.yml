@@ -225,16 +225,16 @@ mathjax:
 
 
 # Swiftype Search API Key
-#swiftype_key:
+#swiftype_key: YGFMsx4PsCWoLT3PuuiW
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 60604cb7585e80203a90adfb670d42bc
 
 # Duoshuo ShortName
 duoshuo_shortname: gdky005
 
 # Disqus
-#disqus_shortname:
+#disqus_shortname: gdky005
 
 # Baidu Share
 # Available value:
@@ -244,7 +244,7 @@ duoshuo_shortname: gdky005
 
 # Share
 #jiathis:
-#add_this_id:
+#add_this_id: 2059573
 
 # Share
 #duoshuo_share: true
