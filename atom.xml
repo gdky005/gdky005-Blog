@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2016-06-20T08:27:53.000Z</updated>
+  <updated>2016-06-20T08:39:17.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -16,13 +16,314 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>OkHttp3 源码分析【缓存策略】</title>
+    <link href="http://gdky005.com/2016/06/20/OkHttp3-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E3%80%91/"/>
+    <id>http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/</id>
+    <published>2016-06-20T08:35:10.000Z</published>
+    <updated>2016-06-20T08:39:17.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;OkHttp3-源码分析【缓存策略】&quot;&gt;&lt;a href=&quot;#OkHttp3-源码分析【缓存策略】&quot; class=&quot;headerlink&quot; title=&quot;OkHttp3 源码分析【缓存策略】&quot;&gt;&lt;/a&gt;OkHttp3 源码分析【缓存策略】&lt;/h1&gt;&lt;p&gt;本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇&lt;/p&gt;
+&lt;h3 id=&quot;Http-缓存基础知识&quot;&gt;&lt;a href=&quot;#Http-缓存基础知识&quot; class=&quot;headerlink&quot; title=&quot;Http 缓存基础知识&quot;&gt;&lt;/a&gt;Http 缓存基础知识&lt;/h3&gt;&lt;p&gt;分析源目前，我们先回顾一下 Http 的缓存 Header 的含义&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Expires&lt;br&gt;表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存&lt;br&gt; Expires: Thu, 12 Jan 2017 11:01:33 GMT&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cache-Control&lt;br&gt;相对值，单位是秒，指定某个文件被续多少秒的时间，从而避免额外的网络请求。比expired更好的选择，它不用要求服务器与客户端的时间同步，也不用服务器时刻同步修改配置Expired中的绝对时间，而且它的优先级比Expires更高。比如简书静态资源有如下的header，表示可以续31536000秒，也就是一年。&lt;/p&gt;
+&lt;p&gt; Cache-Control: max-age=31536000, public&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修订文件名（Reving Filenames）&lt;br&gt;如果我们通过设置 header 保证了客户端可以缓存的，而此时远程服务器更新了文件如何解决呢？这个时候可以通过修改 url 的文件名版本后缀进行缓存，比如下文是又拍云的公共CDN就提供了多个版本的JQuery&lt;br&gt; upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;条件 get 请求 （Conditional GET Requests） 与 304&lt;br&gt;如果缓存过期或者轻质放弃缓存，在此情况下，缓存策略全部交给服务器判断，客户端只用发送 条件 get 请求 即可，如果缓存是有效的， 则返回 304 not Modifiled, 否则直接返回 body.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;请求的方式有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Last-Modified-Date:&lt;br&gt;  Last-Modified: Tue, 12 Jan 2016 09:31:27 GMT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;客户端再次发送时，通过发送&lt;br&gt;    If-Modified-Since: Tue, 12 Jan 2016 09:31:27 GMT&lt;/p&gt;
+&lt;p&gt;交给服务器进行判断，如果任然可以缓存使用，服务器就返回 304.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ETag&lt;br&gt;ETag 是对资源文件的一种摘要，客户端并不需要了解实现细节。当客户端第一次请求，服务器返回了&lt;br&gt;  ETag: “5694c7ef-24dc”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;客户端再次请求时，通过发送&lt;br&gt;    If-None-Match:”5694c7ef-24dc”&lt;/p&gt;
+&lt;p&gt;交给服务器进行判断，如果还能使用缓存，服务器就返回 304&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果 ETag 和 Last-Modified 都有，则必须一次性都发给服务器，它们没有优先级之分，反正这里客户端没有任何判断的逻辑。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;其他标签&lt;ul&gt;
+&lt;li&gt;no-cache/no-store: 不使用缓存&lt;ul&gt;
+&lt;li&gt;only-if-cached: 只使用缓存&lt;/li&gt;
+&lt;li&gt;Date:The date and time that the message was sent&lt;/li&gt;
+&lt;li&gt;Age： CDN 反代服务器 到原始服务器获取数据延迟的缓存时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。&lt;br&gt;全部的标签，可以到&lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_HTTP_header_fields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里看&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;源码分析&quot;&gt;&lt;a href=&quot;#源码分析&quot; class=&quot;headerlink&quot; title=&quot;源码分析&quot;&gt;&lt;/a&gt;源码分析&lt;/h3&gt;&lt;p&gt;OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;总体请求流程分析&lt;br&gt;CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出&lt;br&gt;Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Request:&lt;br&gt;开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。&lt;/p&gt;
+&lt;p&gt;cacheCandildate:&lt;br&gt;也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.&lt;/p&gt;
+&lt;p&gt;当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;基本上与上文中的图片完全一致，以上就是 OkHttp 的缓存策略。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;CacheStrategy 的加工过程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;CacheStrategy 使用 Factory模式进行构造，参数如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;InternalCache responseCache = Internal.instance.internalCache(client);
+//cacheCandidate从disklurcache中获取
+//request的url被md5序列化为key,进行缓存查询
+Response cacheCandidate = responseCache != null ? responseCache.get(request) : null;
+//请求与缓存
+factory = new CacheStrategy.Factory(now, request, cacheCandidate);
+cacheStrategy = factory.get();
+//输出结果
+networkRequest = cacheStrategy.networkRequest;
+cacheResponse = cacheStrategy.cacheResponse;
+//进行一大堆的if判断，内容同上表格
+.....
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看出Factory.get()是最关键的缓存策略的判断，我们点入get()方法，可以发现是对getCandidate()的一个封装，我们接着点开getCandidate()，全是if与数学计算，详细代码如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private CacheStrategy getCandidate() {
+  //如果缓存没有命中(即null),网络请求也不需要加缓存Header了
+  if (cacheResponse == null) {
+    //`没有缓存的网络请求,查上文的表可知是直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  // 如果缓存的TLS握手信息丢失,返回进行直接连接
+  if (request.isHttps() &amp;amp;&amp;amp; cacheResponse.handshake() == null) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  //检测response的状态码,Expired时间,是否有no-cache标签
+  if (!isCacheable(cacheResponse, request)) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  CacheControl requestCaching = request.cacheControl();
+  //如果请求报文使用了`no-cache`标签(这个只可能是开发者故意添加的)
+  //或者有ETag/Since标签(也就是条件GET请求)
+  if (requestCaching.noCache() || hasConditions(request)) {
+    //直接连接,把缓存判断交给服务器
+    return new CacheStrategy(request, null);
+  }
+  //根据RFC协议计算
+  //计算当前age的时间戳
+  //now - sent + age (s)
+  long ageMillis = cacheResponseAge();
+  //大部分情况服务器设置为max-age
+  long freshMillis = computeFreshnessLifetime();
+
+  if (requestCaching.maxAgeSeconds() != -1) {
+    //大部分情况下是取max-age
+    freshMillis = Math.min(freshMillis, SECONDS.toMillis(requestCaching.maxAgeSeconds()));
+  }
+
+  long minFreshMillis = 0;
+  if (requestCaching.minFreshSeconds() != -1) {
+    //大部分情况下设置是0
+    minFreshMillis = SECONDS.toMillis(requestCaching.minFreshSeconds());
+  }
+
+  long maxStaleMillis = 0;
+  //ParseHeader中的缓存控制信息
+  CacheControl responseCaching = cacheResponse.cacheControl();
+  if (!responseCaching.mustRevalidate() &amp;amp;&amp;amp; requestCaching.maxStaleSeconds() != -1) {
+    //设置最大过期时间,一般设置为0
+    maxStaleMillis = SECONDS.toMillis(requestCaching.maxStaleSeconds());
+  }
+
+  //缓存在过期时间内,可以使用
+  //大部分情况下是进行如下判断
+  //now - sent + age + 0 &amp;lt; max-age + 0
+  if (!responseCaching.noCache() &amp;amp;&amp;amp; ageMillis + minFreshMillis &amp;lt; freshMillis + maxStaleMillis) {
+    //返回上次的缓存
+    Response.Builder builder = cacheResponse.newBuilder();
+    return new CacheStrategy(null, builder.build());
+  }
+
+  //缓存失效, 如果有etag等信息
+  //进行发送`conditional`请求,交给服务器处理
+  Request.Builder conditionalRequestBuilder = request.newBuilder();
+
+  if (etag != null) {
+    conditionalRequestBuilder.header(&amp;quot;If-None-Match&amp;quot;, etag);
+  } else if (lastModified != null) {
+    conditionalRequestBuilder.header(&amp;quot;If-Modified-Since&amp;quot;, lastModifiedString);
+  } else if (servedDate != null) {
+    conditionalRequestBuilder.header(&amp;quot;If-Modified-Since&amp;quot;, servedDateString);
+  }
+  //下面请求实质还说网络请求
+  Request conditionalRequest = conditionalRequestBuilder.build();
+  return hasConditions(conditionalRequest) ? new CacheStrategy(conditionalRequest,
+      cacheResponse) : new CacheStrategy(conditionalRequest, null);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;太长不看的话，大多数常见的情况可以用这个估算&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;now - sent + age &amp;lt; max-age
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h3&gt;&lt;p&gt;根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。&lt;/li&gt;
+&lt;li&gt;OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 &lt;strong&gt;没有必要&lt;/strong&gt; 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 &lt;a href=&quot;https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;注释中&lt;/a&gt;。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.&lt;/li&gt;
+&lt;li&gt;充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成&lt;/li&gt;
+&lt;li&gt;可以使用 alt + space  快速预览某个函数&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;摘自：&lt;a href=&quot;http://www.jianshu.com/p/9cebbbd0eeab&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/9cebbbd0eeab&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;OkHttp3-源码分析【缓存策略】&quot;&gt;&lt;a href=&quot;#OkHttp3-源码分析【缓存策略】&quot; class=&quot;headerlink&quot; title=&quot;OkHttp3 源码分析【缓存策略】&quot;&gt;&lt;/a&gt;OkHttp3 源码分析【缓存策略】&lt;/h1&gt;&lt;p&gt;本文专门分析
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OkHttp3源码分析【任务队列】</title>
+    <link href="http://gdky005.com/2016/06/20/OkHttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E3%80%91/"/>
+    <id>http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/</id>
+    <published>2016-06-20T08:34:26.000Z</published>
+    <updated>2016-06-20T08:42:06.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;OkHttp3源码分析【任务队列】&quot;&gt;&lt;a href=&quot;#OkHttp3源码分析【任务队列】&quot; class=&quot;headerlink&quot; title=&quot;OkHttp3源码分析【任务队列】&quot;&gt;&lt;/a&gt;OkHttp3源码分析【任务队列】&lt;/h1&gt;&lt;h3 id=&quot;本文目录&quot;&gt;&lt;a href=&quot;#本文目录&quot; class=&quot;headerlink&quot; title=&quot;本文目录&quot;&gt;&lt;/a&gt;本文目录&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;线程池基础&lt;/li&gt;
+&lt;li&gt;反向代理模块&lt;/li&gt;
+&lt;li&gt;OkHttp 的任务调度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。&lt;/p&gt;
+&lt;h1 id=&quot;线程池基础&quot;&gt;&lt;a href=&quot;#线程池基础&quot; class=&quot;headerlink&quot; title=&quot;线程池基础&quot;&gt;&lt;/a&gt;线程池基础&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;线程池好处有哪些&lt;br&gt;线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;多线程技术主要解决 处理器单元时间内多个线程执行的问题，他可以显著减少处理器单元内的闲置时间，增加处理器单元的吞吐能力。但如果对多线程应用不当，会增加对单个任务的处理时间。可以举例：&lt;br&gt;如果一台服务完成一项任务的时间为 T&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;T1 创建线程的时间
+T2 在线程中执行任务的时间，包括线程间同步所需时间
+T3 线程销毁的时间
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;显然T ＝ T1＋T2＋T3。注意这是一个极度简化的假设。&lt;/p&gt;
+&lt;p&gt;可以看出 T1 T3 是多线程本身带来的开销，我们渴望减少 T1，T3的时间，从而减少 T 的时间。但一些线程的使用者并没有注意到这一点，多余在程序中 频繁的创建或销毁线程，导致 T1 T3 占的比例更高。显然这是突出了线程的弱点（T1，T3），而不是有点（并发性）。&lt;/p&gt;
+&lt;p&gt;线程池的技术是关注如何缩短或调整 T1，T3 的时间的技术，从而提高服务器程序性能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过对线程缓存，减少创建和销毁的时间损失&lt;ul&gt;
+&lt;li&gt;通过控制线程数据的阈值，减少当线程过少带来的 CPU 闲置（比如说 长时间卡在I/O 上）与线程过多时对 JVM 对对内存与线程切换压力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;OkHttp 配置的线程池&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 OkHttp 中，使用如下构造了单例线程池&lt;br&gt;    public synchronized ExecutorService executorService() {&lt;br&gt;      if (executorService == null) {&lt;br&gt;        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,&lt;br&gt;            new SynchronousQueue&lt;runnable&gt;(), Util.threadFactory(“OkHttp Dispatcher”, false));&lt;br&gt;      }&lt;br&gt;      return executorService;&lt;br&gt;    }&lt;/runnable&gt;&lt;/p&gt;
+&lt;p&gt;参数说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int corePoolSize: 最小并发线程数，这里并发同时包括空闲与活动的线程，如果是0的话，空闲一段时间后所有线程将全部被销毁。&lt;/li&gt;
+&lt;li&gt;int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃&lt;em&gt;处理机制&lt;/em&gt;来处理&lt;/li&gt;
+&lt;li&gt;long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive&lt;/li&gt;
+&lt;li&gt;TimeUnit unit: 时间单位，一般用秒&lt;/li&gt;
+&lt;li&gt;BlockingQueue\&lt;runnable\&gt; workQueue:  工作队列&lt;/runnable\&gt;&lt;/li&gt;
+&lt;li&gt;ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。&lt;/p&gt;
+&lt;p&gt;也就是说， 在实际运行中，当收到10个并发请求是，线程池会创建十个线程，当工作完成后，线程池会在60s 后相继关闭所有线程。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;反向代理模型&quot;&gt;&lt;a href=&quot;#反向代理模型&quot; class=&quot;headerlink&quot; title=&quot;反向代理模型&quot;&gt;&lt;/a&gt;反向代理模型&lt;/h3&gt;&lt;p&gt;在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。&lt;/p&gt;
+&lt;p&gt;我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现&lt;strong&gt;非阻塞、高并发连接&lt;/strong&gt;，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\&lt;readyasynccalls\&gt;对应 Nginx 的内部缓存&lt;/readyasynccalls\&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;具体成员如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;maxRequests = 64：最大并发请求数为64&lt;/li&gt;
+&lt;li&gt;maxRequestsPerHost = 5：每个主机最大请求数为5&lt;/li&gt;
+&lt;li&gt;Dispatcher：分发者，也就是生产者（默认在主线程）&lt;/li&gt;
+&lt;li&gt;AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）&lt;/li&gt;
+&lt;li&gt;ExecutorService：消费者池（也就是线程池）&lt;/li&gt;
+&lt;li&gt;Deque\&lt;readyasynccalls\&gt;：缓存（用数组实现，可自动扩容，无大小限制）&lt;/readyasynccalls\&gt;&lt;/li&gt;
+&lt;li&gt;Deque\&lt;runningasynccalls\&gt;：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存&lt;/runningasynccalls\&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间&lt;/p&gt;
+&lt;h3 id=&quot;OkHttp-的任务调度&quot;&gt;&lt;a href=&quot;#OkHttp-的任务调度&quot; class=&quot;headerlink&quot; title=&quot;OkHttp 的任务调度&quot;&gt;&lt;/a&gt;OkHttp 的任务调度&lt;/h3&gt;&lt;p&gt;当我们使用 OkHttp 的异步请求时，一般进行如下构造：&lt;br&gt;    OkHttpClient client = new OkHttpClient.Builder().build();&lt;br&gt;    Request request = new Request.Builder()&lt;br&gt;        .url(“&lt;a href=&quot;http://qq.com&amp;quot;).get().build(&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://qq.com&amp;quot;).get().build(&lt;/a&gt;);&lt;br&gt;    client.newCall(request).enqueue(new Callback() {&lt;br&gt;      @Override public void onFailure(Call call, IOException e) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  }
+
+  @Override public void onResponse(Call call, Response response) throws IOException {
+
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当 HttpClient 的请求入队 时，根据代码，我们可以发现实际上是 Dispatcher 进行了 入队 操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;synchronized void enqueue(AsyncCall call) {
+  if (runningAsyncCalls.size() &amp;lt; maxRequests &amp;amp;&amp;amp; runningCallsForHost(call) &amp;lt; maxRequestsPerHost) {
+      //添加正在运行的请求
+    runningAsyncCalls.add(call);
+       //线程池执行请求
+    executorService().execute(call);
+  } else {
+      //添加到缓存队列
+    readyAsyncCalls.add(call);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以发现请求是否进入缓存的条件如下：&lt;br&gt;    (runningRequests&amp;lt;64 &amp;amp;&amp;amp; runningRequestsPerHost&amp;lt;5)&lt;/p&gt;
+&lt;p&gt;如果满足条件，那么久直接把 AsyncCall 直接加到 runningCalls 的队列中，并在现场中执行（线程池会根据当前负载自动创建，销毁，缓存相应的线程）。反之就放入readyAsyncCalls进行缓存等待。&lt;/p&gt;
+&lt;p&gt;我们再分析请求元素AsyncCall（本质是实现了Runnable接口），它内部的 execute方法是：&lt;br&gt;    @Override protected void execute() {&lt;br&gt;      boolean signalledCallback = false;&lt;br&gt;      try {&lt;br&gt;          //执行耗时IO任务&lt;br&gt;        Response response = getResponseWithInterceptorChain(forWebSocket);&lt;br&gt;        if (canceled) {&lt;br&gt;          signalledCallback = true;&lt;br&gt;          //回调，注意这里回调是在线程池中，而不是想当然的主线程回调&lt;br&gt;          responseCallback.onFailure(RealCall.this, new IOException(“Canceled”));&lt;br&gt;        } else {&lt;br&gt;          signalledCallback = true;&lt;br&gt;          //回调，同上&lt;br&gt;          responseCallback.onResponse(RealCall.this, response);&lt;br&gt;        }&lt;br&gt;      } catch (IOException e) {&lt;br&gt;        if (signalledCallback) {&lt;br&gt;          // Do not signal the callback twice!&lt;br&gt;          logger.log(Level.INFO, “Callback failure for “ + toLoggableString(), e);&lt;br&gt;        } else {&lt;br&gt;          responseCallback.onFailure(RealCall.this, e);&lt;br&gt;        }&lt;br&gt;      } finally {&lt;br&gt;          //最关键的代码&lt;br&gt;        client.dispatcher().finished(this);&lt;br&gt;      }&lt;br&gt;    }&lt;/p&gt;
+&lt;p&gt;当任务执行完成后，无是否有 异常，finally 代码段总会被执行，也就是会调用 Dispatcher 的 finished 函数，打开源码，就能发现它将正在运行的任务 Call从 队列 runningAsyncCalls 中移除后，执行 promoteCalls()函数&lt;br&gt;    private void promoteCalls() {&lt;br&gt;        //如果目前是最大负荷运转，接着等&lt;br&gt;      if (runningAsyncCalls.size() &amp;gt;= maxRequests) return; // Already running max capacity.&lt;br&gt;      //如果缓存等待区是空的，接着等&lt;br&gt;      if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  for (Iterator&amp;lt;AsyncCall&amp;gt; i = readyAsyncCalls.iterator(); i.hasNext(); ) {
+    AsyncCall call = i.next();
+
+    if (runningCallsForHost(call) &amp;lt; maxRequestsPerHost) {
+        //将缓存等待区最后一个移动到运行区中，并执行
+      i.remove();
+      runningAsyncCalls.add(call);
+      executorService().execute(call);
+    }
+
+    if (runningAsyncCalls.size() &amp;gt;= maxRequests) return; // Reached max capacity.
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样，就主动的把缓存队列向前走了一步，而没有使用锁等复杂编码&lt;/p&gt;
+&lt;h3 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h3&gt;&lt;p&gt;通过上述的分析，我们知道了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;OkHttp 采用 Dispatcher 技术，类似于 Nginx, 与线程池配合实现高并发，低阻塞的运行&lt;/li&gt;
+&lt;li&gt;OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出&lt;/li&gt;
+&lt;li&gt;OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;摘自：&lt;a href=&quot;http://www.jianshu.com/p/6637369d02e7&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/6637369d02e7&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;OkHttp3源码分析【任务队列】&quot;&gt;&lt;a href=&quot;#OkHttp3源码分析【任务队列】&quot; class=&quot;headerlink&quot; title=&quot;OkHttp3源码分析【任务队列】&quot;&gt;&lt;/a&gt;OkHttp3源码分析【任务队列】&lt;/h1&gt;&lt;h3 id=&quot;本文目录&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Java Collection Cheat Sheet</title>
     <link href="http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/"/>
     <id>http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/</id>
     <published>2016-06-20T08:21:47.000Z</published>
-    <updated>2016-06-20T08:27:53.000Z</updated>
+    <updated>2016-06-20T08:31:11.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;分享Java-Collection-的一张图&quot;&gt;&lt;a href=&quot;#分享Java-Collection-的一张图&quot; class=&quot;headerlink&quot; title=&quot;分享Java Collection 的一张图&quot;&gt;&lt;/a&gt;分享Java Collection 的一张图&lt;/h1&gt;&lt;p&gt;在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;分享Java-Collection-的一张图&quot;&gt;&lt;a href=&quot;#分享Java-Collection-的一张图&quot; class=&quot;headerlink&quot; title=&quot;分享Java Collection 的一张图&quot;&gt;&lt;/a&gt;分享Java Collection 的一张图&lt;/h3&gt;&lt;p&gt;在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等&lt;/p&gt;
 &lt;p&gt;我们可以看出他们之间的关系以及差别。&lt;/p&gt;
 &lt;p&gt;例如：HashMap, HastTable,  Vector 和 LinkedList等&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png&quot; alt=&quot;Java Collection Cheat Sheet&quot;&gt;&lt;/p&gt;
@@ -30,7 +331,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;分享Java-Collection-的一张图&quot;&gt;&lt;a href=&quot;#分享Java-Collection-的一张图&quot; class=&quot;headerlink&quot; title=&quot;分享Java Collection 的一张图&quot;&gt;&lt;/a&gt;分享Java Collection 的一
+      &lt;h3 id=&quot;分享Java-Collection-的一张图&quot;&gt;&lt;a href=&quot;#分享Java-Collection-的一张图&quot; class=&quot;headerlink&quot; title=&quot;分享Java Collection 的一张图&quot;&gt;&lt;/a&gt;分享Java Collection 的一
     
     </summary>
     
@@ -46,7 +347,7 @@
     <link href="http://gdky005.com/2016/06/20/Okhttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90DiskLruCache%E3%80%91/"/>
     <id>http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/</id>
     <published>2016-06-20T07:57:46.000Z</published>
-    <updated>2016-06-20T08:14:57.000Z</updated>
+    <updated>2016-06-20T08:40:20.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;a href=&quot;#Okhttp3源码分析【DiskLruCache】&quot; class=&quot;headerlink&quot; title=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;/a&gt;Okhttp3源码分析【DiskLruCache】&lt;/h1&gt;&lt;h3 id=&quot;本文目录&quot;&gt;&lt;a href=&quot;#本文目录&quot; class=&quot;headerlink&quot; title=&quot;本文目录&quot;&gt;&lt;/a&gt;本文目录&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Cache 的简介&lt;/li&gt;
@@ -96,8 +397,8 @@
 &lt;p&gt;比如在缓存的路径下执行 ls,结果如下：&lt;br&gt;    $ ls&lt;br&gt;    5716ab0f06c49bc7cf602397c51d5677.0&lt;br&gt;    5716ab0f06c49bc7cf602397c51d5677.1&lt;br&gt;    5b2f52377611dc6201a1871bdb997466.0&lt;br&gt;    5b2f52377611dc6201a1871bdb997466.1&lt;br&gt;    journal&lt;br&gt;    …..&lt;/p&gt;
 &lt;p&gt;DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;读取场景：读取时，需要获取快照，通过调用链分析&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;读取场景：读取时，需要获取快照，通过调用链分析&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
 &lt;li&gt;序列化与反序列化（Cache.Entry）&lt;br&gt;文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变&lt;blockquote&gt;
@@ -139,6 +440,7 @@
 &lt;li&gt;OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作&lt;/li&gt;
 &lt;li&gt;OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;摘自：&lt;a href=&quot;http://www.jianshu.com/p/23b8aa490a6b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/23b8aa490a6b&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -525,73 +827,6 @@ return A[n];
     
     
       <category term="算法" scheme="http://gdky005.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>推荐processon 让流程图也可以共享</title>
-    <link href="http://gdky005.com/2016/02/25/%E6%8E%A8%E8%8D%90processon-%E8%AE%A9%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%85%B1%E4%BA%AB/"/>
-    <id>http://gdky005.com/2016/02/25/推荐processon-让流程图也可以共享/</id>
-    <published>2016-02-25T02:32:02.000Z</published>
-    <updated>2016-04-19T13:17:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;推荐一个流程图共享的网站：&lt;br&gt;&lt;a href=&quot;https://www.processon.com/popular&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.processon.com/popular&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;一次偶然的机会在微博里面看到 一图学git 的时候，发现这个图很实用&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/bmiddle/c5131475jw1f1batea592j21kw0fy0wn.jpg&quot; alt=&quot;https://www.processon.com/view/56ca927ce4b0362f22d848b5&quot;&gt;&lt;br&gt;&lt;a href=&quot;https://www.processon.com/view/56ca927ce4b0362f22d848b5&quot; title=&quot;原样图&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原样图&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;然后在里面可以看出常用的流程，对于某些方面的需求还是很有必要的。&lt;/p&gt;
-&lt;h3 id=&quot;例如：&quot;&gt;&lt;a href=&quot;#例如：&quot; class=&quot;headerlink&quot; title=&quot;例如：&quot;&gt;&lt;/a&gt;例如：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/557051bee4b0d6a77d619124&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IOS开发&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55783184e4b0d6a77d9f9560&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端技能树&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/555097e7e4b09739f4652bf3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Service总结1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/5550a05ee4b09739f46585b0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Service总结2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55b4e86ce4b0d2cdb5356e08&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android测试工具&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55f69023e4b0a8c6fae84984&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android中主要类的关系图 Activity Class&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/55110a6ee4b00af64b0c3cba&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;APP开发人员技能树&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/568bc9eae4b002e52c0fb427&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EventBus源码分析简要图&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/561ccd9de4b07efc017ca19b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android小说阅读器部分计划及流程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/562847b4e4b04931dccccbfe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;View绘制流程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.processon.com/view/550cf083e4b0b74dae7c2c7d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Drawable分类汇总&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;推荐一个流程图共享的网站：&lt;br&gt;&lt;a href=&quot;https://www.processon.com/popular&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.processon.com/popular&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JADX反编译源码更easy</title>
-    <link href="http://gdky005.com/2016/02/24/APK%E5%8F%8D%E7%BC%96%E8%AF%91Jadx/"/>
-    <id>http://gdky005.com/2016/02/24/APK反编译Jadx/</id>
-    <published>2016-02-24T03:54:09.000Z</published>
-    <updated>2016-04-19T13:17:13.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;JADX反编译源码更easy&quot;&gt;&lt;a href=&quot;#JADX反编译源码更easy&quot; class=&quot;headerlink&quot; title=&quot;JADX反编译源码更easy&quot;&gt;&lt;/a&gt;JADX反编译源码更easy&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;一个Android反编译神器,不同于常见的 dex2jar,这个反编译器生成代码的 try/catch 次数更少, View也不再是数字id了,可读性更高&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Command line and GUI tools for produce Java source code from Android Dex and Apk files&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Downloads&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://drone.io/github.com/skylot/jadx/files&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;unstable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;from &lt;a href=&quot;https://github.com/skylot/jadx/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;from &lt;a href=&quot;http://sourceforge.net/projects/jadx/files/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sourceforge&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;参考地址：&lt;a href=&quot;#&quot;&gt; https://github.com/skylot/jadx &lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;JADX反编译源码更easy&quot;&gt;&lt;a href=&quot;#JADX反编译源码更easy&quot; class=&quot;headerlink&quot; title=&quot;JADX反编译源码更easy&quot;&gt;&lt;/a&gt;JADX反编译源码更easy&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;一个Android
-    
-    </summary>
-    
     
   </entry>
   

@@ -100,9 +100,9 @@ OkHttp 的文件系统
 
 本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 缓存策略
 1.Cache 的简介缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘，网络，CDN反代缓存，DNS递归查询，OS页面置">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png">
-<meta property="og:updated_time" content="2016-06-20T08:14:57.000Z">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png">
+<meta property="og:updated_time" content="2016-06-20T08:40:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Okhttp3源码分析【DiskLruCache】">
 <meta name="twitter:description" content="Okhttp3源码分析【DiskLruCache】本文目录
@@ -112,7 +112,7 @@ OkHttp 的文件系统
 
 本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 缓存策略
 1.Cache 的简介缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘，网络，CDN反代缓存，DNS递归查询，OS页面置">
-<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png">
 
 
 
@@ -410,8 +410,8 @@ OkHttp 的文件系统
 <p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
 <p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
 <ul>
-<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
-<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
+<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
+<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
 </ul>
 <ol>
 <li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
@@ -453,6 +453,7 @@ OkHttp 的文件系统
 <li>OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作</li>
 <li>OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理</li>
 </ol>
+<p>摘自：<a href="http://www.jianshu.com/p/23b8aa490a6b" target="_blank" rel="external">http://www.jianshu.com/p/23b8aa490a6b</a></p>
 
       
     </div>
@@ -591,7 +592,7 @@ OkHttp 的文件系统
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="干货" />
+  <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
 
 
 
@@ -82,64 +82,40 @@
 
 
 
-<meta name="description" content="这是分享一些比较靠谱的干货，可以参考下面的链接：
+<meta name="description" content="OkHttp3源码分析【任务队列】本文目录
+线程池基础
+反向代理模块
+OkHttp 的任务调度
 
-12大Android开发资源，你有几种会用？
-
-快速提高Android开发效率的Web工具
-
-Android酷炫实用的开源框架（UI框架）
-
-Android开发六个建议（经验之谈）
-
-Android Studio常用插件
-
-Android App 性能优化实践
-
-Android Support 库百分比布局
-
-Android 项目部署之Nexus">
+OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
+线程池基础
+线程池好处有哪些线程池的关键在于线程复用以减少非核心任务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="比较好的Android网站">
-<meta property="og:url" content="http://gdky005.com/2015/09/26/比较好的Android网站/index.html">
+<meta property="og:title" content="OkHttp3源码分析【任务队列】">
+<meta property="og:url" content="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="这是分享一些比较靠谱的干货，可以参考下面的链接：
+<meta property="og:description" content="OkHttp3源码分析【任务队列】本文目录
+线程池基础
+反向代理模块
+OkHttp 的任务调度
 
-12大Android开发资源，你有几种会用？
-
-快速提高Android开发效率的Web工具
-
-Android酷炫实用的开源框架（UI框架）
-
-Android开发六个建议（经验之谈）
-
-Android Studio常用插件
-
-Android App 性能优化实践
-
-Android Support 库百分比布局
-
-Android 项目部署之Nexus">
-<meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
+OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
+线程池基础
+线程池好处有哪些线程池的关键在于线程复用以减少非核心任务">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png">
+<meta property="og:updated_time" content="2016-06-20T08:42:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="比较好的Android网站">
-<meta name="twitter:description" content="这是分享一些比较靠谱的干货，可以参考下面的链接：
+<meta name="twitter:title" content="OkHttp3源码分析【任务队列】">
+<meta name="twitter:description" content="OkHttp3源码分析【任务队列】本文目录
+线程池基础
+反向代理模块
+OkHttp 的任务调度
 
-12大Android开发资源，你有几种会用？
-
-快速提高Android开发效率的Web工具
-
-Android酷炫实用的开源框架（UI框架）
-
-Android开发六个建议（经验之谈）
-
-Android Studio常用插件
-
-Android App 性能优化实践
-
-Android Support 库百分比布局
-
-Android 项目部署之Nexus">
+OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
+线程池基础
+线程池好处有哪些线程池的关键在于线程复用以减少非核心任务">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png">
 
 
 
@@ -165,7 +141,7 @@ Android 项目部署之Nexus">
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> 比较好的Android网站 | 孤独狂饮 </title>
+  <title> OkHttp3源码分析【任务队列】 | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -318,7 +294,7 @@ Android 项目部署之Nexus">
             
             
               
-                比较好的Android网站
+                OkHttp3源码分析【任务队列】
               
             
           </h1>
@@ -330,8 +306,8 @@ Android 项目部署之Nexus">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-26T14:53:07+08:00" content="2015-09-26">
-              2015-09-26
+            <time itemprop="dateCreated" datetime="2016-06-20T16:34:26+08:00" content="2016-06-20">
+              2016-06-20
             </time>
           </span>
 
@@ -341,8 +317,8 @@ Android 项目部署之Nexus">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/26/比较好的Android网站/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/比较好的Android网站/" itemprop="commentsCount"></span>
+                <a href="/2016/06/20/OkHttp3源码分析【任务队列】/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -370,29 +346,106 @@ Android 项目部署之Nexus">
       
 
       
-        <p>这是分享一些比较靠谱的干货，可以参考下面的链接：<br></p>
+        <h1 id="OkHttp3源码分析【任务队列】"><a href="#OkHttp3源码分析【任务队列】" class="headerlink" title="OkHttp3源码分析【任务队列】"></a>OkHttp3源码分析【任务队列】</h1><h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ol>
+<li>线程池基础</li>
+<li>反向代理模块</li>
+<li>OkHttp 的任务调度</li>
+</ol>
+<p>OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。</p>
+<h1 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h1><ol>
+<li>线程池好处有哪些<br>线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库：</li>
+</ol>
+<p>多线程技术主要解决 处理器单元时间内多个线程执行的问题，他可以显著减少处理器单元内的闲置时间，增加处理器单元的吞吐能力。但如果对多线程应用不当，会增加对单个任务的处理时间。可以举例：<br>如果一台服务完成一项任务的时间为 T</p>
+<pre><code>T1 创建线程的时间
+T2 在线程中执行任务的时间，包括线程间同步所需时间
+T3 线程销毁的时间
+</code></pre><p>显然T ＝ T1＋T2＋T3。注意这是一个极度简化的假设。</p>
+<p>可以看出 T1 T3 是多线程本身带来的开销，我们渴望减少 T1，T3的时间，从而减少 T 的时间。但一些线程的使用者并没有注意到这一点，多余在程序中 频繁的创建或销毁线程，导致 T1 T3 占的比例更高。显然这是突出了线程的弱点（T1，T3），而不是有点（并发性）。</p>
+<p>线程池的技术是关注如何缩短或调整 T1，T3 的时间的技术，从而提高服务器程序性能。</p>
 <ul>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=208024947&amp;idx=1&amp;sn=4102a3f1d369ba79abeb85e77e4c380d&amp;scene=1&amp;srcid=0926h7Wvn1gzNIiKmoZAutR7&amp;key=2877d24f51fa53849e88d66a9ce9a449de0155a91172f2a5651c1f2ac390e16557f401453ad7bde87faa0d3cea54edd5&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">12大Android开发资源，你有几种会用？</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=208024947&amp;idx=2&amp;sn=e6bf1c5afb0e09147484a61c68583b3e&amp;scene=1&amp;srcid=0926n9p8bsx5NQNAg274lTGy&amp;key=2877d24f51fa53849e59745839e77136216893f3c5ca91bf1643cac1ee58f0273dc7c25e2ccc7e5a106d67b1f6ae0e35&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">快速提高Android开发效率的Web工具</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=207916695&amp;idx=4&amp;sn=69a69ba7986eeb9fda0054354db828a4&amp;scene=1&amp;srcid=0926JcG6UjZuN7LEu7giAoR9&amp;key=2877d24f51fa5384d6ea3cacc96f2528b69686dc8361b29874eeb4222c2e834b41848230fe4fac051415bf5da2397b5c&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android酷炫实用的开源框架（UI框架）</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=207581833&amp;idx=3&amp;sn=97bfca775b657f19f990a80fa401392e&amp;scene=1&amp;srcid=09265F2U0UdTJJXCpg11k4ll&amp;key=2877d24f51fa5384dc8ed7b7573bddb2d5833b9e68fffbc5daf583cdfd9fca708ff7204b977b535b22b1aa38ed000d0b&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android开发六个建议（经验之谈）</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208540095&amp;idx=1&amp;sn=8a4c7e4d5d9a64839992462f27b4bb95&amp;scene=1&amp;srcid=09266oDuhW22HgxDuGmM0WYC&amp;key=2877d24f51fa538442a9029d560dd31f7b485dbafe774de9fcf0bf9b1ddf126068ca03ffe066d71f88efbf2ebed6fb1d&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android Studio常用插件</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208525243&amp;idx=1&amp;sn=8afc00211b37af68f1995a3e8ad45111&amp;scene=1&amp;srcid=0926NrC0khf5Fa9fJEwRfRPY&amp;key=2877d24f51fa5384e71a8cf8116e305d18e01bd016dee5916dd2026497b682ffefe46d56bb71bd0a9fd74991acc84e3e&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android App 性能优化实践</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208510253&amp;idx=2&amp;sn=28598cc02ad39b73ca615e886c8eb24c&amp;scene=1&amp;srcid=0926DwVYFw4g4Od2AAnu6iHa&amp;key=2877d24f51fa538406d88df4db226b76df6775aab891b2af8b585d7de15b6d2145a0e5fa22b51441da14cd57f418cb93&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android Support 库百分比布局</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208554056&amp;idx=1&amp;sn=b98bfef690e316fa5dc0fccef8dae198&amp;scene=1&amp;srcid=0926PFrnACpa0rgVOJL2BLlc&amp;key=2877d24f51fa5384648c85ac5ce9f46629ad54f9691ab6d6dd0e1f2b8ef87a9427beb751553d9f28d1c245b1cd5b2efd&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android 项目部署之Nexus私服搭建和应用</a></p>
-</li>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=207368806&amp;idx=1&amp;sn=ab1203e49d15b5a81a30d3c199fdc80d&amp;scene=1&amp;srcid=0926RMXXJe3DfggnLTgzVz8M&amp;key=2877d24f51fa5384ca0148e1fa1a60810f32d881772f440d182f540f603f059bae8bb10be1d320ea1db238b465c4a0f2&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">移动应用 Bug 快速反馈利器</a> </p>
+<li>通过对线程缓存，减少创建和销毁的时间损失<ul>
+<li>通过控制线程数据的阈值，减少当线程过少带来的 CPU 闲置（比如说 长时间卡在I/O 上）与线程过多时对 JVM 对对内存与线程切换压力</li>
+</ul>
 </li>
 </ul>
-<p>后续将整理一些比较又实用价值的文章分享给大家</p>
-<hr>
+<p>在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了</p>
+<ol>
+<li>OkHttp 配置的线程池</li>
+</ol>
+<p>在 OkHttp 中，使用如下构造了单例线程池<br>    public synchronized ExecutorService executorService() {<br>      if (executorService == null) {<br>        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,<br>            new SynchronousQueue<runnable>(), Util.threadFactory(“OkHttp Dispatcher”, false));<br>      }<br>      return executorService;<br>    }</runnable></p>
+<p>参数说明：</p>
+<ul>
+<li>int corePoolSize: 最小并发线程数，这里并发同时包括空闲与活动的线程，如果是0的话，空闲一段时间后所有线程将全部被销毁。</li>
+<li>int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃<em>处理机制</em>来处理</li>
+<li>long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive</li>
+<li>TimeUnit unit: 时间单位，一般用秒</li>
+<li>BlockingQueue\<runnable\> workQueue:  工作队列</runnable\></li>
+<li>ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等</li>
+</ul>
+<p>可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。</p>
+<p>也就是说， 在实际运行中，当收到10个并发请求是，线程池会创建十个线程，当工作完成后，线程池会在60s 后相继关闭所有线程。</p>
+<blockquote>
+<p>在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers</p>
+</blockquote>
+<h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
+<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
+<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\<readyasynccalls\>对应 Nginx 的内部缓存</readyasynccalls\></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
+<p>具体成员如下：</p>
+<ul>
+<li>maxRequests = 64：最大并发请求数为64</li>
+<li>maxRequestsPerHost = 5：每个主机最大请求数为5</li>
+<li>Dispatcher：分发者，也就是生产者（默认在主线程）</li>
+<li>AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）</li>
+<li>ExecutorService：消费者池（也就是线程池）</li>
+<li>Deque\<readyasynccalls\>：缓存（用数组实现，可自动扩容，无大小限制）</readyasynccalls\></li>
+<li>Deque\<runningasynccalls\>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</runningasynccalls\></li>
+</ul>
+<p>通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间</p>
+<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build(" target="_blank" rel="external">http://qq.com&quot;).get().build(</a>);<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
+<pre><code>  }
+
+  @Override public void onResponse(Call call, Response response) throws IOException {
+
+  }
+});
+</code></pre><p>当 HttpClient 的请求入队 时，根据代码，我们可以发现实际上是 Dispatcher 进行了 入队 操作</p>
+<pre><code>synchronized void enqueue(AsyncCall call) {
+  if (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) {
+      //添加正在运行的请求
+    runningAsyncCalls.add(call);
+       //线程池执行请求
+    executorService().execute(call);
+  } else {
+      //添加到缓存队列
+    readyAsyncCalls.add(call);
+  }
+}
+</code></pre><p>可以发现请求是否进入缓存的条件如下：<br>    (runningRequests&lt;64 &amp;&amp; runningRequestsPerHost&lt;5)</p>
+<p>如果满足条件，那么久直接把 AsyncCall 直接加到 runningCalls 的队列中，并在现场中执行（线程池会根据当前负载自动创建，销毁，缓存相应的线程）。反之就放入readyAsyncCalls进行缓存等待。</p>
+<p>我们再分析请求元素AsyncCall（本质是实现了Runnable接口），它内部的 execute方法是：<br>    @Override protected void execute() {<br>      boolean signalledCallback = false;<br>      try {<br>          //执行耗时IO任务<br>        Response response = getResponseWithInterceptorChain(forWebSocket);<br>        if (canceled) {<br>          signalledCallback = true;<br>          //回调，注意这里回调是在线程池中，而不是想当然的主线程回调<br>          responseCallback.onFailure(RealCall.this, new IOException(“Canceled”));<br>        } else {<br>          signalledCallback = true;<br>          //回调，同上<br>          responseCallback.onResponse(RealCall.this, response);<br>        }<br>      } catch (IOException e) {<br>        if (signalledCallback) {<br>          // Do not signal the callback twice!<br>          logger.log(Level.INFO, “Callback failure for “ + toLoggableString(), e);<br>        } else {<br>          responseCallback.onFailure(RealCall.this, e);<br>        }<br>      } finally {<br>          //最关键的代码<br>        client.dispatcher().finished(this);<br>      }<br>    }</p>
+<p>当任务执行完成后，无是否有 异常，finally 代码段总会被执行，也就是会调用 Dispatcher 的 finished 函数，打开源码，就能发现它将正在运行的任务 Call从 队列 runningAsyncCalls 中移除后，执行 promoteCalls()函数<br>    private void promoteCalls() {<br>        //如果目前是最大负荷运转，接着等<br>      if (runningAsyncCalls.size() &gt;= maxRequests) return; // Already running max capacity.<br>      //如果缓存等待区是空的，接着等<br>      if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.</p>
+<pre><code>  for (Iterator&lt;AsyncCall&gt; i = readyAsyncCalls.iterator(); i.hasNext(); ) {
+    AsyncCall call = i.next();
+
+    if (runningCallsForHost(call) &lt; maxRequestsPerHost) {
+        //将缓存等待区最后一个移动到运行区中，并执行
+      i.remove();
+      runningAsyncCalls.add(call);
+      executorService().execute(call);
+    }
+
+    if (runningAsyncCalls.size() &gt;= maxRequests) return; // Reached max capacity.
+  }
+}
+</code></pre><p>这样，就主动的把缓存队列向前走了一步，而没有使用锁等复杂编码</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>通过上述的分析，我们知道了：</p>
+<ol>
+<li>OkHttp 采用 Dispatcher 技术，类似于 Nginx, 与线程池配合实现高并发，低阻塞的运行</li>
+<li>OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出</li>
+<li>OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度</li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="external">http://www.jianshu.com/p/6637369d02e7</a></p>
 
       
     </div>
@@ -416,27 +469,21 @@ Android 项目部署之Nexus">
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/干货/" rel="tag">#干货</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/19/android-monkey/" rel="next" title="monkey 测试命令，保存到SD，遇到崩溃继续">
-                <i class="fa fa-chevron-left"></i> monkey 测试命令，保存到SD，遇到崩溃继续
+              <a href="/2016/06/20/Java-Collection-Cheat-Sheet/" rel="next" title="Java Collection Cheat Sheet">
+                <i class="fa fa-chevron-left"></i> Java Collection Cheat Sheet
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/26/Android-和-IOS-应用查找bug-利器/" rel="prev" title="Android 和 IOS 应用查找bug 利器">
-                Android 和 IOS 应用查找bug 利器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/20/OkHttp3-源码分析【缓存策略】/" rel="prev" title="OkHttp3 源码分析【缓存策略】">
+                OkHttp3 源码分析【缓存策略】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,10 +499,10 @@ Android 项目部署之Nexus">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/09/26/比较好的Android网站/"
-     data-title="比较好的Android网站"
+        <div class="ds-share flat" data-thread-key="2016/06/20/OkHttp3源码分析【任务队列】/"
+     data-title="OkHttp3源码分析【任务队列】"
      data-content=""
-     data-url="http://gdky005.com/2015/09/26/比较好的Android网站/">
+     data-url="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -485,8 +532,8 @@ Android 项目部署之Nexus">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/26/比较好的Android网站/"
-           data-title="比较好的Android网站" data-url="http://gdky005.com/2015/09/26/比较好的Android网站/">
+      <div class="ds-thread" data-thread-key="2016/06/20/OkHttp3源码分析【任务队列】/"
+           data-title="OkHttp3源码分析【任务队列】" data-url="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/">
       </div>
     
   </div>
@@ -613,7 +660,7 @@ Android 项目部署之Nexus">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp3源码分析【任务队列】"><span class="nav-number">1.</span> <span class="nav-text">OkHttp3源码分析【任务队列】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本文目录"><span class="nav-number">1.0.1.</span> <span class="nav-text">本文目录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池基础"><span class="nav-number">2.</span> <span class="nav-text">线程池基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反向代理模型"><span class="nav-number">2.0.1.</span> <span class="nav-text">反向代理模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OkHttp-的任务调度"><span class="nav-number">2.0.2.</span> <span class="nav-text">OkHttp 的任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">2.0.3.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

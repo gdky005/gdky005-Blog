@@ -4,9 +4,286 @@
   
     
     <entry>
+      <title><![CDATA[OkHttp3 源码分析【缓存策略】]]></title>
+      <url>http://gdky005.com/2016/06/20/OkHttp3-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E3%80%91/</url>
+      <content type="html"><![CDATA[<h1 id="OkHttp3-源码分析【缓存策略】"><a href="#OkHttp3-源码分析【缓存策略】" class="headerlink" title="OkHttp3 源码分析【缓存策略】"></a>OkHttp3 源码分析【缓存策略】</h1><p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
+<h3 id="Http-缓存基础知识"><a href="#Http-缓存基础知识" class="headerlink" title="Http 缓存基础知识"></a>Http 缓存基础知识</h3><p>分析源目前，我们先回顾一下 Http 的缓存 Header 的含义</p>
+<ol>
+<li><p>Expires<br>表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存<br> Expires: Thu, 12 Jan 2017 11:01:33 GMT</p>
+</li>
+<li><p>Cache-Control<br>相对值，单位是秒，指定某个文件被续多少秒的时间，从而避免额外的网络请求。比expired更好的选择，它不用要求服务器与客户端的时间同步，也不用服务器时刻同步修改配置Expired中的绝对时间，而且它的优先级比Expires更高。比如简书静态资源有如下的header，表示可以续31536000秒，也就是一年。</p>
+<p> Cache-Control: max-age=31536000, public</p>
+</li>
+<li><p>修订文件名（Reving Filenames）<br>如果我们通过设置 header 保证了客户端可以缓存的，而此时远程服务器更新了文件如何解决呢？这个时候可以通过修改 url 的文件名版本后缀进行缓存，比如下文是又拍云的公共CDN就提供了多个版本的JQuery<br> upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js</p>
+</li>
+<li><p>条件 get 请求 （Conditional GET Requests） 与 304<br>如果缓存过期或者轻质放弃缓存，在此情况下，缓存策略全部交给服务器判断，客户端只用发送 条件 get 请求 即可，如果缓存是有效的， 则返回 304 not Modifiled, 否则直接返回 body.</p>
+</li>
+</ol>
+<p>请求的方式有两种：</p>
+<ul>
+<li>Last-Modified-Date:<br>  Last-Modified: Tue, 12 Jan 2016 09:31:27 GMT</li>
+</ul>
+<p>客户端再次发送时，通过发送<br>    If-Modified-Since: Tue, 12 Jan 2016 09:31:27 GMT</p>
+<p>交给服务器进行判断，如果任然可以缓存使用，服务器就返回 304.</p>
+<ul>
+<li>ETag<br>ETag 是对资源文件的一种摘要，客户端并不需要了解实现细节。当客户端第一次请求，服务器返回了<br>  ETag: “5694c7ef-24dc”</li>
+</ul>
+<p>客户端再次请求时，通过发送<br>    If-None-Match:”5694c7ef-24dc”</p>
+<p>交给服务器进行判断，如果还能使用缓存，服务器就返回 304</p>
+<blockquote>
+<p>如果 ETag 和 Last-Modified 都有，则必须一次性都发给服务器，它们没有优先级之分，反正这里客户端没有任何判断的逻辑。</p>
+</blockquote>
+<ul>
+<li>其他标签<ul>
+<li>no-cache/no-store: 不使用缓存<ul>
+<li>only-if-cached: 只使用缓存</li>
+<li>Date:The date and time that the message was sent</li>
+<li>Age： CDN 反代服务器 到原始服务器获取数据延迟的缓存时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="external">这里看</a></p>
+</blockquote>
+<p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。</p>
+<ol>
+<li>总体请求流程分析<br>CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出<br>Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)</li>
+</ol>
+<p>Request:<br>开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。</p>
+<p>cacheCandildate:<br>也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.</p>
+<p>当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt=""></p>
+<blockquote>
+<p>以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论</p>
+</blockquote>
+<p>基本上与上文中的图片完全一致，以上就是 OkHttp 的缓存策略。</p>
+<blockquote>
+<p>关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断</p>
+</blockquote>
+<ol>
+<li>CacheStrategy 的加工过程</li>
+</ol>
+<p>CacheStrategy 使用 Factory模式进行构造，参数如下</p>
+<pre><code>InternalCache responseCache = Internal.instance.internalCache(client);
+//cacheCandidate从disklurcache中获取
+//request的url被md5序列化为key,进行缓存查询
+Response cacheCandidate = responseCache != null ? responseCache.get(request) : null;
+//请求与缓存
+factory = new CacheStrategy.Factory(now, request, cacheCandidate);
+cacheStrategy = factory.get();
+//输出结果
+networkRequest = cacheStrategy.networkRequest;
+cacheResponse = cacheStrategy.cacheResponse;
+//进行一大堆的if判断，内容同上表格
+.....
+</code></pre><p>可以看出Factory.get()是最关键的缓存策略的判断，我们点入get()方法，可以发现是对getCandidate()的一个封装，我们接着点开getCandidate()，全是if与数学计算，详细代码如下</p>
+<pre><code>private CacheStrategy getCandidate() {
+  //如果缓存没有命中(即null),网络请求也不需要加缓存Header了
+  if (cacheResponse == null) {
+    //`没有缓存的网络请求,查上文的表可知是直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  // 如果缓存的TLS握手信息丢失,返回进行直接连接
+  if (request.isHttps() &amp;&amp; cacheResponse.handshake() == null) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  //检测response的状态码,Expired时间,是否有no-cache标签
+  if (!isCacheable(cacheResponse, request)) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  CacheControl requestCaching = request.cacheControl();
+  //如果请求报文使用了`no-cache`标签(这个只可能是开发者故意添加的)
+  //或者有ETag/Since标签(也就是条件GET请求)
+  if (requestCaching.noCache() || hasConditions(request)) {
+    //直接连接,把缓存判断交给服务器
+    return new CacheStrategy(request, null);
+  }
+  //根据RFC协议计算
+  //计算当前age的时间戳
+  //now - sent + age (s)
+  long ageMillis = cacheResponseAge();
+  //大部分情况服务器设置为max-age
+  long freshMillis = computeFreshnessLifetime();
+
+  if (requestCaching.maxAgeSeconds() != -1) {
+    //大部分情况下是取max-age
+    freshMillis = Math.min(freshMillis, SECONDS.toMillis(requestCaching.maxAgeSeconds()));
+  }
+
+  long minFreshMillis = 0;
+  if (requestCaching.minFreshSeconds() != -1) {
+    //大部分情况下设置是0
+    minFreshMillis = SECONDS.toMillis(requestCaching.minFreshSeconds());
+  }
+
+  long maxStaleMillis = 0;
+  //ParseHeader中的缓存控制信息
+  CacheControl responseCaching = cacheResponse.cacheControl();
+  if (!responseCaching.mustRevalidate() &amp;&amp; requestCaching.maxStaleSeconds() != -1) {
+    //设置最大过期时间,一般设置为0
+    maxStaleMillis = SECONDS.toMillis(requestCaching.maxStaleSeconds());
+  }
+
+  //缓存在过期时间内,可以使用
+  //大部分情况下是进行如下判断
+  //now - sent + age + 0 &lt; max-age + 0
+  if (!responseCaching.noCache() &amp;&amp; ageMillis + minFreshMillis &lt; freshMillis + maxStaleMillis) {
+    //返回上次的缓存
+    Response.Builder builder = cacheResponse.newBuilder();
+    return new CacheStrategy(null, builder.build());
+  }
+
+  //缓存失效, 如果有etag等信息
+  //进行发送`conditional`请求,交给服务器处理
+  Request.Builder conditionalRequestBuilder = request.newBuilder();
+
+  if (etag != null) {
+    conditionalRequestBuilder.header(&quot;If-None-Match&quot;, etag);
+  } else if (lastModified != null) {
+    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, lastModifiedString);
+  } else if (servedDate != null) {
+    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, servedDateString);
+  }
+  //下面请求实质还说网络请求
+  Request conditionalRequest = conditionalRequestBuilder.build();
+  return hasConditions(conditionalRequest) ? new CacheStrategy(conditionalRequest,
+      cacheResponse) : new CacheStrategy(conditionalRequest, null);
+}
+</code></pre><p>太长不看的话，大多数常见的情况可以用这个估算</p>
+<pre><code>now - sent + age &lt; max-age
+</code></pre><blockquote>
+<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt=""></p>
+</blockquote>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
+<ol>
+<li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
+<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="external">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
+<li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
+<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="external">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[OkHttp3源码分析【任务队列】]]></title>
+      <url>http://gdky005.com/2016/06/20/OkHttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E3%80%91/</url>
+      <content type="html"><![CDATA[<h1 id="OkHttp3源码分析【任务队列】"><a href="#OkHttp3源码分析【任务队列】" class="headerlink" title="OkHttp3源码分析【任务队列】"></a>OkHttp3源码分析【任务队列】</h1><h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ol>
+<li>线程池基础</li>
+<li>反向代理模块</li>
+<li>OkHttp 的任务调度</li>
+</ol>
+<p>OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。</p>
+<h1 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h1><ol>
+<li>线程池好处有哪些<br>线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库：</li>
+</ol>
+<p>多线程技术主要解决 处理器单元时间内多个线程执行的问题，他可以显著减少处理器单元内的闲置时间，增加处理器单元的吞吐能力。但如果对多线程应用不当，会增加对单个任务的处理时间。可以举例：<br>如果一台服务完成一项任务的时间为 T</p>
+<pre><code>T1 创建线程的时间
+T2 在线程中执行任务的时间，包括线程间同步所需时间
+T3 线程销毁的时间
+</code></pre><p>显然T ＝ T1＋T2＋T3。注意这是一个极度简化的假设。</p>
+<p>可以看出 T1 T3 是多线程本身带来的开销，我们渴望减少 T1，T3的时间，从而减少 T 的时间。但一些线程的使用者并没有注意到这一点，多余在程序中 频繁的创建或销毁线程，导致 T1 T3 占的比例更高。显然这是突出了线程的弱点（T1，T3），而不是有点（并发性）。</p>
+<p>线程池的技术是关注如何缩短或调整 T1，T3 的时间的技术，从而提高服务器程序性能。</p>
+<ul>
+<li>通过对线程缓存，减少创建和销毁的时间损失<ul>
+<li>通过控制线程数据的阈值，减少当线程过少带来的 CPU 闲置（比如说 长时间卡在I/O 上）与线程过多时对 JVM 对对内存与线程切换压力</li>
+</ul>
+</li>
+</ul>
+<p>在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了</p>
+<ol>
+<li>OkHttp 配置的线程池</li>
+</ol>
+<p>在 OkHttp 中，使用如下构造了单例线程池<br>    public synchronized ExecutorService executorService() {<br>      if (executorService == null) {<br>        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,<br>            new SynchronousQueue<runnable>(), Util.threadFactory(“OkHttp Dispatcher”, false));<br>      }<br>      return executorService;<br>    }</runnable></p>
+<p>参数说明：</p>
+<ul>
+<li>int corePoolSize: 最小并发线程数，这里并发同时包括空闲与活动的线程，如果是0的话，空闲一段时间后所有线程将全部被销毁。</li>
+<li>int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃<em>处理机制</em>来处理</li>
+<li>long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive</li>
+<li>TimeUnit unit: 时间单位，一般用秒</li>
+<li>BlockingQueue\<runnable\> workQueue:  工作队列</runnable\></li>
+<li>ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等</li>
+</ul>
+<p>可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。</p>
+<p>也就是说， 在实际运行中，当收到10个并发请求是，线程池会创建十个线程，当工作完成后，线程池会在60s 后相继关闭所有线程。</p>
+<blockquote>
+<p>在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers</p>
+</blockquote>
+<h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
+<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
+<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\<readyasynccalls\>对应 Nginx 的内部缓存</readyasynccalls\></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
+<p>具体成员如下：</p>
+<ul>
+<li>maxRequests = 64：最大并发请求数为64</li>
+<li>maxRequestsPerHost = 5：每个主机最大请求数为5</li>
+<li>Dispatcher：分发者，也就是生产者（默认在主线程）</li>
+<li>AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）</li>
+<li>ExecutorService：消费者池（也就是线程池）</li>
+<li>Deque\<readyasynccalls\>：缓存（用数组实现，可自动扩容，无大小限制）</readyasynccalls\></li>
+<li>Deque\<runningasynccalls\>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</runningasynccalls\></li>
+</ul>
+<p>通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间</p>
+<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build(" target="_blank" rel="external">http://qq.com&quot;).get().build(</a>);<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
+<pre><code>  }
+
+  @Override public void onResponse(Call call, Response response) throws IOException {
+
+  }
+});
+</code></pre><p>当 HttpClient 的请求入队 时，根据代码，我们可以发现实际上是 Dispatcher 进行了 入队 操作</p>
+<pre><code>synchronized void enqueue(AsyncCall call) {
+  if (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) {
+      //添加正在运行的请求
+    runningAsyncCalls.add(call);
+       //线程池执行请求
+    executorService().execute(call);
+  } else {
+      //添加到缓存队列
+    readyAsyncCalls.add(call);
+  }
+}
+</code></pre><p>可以发现请求是否进入缓存的条件如下：<br>    (runningRequests&lt;64 &amp;&amp; runningRequestsPerHost&lt;5)</p>
+<p>如果满足条件，那么久直接把 AsyncCall 直接加到 runningCalls 的队列中，并在现场中执行（线程池会根据当前负载自动创建，销毁，缓存相应的线程）。反之就放入readyAsyncCalls进行缓存等待。</p>
+<p>我们再分析请求元素AsyncCall（本质是实现了Runnable接口），它内部的 execute方法是：<br>    @Override protected void execute() {<br>      boolean signalledCallback = false;<br>      try {<br>          //执行耗时IO任务<br>        Response response = getResponseWithInterceptorChain(forWebSocket);<br>        if (canceled) {<br>          signalledCallback = true;<br>          //回调，注意这里回调是在线程池中，而不是想当然的主线程回调<br>          responseCallback.onFailure(RealCall.this, new IOException(“Canceled”));<br>        } else {<br>          signalledCallback = true;<br>          //回调，同上<br>          responseCallback.onResponse(RealCall.this, response);<br>        }<br>      } catch (IOException e) {<br>        if (signalledCallback) {<br>          // Do not signal the callback twice!<br>          logger.log(Level.INFO, “Callback failure for “ + toLoggableString(), e);<br>        } else {<br>          responseCallback.onFailure(RealCall.this, e);<br>        }<br>      } finally {<br>          //最关键的代码<br>        client.dispatcher().finished(this);<br>      }<br>    }</p>
+<p>当任务执行完成后，无是否有 异常，finally 代码段总会被执行，也就是会调用 Dispatcher 的 finished 函数，打开源码，就能发现它将正在运行的任务 Call从 队列 runningAsyncCalls 中移除后，执行 promoteCalls()函数<br>    private void promoteCalls() {<br>        //如果目前是最大负荷运转，接着等<br>      if (runningAsyncCalls.size() &gt;= maxRequests) return; // Already running max capacity.<br>      //如果缓存等待区是空的，接着等<br>      if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.</p>
+<pre><code>  for (Iterator&lt;AsyncCall&gt; i = readyAsyncCalls.iterator(); i.hasNext(); ) {
+    AsyncCall call = i.next();
+
+    if (runningCallsForHost(call) &lt; maxRequestsPerHost) {
+        //将缓存等待区最后一个移动到运行区中，并执行
+      i.remove();
+      runningAsyncCalls.add(call);
+      executorService().execute(call);
+    }
+
+    if (runningAsyncCalls.size() &gt;= maxRequests) return; // Reached max capacity.
+  }
+}
+</code></pre><p>这样，就主动的把缓存队列向前走了一步，而没有使用锁等复杂编码</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>通过上述的分析，我们知道了：</p>
+<ol>
+<li>OkHttp 采用 Dispatcher 技术，类似于 Nginx, 与线程池配合实现高并发，低阻塞的运行</li>
+<li>OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出</li>
+<li>OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度</li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="external">http://www.jianshu.com/p/6637369d02e7</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java Collection Cheat Sheet]]></title>
       <url>http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/</url>
-      <content type="html"><![CDATA[<h1 id="分享Java-Collection-的一张图"><a href="#分享Java-Collection-的一张图" class="headerlink" title="分享Java Collection 的一张图"></a>分享Java Collection 的一张图</h1><p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
+      <content type="html"><![CDATA[<h3 id="分享Java-Collection-的一张图"><a href="#分享Java-Collection-的一张图" class="headerlink" title="分享Java Collection 的一张图"></a>分享Java Collection 的一张图</h3><p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
 <p>我们可以看出他们之间的关系以及差别。</p>
 <p>例如：HashMap, HastTable,  Vector 和 LinkedList等</p>
 <p><img src="http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png" alt="Java Collection Cheat Sheet"></p>
@@ -64,8 +341,8 @@
 <p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
 <p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
 <ul>
-<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
-<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
+<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
+<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
 </ul>
 <ol>
 <li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
@@ -107,6 +384,7 @@
 <li>OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作</li>
 <li>OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理</li>
 </ol>
+<p>摘自：<a href="http://www.jianshu.com/p/23b8aa490a6b" target="_blank" rel="external">http://www.jianshu.com/p/23b8aa490a6b</a></p>
 ]]></content>
     </entry>
     
