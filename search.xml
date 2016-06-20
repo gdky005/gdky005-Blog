@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[分享Java Collection 的一张图]]></title>
+      <url>http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/</url>
+      <content type="html"><![CDATA[<p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
+<p>我们可以看出他们之间的关系以及差别。</p>
+<p>例如：HashMap, HastTable,  Vector 和 LinkedList等</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png" alt="Java Collection Cheat Sheet"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Okio 简单处理I/O操作]]></title>
       <url>http://gdky005.com/2016/06/20/Okio-%E7%AE%80%E5%8D%95%E5%A4%84%E7%90%86I-O%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<h1 id="Okio-简单处理I-O操作"><a href="#Okio-简单处理I-O操作" class="headerlink" title="Okio 简单处理I/O操作"></a>Okio 简单处理I/O操作</h1><p>Android 善用Okio简化处理I/O操作<br>Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。</p>
