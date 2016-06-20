@@ -399,6 +399,25 @@ c
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
+                    <span itemprop="name">okhttp3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -430,10 +449,10 @@ c
       
         
           
-          OkHttp3 源码分析【缓存策略】本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
+          本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的
+Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存
           ...
 
           <div class="post-more-link text-center">
@@ -508,6 +527,25 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
+                    <span itemprop="name">okhttp3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -539,143 +577,17 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
       
         
           
-          OkHttp3源码分析【任务队列】本文目录
+          本文目录
 线程池基础
 反向代理模块
 OkHttp 的任务调度
 
-OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是
+OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
+线
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/20/OkHttp3源码分析【任务队列】/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="url">
-                  Java Collection Cheat Sheet
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:21:47+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/Java-Collection-Cheat-Sheet/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          分享Java Collection 的一张图在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等
-我们可以看出他们之间的关系以及差别。
-例如：HashMap, Hast
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/Java-Collection-Cheat-Sheet/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -796,13 +708,13 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
       
         
           
-          Okhttp3源码分析【DiskLruCache】本文目录
+          本文目录
 Cache 的简介
 LinkedHashMap 原理
 OkHttp 的文件系统
 
 本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 缓存策略
-1.Cache 的简介缓存，顾名思义，也就是方便用户快速的获取值的一种储存
+1.Cache 的简介缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘
           ...
 
           <div class="post-more-link text-center">
@@ -1381,6 +1293,117 @@ Command line and GUI tools for produce Java source code
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/20/Bug小记-贵金属/" itemprop="url">
+                  Bug小记(**贵金属)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-20T18:24:09+08:00" content="2015-11-20">
+              2015-11-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/20/Bug小记-贵金属/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Bug小记-贵金属/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Bug 小记（**贵金属）作者：球儿
+最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下：
+####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击
+使用 GCD 写的倒计时，源代码：
+_isCountDown = YES;
+__block int time
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/20/Bug小记-贵金属/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1426,7 +1449,7 @@ Command line and GUI tools for produce Java source code
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1434,7 +1457,7 @@ Command line and GUI tools for produce Java source code
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1443,7 +1466,7 @@ Command line and GUI tools for produce Java source code
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
+  <meta name="keywords" content="okhttp3" />
 
 
 
@@ -82,29 +82,35 @@
 
 
 
-<meta name="description" content="OkHttp3 源码分析【缓存策略】本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
+<meta name="description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01">
+Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
+
+Cache-Con">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OkHttp3 源码分析【缓存策略】">
 <meta property="og:url" content="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="OkHttp3 源码分析【缓存策略】本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
+<meta property="og:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01">
+Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
+
+Cache-Con">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png">
-<meta property="og:updated_time" content="2016-06-20T08:39:17.000Z">
+<meta property="og:updated_time" content="2016-06-20T09:06:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OkHttp3 源码分析【缓存策略】">
-<meta name="twitter:description" content="OkHttp3 源码分析【缓存策略】本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
+<meta name="twitter:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01">
+Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
+
+Cache-Con">
 <meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
 
 
@@ -302,6 +308,25 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
+                    <span itemprop="name">okhttp3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -336,7 +361,7 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
       
 
       
-        <h1 id="OkHttp3-源码分析【缓存策略】"><a href="#OkHttp3-源码分析【缓存策略】" class="headerlink" title="OkHttp3 源码分析【缓存策略】"></a>OkHttp3 源码分析【缓存策略】</h1><p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
+        <p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
 <h3 id="Http-缓存基础知识"><a href="#Http-缓存基础知识" class="headerlink" title="Http 缓存基础知识"></a>Http 缓存基础知识</h3><p>分析源目前，我们先回顾一下 Http 的缓存 Header 的含义</p>
 <ol>
 <li><p>Expires<br>表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存<br> Expires: Thu, 12 Jan 2017 11:01:33 GMT</p>
@@ -524,6 +549,12 @@ cacheResponse = cacheStrategy.cacheResponse;
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/okhttp3/" rel="tag">#okhttp3</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -633,7 +664,7 @@ cacheResponse = cacheStrategy.cacheResponse;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -641,7 +672,7 @@ cacheResponse = cacheStrategy.cacheResponse;
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -650,7 +681,7 @@ cacheResponse = cacheStrategy.cacheResponse;
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -715,7 +746,7 @@ cacheResponse = cacheStrategy.cacheResponse;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp3-源码分析【缓存策略】"><span class="nav-number">1.</span> <span class="nav-text">OkHttp3 源码分析【缓存策略】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-缓存基础知识"><span class="nav-number">1.0.1.</span> <span class="nav-text">Http 缓存基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">1.0.2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.0.3.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-缓存基础知识"><span class="nav-number">1.</span> <span class="nav-text">Http 缓存基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
           </div>
         </section>
