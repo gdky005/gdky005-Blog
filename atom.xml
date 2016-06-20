@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2016-04-19T13:17:13.000Z</updated>
+  <updated>2016-06-20T07:58:34.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Okhttp3源码分析【DiskLruCache】</title>
+    <link href="http://gdky005.com/2016/06/20/Okhttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90DiskLruCache%E3%80%91/"/>
+    <id>http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/</id>
+    <published>2016-06-20T07:57:46.000Z</published>
+    <updated>2016-06-20T07:58:34.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;a href=&quot;#Okhttp3源码分析【DiskLruCache】&quot; class=&quot;headerlink&quot; title=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;/a&gt;Okhttp3源码分析【DiskLruCache】&lt;/h1&gt;&lt;h3 id=&quot;本文目录&quot;&gt;&lt;a href=&quot;#本文目录&quot; class=&quot;headerlink&quot; title=&quot;本文目录&quot;&gt;&lt;/a&gt;本文目录&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Cache 的简介&lt;/li&gt;
+&lt;li&gt;LinkedHashMap 原理&lt;/li&gt;
+&lt;li&gt;OkHttp 的文件系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 &lt;strong&gt;缓存策略&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-Cache-的简介&quot;&gt;&lt;a href=&quot;#1-Cache-的简介&quot; class=&quot;headerlink&quot; title=&quot;1.Cache 的简介&quot;&gt;&lt;/a&gt;1.Cache 的简介&lt;/h3&gt;&lt;p&gt;缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘，网络，CDN反代缓存，DNS递归查询，OS页面置换，都可以看作缓存。它有如下的特点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;缓存载体与持久载体总是相对的，容量远远小于持久容量，成本高于持久容量，速度高于持久容量。比如硬盘与网络，目前主流的SSD硬盘可以达到500MB/S，而很多地区网速却只有4M，将网络中的文件存到硬盘中，硬盘就相当于缓存；再比如内存与硬盘，主流的DDR3内存的速度可以达到10GB/S，而硬盘相对的慢了很多数量级别，将硬盘的游戏加载到内存，内存就相对于硬盘是一种缓存。&lt;/li&gt;
+&lt;li&gt;需要实现 &lt;em&gt;排序依据&lt;/em&gt;， 子啊 java 中，可以使用 Comparable\&lt;t\&gt;作为排序的接口。&lt;/t\&gt;&lt;/li&gt;
+&lt;li&gt;需要一种 &lt;em&gt;页面置换算法&lt;/em&gt; 将旧页面取代去掉 换成新页面，如 最久未使用算法（LRU）、先进先出（FIFO）、最近最少使用算法（LFU）、非最近使用算法（NMRU）等&lt;/li&gt;
+&lt;li&gt;如果缓存中没有，就需要从原始地址获取，这个步骤叫做『回源』，CDN厂商会标注“回源率”作为卖点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 OkHttp 中，使用 FileSystem 作为缓存载体（磁盘相对于网络的缓存），使用 LRU 作为 页面置换算法 （封装了 LinkedHashMap）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.Comparable\&lt;t\&gt;是java用来排序的接口，推荐参考阅读《Java Software Structures Designing and Using Data Structures》&lt;br&gt;2.页面置换算法可以参考阅读《现代操作系统》的中译本&lt;/t\&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;2-LinkedHashMap-原理&quot;&gt;&lt;a href=&quot;#2-LinkedHashMap-原理&quot; class=&quot;headerlink&quot; title=&quot;2.LinkedHashMap 原理&quot;&gt;&lt;/a&gt;2.LinkedHashMap 原理&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;源码概述分析&lt;br&gt;在学之前，应该先了解下 LinkedHashMap。 LinkedHashMap 继承于 HashMap.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 HashMap 中，维护了一个 Node\&lt;k,v\&gt;[] table,当 put操作时，将元素按照计算后的 hash 值 放入到 数组相应位置 table[has] 中，最后迭代式，从 table[0] 开始向后迭代，具体的顺序取决于元素的 HashCode, 所以我们常说 HashMap 的元素迭代是不可预测的。&lt;/k,v\&gt;&lt;/p&gt;
+&lt;p&gt;而在 LinkedHashMap 中，除了 Node\&lt;k,v\&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt; table， 还维护着 Entry\&lt;k,v\&gt; head,tail。 当 put 元素后，调用以下回调函数 对链表 将元素移动到链尾 已经清理旧元素&lt;br&gt;    // move node to last&lt;br&gt;    void afterNodeAccess(Node&lt;k,v&gt; e)&lt;br&gt;    // possibly remove eldest&lt;br&gt;    void afterNodeInsertion(boolean evict)&lt;/k,v&gt;&lt;/k,v\&gt;&lt;/k,v\&gt;&lt;/p&gt;
+&lt;p&gt;当 get 元素时，如果设置 accessOrder 为 true 时，通过调用如下回调 元素到链尾， 这里强调 移动，如果元素本身已经在 链表中，那它只会移动，而不是新建&lt;br&gt;    // move node to last&lt;br&gt;    void afterNodeAccess(Node&lt;k,v&gt; e)&lt;/k,v&gt;&lt;/p&gt;
+&lt;p&gt;综上，当你返回对元素进行 get/put 操作时，经常使用的元素会被移动到 tail 中，而长期不用的元素 会被移动到 head&lt;/p&gt;
+&lt;p&gt;最后 迭代时，迭代是从旧元素 迭代到新元素，这就是 LRU 的实现&lt;br&gt;    head &amp;lt;–&amp;gt; …. &amp;lt;–&amp;gt; tail&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;旧元素 &amp;lt;-----------&amp;gt; 反复使用的新元素
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Okhttp 中，使用了 DiskLruCache 对 LinkedHashMap 进行封装实现了 LRU， 如图进行初始化&lt;br&gt;    //按照访问顺序排序的Map，设置accessOrder为true&lt;br&gt;    map = new LinkedHashMap&amp;lt;&amp;gt;(0, 0.75f, true);&lt;/p&gt;
+&lt;h3 id=&quot;3-OkHttp-的文件系统&quot;&gt;&lt;a href=&quot;#3-OkHttp-的文件系统&quot; class=&quot;headerlink&quot; title=&quot;3.OkHttp 的文件系统&quot;&gt;&lt;/a&gt;3.OkHttp 的文件系统&lt;/h3&gt;&lt;p&gt;OkHttp 中的关键对象如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FileSystem: 使用 Okio 对 File 的封装，简化了 IO 操作&lt;/li&gt;
+&lt;li&gt;DiskLruCache.Editor: 添加了同步锁，并对 FileSystem 进行高度封装&lt;/li&gt;
+&lt;li&gt;DiskLruCache.Entry: 维护着 key 对应的多个文件&lt;/li&gt;
+&lt;li&gt;Cache.Entry: Response java 对象 与 Okio 流 的序列化/反序列化类&lt;/li&gt;
+&lt;li&gt;DiskLruCache: 维护着文件的创建， 清理，读取。 内部有线程池，LinkedHashMap（也是 LruCache）&lt;/li&gt;
+&lt;li&gt;Cache: 被上级代码调用，提供透明的 put/get 操作，封装了缓存检查条件与 DiskLruCache, 开发者只用配置大小即可，不需要手动管理&lt;/li&gt;
+&lt;li&gt;Response/Request: OkHttp 的请求与回应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;文件初级封装（FileSystem）&lt;br&gt;众所周知，文件读写是流操作，是一堆 try catch 操作，在 OkHttp 中设计了 FileSystem.SYSTEM 作为文件层的管理。通过用 Okio 库中的 source/sink对 File 进行包装，而不用更为头痛 的 Inputstream 这类东西，使用上层调用与管道操作一样简单。&lt;br&gt; File(低级操作，步骤繁琐) -&amp;gt; Okio(封装) －&amp;gt; FileSystem(友好工具类)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Okio 很不错，可以去&lt;a href=&quot;https://github.com/square/okio&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;查看。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;文件高级封装（DiskLruCache.Entry/Editor/Snapshot）&lt;br&gt;本部分进行了如下操作，进行了实际的 put/get 操作&lt;br&gt; FileSystem &amp;lt;– DiskLruCache.Entry/Editor –&amp;gt; source/sink(更少参数)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;DiskLruCache.Entry 针对每个请求的 url 对应文件进行维护（而没有进行创建/读取等操作）， 它内部维护了2个 File数组，一般来说 每个 url 对应对应2~4个文件。 文件名的规则是{md5(url) + {0,1}}, 后面的 0 或者 1 ，分别表示 ENTRY_METADATA 与 ENTRY_BODY。&lt;/p&gt;
+&lt;p&gt;比如在缓存的路径下执行 ls,结果如下：&lt;br&gt;    $ ls&lt;br&gt;    5716ab0f06c49bc7cf602397c51d5677.0&lt;br&gt;    5716ab0f06c49bc7cf602397c51d5677.1&lt;br&gt;    5b2f52377611dc6201a1871bdb997466.0&lt;br&gt;    5b2f52377611dc6201a1871bdb997466.1&lt;br&gt;    journal&lt;br&gt;    …..&lt;/p&gt;
+&lt;p&gt;DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。&lt;br&gt;&lt;img src=&quot;DraggedImage.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;读取场景：读取时，需要获取快照，通过调用链分析&lt;br&gt;&lt;img src=&quot;DraggedImage-1.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;序列化与反序列化（Cache.Entry）&lt;br&gt;文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变&lt;blockquote&gt;
+&lt;p&gt;Resonse(java对象) \&amp;lt;— Cache.Entry —&gt; source/sink(文件io)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以通过 find usage 位置相同，概括如下：&lt;br&gt;如果信息本身是二进制，就直接写入到文件中；如果文本是信息，就按照预设的格式写入即可。&lt;br&gt;    至于序列化后的东西到底是什么，可以直接在shell下运行cat命令或者打开文本编辑器进行输出查看。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;注意这里的Cache.Entry与上面的DiskLruCache.Entry是两个完全不同的对象
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;缓存的自动清理&lt;br&gt;在 DiskLruCache 初始化时，将简历线程池，最少0个线程池，最大一个线程，线程空闲可活60s, 线程名叫做【OkHttp DiskLruCache】,当 JVM 退出时，线程自动结束。&lt;/p&gt;
+&lt;p&gt; new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;new LinkedBlockingQueue&amp;lt;Runnable&amp;gt;(), Util.threadFactory(&amp;quot;OkHttp DiskLruCache&amp;quot;, true))
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当需要清理时，执行清理任务，它将在每次 get/set 后调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private final Runnable cleanupRunnable = new Runnable() {
+  public void run() {
+    synchronized (DiskLruCache.this) {
+      if (!initialized | closed) {
+        return; // Nothing to do
+      }
+      try {
+        //遍历LRU缓存(从旧到新进行遍历map),并删除文件
+        //直到小于MaxSize为止
+        trimToSize();
+        if (journalRebuildRequired()) {
+          rebuildJournal();
+          redundantOpCount = 0;
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;OkHttp 通过对文件进行了多次封装，实现了简单的I/O 操作&lt;/li&gt;
+&lt;li&gt;OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作&lt;/li&gt;
+&lt;li&gt;OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;a href=&quot;#Okhttp3源码分析【DiskLruCache】&quot; class=&quot;headerlink&quot; title=&quot;Okhttp3源码分析【DiskLruCache】&quot;&gt;&lt;/a&gt;Okhttp3源码分析
+    
+    </summary>
+    
+      <category term="okhttp3" scheme="http://gdky005.com/categories/okhttp3/"/>
+    
+    
+      <category term="okhttp3" scheme="http://gdky005.com/tags/okhttp3/"/>
+    
+  </entry>
   
   <entry>
     <title>代码面试最常用的10大算法</title>
@@ -497,37 +610,6 @@ return A[n];
     
     
       <category term="技能提升" scheme="http://gdky005.com/tags/%E6%8A%80%E8%83%BD%E6%8F%90%E5%8D%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fragment not attached to Activity 异常</title>
-    <link href="http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-%E5%BC%82%E5%B8%B8/"/>
-    <id>http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-异常/</id>
-    <published>2015-11-27T02:48:17.000Z</published>
-    <updated>2016-04-19T13:17:13.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot;&gt;&lt;a href=&quot;#关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot; class=&quot;headerlink&quot; title=&quot;关于Fragment（XXFragment） not attached to Activity 异常&quot;&gt;&lt;/a&gt;关于Fragment（XXFragment） not attached to Activity 异常&lt;/h3&gt;&lt;p&gt;出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：&lt;a href=&quot;http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity%C2%A0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity &lt;/a&gt; 回答的主要是在调用&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;getResources().getString(R.string.app_name); 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之前增加一个判断isAdded(),两外说这个异常解决办法的有&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这个是针对另外一种情况下的解决方式。&lt;/p&gt;
-&lt;h3 id=&quot;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot;&gt;&lt;a href=&quot;#在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot; class=&quot;headerlink&quot; title=&quot;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&quot;&gt;&lt;/a&gt;在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Bundle b = new Bundle(); 
-b.putParcelable(&amp;quot;bitmap&amp;quot;, bitmap2); 
-imageRecognitionFragment.setArguments(b); 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;设置好参数，并且添加hide(),add(),方法之后，需要commit()，来实现两个Fragment跳转的时候，这种情形下参数需要进行系统保存，但是这个时候你已经实现了跳转，系统参数却没有保存。此时就会报异常:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;分析原因：&quot;&gt;&lt;a href=&quot;#分析原因：&quot; class=&quot;headerlink&quot; title=&quot;分析原因：&quot;&gt;&lt;/a&gt;分析原因：&lt;/h3&gt;&lt;p&gt;你并不需要系统保存的参数，只要你自己设置的参数能够传递过去，在另外一个Fragment里能够顺利接受就行了，现在android里提供了另外一种形式的提交方式commitAllowingStateLoss()，从名字上就能看出，这种提交是允许状态值丢失的。到此问题得到完美解决，值的传递是你自己控制的。&lt;/p&gt;
-&lt;p&gt;这里也说一下另外一个问题，bitmap 也可以通过Bundle传递的，使用putParacelable就可以了&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot;&gt;&lt;a href=&quot;#关于Fragment（XXFragment）-not-attached-to-Activity-异常&quot; class=&quot;headerlink&quot;
-    
-    </summary>
-    
-    
-      <category term="android" scheme="http://gdky005.com/tags/android/"/>
     
   </entry>
   
