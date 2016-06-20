@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android崩溃异常" />
+  <meta name="keywords" content="okhttp3" />
 
 
 
@@ -82,25 +82,22 @@
 
 
 
-<meta name="description" content="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析
-遇到该问题，程序会直接崩溃
-1.具体问题：
-java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. M">
+<meta name="description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
+之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
+代理异常？切换成功后，遇到的第一个问题就是：代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析">
-<meta property="og:url" content="http://gdky005.com/2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/index.html">
+<meta property="og:title" content="从 volley 切换到 OkHttp 遇到的坑">
+<meta property="og:url" content="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析
-遇到该问题，程序会直接崩溃
-1.具体问题：
-java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. M">
-<meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
+<meta property="og:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
+之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
+代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta property="og:updated_time" content="2016-06-20T10:17:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析">
-<meta name="twitter:description" content="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析
-遇到该问题，程序会直接崩溃
-1.具体问题：
-java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. M">
+<meta name="twitter:title" content="从 volley 切换到 OkHttp 遇到的坑">
+<meta name="twitter:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
+之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
+代理异常？切换成功后，遇到的第一个问题就是：代">
 
 
 
@@ -126,7 +123,7 @@ java.lang.IllegalStateException: The content of the adapter has changed but List
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> 程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析 | 孤独狂饮 </title>
+  <title> 从 volley 切换到 OkHttp 遇到的坑 | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +276,7 @@ java.lang.IllegalStateException: The content of the adapter has changed but List
             
             
               
-                程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析
+                从 volley 切换到 OkHttp 遇到的坑
               
             
           </h1>
@@ -291,19 +288,38 @@ java.lang.IllegalStateException: The content of the adapter has changed but List
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-12T12:01:59+08:00" content="2015-11-12">
-              2015-11-12
+            <time itemprop="dateCreated" datetime="2016-06-20T18:17:30+08:00" content="2016-06-20">
+              2016-06-20
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
+                    <span itemprop="name">okhttp3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/" itemprop="commentsCount"></span>
+                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,65 +347,132 @@ java.lang.IllegalStateException: The content of the adapter has changed but List
       
 
       
-        <h3 id="程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析"><a href="#程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析" class="headerlink" title="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析"></a>程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析</h3><p><br></p>
-<p>遇到该问题，程序会直接崩溃</p>
-<p>1.具体问题：</p>
-<pre><code>java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes. [in ListView(2131493253, class android.widget.ListView) with Adapter(class com.kaolafm.a.f)]
-at android.widget.ListView.layoutChildren(ListView.java:1562)
-at android.widget.AbsListView$CheckForTap.run(AbsListView.java:3281)
-at android.os.Handler.handleCallback(Handler.java:739)
-at android.os.Handler.dispatchMessage(Handler.java:95)
-at android.os.Looper.loop(Looper.java:135)
-at android.app.ActivityThread.main(ActivityThread.java:5254)
-at java.lang.reflect.Method.invoke(Native Method)
-at java.lang.reflect.Method.invoke(Method.java:372)
-at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
-at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
-</code></pre><p>2.出现的过程：</p>
-<p>程序中聊天功能，当人数太多的时候，聊天室界面会非常的卡顿。做了一次优化：来一条消息后并不会立刻更新 listview 的adapter的数据源 ,而且将数据缓存起来，从第一个消息过来后，等待一秒钟，再去更新adapter的数据源。</p>
-<p>具体源码是：<br>    while (mDataList != null &amp;&amp; mDataList.size() &gt; MAX_MESSAGE_NUM) {<br>                            mDataList.remove(0);<br>                        }<br>                        MessageBean data = (MessageBean) msg.obj;<br>                        if (!ChatManager.getInstance(getActivity()).handleMessageSended(data)) {<br>                            messageBeanList.add(data);<br>                        }</p>
-<pre><code>//调整 在线人数很多，发消息很频繁的bug.
-isOnlinePeopleLock = true;
-if (isOnlinePeopleLock) {
-    mHandler.postDelayed(new Runnable() {
-        @Override
-        public void run() {
-            mDataList.addAll(messageBeanList);
-            messageBeanList.clear();
-            isOnlinePeopleLock = false;
-            listViewSelectEnd(mListView, isTouchListView);
+        <p>这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。</p>
+<p>之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.</p>
+<h3 id="代理异常？"><a href="#代理异常？" class="headerlink" title="代理异常？"></a>代理异常？</h3><p>切换成功后，遇到的第一个问题就是：代理功能没法使用，我们客户端 是有联通流量包的功能的，因此必须要加 代理功能。</p>
+<p>根据 okhttp 里面  issue 的回答，弄好多次都不行，折腾了一两天左右。 最后也懒得管了，先放放，优先解决其他问题。 </p>
+<p>之后过了几天，再回来弄这块的时候，就突然好了，兴奋坏了。赶紧查查和之前的有没有什么差异？</p>
+<p>经过对比后发现：原来是 之前写 volley 的时候是这样的：</p>
+<pre><code>HttpURLConnection connection;
+    if (&quot;https&quot;.equals(url.getProtocol())) {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGETCPPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&quot;Proxy-Authorization&quot;,
+                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
+    } else {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGEPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&quot;Authorization&quot;,
+                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
+    }
+    connection.addRequestProperty(&quot;Proxy-Connection&quot;, &quot;Keep-Alive&quot;);
+</code></pre><p>主要区分了 https 和 http, 然后里面传入的 key 和 端口号都不一样。</p>
+<p>但是在 okhttp 里面貌似是不需要区分的。只需要这样写：</p>
+<pre><code>/**
+     * 设置联通流量 代理功能
+     * @param builder
+     */
+    private void setUnicomProxy(OkHttpClient.Builder builder) {
+        //添加联通代理功能
+        if (TrafficUtil.getUnicomProxyAvailable()) {
+            Authenticator proxyAuthenticator = new Authenticator() {
+                @Override
+                public okhttp3.Request authenticate(Route route, Response response) throws IOException {
+                    return response.request().newBuilder().header(&quot;Proxy-Authorization&quot;, &quot;Basic &quot; +
+                            &quot;MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;).header(&quot;Proxy-Connection&quot;,
+                            &quot;Keep-Alive&quot;).build();
+                }
+            };
+
+            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(FLOWPACKAGEHOST,
+                    FLOWPACKAGETCPPORT)));
+            builder.proxyAuthenticator(proxyAuthenticator);
         }
-    }, ONE_SECOND);
+    }
+</code></pre><p>就可以了。<br><code>FLOWPACKAGEHOST -&gt; test.proxy.1111.com (这是域名)</code><br><code>FLOWPACKAGETCPPORT -&gt; 8143</code><br>这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。</p>
+<p><code>备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈</code></p>
+<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：<br>     @NonNull<br>        private SSLContext getSslContext(InputStream… certificates) {<br>            SSLContext sslContext = null;</p>
+<pre><code>        try {
+            CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates) {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate
+                        (certificate));
+                try {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+            trustManagerFactory.init(keyStore);
+            sslContext.init(null, trustManagerFactory.getTrustManagers(),
+                    new SecureRandom());
+
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }   finally {
+        }
+
+        return sslContext;
+    }
+
+/**
+     * 启用 OkHttps 域名校验功能
+     * @param builder
+     */
+    private void setOkhttpSSLContext(OkHttpClient.Builder builder) {
+        SSLContext sslContext = getSslContext(KaolaApplication.mContext.getResources().openRawResource(R
+                .raw.kl_magic));
+
+        if (sslContext != null) {
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    HostnameVerifier hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hostnameVerifier.verify(&quot;xxx.com&quot;, session); //启用xxx 域名校验 (这里是一个非常重要的地方，缺少了这一步肯定不行)
+                }
+            });
+            builder.sslSocketFactory(sslContext.getSocketFactory());
+        }
+    }
+</code></pre><p>这句是非常重要的：<br><code>hostnameVerifier.verify(&quot;xxx.com&quot;, session);</code>主要是进行 https 的域名校验，用证书匹配你的域名，如果匹配成功，那么就可以直接使用，否则 https 握手失败，无法正确发送请求。</p>
+<p>之前尝试过使用 使用<br>    builder.hostnameVerifier(new AllowAllHostnameVerifier());</p>
+<p>这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。</p>
+<h3 id="post-参数不能为空？"><a href="#post-参数不能为空？" class="headerlink" title="post 参数不能为空？"></a>post 参数不能为空？</h3><p>这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).</p>
+<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="external">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
+<p>具体参考这个：</p>
+<pre><code>public void addRequest(int method, final Map&lt;String, String&gt; params, final String baseUrl,
+                           final TypeReference&lt;? extends BaseResponse&gt; type, final JsonResultCallback callback) {
+            ......
+          if (params.size() == 0 &amp;&amp; method == Request.Method.POST)
+            params.put(&quot;temp&quot;, &quot;temp&quot;); //解决 method POST must have a request body.;
+            ......
 }
-</code></pre><p>当人数很多的时候会偶然出现：<br>    java.lang.IllegalStateException</p>
-<p>3.分析问题:</p>
-<p><strong>Exception解读：</strong><br><strong>        Adapter的数据内容已经改变，但是ListView却未接收到通知。要确保不在后台线程中修改Adapter的数据内容，而要在UI Thread中修改。确保Adapter的数据内容改变时一定要调用notifyDataSetChanged()方法。</strong></p>
-<p><br><br>从Android源码上看看：</p>
-<pre><code>// Handle the empty set by removing all views that are visible
-// and calling it a day
-if (mItemCount == 0) {
-    resetList();
-    invokeOnItemScrollListener();
-    return;
-} else if (mItemCount != mAdapter.getCount()) {
-    throw new IllegalStateException(&quot;The content of the adapter has changed but &quot;
-            + &quot;ListView did not receive a notification. Make sure the content of &quot;
-            + &quot;your adapter is not modified from a background thread, but only &quot;
-            + &quot;from the UI thread. [in ListView(&quot; + getId() + &quot;, &quot; + getClass()
-            + &quot;) with Adapter(&quot; + mAdapter.getClass() + &quot;)]&quot;);
-}
-</code></pre><h4 id="当ListView缓存的数据Count和ListView中Adapter-getCount-不等时，会抛出该异常。"><a href="#当ListView缓存的数据Count和ListView中Adapter-getCount-不等时，会抛出该异常。" class="headerlink" title="当ListView缓存的数据Count和ListView中Adapter.getCount()不等时，会抛出该异常。"></a><strong>当ListView缓存的数据Count和ListView中Adapter.getCount()不等时，会抛出该异常。</strong></h4><p><br><br>可以分析出来的是：</p>
-<p>当人数过多的时候，可能先走了 mDataList.remove(0); 还没执行 listViewSelectEnd方法 （方法里面包含了 notifyDataSetChanged()）, 并不能保证Adapter的数据更新时，立马调用notifyDataSetChanged()通知ListView，这两个线程之间的时间差引起的数据不同步，导致ListView的layoutChildren()中访问Adapter的getCount()方法时，Adapter内已经是最新数据源，而ListView内的缓存数据Count仍是旧数据的Count，该问题最终原因终于浮出水面。</p>
-<p>4.解决办法：</p>
-<p><strong>把addData(List)方法内更新数据的代码挪出来，和notifyDataSetChanged()方法一同放在Handler里，保证数据更新时及时通知ListView。</strong></p>
-<p>5.注意事项：</p>
-<p>为了尽量避免该问题，以后编程尽量从如下几个方面检查自己的代码：</p>
-<ul>
-<li>确保Adapter的数据更新后一定要调用notifyDataSetChanged()方法通知ListView</li>
-<li>数据更新和notifyDataSetChanged()放在UI线程内，且必须同步顺序执行，不可异步</li>
-<li>仔细检查确认getCount()方法返回值是否正确</li>
-</ul>
-<p>参考：<br><a href="http://www.cnblogs.com/monodin/p/3874147.html" target="_blank" rel="external">http://www.cnblogs.com/monodin/p/3874147.html</a></p>
+</code></pre><p>这三个问题解决后，基本就可以放心使用了。</p>
 
       
     </div>
@@ -415,7 +498,7 @@ if (mItemCount == 0) {
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag">#android</a>
+            <a href="/tags/okhttp3/" rel="tag">#okhttp3</a>
           
         </div>
       
@@ -424,17 +507,13 @@ if (mItemCount == 0) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/10/圆角图片处理/" rel="next" title="圆角图片处理">
-                <i class="fa fa-chevron-left"></i> 圆角图片处理
+              <a href="/2016/06/20/Java-Collection-Cheat-Sheet/" rel="next" title="分享Java Collection 的一张图">
+                <i class="fa fa-chevron-left"></i> 分享Java Collection 的一张图
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/17/RecyclerView的基类写法/" rel="prev" title="RecyclerView的基类写法">
-                RecyclerView的基类写法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,10 +528,10 @@ if (mItemCount == 0) {
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/"
-     data-title="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析"
+        <div class="ds-share flat" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/"
+     data-title="从 volley 切换到 OkHttp 遇到的坑"
      data-content=""
-     data-url="http://gdky005.com/2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/">
+     data-url="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -482,8 +561,8 @@ if (mItemCount == 0) {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/"
-           data-title="程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析" data-url="http://gdky005.com/2015/11/12/程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析/">
+      <div class="ds-thread" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/"
+           data-title="从 volley 切换到 OkHttp 遇到的坑" data-url="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
       </div>
     
   </div>
@@ -610,7 +689,7 @@ if (mItemCount == 0) {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序运行崩溃提示-Adapter的The-content-of-the-adapter-has-changed问题分析"><span class="nav-number">1.</span> <span class="nav-text">程序运行崩溃提示 Adapter的The content of the adapter has changed问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当ListView缓存的数据Count和ListView中Adapter-getCount-不等时，会抛出该异常。"><span class="nav-number">1.1.</span> <span class="nav-text">当ListView缓存的数据Count和ListView中Adapter.getCount()不等时，会抛出该异常。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理异常？"><span class="nav-number">1.</span> <span class="nav-text">代理异常？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-STL证书-出错？"><span class="nav-number">2.</span> <span class="nav-text">SSL/STL证书 出错？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-参数不能为空？"><span class="nav-number">3.</span> <span class="nav-text">post 参数不能为空？</span></a></li></ol></div>
             
           </div>
         </section>
