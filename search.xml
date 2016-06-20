@@ -1340,9 +1340,9 @@ dispatch_resume(_timer);
       <title><![CDATA[使用groovy读取excel里面内容]]></title>
       <url>http://gdky005.com/2015/11/20/%E4%BD%BF%E7%94%A8groovy%E8%AF%BB%E5%8F%96excel%E9%87%8C%E9%9D%A2%E5%86%85%E5%AE%B9/</url>
       <content type="html"><![CDATA[<h1 id="使用groovy读取excel里面内容"><a href="#使用groovy读取excel里面内容" class="headerlink" title="使用groovy读取excel里面内容"></a>使用groovy读取excel里面内容</h1><h3 id="需要依赖"><a href="#需要依赖" class="headerlink" title="需要依赖"></a>需要依赖</h3><p><a href="http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip" target="_blank" rel="external">apache.org/poi</a></p>
-<h3 id="项目目录结构："><a href="#项目目录结构：" class="headerlink" title="项目目录结构："></a>项目目录结构：</h3><p><img src="http://m1.yea.im/43k.jpg" alt=""></p>
+<h3 id="项目目录结构："><a href="#项目目录结构：" class="headerlink" title="项目目录结构："></a>项目目录结构：</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_1.png" alt=""></p>
 <p>项目 assets 下面放了一个people.xlsx文件</p>
-<p><img src="http://m1.yea.im/43i.jpg" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_2.png" alt=""></p>
 <h3 id="PS："><a href="#PS：" class="headerlink" title="PS："></a><strong>PS</strong>：</h3><ul>
 <li>本文依赖 <a href="http://blog.csdn.net/andyxuq/article/details/7916098" target="_blank" rel="external">Groovy读取excel文件</a> 尝试读取后，发现不能运行</li>
 <li>下载 Apache的POI组建 遇到问题</li>
@@ -1413,10 +1413,10 @@ class TestGroovy {
         a.updateResourceDate();
     }
 }
-</code></pre><p>项目运行结果：<br><img src="http://m1.yea.im/43n.jpg" alt=""></p>
+</code></pre><p>项目运行结果：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_3.png" alt=""></p>
 <h3 id="Apache的POI组建-遇到问题"><a href="#Apache的POI组建-遇到问题" class="headerlink" title="Apache的POI组建 遇到问题"></a>Apache的POI组建 遇到问题</h3><p>首先进入网址：<a href="http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip" target="_blank" rel="external">http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip</a></p>
-<p>下载文件的时候，一般在工程里面依赖的是 jar,但是下面的是 .zip 很是疑惑,这个文件 26.4M，虽然不相信，但是下载下来后解压开，才明白：<br><img src="http://m1.yea.im/43l.jpg" alt=""></p>
-<p>其中该项目中使用了<br><img src="http://m1.yea.im/43j.jpg" alt=""><br>xmlbeans-2.6.0.jar</p>
+<p>下载文件的时候，一般在工程里面依赖的是 jar,但是下面的是 .zip 很是疑惑,这个文件 26.4M，虽然不相信，但是下载下来后解压开，才明白：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_4.png" alt=""></p>
+<p>其中该项目中使用了<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_5.png" alt=""><br>xmlbeans-2.6.0.jar</p>
 <p>这个文件在上面的 lib 下面。</p>
 <p>因为我使用的mac 2010 office， 所以文件保存的是：.xlsx。开始使用的 </p>
 <p><em>HSSFRow</em>  ，发现报错：<br>    Request processing failed; nested exception is org.apache.poi.poifs.filesystem.OfficeXmlFileException: The supplied data appears to be in the Office 2007+ XML. POI only supports OLE2 Office documents</p>
