@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[网络请求的 UA]]></title>
+      <url>http://gdky005.com/2016/06/20/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%9A%84-UA/</url>
+      <content type="html"><![CDATA[<p>一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。<br>一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：</p>
+<p><code>appName + versionName + versonCode + 渠道号 + 设备基本信息</code></p>
+<p>这里写一些大体的代码，其他可以自行封装：</p>
+<p>拼接数据：</p>
+<p><code>appName: mContext.getString(R.string.appname)</code></p>
+<p><code>versionName:  DeviceUtil.getVersionName(mContext)</code></p>
+<p><code>versonCode: DeviceUtil.getVersionCode(mContext)</code></p>
+<p><code>渠道号：DeviceUtil.getChannelTag(mContext)</code></p>
+<p>设备基本信息:<br><code>build.MODEL         Nexus 6</code></p>
+<p><code>build.MANUFACTURER  motorola</code></p>
+<p><code>build.BRAND            google</code></p>
+<p><code>build.FINGERPRINT    google/shamu/shamu:6.0.1/MMB29S/2489379:user/release-keys</code></p>
+<p><code>Build.VERSION.RELEASE 6.0.1</code></p>
+<p><code>Build.VERSION.SDKINT 23</code></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[从 volley 切换到 OkHttp 遇到的坑]]></title>
       <url>http://gdky005.com/2016/06/20/%E4%BB%8E-volley-%E5%88%87%E6%8D%A2%E5%88%B0-OkHttp-%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
       <content type="html"><![CDATA[<p>这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。</p>
