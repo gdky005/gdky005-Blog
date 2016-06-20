@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title><![CDATA[使用 Android Studio 内存分析工具]]></title>
+      <url>http://gdky005.com/2016/06/20/%E4%BD%BF%E7%94%A8-Android-Studio-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</url>
+      <content type="html"><![CDATA[<h3 id="App的内存使用可以通过以下三个工具分析："><a href="#App的内存使用可以通过以下三个工具分析：" class="headerlink" title="App的内存使用可以通过以下三个工具分析："></a>App的内存使用可以通过以下三个工具分析：</h3><ul>
+<li>Heap Viewer</li>
+<li>Memory Monitor</li>
+<li>Allocation Tracker<br>并且，这个三个是互补的可视化内存分析工具。</li>
+</ul>
+<ol>
+<li>使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。</li>
+<li>运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。</li>
+<li>使用 Allocation Tracker 可以确定出你的代码中存在的问题。</li>
+</ol>
+<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt=""></p>
+<ul>
+<li>显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。</li>
+<li>可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。</li>
+<li>提供一种快速看出App 是否是由于 运行内存不足 而导致的 crash(崩溃)的方法。</li>
+<li>当前运行的app ，每一秒更新占用内存的状况。</li>
+<li>有助于识别潜在的内存泄漏。</li>
+<li>有助于识别 App 的 GC模式,并确定它们是否正常和你所希望的样子。</li>
+<li>它很容易使用，并且很容易看明白</li>
+<li>然而，Memory Monitor 不能告诉你哪些对象是有问题的，或者给你指出代码中存在的问题</li>
+</ul>
+<h3 id="Heap-Viewer"><a href="#Heap-Viewer" class="headerlink" title="Heap Viewer"></a>Heap Viewer</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png" alt="Allocation Tracker"></p>
+<ul>
+<li>根据类型 分配许多对象 的快照图。</li>
+<li>每一次的样本数据 是自动采集或者你手动触发。</li>
+<li>帮助确定哪些对象类型可能是内存泄漏。</li>
+<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt=""></a></li>
+<li>显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小</li>
+<li>帮助识别 内存的改变是通过 循环分配或重新分配。</li>
+<li>可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。</li>
+<li>然而，它需要时间和经验来学习理解这个工具的使用。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[网络请求的 UA]]></title>
       <url>http://gdky005.com/2016/06/20/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%9A%84-UA/</url>
       <content type="html"><![CDATA[<p>一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。<br>一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：</p>

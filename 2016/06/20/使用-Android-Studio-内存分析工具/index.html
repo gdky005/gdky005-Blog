@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="AndroidStudio," />
+  <meta name="keywords" content="AndroidStudio" />
 
 
 
@@ -82,34 +82,41 @@
 
 
 
-<meta name="description" content="Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：
+<meta name="description" content="App的内存使用可以通过以下三个工具分析：
+Heap Viewer
+Memory Monitor
+Allocation Tracker并且，这个三个是互补的可视化内存分析工具。
 
-1.修改系统hosts文件，添加如下2行
-203.208.46.146   dl-ssl.google.com
-203.208.46.146   dl.google.com
 
-2.修改Android Studio\bin目录下的studio.vmoptions (32位系统) 或者 studio64.v">
+使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。
+运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AndroidStudio">
-<meta property="og:url" content="http://gdky005.com/2015/09/19/AndroidStudio/index.html">
+<meta property="og:title" content="使用 Android Studio 内存分析工具">
+<meta property="og:url" content="http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：
+<meta property="og:description" content="App的内存使用可以通过以下三个工具分析：
+Heap Viewer
+Memory Monitor
+Allocation Tracker并且，这个三个是互补的可视化内存分析工具。
 
-1.修改系统hosts文件，添加如下2行
-203.208.46.146   dl-ssl.google.com
-203.208.46.146   dl.google.com
 
-2.修改Android Studio\bin目录下的studio.vmoptions (32位系统) 或者 studio64.v">
-<meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
+使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。
+运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png">
+<meta property="og:updated_time" content="2016-06-20T10:36:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AndroidStudio">
-<meta name="twitter:description" content="Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：
+<meta name="twitter:title" content="使用 Android Studio 内存分析工具">
+<meta name="twitter:description" content="App的内存使用可以通过以下三个工具分析：
+Heap Viewer
+Memory Monitor
+Allocation Tracker并且，这个三个是互补的可视化内存分析工具。
 
-1.修改系统hosts文件，添加如下2行
-203.208.46.146   dl-ssl.google.com
-203.208.46.146   dl.google.com
 
-2.修改Android Studio\bin目录下的studio.vmoptions (32位系统) 或者 studio64.v">
+使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。
+运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png">
 
 
 
@@ -135,7 +142,7 @@
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> AndroidStudio | 孤独狂饮 </title>
+  <title> 使用 Android Studio 内存分析工具 | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +295,7 @@
             
             
               
-                AndroidStudio
+                使用 Android Studio 内存分析工具
               
             
           </h1>
@@ -300,19 +307,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-19T17:02:01+08:00" content="2015-09-19">
-              2015-09-19
+            <time itemprop="dateCreated" datetime="2016-06-20T18:33:33+08:00" content="2016-06-20">
+              2016-06-20
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
+                    <span itemprop="name">AndroidStudio</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/19/AndroidStudio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/19/AndroidStudio/" itemprop="commentsCount"></span>
+                <a href="/2016/06/20/使用-Android-Studio-内存分析工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/使用-Android-Studio-内存分析工具/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,29 +366,38 @@
       
 
       
-        <p>Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：</p>
-<ul>
-<li><p>1.修改系统hosts文件，添加如下2行</p>
-<pre><code>203.208.46.146   dl-ssl.google.com
-203.208.46.146   dl.google.com
-</code></pre></li>
-<li><p>2.修改Android Studio\bin目录下的studio.vmoptions (32位系统) 或者 studio64.vmoptions (64位系统)文件，添加如下3行</p>
-<pre><code>-Djava.net.preferIPv4Stack=true  
--Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml  
--Didea.patches.url=http://dl.google.com/android/studio/patches/
-</code></pre><p>  <strong>重启Android Studio应该就可以更新了，更新时应使用管理员权限打开Android Studio。
-</strong></p>
-</li>
-<li><p>3.如果仍然无效，将url里的修改http为https，然后重启点击Check Update试试。</p>
-</li>
-<li><p>4.android studio首次安装运行时卡在更新处理方法</p>
-<p>  01.这是在检查你的 Android SDK 。有人会在这里卡上很长时间，很大的原因就是：网络连接有问题。可以通过配置hosts 的方式来解决。如果检查需要更新，则需要你进行安装 。</p>
-<p>  02.如果想跳过这一步，可以进行如下操作：在Android Studio安装目录下的 bin 目录下，找到 idea.properties 文件，在文件最后追加</p>
-<pre><code>disable.android.first.run=true 
-</code></pre></li>
+        <h3 id="App的内存使用可以通过以下三个工具分析："><a href="#App的内存使用可以通过以下三个工具分析：" class="headerlink" title="App的内存使用可以通过以下三个工具分析："></a>App的内存使用可以通过以下三个工具分析：</h3><ul>
+<li>Heap Viewer</li>
+<li>Memory Monitor</li>
+<li>Allocation Tracker<br>并且，这个三个是互补的可视化内存分析工具。</li>
 </ul>
-<p>本方法适用于在某些网络下无法直接更新的问题</p>
-<hr>
+<ol>
+<li>使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。</li>
+<li>运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。</li>
+<li>使用 Allocation Tracker 可以确定出你的代码中存在的问题。</li>
+</ol>
+<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt=""></p>
+<ul>
+<li>显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。</li>
+<li>可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。</li>
+<li>提供一种快速看出App 是否是由于 运行内存不足 而导致的 crash(崩溃)的方法。</li>
+<li>当前运行的app ，每一秒更新占用内存的状况。</li>
+<li>有助于识别潜在的内存泄漏。</li>
+<li>有助于识别 App 的 GC模式,并确定它们是否正常和你所希望的样子。</li>
+<li>它很容易使用，并且很容易看明白</li>
+<li>然而，Memory Monitor 不能告诉你哪些对象是有问题的，或者给你指出代码中存在的问题</li>
+</ul>
+<h3 id="Heap-Viewer"><a href="#Heap-Viewer" class="headerlink" title="Heap Viewer"></a>Heap Viewer</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png" alt="Allocation Tracker"></p>
+<ul>
+<li>根据类型 分配许多对象 的快照图。</li>
+<li>每一次的样本数据 是自动采集或者你手动触发。</li>
+<li>帮助确定哪些对象类型可能是内存泄漏。</li>
+<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt=""></a></li>
+<li>显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小</li>
+<li>帮助识别 内存的改变是通过 循环分配或重新分配。</li>
+<li>可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。</li>
+<li>然而，它需要时间和经验来学习理解这个工具的使用。</li>
+</ul>
 
       
     </div>
@@ -397,17 +432,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/13/Android-gradle工作原理/" rel="next" title="Android_gradle工作原理">
-                <i class="fa fa-chevron-left"></i> Android_gradle工作原理
+              <a href="/2016/06/20/网络请求的-UA/" rel="next" title="网络请求的 UA">
+                <i class="fa fa-chevron-left"></i> 网络请求的 UA
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/09/19/android-monkey/" rel="prev" title="monkey 测试命令，保存到SD，遇到崩溃继续">
-                monkey 测试命令，保存到SD，遇到崩溃继续 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -422,10 +453,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/09/19/AndroidStudio/"
-     data-title="AndroidStudio"
+        <div class="ds-share flat" data-thread-key="2016/06/20/使用-Android-Studio-内存分析工具/"
+     data-title="使用 Android Studio 内存分析工具"
      data-content=""
-     data-url="http://gdky005.com/2015/09/19/AndroidStudio/">
+     data-url="http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -455,8 +486,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/19/AndroidStudio/"
-           data-title="AndroidStudio" data-url="http://gdky005.com/2015/09/19/AndroidStudio/">
+      <div class="ds-thread" data-thread-key="2016/06/20/使用-Android-Studio-内存分析工具/"
+           data-title="使用 Android Studio 内存分析工具" data-url="http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/">
       </div>
     
   </div>
@@ -583,7 +614,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#App的内存使用可以通过以下三个工具分析："><span class="nav-number">1.</span> <span class="nav-text">App的内存使用可以通过以下三个工具分析：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-Monitor"><span class="nav-number">2.</span> <span class="nav-text">Memory Monitor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Viewer"><span class="nav-number">3.</span> <span class="nav-text">Heap Viewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Allocation-Tracker"><span class="nav-number">4.</span> <span class="nav-text">Allocation Tracker</span></a></li></ol></div>
             
           </div>
         </section>
