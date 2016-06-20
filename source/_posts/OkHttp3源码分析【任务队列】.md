@@ -1,11 +1,9 @@
 title: OkHttp3源码分析【任务队列】
 date: 2016-06-20 16:34:26
-categories:
-keywords:
-tags:
+categories: okhttp3
+keywords: okhttp3
+tags: okhttp3
 ---
-
-# OkHttp3源码分析【任务队列】
 
 ### 本文目录
 1. 线程池基础

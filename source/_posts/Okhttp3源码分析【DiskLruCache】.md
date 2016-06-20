@@ -4,8 +4,6 @@ categories: okhttp3
 keywords: okhttp3
 tags: okhttp3
 ---
-# Okhttp3源码分析【DiskLruCache】
-
 ### 本文目录
 - Cache 的简介
 - LinkedHashMap 原理

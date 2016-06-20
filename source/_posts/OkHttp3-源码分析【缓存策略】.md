@@ -1,11 +1,9 @@
 title: OkHttp3 源码分析【缓存策略】
 date: 2016-06-20 16:35:10
-categories:
-keywords:
-tags:
+categories: okhttp3
+keywords: okhttp3
+tags: okhttp3
 ---
-
-# OkHttp3 源码分析【缓存策略】
 本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
 
 ### Http 缓存基础知识
