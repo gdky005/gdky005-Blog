@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[Java Collection Cheat Sheet]]></title>
+      <url>http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/</url>
+      <content type="html"><![CDATA[<h1 id="分享Java-Collection-的一张图"><a href="#分享Java-Collection-的一张图" class="headerlink" title="分享Java Collection 的一张图"></a>分享Java Collection 的一张图</h1><p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
+<p>我们可以看出他们之间的关系以及差别。</p>
+<p>例如：HashMap, HastTable,  Vector 和 LinkedList等</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png" alt="Java Collection Cheat Sheet"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Okhttp3源码分析【DiskLruCache】]]></title>
       <url>http://gdky005.com/2016/06/20/Okhttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E3%80%90DiskLruCache%E3%80%91/</url>
       <content type="html"><![CDATA[<h1 id="Okhttp3源码分析【DiskLruCache】"><a href="#Okhttp3源码分析【DiskLruCache】" class="headerlink" title="Okhttp3源码分析【DiskLruCache】"></a>Okhttp3源码分析【DiskLruCache】</h1><h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ul>
