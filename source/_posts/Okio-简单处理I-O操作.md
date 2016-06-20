@@ -1,11 +1,9 @@
 title: Okio 简单处理I/O操作
 date: 2016-06-20 16:59:24
-categories:
-keywords:
-tags:
+categories: okio
+keywords: okio
+tags: okio
 ---
-
-# Okio 简单处理I/O操作
 
 Android 善用Okio简化处理I/O操作
 Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。
