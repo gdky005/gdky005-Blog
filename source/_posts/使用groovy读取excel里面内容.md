@@ -1,7 +1,7 @@
 title: 使用groovy读取excel里面内容
 date: 2015-11-20 16:27:54
-categories:
-keywords:
+categories: groovy
+keywords: groovy
 tags: groovy
 ---
 # 使用groovy读取excel里面内容
@@ -10,11 +10,11 @@ tags: groovy
 [apache.org/poi](http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip)
 
 ### 项目目录结构：
-![](http://m1.yea.im/43k.jpg)
+![](http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_1.png)
 
 项目 assets 下面放了一个people.xlsx文件
 
-![](http://m1.yea.im/43i.jpg)
+![](http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_2.png)
 
 ### **PS**：
 - 本文依赖 [Groovy读取excel文件](http://blog.csdn.net/andyxuq/article/details/7916098) 尝试读取后，发现不能运行
@@ -91,16 +91,16 @@ tags: groovy
 	
 
 项目运行结果：
-![](http://m1.yea.im/43n.jpg)
+![](http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_3.png)
 
 ### Apache的POI组建 遇到问题
 首先进入网址：[http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip](http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip)
 
 下载文件的时候，一般在工程里面依赖的是 jar,但是下面的是 .zip 很是疑惑,这个文件 26.4M，虽然不相信，但是下载下来后解压开，才明白：
-![](http://m1.yea.im/43l.jpg)
+![](http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_4.png)
 
 其中该项目中使用了
-![](http://m1.yea.im/43j.jpg)
+![](http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_5.png)
 xmlbeans-2.6.0.jar
 
 这个文件在上面的 lib 下面。
