@@ -86,9 +86,9 @@ DiskLruCache.Entry 针对每个请求的 url 对应文件进行维护（而没�
 DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景
 
 - 写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。
-![](DraggedImage.png)
+![](http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png)
 - 读取场景：读取时，需要获取快照，通过调用链分析
-![](DraggedImage-1.png)
+![](http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png)
 
 3. 序列化与反序列化（Cache.Entry）
 文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变
@@ -141,7 +141,7 @@ DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 D
 
 
 
-
+摘自：http://www.jianshu.com/p/23b8aa490a6b
 
 
 
