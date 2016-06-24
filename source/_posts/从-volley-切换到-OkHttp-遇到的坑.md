@@ -74,7 +74,8 @@ tags: okhttp3
 
 ### SSL/STL证书 出错？
 这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：
-	 @NonNull
+
+		@NonNull
 	    private SSLContext getSslContext(InputStream... certificates) {
 	        SSLContext sslContext = null;
 	
