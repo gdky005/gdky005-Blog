@@ -114,8 +114,12 @@
     }
 </code></pre><p>就可以了。<br><code>FLOWPACKAGEHOST -&gt; test.proxy.1111.com (这是域名)</code><br><code>FLOWPACKAGETCPPORT -&gt; 8143</code><br>这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。</p>
 <p><code>备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈</code></p>
-<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：<br>     @NonNull<br>        private SSLContext getSslContext(InputStream… certificates) {<br>            SSLContext sslContext = null;</p>
-<pre><code>        try {
+<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：</p>
+<pre><code>    @NonNull
+    private SSLContext getSslContext(InputStream... certificates) {
+        SSLContext sslContext = null;
+
+        try {
             CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null);
