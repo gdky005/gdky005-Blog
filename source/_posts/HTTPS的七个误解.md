@@ -63,14 +63,14 @@ Firefox默认只在内存中缓存HTTPS。但是，只要头命令中有Cache-Co
 
 然后是HTTPS协议：
 
-![]("http://image.beekka.com/blog/201102/bg2011021308.png")
+![](http://image.beekka.com/blog/201102/bg2011021308.png)
 
 某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。
 
 ### 误解二：有了HTTPS，Cookie和查询字符串就安全了
 虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。
 比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:
-![]("http://image.beekka.com/blog/201102/bg2011021309.png")
+![](http://image.beekka.com/blog/201102/bg2011021309.png)
 
 黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。
 
