@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2016-07-25T03:22:55.000Z</updated>
+  <updated>2016-07-25T03:25:45.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://gdky005.com/2016/07/25/HTTPS%E7%9A%84%E4%B8%83%E4%B8%AA%E8%AF%AF%E8%A7%A3/"/>
     <id>http://gdky005.com/2016/07/25/HTTPS的七个误解/</id>
     <published>2016-07-25T03:20:13.000Z</published>
-    <updated>2016-07-25T03:22:55.000Z</updated>
+    <updated>2016-07-25T03:25:45.000Z</updated>
     
     <content type="html">&lt;p&gt;这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。&lt;/p&gt;
 &lt;p&gt;我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。&lt;/p&gt;
@@ -53,9 +53,9 @@
 &lt;p&gt;建立连接的部分，大约慢了10%。但是，一旦有效的HTTPS连接建立起来，再刷新网页，两种协议几乎没有区别。先是HTTP协议的刷新表现：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021307.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;然后是HTTPS协议：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;&amp;quot;http://image.beekka.com/blog/201102/bg2011021308.png&amp;quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021308.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。&lt;/p&gt;
-&lt;h3 id=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;a href=&quot;#误解二：有了HTTPS，Cookie和查询字符串就安全了&quot; class=&quot;headerlink&quot; title=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;/a&gt;误解二：有了HTTPS，Cookie和查询字符串就安全了&lt;/h3&gt;&lt;p&gt;虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。&lt;br&gt;比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:&lt;br&gt;&lt;img src=&quot;&amp;quot;http://image.beekka.com/blog/201102/bg2011021309.png&amp;quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;a href=&quot;#误解二：有了HTTPS，Cookie和查询字符串就安全了&quot; class=&quot;headerlink&quot; title=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;/a&gt;误解二：有了HTTPS，Cookie和查询字符串就安全了&lt;/h3&gt;&lt;p&gt;虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。&lt;br&gt;比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:&lt;br&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021309.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。&lt;/p&gt;
 &lt;h3 id=&quot;误解一：只有注册登录页，才需要HTTPS&quot;&gt;&lt;a href=&quot;#误解一：只有注册登录页，才需要HTTPS&quot; class=&quot;headerlink&quot; title=&quot;误解一：只有注册登录页，才需要HTTPS&quot;&gt;&lt;/a&gt;误解一：只有注册登录页，才需要HTTPS&lt;/h3&gt;&lt;p&gt;这种想法很普遍。人们觉得，HTTPS可以保护用户的密码，此外就不需要了。Firefox浏览器新插件Firesheep，证明了这种想法是错的。我们可以看到，在Twitter和Facebook上，劫持其他人的session是非常容易的。&lt;br&gt;咖啡馆的免费WiFi，就是一个很理想的劫持环境，因为两个原因：&lt;/p&gt;
 &lt;blockquote&gt;

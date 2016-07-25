@@ -37,9 +37,9 @@
 <p>建立连接的部分，大约慢了10%。但是，一旦有效的HTTPS连接建立起来，再刷新网页，两种协议几乎没有区别。先是HTTP协议的刷新表现：</p>
 <p><img src="http://image.beekka.com/blog/201102/bg2011021307.png" alt=""></p>
 <p>然后是HTTPS协议：</p>
-<p><img src="&quot;http://image.beekka.com/blog/201102/bg2011021308.png&quot;" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021308.png" alt=""></p>
 <p>某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。</p>
-<h3 id="误解二：有了HTTPS，Cookie和查询字符串就安全了"><a href="#误解二：有了HTTPS，Cookie和查询字符串就安全了" class="headerlink" title="误解二：有了HTTPS，Cookie和查询字符串就安全了"></a>误解二：有了HTTPS，Cookie和查询字符串就安全了</h3><p>虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。<br>比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:<br><img src="&quot;http://image.beekka.com/blog/201102/bg2011021309.png&quot;" alt=""></p>
+<h3 id="误解二：有了HTTPS，Cookie和查询字符串就安全了"><a href="#误解二：有了HTTPS，Cookie和查询字符串就安全了" class="headerlink" title="误解二：有了HTTPS，Cookie和查询字符串就安全了"></a>误解二：有了HTTPS，Cookie和查询字符串就安全了</h3><p>虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。<br>比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:<br><img src="http://image.beekka.com/blog/201102/bg2011021309.png" alt=""></p>
 <p>黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。</p>
 <h3 id="误解一：只有注册登录页，才需要HTTPS"><a href="#误解一：只有注册登录页，才需要HTTPS" class="headerlink" title="误解一：只有注册登录页，才需要HTTPS"></a>误解一：只有注册登录页，才需要HTTPS</h3><p>这种想法很普遍。人们觉得，HTTPS可以保护用户的密码，此外就不需要了。Firefox浏览器新插件Firesheep，证明了这种想法是错的。我们可以看到，在Twitter和Facebook上，劫持其他人的session是非常容易的。<br>咖啡馆的免费WiFi，就是一个很理想的劫持环境，因为两个原因：</p>
 <blockquote>
