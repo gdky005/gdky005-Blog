@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="okhttp3" />
+  <meta name="keywords" content="https, 缓存" />
 
 
 
@@ -82,36 +82,37 @@
 
 
 
-<meta name="description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
+<meta name="description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
+我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
+误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OkHttp3 源码分析【缓存策略】">
-<meta property="og:url" content="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/index.html">
+<meta property="og:title" content="HTTPS的七个误解">
+<meta property="og:url" content="http://gdky005.com/2016/07/25/HTTPS的七个误解/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
+<meta property="og:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
+我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png">
-<meta property="og:updated_time" content="2016-06-20T09:06:02.000Z">
+误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021311.jpg">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021301.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021302.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021303.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021304.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021305.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021306.png">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021307.png">
+<meta property="og:image" content="http://gdky005.com/"http://image.beekka.com/blog/201102/bg2011021308.png"">
+<meta property="og:image" content="http://gdky005.com/"http://image.beekka.com/blog/201102/bg2011021309.png"">
+<meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021310.png">
+<meta property="og:updated_time" content="2016-07-25T03:22:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OkHttp3 源码分析【缓存策略】">
-<meta name="twitter:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
+<meta name="twitter:title" content="HTTPS的七个误解">
+<meta name="twitter:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
+我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
-<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
+误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta name="twitter:image" content="http://image.beekka.com/blog/201102/bg2011021311.jpg">
 
 
 
@@ -137,7 +138,7 @@ Cache-Con">
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> OkHttp3 源码分析【缓存策略】 | 孤独狂饮 </title>
+  <title> HTTPS的七个误解 | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +291,7 @@ Cache-Con">
             
             
               
-                OkHttp3 源码分析【缓存策略】
+                HTTPS的七个误解
               
             
           </h1>
@@ -302,38 +303,19 @@ Cache-Con">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:35:10+08:00" content="2016-06-20">
-              2016-06-20
+            <time itemprop="dateCreated" datetime="2016-07-25T11:20:13+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/20/OkHttp3-源码分析【缓存策略】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/HTTPS的七个误解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/HTTPS的七个误解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -361,171 +343,55 @@ Cache-Con">
       
 
       
-        <p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
-<h3 id="Http-缓存基础知识"><a href="#Http-缓存基础知识" class="headerlink" title="Http 缓存基础知识"></a>Http 缓存基础知识</h3><p>分析源目前，我们先回顾一下 Http 的缓存 Header 的含义</p>
-<ol>
-<li><p>Expires<br>表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存<br> Expires: Thu, 12 Jan 2017 11:01:33 GMT</p>
-</li>
-<li><p>Cache-Control<br>相对值，单位是秒，指定某个文件被续多少秒的时间，从而避免额外的网络请求。比expired更好的选择，它不用要求服务器与客户端的时间同步，也不用服务器时刻同步修改配置Expired中的绝对时间，而且它的优先级比Expires更高。比如简书静态资源有如下的header，表示可以续31536000秒，也就是一年。</p>
-<p> Cache-Control: max-age=31536000, public</p>
-</li>
-<li><p>修订文件名（Reving Filenames）<br>如果我们通过设置 header 保证了客户端可以缓存的，而此时远程服务器更新了文件如何解决呢？这个时候可以通过修改 url 的文件名版本后缀进行缓存，比如下文是又拍云的公共CDN就提供了多个版本的JQuery<br> upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js</p>
-</li>
-<li><p>条件 get 请求 （Conditional GET Requests） 与 304<br>如果缓存过期或者轻质放弃缓存，在此情况下，缓存策略全部交给服务器判断，客户端只用发送 条件 get 请求 即可，如果缓存是有效的， 则返回 304 not Modifiled, 否则直接返回 body.</p>
-</li>
-</ol>
-<p>请求的方式有两种：</p>
-<ul>
-<li>Last-Modified-Date:<br>  Last-Modified: Tue, 12 Jan 2016 09:31:27 GMT</li>
-</ul>
-<p>客户端再次发送时，通过发送<br>    If-Modified-Since: Tue, 12 Jan 2016 09:31:27 GMT</p>
-<p>交给服务器进行判断，如果任然可以缓存使用，服务器就返回 304.</p>
-<ul>
-<li>ETag<br>ETag 是对资源文件的一种摘要，客户端并不需要了解实现细节。当客户端第一次请求，服务器返回了<br>  ETag: “5694c7ef-24dc”</li>
-</ul>
-<p>客户端再次请求时，通过发送<br>    If-None-Match:”5694c7ef-24dc”</p>
-<p>交给服务器进行判断，如果还能使用缓存，服务器就返回 304</p>
+        <p>这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。</p>
+<p>我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021311.jpg" alt=""></p>
+<h3 id="误解七：HTTPS无法缓存"><a href="#误解七：HTTPS无法缓存" class="headerlink" title="误解七：HTTPS无法缓存"></a>误解七：HTTPS无法缓存</h3><p>许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命令，HTTPS是可以缓存的。</p>
+<p>微软的IE项目经理Eric Lawrence写道：</p>
 <blockquote>
-<p>如果 ETag 和 Last-Modified 都有，则必须一次性都发给服务器，它们没有优先级之分，反正这里客户端没有任何判断的逻辑。</p>
+<p>“说来也许令人震惊，只要HTTP头允许这样做，所有版本的IE都缓存HTTPS内容。比如，如果头命令是Cache-Control: max-age=600，那么这个网页就将被IE缓存10分钟。IE的缓存策略，与是否使用HTTPS协议无关。（其他浏览器在这方面的行为不一致，取决于你使用的版本，所以这里不加以讨论。）”</p>
 </blockquote>
-<ul>
-<li>其他标签<ul>
-<li>no-cache/no-store: 不使用缓存<ul>
-<li>only-if-cached: 只使用缓存</li>
-<li>Date:The date and time that the message was sent</li>
-<li>Age： CDN 反代服务器 到原始服务器获取数据延迟的缓存时间</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>Firefox默认只在内存中缓存HTTPS。但是，只要头命令中有Cache-Control: Public，缓存就会被写到硬盘上。下面的图片显示，Firefox的硬盘缓存中有HTTPS内容，头命令正是Cache-Control:Public。</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021301.png" alt=""></p>
+<h3 id="误解六：SSL证书很贵"><a href="#误解六：SSL证书很贵" class="headerlink" title="误解六：SSL证书很贵"></a>误解六：SSL证书很贵</h3><p>如果你在网上搜一下，就会发现很多便宜的SSL证书，大概10美元一年，这和一个.com域名的年费差不多。而且事实上，还能找到免费的SSL证书。<br>在效力上，便宜的证书当然会比大机构颁发的证书差一点，但是几乎所有的主流浏览器都接受这些证书。</p>
+<h3 id="误解五：HTTPS站点必须有独享的IP地址"><a href="#误解五：HTTPS站点必须有独享的IP地址" class="headerlink" title="误解五：HTTPS站点必须有独享的IP地址"></a>误解五：HTTPS站点必须有独享的IP地址</h3><p>由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，<a href="https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。" target="_blank" rel="external">https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。</a><br><img src="http://image.beekka.com/blog/201102/bg2011021302.png" alt=""></p>
+<p>另外，UCC（统一通信证书，Unified Communications Certificate）支持一张证书同时匹配多个站点，可以是完全不同的域名。SNI（服务器名称指示，Server Name Indication）允许一个IP地址上多个域名安装多张证书。服务器端，Apache和Nginx支持该技术，IIS不支持；客户端，IE 7+、Firefox 2.0+、Chrome 6+、Safari 2.1+和Opera 8.0+支持。</p>
+<h3 id="误解四：转移服务器时要购买新证书"><a href="#误解四：转移服务器时要购买新证书" class="headerlink" title="误解四：转移服务器时要购买新证书"></a>误解四：转移服务器时要购买新证书</h3><p>部署SSL证书，需要这样几步：</p>
 <blockquote>
-<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="external">这里看</a></p>
-</blockquote>
-<p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
-<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。</p>
 <ol>
-<li>总体请求流程分析<br>CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出<br>Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)</li>
+<li>在你的服务器上，生成一个CSR文件（SSL证书请求文件，SSL Certificate Signing Request）。</li>
+<li>使用CSR文件，购买SSL证书。</li>
+<li>安装SSL证书。</li>
 </ol>
-<p>Request:<br>开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。</p>
-<p>cacheCandildate:<br>也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.</p>
-<p>当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt=""></p>
+</blockquote>
+<p>这些步骤都经过精心设计，保证传输的安全，防止有人截取或非法获得证书。结果就是，你在第二步得到的证书不能用在另一台服务器上。如果你需要这样做，就必须以其他格式输出证书。<br>比如，IIS的做法是生成一个可以转移的.pfx文件，并加以密码保护。<br><img src="http://image.beekka.com/blog/201102/bg2011021303.png" alt=""></p>
+<p>将这个文件传入其他服务器，将可以继续使用原来的SSL证书了。</p>
+<h3 id="误解三：HTTPS太慢"><a href="#误解三：HTTPS太慢" class="headerlink" title="误解三：HTTPS太慢"></a>误解三：HTTPS太慢</h3><p>使用HTTPS不会使你的网站变得更快（实际上有可能，请看下文），但是有一些技巧可以大大减少额外开销。<br>首先，只要压缩文本内容，就会降低解码耗用的CPU资源。不过，对于当代CPU来说，这点开销不值一提。<br>其次，建立HTTPS连接，要求额外的TCP往返，因此会新增一些发送和接收的字节。但是，从下图可以看到，新增的字节是很少的。<br><img src="http://image.beekka.com/blog/201102/bg2011021304.png" alt=""></p>
+<p>第一次打开网页的时候，HTTPS协议会比HTTP协议慢一点，这是因为读取和验证SSL证书的时间。下面是一张HTTP网页打开时间的瀑布图。</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021305.png" alt=""></p>
+<p>同一张网页使用HTTPS协议之后，打开时间变长了。</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021306.png" alt=""></p>
+<p>建立连接的部分，大约慢了10%。但是，一旦有效的HTTPS连接建立起来，再刷新网页，两种协议几乎没有区别。先是HTTP协议的刷新表现：</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021307.png" alt=""></p>
+<p>然后是HTTPS协议：</p>
+<p><img src="&quot;http://image.beekka.com/blog/201102/bg2011021308.png&quot;" alt=""></p>
+<p>某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。</p>
+<h3 id="误解二：有了HTTPS，Cookie和查询字符串就安全了"><a href="#误解二：有了HTTPS，Cookie和查询字符串就安全了" class="headerlink" title="误解二：有了HTTPS，Cookie和查询字符串就安全了"></a>误解二：有了HTTPS，Cookie和查询字符串就安全了</h3><p>虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。<br>比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:<br><img src="&quot;http://image.beekka.com/blog/201102/bg2011021309.png&quot;" alt=""></p>
+<p>黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。</p>
+<h3 id="误解一：只有注册登录页，才需要HTTPS"><a href="#误解一：只有注册登录页，才需要HTTPS" class="headerlink" title="误解一：只有注册登录页，才需要HTTPS"></a>误解一：只有注册登录页，才需要HTTPS</h3><p>这种想法很普遍。人们觉得，HTTPS可以保护用户的密码，此外就不需要了。Firefox浏览器新插件Firesheep，证明了这种想法是错的。我们可以看到，在Twitter和Facebook上，劫持其他人的session是非常容易的。<br>咖啡馆的免费WiFi，就是一个很理想的劫持环境，因为两个原因：</p>
 <blockquote>
-<p>以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论</p>
-</blockquote>
-<p>基本上与上文中的图片完全一致，以上就是 OkHttp 的缓存策略。</p>
-<blockquote>
-<p>关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断</p>
-</blockquote>
 <ol>
-<li>CacheStrategy 的加工过程</li>
+<li>这种WiFi通常不会加密，所以很容易监控所有流量。</li>
+<li>WiFi通常使用NAT进行外网和内网的地址转换，所有内网客户端都共享一个外网地址。这意味着，被劫持的session，看上去很像来自原来的登录者。</li>
 </ol>
-<p>CacheStrategy 使用 Factory模式进行构造，参数如下</p>
-<pre><code>InternalCache responseCache = Internal.instance.internalCache(client);
-//cacheCandidate从disklurcache中获取
-//request的url被md5序列化为key,进行缓存查询
-Response cacheCandidate = responseCache != null ? responseCache.get(request) : null;
-//请求与缓存
-factory = new CacheStrategy.Factory(now, request, cacheCandidate);
-cacheStrategy = factory.get();
-//输出结果
-networkRequest = cacheStrategy.networkRequest;
-cacheResponse = cacheStrategy.cacheResponse;
-//进行一大堆的if判断，内容同上表格
-.....
-</code></pre><p>可以看出Factory.get()是最关键的缓存策略的判断，我们点入get()方法，可以发现是对getCandidate()的一个封装，我们接着点开getCandidate()，全是if与数学计算，详细代码如下</p>
-<pre><code>private CacheStrategy getCandidate() {
-  //如果缓存没有命中(即null),网络请求也不需要加缓存Header了
-  if (cacheResponse == null) {
-    //`没有缓存的网络请求,查上文的表可知是直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  // 如果缓存的TLS握手信息丢失,返回进行直接连接
-  if (request.isHttps() &amp;&amp; cacheResponse.handshake() == null) {
-    //直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  //检测response的状态码,Expired时间,是否有no-cache标签
-  if (!isCacheable(cacheResponse, request)) {
-    //直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  CacheControl requestCaching = request.cacheControl();
-  //如果请求报文使用了`no-cache`标签(这个只可能是开发者故意添加的)
-  //或者有ETag/Since标签(也就是条件GET请求)
-  if (requestCaching.noCache() || hasConditions(request)) {
-    //直接连接,把缓存判断交给服务器
-    return new CacheStrategy(request, null);
-  }
-  //根据RFC协议计算
-  //计算当前age的时间戳
-  //now - sent + age (s)
-  long ageMillis = cacheResponseAge();
-  //大部分情况服务器设置为max-age
-  long freshMillis = computeFreshnessLifetime();
-
-  if (requestCaching.maxAgeSeconds() != -1) {
-    //大部分情况下是取max-age
-    freshMillis = Math.min(freshMillis, SECONDS.toMillis(requestCaching.maxAgeSeconds()));
-  }
-
-  long minFreshMillis = 0;
-  if (requestCaching.minFreshSeconds() != -1) {
-    //大部分情况下设置是0
-    minFreshMillis = SECONDS.toMillis(requestCaching.minFreshSeconds());
-  }
-
-  long maxStaleMillis = 0;
-  //ParseHeader中的缓存控制信息
-  CacheControl responseCaching = cacheResponse.cacheControl();
-  if (!responseCaching.mustRevalidate() &amp;&amp; requestCaching.maxStaleSeconds() != -1) {
-    //设置最大过期时间,一般设置为0
-    maxStaleMillis = SECONDS.toMillis(requestCaching.maxStaleSeconds());
-  }
-
-  //缓存在过期时间内,可以使用
-  //大部分情况下是进行如下判断
-  //now - sent + age + 0 &lt; max-age + 0
-  if (!responseCaching.noCache() &amp;&amp; ageMillis + minFreshMillis &lt; freshMillis + maxStaleMillis) {
-    //返回上次的缓存
-    Response.Builder builder = cacheResponse.newBuilder();
-    return new CacheStrategy(null, builder.build());
-  }
-
-  //缓存失效, 如果有etag等信息
-  //进行发送`conditional`请求,交给服务器处理
-  Request.Builder conditionalRequestBuilder = request.newBuilder();
-
-  if (etag != null) {
-    conditionalRequestBuilder.header(&quot;If-None-Match&quot;, etag);
-  } else if (lastModified != null) {
-    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, lastModifiedString);
-  } else if (servedDate != null) {
-    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, servedDateString);
-  }
-  //下面请求实质还说网络请求
-  Request conditionalRequest = conditionalRequestBuilder.build();
-  return hasConditions(conditionalRequest) ? new CacheStrategy(conditionalRequest,
-      cacheResponse) : new CacheStrategy(conditionalRequest, null);
-}
-</code></pre><p>太长不看的话，大多数常见的情况可以用这个估算</p>
-<pre><code>now - sent + age &lt; max-age
-</code></pre><blockquote>
-<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt=""></p>
 </blockquote>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
-<ol>
-<li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
-<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="external">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
-<li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
-<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
+<p>以Twitter为例，它的登录页使用了HTTPS，但是登录以后，其他页面就变成了HTTP。这时，它的cookie里的session值就暴露了。</p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021310.png" alt=""></p>
+<p>也就是说，这些cookie是在HTTPS环境下建立的，但是却在HTTP环境下传输。如果有人劫持到这些cookie，那他就能以你的身份在Twitter上发言了。</p>
+<h3 id="引用地址："><a href="#引用地址：" class="headerlink" title="引用地址："></a>引用地址：</h3><ol>
+<li><a href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html</a></li>
+<li><a href="http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/" target="_blank" rel="external">http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/</a></li>
 </ol>
-<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="external">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
 
       
     </div>
@@ -551,7 +417,7 @@ cacheResponse = cacheStrategy.cacheResponse;
       
         <div class="post-tags">
           
-            <a href="/tags/okhttp3/" rel="tag">#okhttp3</a>
+            <a href="/tags/https/" rel="tag">#https</a>
           
         </div>
       
@@ -560,17 +426,13 @@ cacheResponse = cacheStrategy.cacheResponse;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/20/OkHttp3源码分析【任务队列】/" rel="next" title="OkHttp3源码分析【任务队列】">
-                <i class="fa fa-chevron-left"></i> OkHttp3源码分析【任务队列】
+              <a href="/2016/07/08/一个五年Android开发者百度、阿里、聚美、映客的面试心经/" rel="next" title="一个五年Android开发者百度、阿里、聚美、映客的面试心经">
+                <i class="fa fa-chevron-left"></i> 一个五年Android开发者百度、阿里、聚美、映客的面试心经
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/20/Okio-简单处理I-O操作/" rel="prev" title="Okio 简单处理I/O操作">
-                Okio 简单处理I/O操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,10 +447,10 @@ cacheResponse = cacheStrategy.cacheResponse;
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/20/OkHttp3-源码分析【缓存策略】/"
-     data-title="OkHttp3 源码分析【缓存策略】"
+        <div class="ds-share flat" data-thread-key="2016/07/25/HTTPS的七个误解/"
+     data-title="HTTPS的七个误解"
      data-content=""
-     data-url="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/">
+     data-url="http://gdky005.com/2016/07/25/HTTPS的七个误解/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -618,8 +480,8 @@ cacheResponse = cacheStrategy.cacheResponse;
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/20/OkHttp3-源码分析【缓存策略】/"
-           data-title="OkHttp3 源码分析【缓存策略】" data-url="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/">
+      <div class="ds-thread" data-thread-key="2016/07/25/HTTPS的七个误解/"
+           data-title="HTTPS的七个误解" data-url="http://gdky005.com/2016/07/25/HTTPS的七个误解/">
       </div>
     
   </div>
@@ -746,7 +608,7 @@ cacheResponse = cacheStrategy.cacheResponse;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-缓存基础知识"><span class="nav-number">1.</span> <span class="nav-text">Http 缓存基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误解七：HTTPS无法缓存"><span class="nav-number">1.</span> <span class="nav-text">误解七：HTTPS无法缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解六：SSL证书很贵"><span class="nav-number">2.</span> <span class="nav-text">误解六：SSL证书很贵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解五：HTTPS站点必须有独享的IP地址"><span class="nav-number">3.</span> <span class="nav-text">误解五：HTTPS站点必须有独享的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解四：转移服务器时要购买新证书"><span class="nav-number">4.</span> <span class="nav-text">误解四：转移服务器时要购买新证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解三：HTTPS太慢"><span class="nav-number">5.</span> <span class="nav-text">误解三：HTTPS太慢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解二：有了HTTPS，Cookie和查询字符串就安全了"><span class="nav-number">6.</span> <span class="nav-text">误解二：有了HTTPS，Cookie和查询字符串就安全了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误解一：只有注册登录页，才需要HTTPS"><span class="nav-number">7.</span> <span class="nav-text">误解一：只有注册登录页，才需要HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用地址："><span class="nav-number">8.</span> <span class="nav-text">引用地址：</span></a></li></ol></div>
             
           </div>
         </section>
