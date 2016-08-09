@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2016-08-08T10:49:49.000Z</updated>
+  <updated>2016-07-25T03:25:45.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,139 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>OkHttp和Okio</title>
-    <link href="http://gdky005.com/2016/08/08/OkHttp%E5%92%8COkio/"/>
-    <id>http://gdky005.com/2016/08/08/OkHttp和Okio/</id>
-    <published>2016-08-08T10:48:10.000Z</published>
-    <updated>2016-08-08T10:49:49.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;本文摘要&quot;&gt;&lt;a href=&quot;#本文摘要&quot; class=&quot;headerlink&quot; title=&quot;本文摘要&quot;&gt;&lt;/a&gt;本文摘要&lt;/h3&gt;&lt;p&gt;文本将介绍OkHttp和Okio基本使用&lt;/p&gt;
-&lt;h3 id=&quot;OkHttp&quot;&gt;&lt;a href=&quot;#OkHttp&quot; class=&quot;headerlink&quot; title=&quot;OkHttp&quot;&gt;&lt;/a&gt;OkHttp&lt;/h3&gt;&lt;p&gt;HTTP 是现在APP访问网络最流行的方式。通过它我们可以交换数据和媒体信息。而高效的使用HTTP可以让你的加载数据更快并且节省带宽。&lt;/p&gt;
-&lt;p&gt;OkHttp就是一种HTTP客户端连接，它有如下特性：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;HTTP/2多路复用Socket到同一个主机，共享链接。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;采用连接池技术，可以有效的减少Http链接数量。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;无缝集成GZIP压缩技术。&lt;/li&gt;
-&lt;li&gt;支持Response Cache，避免重复请求。&lt;/li&gt;
-&lt;li&gt;域名多IP支持。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;OkHttp可以处理常见的网络问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;如果OkHttp连接一个域名失败后，它会尝试连接下一个该域名的IP地址。（&lt;strong&gt;需要DNS支持&lt;/strong&gt;）&lt;/li&gt;
-&lt;li&gt;OkHttp在初始化链接的时候，会采用最新的TLS特性（SNI，ALPN），如果失败会采用TLS1.0进行链接。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;使用OkHttp是非常简单的。它的request/response API采用非常流畅的Builder模式构建。 并且它支持同步阻塞调用以及异步调用。&lt;/p&gt;
-&lt;p&gt;OkHttp支持Android2.3+。对于Java最低支持1.7+&lt;/p&gt;
-&lt;p&gt;OkHttp会&lt;strong&gt;自动管理HTTP连接的生命周期&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;操作Response.body().string()等类型的API，OkHttp会自动将该HTTP连接加入到ConnectionPool中或者直接释放连接&lt;/li&gt;
-&lt;li&gt;如果采用stream方式操作流，则需要自己手动关闭，否则会发生HTTP连接泄漏（OkHttp通过WeakReference机制，尽最大努力管理这些泄漏的HTTP连接）&lt;/li&gt;
-&lt;li&gt;OkHttp不读取Resonse#Head#Keep-Alive属性来决定该HTTP连接是否能复用，而是直接加入到ConnectionPool进行复用&lt;/li&gt;
-&lt;li&gt;当从ConnectionPool中获取HTTP连接的时候，OkHttp发现该HTTP连接已经失效，则关闭该连接，并且重新选择一个HTTP连接进行复用&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;GET-请求&quot;&gt;&lt;a href=&quot;#GET-请求&quot; class=&quot;headerlink&quot; title=&quot;GET 请求&quot;&gt;&lt;/a&gt;GET 请求&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;package com.company;
-
-import okhttp3.*;
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-        OkHttpClient client = new OkHttpClient();
-        //请求
-        Request request = new Request.Builder()
-                .url(&amp;quot;http://www.baidu.com/&amp;quot;)
-                .get()
-                .build();
-        //发起请求
-        Response response = client.newCall(request).execute();
-        //结果
-        System.out.println(response.body().string());
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;POST-请求&quot;&gt;&lt;a href=&quot;#POST-请求&quot; class=&quot;headerlink&quot; title=&quot;POST 请求&quot;&gt;&lt;/a&gt;POST 请求&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;package com.company;
-
-import okhttp3.*;
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-        OkHttpClient client = new OkHttpClient();
-        //参数
-        RequestBody requestBody = new FormBody.Builder()
-                .add(&amp;quot;DGM&amp;quot;, &amp;quot;DGM&amp;quot;)
-                .build();
-        //请求
-        Request request = new Request.Builder()
-                .url(&amp;quot;http://www.baidu.com/&amp;quot;)
-                .post(requestBody)
-                .build();
-        //发起请求
-        Response response = client.newCall(request).execute();
-        //结果
-        System.out.println(response.body().string());
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;引入项目中：&quot;&gt;&lt;a href=&quot;#引入项目中：&quot; class=&quot;headerlink&quot; title=&quot;引入项目中：&quot;&gt;&lt;/a&gt;引入项目中：&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Maven&lt;/strong&gt;&lt;br&gt;    &lt;dependency&gt;&lt;br&gt;      &lt;groupid&gt;com.squareup.okhttp3&lt;/groupid&gt;&lt;br&gt;      &lt;artifactid&gt;okhttp&lt;/artifactid&gt;&lt;br&gt;      &lt;version&gt;(insert latest version)&lt;/version&gt;&lt;br&gt;    &lt;/dependency&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Gradle&lt;/strong&gt;&lt;br&gt;    compile ‘com.squareup.okhttp3:okhttp:(insert latest version)’&lt;/p&gt;
-&lt;p&gt;PS： (insert latest version) 请替换成 官网最新的&lt;/p&gt;
-&lt;h3 id=&quot;Okio&quot;&gt;&lt;a href=&quot;#Okio&quot; class=&quot;headerlink&quot; title=&quot;Okio&quot;&gt;&lt;/a&gt;Okio&lt;/h3&gt;&lt;p&gt;Okio是一款新的类库，它可以使得 java.io.* 和 java.nio.* 更加方便的被使用以及处理数据。 现在我的一些文件操作或者流 必用Okio。&lt;/p&gt;
-&lt;h3 id=&quot;Copy文件的例子&quot;&gt;&lt;a href=&quot;#Copy文件的例子&quot; class=&quot;headerlink&quot; title=&quot;Copy文件的例子&quot;&gt;&lt;/a&gt;Copy文件的例子&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;package com.company;
-
-import okio.BufferedSink;
-import okio.BufferedSource;
-import okio.Okio;
-
-import java.io.File;
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-        //创建buffer
-        BufferedSource source = Okio.buffer(Okio.source(new File(&amp;quot;data/file1&amp;quot;)));
-        BufferedSink sink = Okio.buffer(Okio.sink(new File(&amp;quot;data/file&amp;quot; + System.currentTimeMillis())));
-        //copy数据
-        sink.writeAll(source);
-        //关闭资源
-        sink.close();
-        source.close();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以发现，通过Okio可以非常方便的处理io数据。&lt;/p&gt;
-&lt;h3 id=&quot;ByteString-和-Buffer&quot;&gt;&lt;a href=&quot;#ByteString-和-Buffer&quot; class=&quot;headerlink&quot; title=&quot;ByteString 和 Buffer&quot;&gt;&lt;/a&gt;ByteString 和 Buffer&lt;/h3&gt;&lt;p&gt;在Okio中通过ByteString和Buffer这两种类型，提供了高性能和简单的API：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;ByteString是一种不可改变的byte序列。提供了一种基于String，采用char访问的二进制模式。通过ByteString可以像一般value一样处理二进制数据。并且提供了对encode/decode中的HEX，Base64以及UTF-8支持。&lt;/li&gt;
-&lt;li&gt;Buffer是一种可变的byte序列。就像ArrayList一样，你不需要知道Buffer的大小。在处理buffer的read/write的时候，就像queue一样。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;通过这两个类，可以极大的增强io访问的数据处理。&lt;/p&gt;
-&lt;h3 id=&quot;Source-和-Sink&quot;&gt;&lt;a href=&quot;#Source-和-Sink&quot; class=&quot;headerlink&quot; title=&quot;Source 和 Sink&quot;&gt;&lt;/a&gt;Source 和 Sink&lt;/h3&gt;&lt;p&gt;这两个类是在 InputStream 以及 OutputStream 上进行抽象而成的。 它还具有如下特性：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Timeout： 可以提供超时处理机制。&lt;/li&gt;
-&lt;li&gt;Easy to implement： Source 仅仅声明了read，close，timeout方法。实现起来非常的方便。&lt;/li&gt;
-&lt;li&gt;Easy to use：通过实现/使用BufferedSource和BufferedSink接口，可以更加方便的操作二进制数据。&lt;/li&gt;
-&lt;li&gt;No artificial distinction between byte streams and char streams：可以非常方便的将二进制数据处理为UTF-8字符串，int等类型数据。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Source 和 Sink 实现了InputStream 以及 OutputStream。你可以将Source看成InputStream，将Sink看成OutputStream。&lt;strong&gt;而通过BufferedSource和BufferedSink可以非常方便的进行数据处理。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;通过开源的square工具，我们可以非常方便的处理io以及http数据。在最新的Android6.0+中，已经剔除了Apache URLConnection类，而采用OkHttp。所以可见OkHttp的代码质量还有有保证的。&lt;/p&gt;
-&lt;h5 id=&quot;链接：&quot;&gt;&lt;a href=&quot;#链接：&quot; class=&quot;headerlink&quot; title=&quot;链接：&quot;&gt;&lt;/a&gt;链接：&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/square/okio&quot; title=&quot;Okio&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Okio&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://square.github.io/okhttp/&quot; title=&quot;OkHttp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OkHttp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://my.oschina.net/darkgem/blog/643980&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;来源&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;本文摘要&quot;&gt;&lt;a href=&quot;#本文摘要&quot; class=&quot;headerlink&quot; title=&quot;本文摘要&quot;&gt;&lt;/a&gt;本文摘要&lt;/h3&gt;&lt;p&gt;文本将介绍OkHttp和Okio基本使用&lt;/p&gt;
-&lt;h3 id=&quot;OkHttp&quot;&gt;&lt;a href=&quot;#OkHttp&quot; cla
-    
-    </summary>
-    
-    
-      <category term="OkHttp,Okio" scheme="http://gdky005.com/tags/OkHttp-Okio/"/>
-    
-  </entry>
   
   <entry>
     <title>HTTPS的七个误解</title>
@@ -482,6 +349,159 @@ public class Main {
     <summary type="html">
     
       &lt;p&gt;一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。&lt;br&gt;一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的
+    
+    </summary>
+    
+      <category term="okhttp3" scheme="http://gdky005.com/categories/okhttp3/"/>
+    
+    
+      <category term="okhttp3" scheme="http://gdky005.com/tags/okhttp3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从 volley 切换到 OkHttp 遇到的坑</title>
+    <link href="http://gdky005.com/2016/06/20/%E4%BB%8E-volley-%E5%88%87%E6%8D%A2%E5%88%B0-OkHttp-%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+    <id>http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/</id>
+    <published>2016-06-20T10:17:30.000Z</published>
+    <updated>2016-06-24T07:55:09.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。&lt;/p&gt;
+&lt;p&gt;之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.&lt;/p&gt;
+&lt;h3 id=&quot;代理异常？&quot;&gt;&lt;a href=&quot;#代理异常？&quot; class=&quot;headerlink&quot; title=&quot;代理异常？&quot;&gt;&lt;/a&gt;代理异常？&lt;/h3&gt;&lt;p&gt;切换成功后，遇到的第一个问题就是：代理功能没法使用，我们客户端 是有联通流量包的功能的，因此必须要加 代理功能。&lt;/p&gt;
+&lt;p&gt;根据 okhttp 里面  issue 的回答，弄好多次都不行，折腾了一两天左右。 最后也懒得管了，先放放，优先解决其他问题。 &lt;/p&gt;
+&lt;p&gt;之后过了几天，再回来弄这块的时候，就突然好了，兴奋坏了。赶紧查查和之前的有没有什么差异？&lt;/p&gt;
+&lt;p&gt;经过对比后发现：原来是 之前写 volley 的时候是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HttpURLConnection connection;
+    if (&amp;quot;https&amp;quot;.equals(url.getProtocol())) {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGETCPPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&amp;quot;Proxy-Authorization&amp;quot;,
+                &amp;quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&amp;quot;);
+    } else {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGEPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&amp;quot;Authorization&amp;quot;,
+                &amp;quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&amp;quot;);
+    }
+    connection.addRequestProperty(&amp;quot;Proxy-Connection&amp;quot;, &amp;quot;Keep-Alive&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要区分了 https 和 http, 然后里面传入的 key 和 端口号都不一样。&lt;/p&gt;
+&lt;p&gt;但是在 okhttp 里面貌似是不需要区分的。只需要这样写：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+     * 设置联通流量 代理功能
+     * @param builder
+     */
+    private void setUnicomProxy(OkHttpClient.Builder builder) {
+        //添加联通代理功能
+        if (TrafficUtil.getUnicomProxyAvailable()) {
+            Authenticator proxyAuthenticator = new Authenticator() {
+                @Override
+                public okhttp3.Request authenticate(Route route, Response response) throws IOException {
+                    return response.request().newBuilder().header(&amp;quot;Proxy-Authorization&amp;quot;, &amp;quot;Basic &amp;quot; +
+                            &amp;quot;MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&amp;quot;).header(&amp;quot;Proxy-Connection&amp;quot;,
+                            &amp;quot;Keep-Alive&amp;quot;).build();
+                }
+            };
+
+            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(FLOWPACKAGEHOST,
+                    FLOWPACKAGETCPPORT)));
+            builder.proxyAuthenticator(proxyAuthenticator);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就可以了。&lt;br&gt;&lt;code&gt;FLOWPACKAGEHOST -&amp;gt; test.proxy.1111.com (这是域名)&lt;/code&gt;&lt;br&gt;&lt;code&gt;FLOWPACKAGETCPPORT -&amp;gt; 8143&lt;/code&gt;&lt;br&gt;这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SSL-STL证书-出错？&quot;&gt;&lt;a href=&quot;#SSL-STL证书-出错？&quot; class=&quot;headerlink&quot; title=&quot;SSL/STL证书 出错？&quot;&gt;&lt;/a&gt;SSL/STL证书 出错？&lt;/h3&gt;&lt;p&gt;这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    @NonNull
+    private SSLContext getSslContext(InputStream... certificates) {
+        SSLContext sslContext = null;
+
+        try {
+            CertificateFactory certificateFactory = CertificateFactory.getInstance(&amp;quot;X.509&amp;quot;);
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates) {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate
+                        (certificate));
+                try {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            sslContext = SSLContext.getInstance(&amp;quot;TLS&amp;quot;);
+
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+            trustManagerFactory.init(keyStore);
+            sslContext.init(null, trustManagerFactory.getTrustManagers(),
+                    new SecureRandom());
+
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }   finally {
+        }
+
+        return sslContext;
+    }
+
+/**
+     * 启用 OkHttps 域名校验功能
+     * @param builder
+     */
+    private void setOkhttpSSLContext(OkHttpClient.Builder builder) {
+        SSLContext sslContext = getSslContext(KaolaApplication.mContext.getResources().openRawResource(R
+                .raw.kl_magic));
+
+        if (sslContext != null) {
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    HostnameVerifier hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hostnameVerifier.verify(&amp;quot;xxx.com&amp;quot;, session); //启用xxx 域名校验 (这里是一个非常重要的地方，缺少了这一步肯定不行)
+                }
+            });
+            builder.sslSocketFactory(sslContext.getSocketFactory());
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这句是非常重要的：&lt;br&gt;&lt;code&gt;hostnameVerifier.verify(&amp;quot;xxx.com&amp;quot;, session);&lt;/code&gt;主要是进行 https 的域名校验，用证书匹配你的域名，如果匹配成功，那么就可以直接使用，否则 https 握手失败，无法正确发送请求。&lt;/p&gt;
+&lt;p&gt;之前尝试过使用 使用&lt;br&gt;    builder.hostnameVerifier(new AllowAllHostnameVerifier());&lt;/p&gt;
+&lt;p&gt;这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。&lt;/p&gt;
+&lt;h3 id=&quot;post-参数不能为空？&quot;&gt;&lt;a href=&quot;#post-参数不能为空？&quot; class=&quot;headerlink&quot; title=&quot;post 参数不能为空？&quot;&gt;&lt;/a&gt;post 参数不能为空？&lt;/h3&gt;&lt;p&gt;这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).&lt;/p&gt;
+&lt;p&gt;但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 &lt;a href=&quot;https://github.com/square/okhttp/issues/751&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;okhttp issue&lt;/a&gt; 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。&lt;/p&gt;
+&lt;p&gt;具体参考这个：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void addRequest(int method, final Map&amp;lt;String, String&amp;gt; params, final String baseUrl,
+                           final TypeReference&amp;lt;? extends BaseResponse&amp;gt; type, final JsonResultCallback callback) {
+            ......
+          if (params.size() == 0 &amp;amp;&amp;amp; method == Request.Method.POST)
+            params.put(&amp;quot;temp&amp;quot;, &amp;quot;temp&amp;quot;); //解决 method POST must have a request body.;
+            ......
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这三个问题解决后，基本就可以放心使用了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。&lt;/p&gt;
+&lt;p&gt;之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案：
     
     </summary>
     
