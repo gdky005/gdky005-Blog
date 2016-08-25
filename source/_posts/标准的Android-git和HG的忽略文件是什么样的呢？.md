@@ -5,6 +5,9 @@ keywords: git,忽略文件
 tags: git
 ---
 
+# 标准的Android git和HG的忽略文件是什么样的呢？
+
+![](http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg)
 
 ### 什么是忽略文件？
 当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。
@@ -16,13 +19,9 @@ tags: git
 以下提供两种忽略文件的模板，满足大部分需求。
 
 ##### 1. git 的忽略文件模板：
-
+![](http://7xlcno.com1.z0.glb.clouddn.com/gitgit.jpg)
 请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果我们有其他文件也不用提交的画，可以参考下面的样式添加进去即可：
 
-```
-
-	.gitignore
-	
 	*~
 	.DS_Store
 
@@ -33,8 +32,6 @@ tags: git
 
 	build
 
-	
-	
 	
 	# Created by .ignore support plugin (hsz.mobi)
 	syntax: glob
@@ -148,15 +145,13 @@ tags: git
 	.idea
 	out
 	gen
-```
 
 
 ##### 2. HG/Mercurial 的忽略文件模板：
-
+![](http://7xlcno.com1.z0.glb.clouddn.com/gitmercurial.png)
 HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工具，但是随着git 的用户群体庞大，git越来越灵活，简单易用，因此 HG也就慢慢退出了我们的视线。最有名的 github 里面也大量使用到git。但是作为一种管理工具，在不同的环境场景下，也可能需要使用HG，尤其是公司的备份管理等，都十分的安全。使用方式很简单，在主项目的根目录下 创建或者修改： .hgignore 文件即可。 这个文件也可以直接放到mode 里面去。 这里提供忽略文件如下：
 
-```
-
+	
 	# Created by .ignore support plugin (hsz.mobi)
 	syntax: glob
 	
@@ -267,5 +262,4 @@ HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工�
 	*.iml
 	out
 	gen
-```
 	
