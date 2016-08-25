@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[标准的Android git和HG的忽略文件是什么样的呢？]]></title>
       <url>http://gdky005.com/2016/08/25/%E6%A0%87%E5%87%86%E7%9A%84Android-git%E5%92%8CHG%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<h1 id="标准的Android-git和HG的忽略文件是什么样的呢？"><a href="#标准的Android-git和HG的忽略文件是什么样的呢？" class="headerlink" title="标准的Android git和HG的忽略文件是什么样的呢？"></a>标准的Android git和HG的忽略文件是什么样的呢？</h1><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg" alt=""></p>
 <h3 id="什么是忽略文件？"><a href="#什么是忽略文件？" class="headerlink" title="什么是忽略文件？"></a>什么是忽略文件？</h3><p>当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。</p>
 <h3 id="忽略文件的作用？"><a href="#忽略文件的作用？" class="headerlink" title="忽略文件的作用？"></a>忽略文件的作用？</h3><p>当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。</p>
 <h3 id="通用的忽略文件"><a href="#通用的忽略文件" class="headerlink" title="通用的忽略文件"></a>通用的忽略文件</h3><p>以下提供两种忽略文件的模板，满足大部分需求。</p>
