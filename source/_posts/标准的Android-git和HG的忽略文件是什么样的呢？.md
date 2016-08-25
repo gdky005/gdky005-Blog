@@ -5,7 +5,6 @@ keywords: git,忽略文件
 tags: git
 ---
 
-# 标准的Android git和HG的忽略文件是什么样的呢？
 
 ![](http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg)
 
