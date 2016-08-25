@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="PYy4juDrbG" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,忽略文件" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孤独狂饮" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是忽略文件？当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。
+忽略文件的作用？当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。
+通用的忽略文件以下提供两种忽略文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="标准的Android git和HG的忽略文件是什么样的呢？">
+<meta property="og:url" content="http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/index.html">
+<meta property="og:site_name" content="孤独狂饮">
+<meta property="og:description" content="什么是忽略文件？当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。
+忽略文件的作用？当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。
+通用的忽略文件以下提供两种忽略文件">
+<meta property="og:updated_time" content="2016-08-25T03:17:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="标准的Android git和HG的忽略文件是什么样的呢？">
+<meta name="twitter:description" content="什么是忽略文件？当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。
+忽略文件的作用？当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。
+通用的忽略文件以下提供两种忽略文件">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+<script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  <title> 标准的Android git和HG的忽略文件是什么样的呢？ | 孤独狂饮 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">孤独狂饮</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                标准的Android git和HG的忽略文件是什么样的呢？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-25T11:00:40+08:00" content="2016-08-25">
+              2016-08-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是忽略文件？"><a href="#什么是忽略文件？" class="headerlink" title="什么是忽略文件？"></a>什么是忽略文件？</h3><p>当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。</p>
+<h3 id="忽略文件的作用？"><a href="#忽略文件的作用？" class="headerlink" title="忽略文件的作用？"></a>忽略文件的作用？</h3><p>当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。</p>
+<h3 id="通用的忽略文件"><a href="#通用的忽略文件" class="headerlink" title="通用的忽略文件"></a>通用的忽略文件</h3><p>以下提供两种忽略文件的模板，满足大部分需求。</p>
+<h5 id="1-git-的忽略文件模板："><a href="#1-git-的忽略文件模板：" class="headerlink" title="1. git 的忽略文件模板："></a>1. git 的忽略文件模板：</h5><p>请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果我们有其他文件也不用提交的画，可以参考下面的样式添加进去即可：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.gitignore</span><br><span class="line"></span><br><span class="line">*~</span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line"><span class="meta"># Android Studio</span></span><br><span class="line">*.iml</span><br><span class="line">.idea</span><br><span class="line">.gradle</span><br><span class="line"></span><br><span class="line">build</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta"># Created by .ignore support plugin (hsz.mobi)</span></span><br><span class="line">syntax: glob</span><br><span class="line"></span><br><span class="line"><span class="meta">### Android template</span></span><br><span class="line"><span class="meta"># Built application files</span></span><br><span class="line">*.apk</span><br><span class="line">*.ap_</span><br><span class="line"></span><br><span class="line"><span class="meta"># Files for the ART/Dalvik VM</span></span><br><span class="line">*.dex</span><br><span class="line"></span><br><span class="line"><span class="meta"># Java class files</span></span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"><span class="meta"># Generated files</span></span><br><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line">out/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Gradle files</span></span><br><span class="line">.gradle/</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Local configuration file (sdk path, etc)</span></span><br><span class="line">local.properties</span><br><span class="line"></span><br><span class="line"><span class="meta"># Proguard folder generated by Eclipse</span></span><br><span class="line">proguard/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Log Files</span></span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line"><span class="meta"># Android Studio Navigation editor temp files</span></span><br><span class="line">.navigation/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Android Studio captures folder</span></span><br><span class="line">captures/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Intellij</span></span><br><span class="line">*.iml</span><br><span class="line">.idea/workspace.xml</span><br><span class="line"></span><br><span class="line"><span class="meta"># Keystore files</span></span><br><span class="line">*.jks</span><br><span class="line"><span class="meta">### Eclipse template</span></span><br><span class="line"></span><br><span class="line">.metadata</span><br><span class="line">tmp/</span><br><span class="line">*.tmp</span><br><span class="line">*.bak</span><br><span class="line">*.swp</span><br><span class="line">*~.nib</span><br><span class="line">.settings/</span><br><span class="line">.loadpath</span><br><span class="line">.recommenders</span><br><span class="line"></span><br><span class="line"><span class="meta"># Eclipse Core</span></span><br><span class="line">.project</span><br><span class="line"></span><br><span class="line"><span class="meta"># External tool builders</span></span><br><span class="line">.externalToolBuilders/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Locally stored "Eclipse launch configurations"</span></span><br><span class="line">*.launch</span><br><span class="line"></span><br><span class="line"><span class="meta"># PyDev specific (Python IDE for Eclipse)</span></span><br><span class="line">*.pydevproject</span><br><span class="line"></span><br><span class="line"><span class="meta"># CDT-specific (C/C++ Development Tooling)</span></span><br><span class="line">.cproject</span><br><span class="line"></span><br><span class="line"><span class="meta"># JDT-specific (Eclipse Java Development Tools)</span></span><br><span class="line">.classpath</span><br><span class="line"></span><br><span class="line"><span class="meta"># Java annotation processor (APT)</span></span><br><span class="line">.factorypath</span><br><span class="line"></span><br><span class="line"><span class="meta"># PDT-specific (PHP Development Tools)</span></span><br><span class="line">.buildpath</span><br><span class="line"></span><br><span class="line"><span class="meta"># sbteclipse plugin</span></span><br><span class="line">.target</span><br><span class="line"></span><br><span class="line"><span class="meta"># Tern plugin</span></span><br><span class="line">.tern-project</span><br><span class="line"></span><br><span class="line"><span class="meta"># TeXlipse plugin</span></span><br><span class="line">.texlipse</span><br><span class="line"></span><br><span class="line"><span class="meta"># STS (Spring Tool Suite)</span></span><br><span class="line">.springBeans</span><br><span class="line"></span><br><span class="line"><span class="meta"># Code Recommenders</span></span><br><span class="line">.recommenders/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Mobile Tools for Java (J2ME)</span></span><br><span class="line">.mtj.tmp/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Package Files #</span></span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.ear</span><br><span class="line"></span><br><span class="line"><span class="meta"># virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml</span></span><br><span class="line">hs_err_pid*</span><br><span class="line"><span class="meta">### Example user template template</span></span><br><span class="line"><span class="meta">### Example user template</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># IntelliJ project files</span></span><br><span class="line">.idea</span><br><span class="line">out</span><br><span class="line">gen</span><br></pre></td></tr></table></figure>
+<ol>
+<li>HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工具，但是随着git 的用户群体庞大，git越来越灵活，简单易用，因此 HG也就慢慢退出了我们的视线。最有名的 github 里面也大量使用到git。但是作为一种管理工具，在不同的环境场景下，也可能需要使用HG，尤其是公司的备份管理等，都十分的安全。使用方式很简单，在主项目的根目录下 创建或者修改： .hgignore 文件即可。 这个文件也可以直接放到mode 里面去。 这里提供忽略文件如下：</li>
+</ol>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># Created by .ignore support plugin (hsz.mobi)</span></span><br><span class="line">syntax: glob</span><br><span class="line"></span><br><span class="line"><span class="meta">### Android template</span></span><br><span class="line"><span class="meta"># Built application files</span></span><br><span class="line">*.apk</span><br><span class="line">*.ap_</span><br><span class="line"></span><br><span class="line"><span class="meta"># Files for the ART/Dalvik VM</span></span><br><span class="line">*.dex</span><br><span class="line"></span><br><span class="line"><span class="meta"># Java class files</span></span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"><span class="meta"># Generated files</span></span><br><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line">out/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Gradle files</span></span><br><span class="line">.gradle/</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Local configuration file (sdk path, etc)</span></span><br><span class="line">local.properties</span><br><span class="line"></span><br><span class="line"><span class="meta"># Proguard folder generated by Eclipse</span></span><br><span class="line">proguard/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Log Files</span></span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line"><span class="meta"># Android Studio Navigation editor temp files</span></span><br><span class="line">.navigation/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Android Studio captures folder</span></span><br><span class="line">captures/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta"># Keystore files</span></span><br><span class="line">*.jks</span><br><span class="line"><span class="meta">### Eclipse template</span></span><br><span class="line"></span><br><span class="line">.metadata</span><br><span class="line">tmp/</span><br><span class="line">*.tmp</span><br><span class="line">*.bak</span><br><span class="line">*.swp</span><br><span class="line">*~.nib</span><br><span class="line">.settings/</span><br><span class="line">.loadpath</span><br><span class="line">.recommenders</span><br><span class="line"></span><br><span class="line"><span class="meta"># Eclipse Core</span></span><br><span class="line">.project</span><br><span class="line"></span><br><span class="line"><span class="meta"># External tool builders</span></span><br><span class="line">.externalToolBuilders/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Locally stored "Eclipse launch configurations"</span></span><br><span class="line">*.launch</span><br><span class="line"></span><br><span class="line"><span class="meta"># PyDev specific (Python IDE for Eclipse)</span></span><br><span class="line">*.pydevproject</span><br><span class="line"></span><br><span class="line"><span class="meta"># CDT-specific (C/C++ Development Tooling)</span></span><br><span class="line">.cproject</span><br><span class="line"></span><br><span class="line"><span class="meta"># JDT-specific (Eclipse Java Development Tools)</span></span><br><span class="line">.classpath</span><br><span class="line"></span><br><span class="line"><span class="meta"># Java annotation processor (APT)</span></span><br><span class="line">.factorypath</span><br><span class="line"></span><br><span class="line"><span class="meta"># PDT-specific (PHP Development Tools)</span></span><br><span class="line">.buildpath</span><br><span class="line"></span><br><span class="line"><span class="meta"># sbteclipse plugin</span></span><br><span class="line">.target</span><br><span class="line"></span><br><span class="line"><span class="meta"># Tern plugin</span></span><br><span class="line">.tern-project</span><br><span class="line"></span><br><span class="line"><span class="meta"># TeXlipse plugin</span></span><br><span class="line">.texlipse</span><br><span class="line"></span><br><span class="line"><span class="meta"># STS (Spring Tool Suite)</span></span><br><span class="line">.springBeans</span><br><span class="line"></span><br><span class="line"><span class="meta"># Code Recommenders</span></span><br><span class="line">.recommenders/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Mobile Tools for Java (J2ME)</span></span><br><span class="line">.mtj.tmp/</span><br><span class="line"></span><br><span class="line"><span class="meta"># Package Files #</span></span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.ear</span><br><span class="line"></span><br><span class="line"><span class="meta"># virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml</span></span><br><span class="line">hs_err_pid*</span><br><span class="line"><span class="meta">### Example user template template</span></span><br><span class="line"><span class="meta">### Example user template</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># IntelliJ project files</span></span><br><span class="line">.idea</span><br><span class="line">*.iml</span><br><span class="line">out</span><br><span class="line">gen</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友,一起交流</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/08/OkHttp和Okio/" rel="next" title="OkHttp和Okio">
+                <i class="fa fa-chevron-left"></i> OkHttp和Okio
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/"
+     data-title="标准的Android git和HG的忽略文件是什么样的呢？"
+     data-content=""
+     data-url="http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/"
+           data-title="标准的Android git和HG的忽略文件是什么样的呢？" data-url="http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="gdky005" />
+          <p class="site-author-name" itemprop="name">gdky005</p>
+          <p class="site-description motion-element" itemprop="description">创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gdky005" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gdky005" target="_blank" title="CSDN博客">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  CSDN博客
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/gdky005" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是忽略文件？"><span class="nav-number">1.</span> <span class="nav-text">什么是忽略文件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略文件的作用？"><span class="nav-number">2.</span> <span class="nav-text">忽略文件的作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用的忽略文件"><span class="nav-number">3.</span> <span class="nav-text">通用的忽略文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-git-的忽略文件模板："><span class="nav-number">3.0.1.</span> <span class="nav-text">1. git 的忽略文件模板：</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gdky005</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gdky005"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
