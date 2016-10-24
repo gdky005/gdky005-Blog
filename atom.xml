@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2016-08-25T03:46:27.000Z</updated>
+  <updated>2016-10-24T09:53:32.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你是如何走上编程这条道路的?</title>
+    <link href="http://gdky005.com/2016/10/24/%E4%BD%A0%E6%98%AF%E5%A6%82%E4%BD%95%E8%B5%B0%E4%B8%8A%E7%BC%96%E7%A8%8B%E8%BF%99%E6%9D%A1%E9%81%93%E8%B7%AF%E7%9A%84/"/>
+    <id>http://gdky005.com/2016/10/24/你是如何走上编程这条道路的/</id>
+    <published>2016-10-24T09:47:42.000Z</published>
+    <updated>2016-10-24T09:53:32.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;编程之路从点滴开启&quot;&gt;&lt;a href=&quot;#编程之路从点滴开启&quot; class=&quot;headerlink&quot; title=&quot;编程之路从点滴开启&quot;&gt;&lt;/a&gt;编程之路从点滴开启&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;今天想随便聊聊，被人问到我是如何走上编程之路的，于是有感而发，特写此文记录.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;第一台设备&quot;&gt;&lt;a href=&quot;#第一台设备&quot; class=&quot;headerlink&quot; title=&quot;第一台设备&quot;&gt;&lt;/a&gt;第一台设备&lt;/h3&gt;&lt;p&gt;还记得高一的时候，非要在外打工的爸爸妈妈买文曲星学习。说真的，当时对学习确实有点用，但是用来看小flash，听歌，研究小游戏的时间会更多。记得当时使用VB 写的脚本，但是当时对这块一片空白，只是简单的玩玩。&lt;/p&gt;
+&lt;h3 id=&quot;第二台设备&quot;&gt;&lt;a href=&quot;#第二台设备&quot; class=&quot;headerlink&quot; title=&quot;第二台设备&quot;&gt;&lt;/a&gt;第二台设备&lt;/h3&gt;&lt;p&gt;   高二，听闻我们街道上的网吧淘汰机子，于是让爸爸给我买了一台800元的旧电脑（当时家里穷，也没钱装网，只能自己在家离线玩）。有了电脑后，各种下电影，软件，学习PS，学习C语言（当时了解到大学肯定要学习这个的），学网页三剑客等等，由于没人指导和交流，就看什么好玩，就学什么。当时一个朋友送了一个花屏的手机，虽然烂，但是起码可以使用。&lt;/p&gt;
+&lt;h3 id=&quot;第三台设备&quot;&gt;&lt;a href=&quot;#第三台设备&quot; class=&quot;headerlink&quot; title=&quot;第三台设备&quot;&gt;&lt;/a&gt;第三台设备&lt;/h3&gt;&lt;p&gt;用这个手机看完了海贼王，火影忍者，最后了解到这个手机上也可以安装程序，是 SK芯片 （斯凯）的手机，可以安装 mrp 的应用程序，但是还有展讯芯片的手机，不过貌似很少，这些机子俗称 山寨手机。主要活跃时间在2009年以前，我主要在2008年接触这个东西，每天就看 一些手机网站 mrp 应用的更新，当时智能机都是诺基亚的塞班系统。我当时从各种途径寻找做 mrp 程序的资料，但是安装好以后，有些东西需要在线更新，但是家里没有网，也就没法继续下去，只记得用C语言写过一些小Demo，之后也就没怎么继续下去。&lt;/p&gt;
+&lt;h3 id=&quot;我的大学有点怪&quot;&gt;&lt;a href=&quot;#我的大学有点怪&quot; class=&quot;headerlink&quot; title=&quot;我的大学有点怪&quot;&gt;&lt;/a&gt;我的大学有点怪&lt;/h3&gt;&lt;p&gt;上大学后，本以为是非常好的，但是给我感觉一般，社团也就那样，感觉没啥动力，于是自己向计算机需要申请了一个 计算机兴趣小组， 红红火火的弄起来了。将大一的好多班的人都拉了进来，给他们讲东西学习，请C语言老师给我们开小灶，想想就觉得当时很棒。由于当时年轻，不懂得一些东西，慢慢也就没落了，还被人横插一腿。虽然不开心，但是我还是自己继续努力，学校举办的什么计算机大赛总是出现我的身影，绝对拿奖，基本都是第一，第二。&lt;/p&gt;
+&lt;h3 id=&quot;内心生出萌芽&quot;&gt;&lt;a href=&quot;#内心生出萌芽&quot; class=&quot;headerlink&quot; title=&quot;内心生出萌芽&quot;&gt;&lt;/a&gt;内心生出萌芽&lt;/h3&gt;&lt;p&gt;然后我听几个学长说要去深圳，北京发展，也在我的心里慢慢萌芽了。大学的时光虽然美好，有各种妹子，各种时间，各种赚钱的机会，但是对我来说都是浮云，我想我还是应该去看看外面的世界。&lt;/p&gt;
+&lt;h3 id=&quot;踏上程序员之路&quot;&gt;&lt;a href=&quot;#踏上程序员之路&quot; class=&quot;headerlink&quot; title=&quot;踏上程序员之路&quot;&gt;&lt;/a&gt;踏上程序员之路&lt;/h3&gt;&lt;p&gt;于是在某年的8月8日（我生日那天）不顾爸爸的阻挠，我来到了北京，虽然当时日子很苦，但是如今想想，真开心能做这样的决定。如果我俨然成为了一个架构师，但是我觉得还有很多东西可以做。&lt;/p&gt;
+&lt;h3 id=&quot;我所坚持的&quot;&gt;&lt;a href=&quot;#我所坚持的&quot; class=&quot;headerlink&quot; title=&quot;我所坚持的&quot;&gt;&lt;/a&gt;我所坚持的&lt;/h3&gt;&lt;p&gt;平时努力工作，其余时间做点小东西，我始终坚持的就是想到不一定做到，但是要做就做点不一样的。&lt;/p&gt;
+&lt;h3 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h3&gt;&lt;p&gt;仅此而已，没任何东西值得炫耀，只是想跟大家说说我的一些经历。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;编程之路从点滴开启&quot;&gt;&lt;a href=&quot;#编程之路从点滴开启&quot; class=&quot;headerlink&quot; title=&quot;编程之路从点滴开启&quot;&gt;&lt;/a&gt;编程之路从点滴开启&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;今天想随便聊聊，被人问到我是如何走上编程之路的，于是有感而发，特写此
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>标准的Android git和HG的忽略文件是什么样的呢？</title>
@@ -659,60 +686,6 @@ public class Main {
     
     
       <category term="面试心经" scheme="http://gdky005.com/tags/%E9%9D%A2%E8%AF%95%E5%BF%83%E7%BB%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Android Studio 内存分析工具</title>
-    <link href="http://gdky005.com/2016/06/20/%E4%BD%BF%E7%94%A8-Android-Studio-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
-    <id>http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/</id>
-    <published>2016-06-20T10:33:33.000Z</published>
-    <updated>2016-06-20T10:36:13.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;App的内存使用可以通过以下三个工具分析：&quot;&gt;&lt;a href=&quot;#App的内存使用可以通过以下三个工具分析：&quot; class=&quot;headerlink&quot; title=&quot;App的内存使用可以通过以下三个工具分析：&quot;&gt;&lt;/a&gt;App的内存使用可以通过以下三个工具分析：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Heap Viewer&lt;/li&gt;
-&lt;li&gt;Memory Monitor&lt;/li&gt;
-&lt;li&gt;Allocation Tracker&lt;br&gt;并且，这个三个是互补的可视化内存分析工具。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。&lt;/li&gt;
-&lt;li&gt;运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。&lt;/li&gt;
-&lt;li&gt;使用 Allocation Tracker 可以确定出你的代码中存在的问题。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;Memory-Monitor&quot;&gt;&lt;a href=&quot;#Memory-Monitor&quot; class=&quot;headerlink&quot; title=&quot;Memory Monitor&quot;&gt;&lt;/a&gt;Memory Monitor&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。&lt;/li&gt;
-&lt;li&gt;可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。&lt;/li&gt;
-&lt;li&gt;提供一种快速看出App 是否是由于 运行内存不足 而导致的 crash(崩溃)的方法。&lt;/li&gt;
-&lt;li&gt;当前运行的app ，每一秒更新占用内存的状况。&lt;/li&gt;
-&lt;li&gt;有助于识别潜在的内存泄漏。&lt;/li&gt;
-&lt;li&gt;有助于识别 App 的 GC模式,并确定它们是否正常和你所希望的样子。&lt;/li&gt;
-&lt;li&gt;它很容易使用，并且很容易看明白&lt;/li&gt;
-&lt;li&gt;然而，Memory Monitor 不能告诉你哪些对象是有问题的，或者给你指出代码中存在的问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Heap-Viewer&quot;&gt;&lt;a href=&quot;#Heap-Viewer&quot; class=&quot;headerlink&quot; title=&quot;Heap Viewer&quot;&gt;&lt;/a&gt;Heap Viewer&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png&quot; alt=&quot;Allocation Tracker&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;根据类型 分配许多对象 的快照图。&lt;/li&gt;
-&lt;li&gt;每一次的样本数据 是自动采集或者你手动触发。&lt;/li&gt;
-&lt;li&gt;帮助确定哪些对象类型可能是内存泄漏。&lt;/li&gt;
-&lt;li&gt;然而，你 &lt;strong&gt;必须自己寻找&lt;/strong&gt; 在一段时间内曲线图的变化发送了什么。 （重点，需要&lt;strong&gt;采集两次以上&lt;/strong&gt;的数据进行&lt;strong&gt;对比&lt;/strong&gt;，才能明确，出问题的地方在哪里）&lt;h3 id=&quot;Allocation-Tracker&quot;&gt;&lt;a href=&quot;#Allocation-Tracker&quot; class=&quot;headerlink&quot; title=&quot;Allocation Tracker&quot;&gt;&lt;/a&gt;Allocation Tracker&lt;/h3&gt;&lt;a href=&quot;#&quot; title=&quot;Allocation Tracker&quot;&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小&lt;/li&gt;
-&lt;li&gt;帮助识别 内存的改变是通过 循环分配或重新分配。&lt;/li&gt;
-&lt;li&gt;可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。&lt;/li&gt;
-&lt;li&gt;然而，它需要时间和经验来学习理解这个工具的使用。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;App的内存使用可以通过以下三个工具分析：&quot;&gt;&lt;a href=&quot;#App的内存使用可以通过以下三个工具分析：&quot; class=&quot;headerlink&quot; title=&quot;App的内存使用可以通过以下三个工具分析：&quot;&gt;&lt;/a&gt;App的内存使用可以通过以下三个工具分析：&lt;/
-    
-    </summary>
-    
-      <category term="AndroidStudio" scheme="http://gdky005.com/categories/AndroidStudio/"/>
-    
-    
-      <category term="AndroidStudio" scheme="http://gdky005.com/tags/AndroidStudio/"/>
     
   </entry>
   
