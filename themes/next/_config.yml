@@ -26,9 +26,10 @@ since: 2015
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
+  zhuoketeam: /categories/ZhuoKeTeam
   # categories: /categories
-  about: /about
   archives: /archives
+  about: /about
   # tags: /tags
   # commonweal: /404.html
 
@@ -42,11 +43,13 @@ menu_icons:
   enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
+  zhuoketeam: android
   about: user
   categories: th
   tags: tags
   archives: archive
   commonweal: heartbeat
+
 
 
 
