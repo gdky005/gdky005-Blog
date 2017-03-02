@@ -4,6 +4,22 @@
   
     
     <entry>
+      <title><![CDATA[升级android 7.1一些经历]]></title>
+      <url>http://gdky005.com/2017/03/02/%E5%8D%87%E7%BA%A7android-7-1%E4%B8%80%E4%BA%9B%E7%BB%8F%E5%8E%86/</url>
+      <content type="html"><![CDATA[<h1 id="升级android-7-1一些经历"><a href="#升级android-7-1一些经历" class="headerlink" title="升级android 7.1一些经历"></a>升级android 7.1一些经历</h1><p>我一直用的测试机是华为 nexus P6, 7.0出来的时候，刷了一个 7.0 玩，感觉还不错，有些你在 7.0之下的版本绝不会出现的问题，出现了好多。</p>
+<p>当7.1 出现的时候，本来不想升级，但是 android 组的 leader 让我把这个 P6 升级为 7.1。为了让测试的性能组测试 vovi 新机器适配。想着刷就刷呗，应该没啥问题。</p>
+<p>可悲的事情就来了，因为我的这个 P6升级到 7.0后就 root 了，刷了 twrp 启动方式。结果直接挂代理后，升级 7.1 后就悲剧了，机子死活开不了机。</p>
+<p>通过 <a href="http://www.pixcn.cn/thread-23317-1-1.html" target="_blank" rel="external">http://www.pixcn.cn/thread-23317-1-1.html</a> ，找到了一些解决方案。因为是我的手机 刷了 rec 启动，所以直接用系统自带的更新包就不行。在官网 <a href="https://developers.google.com/android/images" target="_blank" rel="external">https://developers.google.com/android/images</a> 下载了 Factory Images 镜像，只能用线刷。</p>
+<p>把 这个镜像通过 rec 连接电脑，用命令行放入 手机SD 卡中，直接刷总是失败，必须用线刷啊，线刷啊，线刷啊。</p>
+<p>在折腾的很无奈的时候，灵光一闪，进入 rec 之前，尝试用 adb 连接手机，可是就是 连接不上。 最后直接尝试 fastXXX ,没想到 adb shell 不行，但是 电脑上解压 zip 后， 里面的 fast 命令可直接使用。很顺利的就完成了刷机，进入了 7.1 系统。</p>
+<p>在7.0 的时候就一直很郁闷，wifi 连接成功后，在顶部的 wifi 状态标识上面总是有一个 小感叹号。一直没解决，没想到 7.1 直接变成了 小 『x』, 在群里讨论后，一个哥们说可以去掉，我尝试百度了下，用一下命令真就去掉了。 追查原因，说是 google 会去检测 wifi 是否安全，来显示那个 感叹号和小『x』。</p>
+<p>adb输入命令：</p>
+<pre><code>adb shell settings put global captive_portal_detection_enabled 0
+</code></pre><p>完成后开启飞行模式即可</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[卓客Team团队组建成功]]></title>
       <url>http://gdky005.com/2016/11/01/%E5%8D%93%E5%AE%A2Team%E5%9B%A2%E9%98%9F%E7%BB%84%E5%BB%BA%E6%88%90%E5%8A%9F/</url>
       <content type="html"><![CDATA[<h3 id="卓客Team团队组建成功"><a href="#卓客Team团队组建成功" class="headerlink" title="卓客Team团队组建成功"></a>卓客Team团队组建成功</h3><p>卓客Team团队 目前已经组建成功，接下来将完成一些很有意义的事情，请持续关注。</p>
