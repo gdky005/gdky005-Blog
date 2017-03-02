@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-03-02T02:58:30.000Z</updated>
+  <updated>2017-03-02T03:01:02.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://gdky005.com/2017/03/02/%E5%8D%87%E7%BA%A7android-7-1%E4%B8%80%E4%BA%9B%E7%BB%8F%E5%8E%86/"/>
     <id>http://gdky005.com/2017/03/02/升级android-7-1一些经历/</id>
     <published>2017-03-02T02:56:48.000Z</published>
-    <updated>2017-03-02T02:58:30.000Z</updated>
+    <updated>2017-03-02T03:01:02.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;升级android-7-1一些经历&quot;&gt;&lt;a href=&quot;#升级android-7-1一些经历&quot; class=&quot;headerlink&quot; title=&quot;升级android 7.1一些经历&quot;&gt;&lt;/a&gt;升级android 7.1一些经历&lt;/h1&gt;&lt;p&gt;我一直用的测试机是华为 nexus P6, 7.0出来的时候，刷了一个 7.0 玩，感觉还不错，有些你在 7.0之下的版本绝不会出现的问题，出现了好多。&lt;/p&gt;
+    <content type="html">&lt;p&gt;我一直用的测试机是华为 nexus P6, 7.0出来的时候，刷了一个 7.0 玩，感觉还不错，有些你在 7.0之下的版本绝不会出现的问题，出现了好多。&lt;/p&gt;
 &lt;p&gt;当7.1 出现的时候，本来不想升级，但是 android 组的 leader 让我把这个 P6 升级为 7.1。为了让测试的性能组测试 vovi 新机器适配。想着刷就刷呗，应该没啥问题。&lt;/p&gt;
 &lt;p&gt;可悲的事情就来了，因为我的这个 P6升级到 7.0后就 root 了，刷了 twrp 启动方式。结果直接挂代理后，升级 7.1 后就悲剧了，机子死活开不了机。&lt;/p&gt;
 &lt;p&gt;通过 &lt;a href=&quot;http://www.pixcn.cn/thread-23317-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.pixcn.cn/thread-23317-1-1.html&lt;/a&gt; ，找到了一些解决方案。因为是我的手机 刷了 rec 启动，所以直接用系统自带的更新包就不行。在官网 &lt;a href=&quot;https://developers.google.com/android/images&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developers.google.com/android/images&lt;/a&gt; 下载了 Factory Images 镜像，只能用线刷。&lt;/p&gt;
@@ -36,7 +36,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;升级android-7-1一些经历&quot;&gt;&lt;a href=&quot;#升级android-7-1一些经历&quot; class=&quot;headerlink&quot; title=&quot;升级android 7.1一些经历&quot;&gt;&lt;/a&gt;升级android 7.1一些经历&lt;/h1&gt;&lt;p&gt;我一直用的测试机是华
+      &lt;p&gt;我一直用的测试机是华为 nexus P6, 7.0出来的时候，刷了一个 7.0 玩，感觉还不错，有些你在 7.0之下的版本绝不会出现的问题，出现了好多。&lt;/p&gt;
+&lt;p&gt;当7.1 出现的时候，本来不想升级，但是 android 组的 leader 让我把这个 P6 升级为 7
     
     </summary>
     
