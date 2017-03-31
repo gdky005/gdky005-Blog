@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-03-02T03:01:02.000Z</updated>
+  <updated>2017-03-31T03:30:41.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>怎么关闭小米锁屏音乐？最终解决方案以及原理分析</title>
+    <link href="http://gdky005.com/2017/03/31/%E6%80%8E%E4%B9%88%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E9%94%81%E5%B1%8F%E9%9F%B3%E4%B9%90%EF%BC%9F%E6%9C%80%E7%BB%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
+    <id>http://gdky005.com/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/</id>
+    <published>2017-03-31T03:29:48.000Z</published>
+    <updated>2017-03-31T03:30:41.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;a href=&quot;#相关图片我就不贴了，参考下面遇到的这些问题：&quot; class=&quot;headerlink&quot; title=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;/a&gt;相关图片我就不贴了，参考下面遇到的这些问题：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.miui.com/thread-4005188-2-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/thread-4005188-2-1.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=2617209&amp;amp;mobile=1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=2617209&amp;amp;mobile=1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=3960406&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=3960406&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/thread-2592275-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/thread-2592275-1-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;『启动最近任务，把音乐类的APP给关掉。』&lt;/p&gt;
+&lt;h3 id=&quot;我这里有一个实际的场景，大家可以参考下：&quot;&gt;&lt;a href=&quot;#我这里有一个实际的场景，大家可以参考下：&quot; class=&quot;headerlink&quot; title=&quot;我这里有一个实际的场景，大家可以参考下：&quot;&gt;&lt;/a&gt;我这里有一个实际的场景，大家可以参考下：&lt;/h3&gt;&lt;p&gt;我的小米53G 内存版本手机 之前启动的时候手机可用内存基本都1G 左右，清理完内存后是1.3G。但是最近清理后总发现是1G 左右，内存平时都是800-900MB，也没太在意。&lt;/p&gt;
+&lt;p&gt;最近发现每次锁屏后总是显示小米音乐锁屏界面，可难看了，用着很是别扭，之前还有 小米锁屏画报展示的，但是这几天总是显示这个音乐锁屏界面。感觉很不爽，越是网上各种搜索，结果大家还都是没什么好版本，所以也提供了一些，但是针对某些场景，不适用于我此刻的情况。&lt;br&gt;先罗列下基本的解决办法吧：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果你当前在使用音乐软件听歌，这个肯定是去不掉的，因为音乐软件针对小米系统做了专门的功能，小米应用市场上线有这个要求哦。&lt;/li&gt;
+&lt;li&gt;重启手机后 就没有了。&lt;/li&gt;
+&lt;li&gt;刚在听歌，但是已经不听歌了，把这个 app 从 最近的任务 管理中杀掉即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基本就这几种情况。但是我目前和大多数人一样，遇到了一种极其奇葩的问题，那就是我明明没有听歌，最近任务里面也没有音乐软件，清理内存后 还是 显示音乐锁屏界面啊。 即使我重新启动机器也不行，这就奇了怪了。之前锁屏的时候有 小米锁屏画报，还能展示各种图片，看着赏心悦目，但是现在那个东东都不出来了，什么情况呢？&lt;/p&gt;
+&lt;h3 id=&quot;下面我用-一个-程序员-的角度去分析这种情况。&quot;&gt;&lt;a href=&quot;#下面我用-一个-程序员-的角度去分析这种情况。&quot; class=&quot;headerlink&quot; title=&quot;下面我用 一个 程序员 的角度去分析这种情况。&quot;&gt;&lt;/a&gt;下面我用 一个 程序员 的角度去分析这种情况。&lt;/h3&gt;&lt;p&gt;首先呢，我记得我们之前开发 音乐类 app 的时候，上线小米应用商店，不给通过，说必须加小米锁屏。然后我们就加上了，默认情况下，当用户锁屏后再启动会有自己的锁屏界面，但是有时候小米为了一些性能方面的考虑不让显示，需要直接显示他们的小米锁屏音乐界面。因此基本上市场上的音乐类软件都有小米锁屏界面的 sdk 哦。因为每个软件都有锁屏的 sdk, 所以当听音乐的时候，就会触发这个。你锁屏后再次解锁，就能看到这个了，这是大前提。&lt;/p&gt;
+&lt;h3 id=&quot;下面开始重点来了。&quot;&gt;&lt;a href=&quot;#下面开始重点来了。&quot; class=&quot;headerlink&quot; title=&quot;下面开始重点来了。&quot;&gt;&lt;/a&gt;下面开始重点来了。&lt;/h3&gt;&lt;p&gt;现在没有运行音乐软件，但是还是出现了这个，这是怎么回事呢？ 去最近的任务管理也看到不？这个锁屏 SDK 的界面为什么出来了？&lt;br&gt;我在搜索相关资料的时候，一个人的回答提醒了我：『启动最近任务，把音乐类的APP给关掉。』&lt;/p&gt;
+&lt;p&gt;我的任务管理中没有啊，突然意识到可能是之前在任务管理中把某些音乐类软件的进程锁定。才造成这种情况，那么我就是试试把手机上所以的音乐类软件打开，其实也就那么几个，网易音乐，酷我，企鹅 FM。然后惊奇的发现，果然如我所料，企鹅 FM 在任务管理中 的小图标上有一个锁。这次我把这个小锁上滑去掉后，再次清理内存就发现，内存一下子就剩 1.3GB 了。 锁屏，解锁，终于出现了小米锁屏画报，这是太好了，这个问题就这样解决了。关键问题还是在这里：音乐类 app 被锁定后，清理内存的时候，会把这个任务干掉，但是由于被锁定了，其实还在内存中。只是在图标上看不到而已，如果手机被 root了，可以用其他的软件清理内存，就可以了。这里还需要注意一点，虽然手机被重启了，但是由于 app 是锁定的状态，所以还是会被启动，app 一启动，就能看得见那个 小米锁屏界面。但是你在任务管理中却看不见，这也是 小米系统的一个 bug 吧。目前这样解决即可。&lt;/p&gt;
+&lt;p&gt;如果还有疑问，或者不懂的地方，加 weixin: gdky005, 备注锁屏即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;a href=&quot;#相关图片我就不贴了，参考下面遇到的这些问题：&quot; class=&quot;headerlink&quot; title=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;/a&gt;相关图片我就不贴了，参考下面遇到的这些问
+    
+    </summary>
+    
+    
+      <category term="原理" scheme="http://gdky005.com/tags/%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>升级android 7.1一些经历</title>
@@ -473,76 +507,6 @@ public class Main {
     
     
       <category term="OkHttp,Okio" scheme="http://gdky005.com/tags/OkHttp-Okio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTTPS的七个误解</title>
-    <link href="http://gdky005.com/2016/07/25/HTTPS%E7%9A%84%E4%B8%83%E4%B8%AA%E8%AF%AF%E8%A7%A3/"/>
-    <id>http://gdky005.com/2016/07/25/HTTPS的七个误解/</id>
-    <published>2016-07-25T03:20:13.000Z</published>
-    <updated>2016-07-25T03:25:45.000Z</updated>
-    
-    <content type="html">&lt;p&gt;这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。&lt;/p&gt;
-&lt;p&gt;我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021311.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;误解七：HTTPS无法缓存&quot;&gt;&lt;a href=&quot;#误解七：HTTPS无法缓存&quot; class=&quot;headerlink&quot; title=&quot;误解七：HTTPS无法缓存&quot;&gt;&lt;/a&gt;误解七：HTTPS无法缓存&lt;/h3&gt;&lt;p&gt;许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命令，HTTPS是可以缓存的。&lt;/p&gt;
-&lt;p&gt;微软的IE项目经理Eric Lawrence写道：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“说来也许令人震惊，只要HTTP头允许这样做，所有版本的IE都缓存HTTPS内容。比如，如果头命令是Cache-Control: max-age=600，那么这个网页就将被IE缓存10分钟。IE的缓存策略，与是否使用HTTPS协议无关。（其他浏览器在这方面的行为不一致，取决于你使用的版本，所以这里不加以讨论。）”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Firefox默认只在内存中缓存HTTPS。但是，只要头命令中有Cache-Control: Public，缓存就会被写到硬盘上。下面的图片显示，Firefox的硬盘缓存中有HTTPS内容，头命令正是Cache-Control:Public。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021301.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;误解六：SSL证书很贵&quot;&gt;&lt;a href=&quot;#误解六：SSL证书很贵&quot; class=&quot;headerlink&quot; title=&quot;误解六：SSL证书很贵&quot;&gt;&lt;/a&gt;误解六：SSL证书很贵&lt;/h3&gt;&lt;p&gt;如果你在网上搜一下，就会发现很多便宜的SSL证书，大概10美元一年，这和一个.com域名的年费差不多。而且事实上，还能找到免费的SSL证书。&lt;br&gt;在效力上，便宜的证书当然会比大机构颁发的证书差一点，但是几乎所有的主流浏览器都接受这些证书。&lt;/p&gt;
-&lt;h3 id=&quot;误解五：HTTPS站点必须有独享的IP地址&quot;&gt;&lt;a href=&quot;#误解五：HTTPS站点必须有独享的IP地址&quot; class=&quot;headerlink&quot; title=&quot;误解五：HTTPS站点必须有独享的IP地址&quot;&gt;&lt;/a&gt;误解五：HTTPS站点必须有独享的IP地址&lt;/h3&gt;&lt;p&gt;由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，&lt;a href=&quot;https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021302.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;另外，UCC（统一通信证书，Unified Communications Certificate）支持一张证书同时匹配多个站点，可以是完全不同的域名。SNI（服务器名称指示，Server Name Indication）允许一个IP地址上多个域名安装多张证书。服务器端，Apache和Nginx支持该技术，IIS不支持；客户端，IE 7+、Firefox 2.0+、Chrome 6+、Safari 2.1+和Opera 8.0+支持。&lt;/p&gt;
-&lt;h3 id=&quot;误解四：转移服务器时要购买新证书&quot;&gt;&lt;a href=&quot;#误解四：转移服务器时要购买新证书&quot; class=&quot;headerlink&quot; title=&quot;误解四：转移服务器时要购买新证书&quot;&gt;&lt;/a&gt;误解四：转移服务器时要购买新证书&lt;/h3&gt;&lt;p&gt;部署SSL证书，需要这样几步：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;在你的服务器上，生成一个CSR文件（SSL证书请求文件，SSL Certificate Signing Request）。&lt;/li&gt;
-&lt;li&gt;使用CSR文件，购买SSL证书。&lt;/li&gt;
-&lt;li&gt;安装SSL证书。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这些步骤都经过精心设计，保证传输的安全，防止有人截取或非法获得证书。结果就是，你在第二步得到的证书不能用在另一台服务器上。如果你需要这样做，就必须以其他格式输出证书。&lt;br&gt;比如，IIS的做法是生成一个可以转移的.pfx文件，并加以密码保护。&lt;br&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021303.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;将这个文件传入其他服务器，将可以继续使用原来的SSL证书了。&lt;/p&gt;
-&lt;h3 id=&quot;误解三：HTTPS太慢&quot;&gt;&lt;a href=&quot;#误解三：HTTPS太慢&quot; class=&quot;headerlink&quot; title=&quot;误解三：HTTPS太慢&quot;&gt;&lt;/a&gt;误解三：HTTPS太慢&lt;/h3&gt;&lt;p&gt;使用HTTPS不会使你的网站变得更快（实际上有可能，请看下文），但是有一些技巧可以大大减少额外开销。&lt;br&gt;首先，只要压缩文本内容，就会降低解码耗用的CPU资源。不过，对于当代CPU来说，这点开销不值一提。&lt;br&gt;其次，建立HTTPS连接，要求额外的TCP往返，因此会新增一些发送和接收的字节。但是，从下图可以看到，新增的字节是很少的。&lt;br&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021304.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;第一次打开网页的时候，HTTPS协议会比HTTP协议慢一点，这是因为读取和验证SSL证书的时间。下面是一张HTTP网页打开时间的瀑布图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021305.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;同一张网页使用HTTPS协议之后，打开时间变长了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021306.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;建立连接的部分，大约慢了10%。但是，一旦有效的HTTPS连接建立起来，再刷新网页，两种协议几乎没有区别。先是HTTP协议的刷新表现：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021307.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;然后是HTTPS协议：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021308.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。&lt;/p&gt;
-&lt;h3 id=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;a href=&quot;#误解二：有了HTTPS，Cookie和查询字符串就安全了&quot; class=&quot;headerlink&quot; title=&quot;误解二：有了HTTPS，Cookie和查询字符串就安全了&quot;&gt;&lt;/a&gt;误解二：有了HTTPS，Cookie和查询字符串就安全了&lt;/h3&gt;&lt;p&gt;虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。&lt;br&gt;比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:&lt;br&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021309.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。&lt;/p&gt;
-&lt;h3 id=&quot;误解一：只有注册登录页，才需要HTTPS&quot;&gt;&lt;a href=&quot;#误解一：只有注册登录页，才需要HTTPS&quot; class=&quot;headerlink&quot; title=&quot;误解一：只有注册登录页，才需要HTTPS&quot;&gt;&lt;/a&gt;误解一：只有注册登录页，才需要HTTPS&lt;/h3&gt;&lt;p&gt;这种想法很普遍。人们觉得，HTTPS可以保护用户的密码，此外就不需要了。Firefox浏览器新插件Firesheep，证明了这种想法是错的。我们可以看到，在Twitter和Facebook上，劫持其他人的session是非常容易的。&lt;br&gt;咖啡馆的免费WiFi，就是一个很理想的劫持环境，因为两个原因：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;这种WiFi通常不会加密，所以很容易监控所有流量。&lt;/li&gt;
-&lt;li&gt;WiFi通常使用NAT进行外网和内网的地址转换，所有内网客户端都共享一个外网地址。这意味着，被劫持的session，看上去很像来自原来的登录者。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;以Twitter为例，它的登录页使用了HTTPS，但是登录以后，其他页面就变成了HTTP。这时，它的cookie里的session值就暴露了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image.beekka.com/blog/201102/bg2011021310.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;也就是说，这些cookie是在HTTPS环境下建立的，但是却在HTTP环境下传输。如果有人劫持到这些cookie，那他就能以你的身份在Twitter上发言了。&lt;/p&gt;
-&lt;h3 id=&quot;引用地址：&quot;&gt;&lt;a href=&quot;#引用地址：&quot; class=&quot;headerlink&quot; title=&quot;引用地址：&quot;&gt;&lt;/a&gt;引用地址：&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。&lt;/p&gt;
-&lt;p&gt;我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还
-    
-    </summary>
-    
-    
-      <category term="https" scheme="http://gdky005.com/tags/https/"/>
     
   </entry>
   
