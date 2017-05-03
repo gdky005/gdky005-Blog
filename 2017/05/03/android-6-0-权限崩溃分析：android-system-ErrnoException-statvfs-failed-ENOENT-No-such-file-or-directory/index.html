@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
+  <meta name="keywords" content="android" />
 
 
 
@@ -82,15 +82,21 @@
 
 
 
-<meta name="description" content="创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孤独狂饮">
-<meta property="og:url" content="http://gdky005.com/tags/干货/index.html">
+<meta name="description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)">
+<meta property="og:url" content="http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!">
+<meta property="og:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png">
+<meta property="og:updated_time" content="2017-05-03T03:37:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孤独狂饮">
-<meta name="twitter:description" content="创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!">
+<meta name="twitter:title" content="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)">
+<meta name="twitter:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png">
 
 
 
@@ -116,7 +122,7 @@
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> 标签: 干货 | 孤独狂饮 </title>
+  <title> android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory) | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +153,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,53 +264,240 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        干货
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-03T11:36:44+08:00" content="2017-05-03">
+              2017-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="问题复现"><a href="#问题复现" class="headerlink" title="问题复现"></a>问题复现</h3><p>在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： </p>
+<pre><code>05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
+05-03 09:53:02.356 W/System.err:     at android.os.StatFs.doStat(StatFs.java:46)
+05-03 09:53:02.370 W/System.err:     at android.os.StatFs.&lt;init&gt;(StatFs.java:39)
+05-03 09:53:02.386 W/System.err:     at gdky005.testexception.SDCardUtil.getSDAvailableBlocks(SDCardUtil.java:166)
+05-03 09:53:02.401 W/System.err:     at gdky005.testexception.MainActivity.testSDCard(MainActivity.java:69)
+05-03 09:53:02.410 W/System.err:     at gdky005.testexception.MainActivity$1.onClick(MainActivity.java:26)
+05-03 09:53:02.412 D/DhcpClient: Received packet: f4:5c:89:c2:6d:7b NAK, reason (none)
+05-03 09:53:02.417 W/System.err:     at android.view.View.performClick(View.java:5637)
+05-03 09:53:02.425 W/System.err:     at android.view.View$PerformClick.run(View.java:22429)
+05-03 09:53:02.431 W/System.err:     at android.os.Handler.handleCallback(Handler.java:751)
+05-03 09:53:02.435 W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:95)
+05-03 09:53:02.439 W/System.err:     at android.os.Looper.loop(Looper.java:154)
+05-03 09:53:02.442 W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6119)
+05-03 09:53:02.445 W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+05-03 09:53:02.449 W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+05-03 09:53:02.452 W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+05-03 09:53:02.461 W/System.err: Caused by: android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)
+05-03 09:53:02.463 W/System.err:     at libcore.io.Posix.statvfs(Native Method)
+05-03 09:53:02.466 W/System.err:     at libcore.io.BlockGuardOs.statvfs(BlockGuardOs.java:304)
+05-03 09:53:02.469 W/System.err:     at android.system.Os.statvfs(Os.java:506)
+05-03 09:53:02.471 W/System.err:     at android.os.StatFs.doStat(StatFs.java:44)
+05-03 09:53:02.472 W/System.err:     ... 13 more
+</code></pre><p>具体崩溃路径是：</p>
+<pre><code>Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
+</code></pre><p>代码中调用：</p>
+<pre><code>context.getExternalFilesDir(null);  //获取 外置 SD 卡 私有目录
+</code></pre><h3 id="具体原因"><a href="#具体原因" class="headerlink" title="具体原因"></a>具体原因</h3><p>在主 app 中 因为使用了 targetSdkVersion 低于 android 6.0（23）的 19， 意味着 app 支持的最高目标版本是 android 4.4 （19）。 targetSdkVersion 是 Android 提供向前兼容的主要依据。 因此系统检查到 这个低于 android 6.0（23）， 默认给 app 自动开启了所有的权限（这也是之前一直疑惑的点）。当在 手机的系统大约等于 android 6.0（23），默认拥有了所有的权限，因此 app 可以正常运行。</p>
+<p>但是根据 听云 的崩溃手机信息来看，确实是崩溃了。</p>
+<pre><code>java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/
+</code></pre><p>经过大量尝试以及测试，终于发现问题是处在  targetSdkVersion 这里。 如果 tartgetSdkVersion 大约23，即使关闭 SD 卡的存储权限， 也可以通过  context.getExternalFilesDir(null);  拿到 SD 卡的位置 app 私有存储目录。</p>
+<p>但是，当 tartgetSdkVersion \&lt; 23, 关闭 SD 卡的存储权限后， 通过 context.getExternalFilesDir(null);  不可以拿到 SD 卡的外置 app 私有目录，会提示 「Invalid path: /storage/emulated/0/Android/data/」。</p>
+<p>因为在 6.0 以上的手机，检测到 app 的 tartgetSdkVersion \&lt; 23，默认给了所有的权限，但是当 关闭 存储权限后，意味着 SD 卡的读写权限都没有了。当调用到 context.getExternalFilesDir(null);  的时候，系统认为 当前 app 的最高 运行版本是 低于 23 的，所有不会给 app 在 SD 卡创建 app 的私有目录。所有尝试获取 SD 卡的 app 私有目录的时候，就会获取不到路径，因为没有 SD 卡的读写权限啊。</p>
+<p>这里需要说明一下：当 tartgetSdkVersion > 23，调用 context.getExternalFilesDir(null); ，系统会给 app 在 SD 卡的 Android/data/ + 包名 + files , 以这样的形式 创建一个 app 的私有文件夹，这也是 6.0 以后的新特性。例如：</p>
+<pre><code>/storage/emulated/0/Android/data/gdky005.testexception/files
+</code></pre><p>这个目录其实就等同于 Linux 里面的一个 app 的私有账户目录，只有当前 app 能访问，其他 app 直接访问不了，所以也被称之为 app 的外置私有目录。 app 的 tartgetSdkVersion \&lt; 23， 因为系统没有给 它创建 私有目录，而且他没有 SD 卡的读写权限，所以 也不可以自行创建 app 的私有目录。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>由于 app 的 targetSdkVersion \&lt; 23，默认 app 拥有所有的权限，但是当 用户手动禁用 SD 卡的存储权限，或者 Rom, 第三方服务 禁用，那么就会造成很严重的问题。无法使用外置app的私有目录，就会报错。</p>
+<ol>
+<li>不过在 原生的 android 系统里面会提示用户： <img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png" alt=""></li>
+<li>如果第三方服务或者 rom 自动禁用的话，也许看不到警告。 </li>
+<li>例如三星等系统，在 app 安装好以后，会自动弹出权限框，让用户选择权限。</li>
+</ol>
+<p>处理措施：</p>
+<ol>
+<li>try catch</li>
+<li>targetSdkVersion >= 23 参考：<a href="http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</a></li>
+<li>尝试 自动创建文件 检测是否成功，并验证，如果失败，立即使用 app 的内置私有目录</li>
+</ol>
 
-      <h1 class="post-title">
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2015/09/26/比较好的Android网站/" itemprop="url">
-              
-                <span itemprop="name">比较好的Android网站</span>
-              
-            </a>
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友,一起交流</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-09-26T14:53:07+08:00"
-              content="2015-09-26" >
-          09-26
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/" rel="next" title="如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion">
+                <i class="fa fa-chevron-left"></i> 如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/"
+     data-title="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)"
+     data-content=""
+     data-url="http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/"
+           data-title="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)" data-url="http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -324,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -411,6 +613,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题复现"><span class="nav-number">1.</span> <span class="nav-text">问题复现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体原因"><span class="nav-number">2.</span> <span class="nav-text">具体原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -526,6 +739,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

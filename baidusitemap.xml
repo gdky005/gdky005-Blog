@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://gdky005.com/2017/05/03/android-6-0-%E6%9D%83%E9%99%90%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90%EF%BC%9Aandroid-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/</loc>
+    <lastmod>2017-05-03T03:37:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)</title>
+        <pubTime>2017-05-03T03:36:44.000Z</pubTime>
+        
+        <tag>android </tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://gdky005.com/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gdky005.com/2017/05/03/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9-compileSdkVersion-minSdkVersion-%E5%92%8C-targetSdkVersion/</loc>
     <lastmod>2017-05-03T02:35:30.000Z</lastmod>
     <data>
@@ -332,48 +352,14 @@
 
     
   <url>
-    <loc>http://gdky005.com/2016/03/12/%E4%BB%A3%E7%A0%81%E9%9D%A2%E8%AF%95%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%8410%E5%A4%A7%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://gdky005.com/2015/10/09/Android%E5%9C%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2UI%E6%96%B9%E9%9D%A2%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>代码面试最常用的10大算法</title>
-        <pubTime>2016-03-12T00:32:44.000Z</pubTime>
-        
-        <tag>算法 </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/09/26/Android-%E5%92%8C-IOS-%E5%BA%94%E7%94%A8%E6%9F%A5%E6%89%BEbug-%E5%88%A9%E5%99%A8/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android 和 IOS 应用查找bug 利器</title>
-        <pubTime>2015-09-26T07:12:50.000Z</pubTime>
+        <title>Android在图形界面UI方面的工具</title>
+        <pubTime>2015-10-09T07:03:19.000Z</pubTime>
         
         <tag>android </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/09/19/AndroidStudio/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>AndroidStudio</title>
-        <pubTime>2015-09-19T09:02:01.000Z</pubTime>
-        
-        <tag>AndroidStudio </tag>
          
          
            
@@ -400,14 +386,31 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/10/08/Android%E5%BD%95%E9%9F%B3%E4%BD%BF%E7%94%A8-byte-%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96%E5%88%86%E8%B4%9D%E6%88%96%E5%A3%B0%E9%9F%B3%E6%8C%AF%E5%B9%85/</loc>
+    <loc>http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-%E5%BC%82%E5%B8%B8/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android录音使用 byte 类型获取分贝或声音振幅</title>
-        <pubTime>2015-10-08T10:10:20.000Z</pubTime>
+        <title>Fragment not attached to Activity 异常</title>
+        <pubTime>2015-11-27T02:48:17.000Z</pubTime>
         
-        <tag>android录音 </tag>
+        <tag>android </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2016/03/12/%E4%BB%A3%E7%A0%81%E9%9D%A2%E8%AF%95%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%8410%E5%A4%A7%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>代码面试最常用的10大算法</title>
+        <pubTime>2016-03-12T00:32:44.000Z</pubTime>
+        
+        <tag>算法 </tag>
          
          
            
@@ -424,58 +427,6 @@
         <title>JADX反编译源码更easy</title>
         <pubTime>2016-02-24T03:54:09.000Z</pubTime>
         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/10/10/%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>圆角图片处理</title>
-        <pubTime>2015-10-10T07:17:43.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/09/19/android-monkey/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>monkey 测试命令，保存到SD，遇到崩溃继续</title>
-        <pubTime>2015-09-19T11:16:05.000Z</pubTime>
-        
-        <tag>android </tag>
-         
-         
-           
-             
-              <breadCrumb title="android" url="http://gdky005.com/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-%E5%BC%82%E5%B8%B8/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>Fragment not attached to Activity 异常</title>
-        <pubTime>2015-11-27T02:48:17.000Z</pubTime>
-        
-        <tag>android </tag>
-         
          
            
         </display>
@@ -501,14 +452,80 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/09/13/Android-gradle%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</loc>
+    <loc>http://gdky005.com/2015/11/17/RecyclerView%E7%9A%84%E5%9F%BA%E7%B1%BB%E5%86%99%E6%B3%95/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android_gradle工作原理</title>
-        <pubTime>2015-09-13T04:47:49.000Z</pubTime>
+        <title>RecyclerView的基类写法</title>
+        <pubTime>2015-11-17T03:01:47.000Z</pubTime>
         
-        <tag>android gradle工作原理 </tag>
+        <tag>android </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2016/02/19/Android%E5%BC%80%E5%8F%91%E8%80%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3%E7%9A%84%E5%A4%A7%E6%8B%9B/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android开发者提升技能水平的大招</title>
+        <pubTime>2016-02-19T09:40:14.000Z</pubTime>
+        
+        <tag>技能提升 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/10/10/%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>圆角图片处理</title>
+        <pubTime>2015-10-10T07:17:43.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/09/19/AndroidStudio/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>AndroidStudio</title>
+        <pubTime>2015-09-19T09:02:01.000Z</pubTime>
+        
+        <tag>AndroidStudio </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/09/26/Android-%E5%92%8C-IOS-%E5%BA%94%E7%94%A8%E6%9F%A5%E6%89%BEbug-%E5%88%A9%E5%99%A8/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 和 IOS 应用查找bug 利器</title>
+        <pubTime>2015-09-26T07:12:50.000Z</pubTime>
+        
+        <tag>android </tag>
          
          
            
@@ -525,23 +542,6 @@
         <title>推荐processon 让流程图也可以共享</title>
         <pubTime>2016-02-25T02:32:02.000Z</pubTime>
         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/09/13/%E6%98%AF%E4%BB%80%E4%B9%88%E4%BD%BF%E4%BD%A0%E6%97%A0%E6%B3%95%E5%AE%8C%E6%88%90%E5%B7%A5%E4%BD%9C%EF%BC%9F%E2%80%94%E2%80%94%E7%95%AA%E8%8C%84%E5%91%8A%E8%AF%89%E4%BD%A0/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>是什么使你无法完成工作？——番茄告诉你</title>
-        <pubTime>2015-09-13T04:28:36.000Z</pubTime>
-        
-        <tag>番茄工作法 </tag>
-         
          
            
         </display>
@@ -567,14 +567,31 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/10/09/Android%E5%9C%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2UI%E6%96%B9%E9%9D%A2%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://gdky005.com/2015/09/13/%E6%98%AF%E4%BB%80%E4%B9%88%E4%BD%BF%E4%BD%A0%E6%97%A0%E6%B3%95%E5%AE%8C%E6%88%90%E5%B7%A5%E4%BD%9C%EF%BC%9F%E2%80%94%E2%80%94%E7%95%AA%E8%8C%84%E5%91%8A%E8%AF%89%E4%BD%A0/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android在图形界面UI方面的工具</title>
-        <pubTime>2015-10-09T07:03:19.000Z</pubTime>
+        <title>是什么使你无法完成工作？——番茄告诉你</title>
+        <pubTime>2015-09-13T04:28:36.000Z</pubTime>
         
-        <tag>android </tag>
+        <tag>番茄工作法 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/09/13/Android-gradle%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android_gradle工作原理</title>
+        <pubTime>2015-09-13T04:47:49.000Z</pubTime>
+        
+        <tag>android gradle工作原理 </tag>
          
          
            
@@ -618,17 +635,20 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/11/17/RecyclerView%E7%9A%84%E5%9F%BA%E7%B1%BB%E5%86%99%E6%B3%95/</loc>
+    <loc>http://gdky005.com/2015/09/19/android-monkey/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>RecyclerView的基类写法</title>
-        <pubTime>2015-11-17T03:01:47.000Z</pubTime>
+        <title>monkey 测试命令，保存到SD，遇到崩溃继续</title>
+        <pubTime>2015-09-19T11:16:05.000Z</pubTime>
         
         <tag>android </tag>
          
          
            
+             
+              <breadCrumb title="android" url="http://gdky005.com/categories/android/"/>
+          
         </display>
     </data>
     </url>
@@ -636,14 +656,14 @@
     
     
   <url>
-    <loc>http://gdky005.com/2016/02/19/Android%E5%BC%80%E5%8F%91%E8%80%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3%E7%9A%84%E5%A4%A7%E6%8B%9B/</loc>
+    <loc>http://gdky005.com/2015/10/08/Android%E5%BD%95%E9%9F%B3%E4%BD%BF%E7%94%A8-byte-%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96%E5%88%86%E8%B4%9D%E6%88%96%E5%A3%B0%E9%9F%B3%E6%8C%AF%E5%B9%85/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android开发者提升技能水平的大招</title>
-        <pubTime>2016-02-19T09:40:14.000Z</pubTime>
+        <title>Android录音使用 byte 类型获取分贝或声音振幅</title>
+        <pubTime>2015-10-08T10:10:20.000Z</pubTime>
         
-        <tag>技能提升 </tag>
+        <tag>android录音 </tag>
          
          
            

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-05-03T02:35:30.000Z</updated>
+  <updated>2017-05-03T03:37:31.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)</title>
+    <link href="http://gdky005.com/2017/05/03/android-6-0-%E6%9D%83%E9%99%90%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90%EF%BC%9Aandroid-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/"/>
+    <id>http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/</id>
+    <published>2017-05-03T03:36:44.000Z</published>
+    <updated>2017-05-03T03:37:31.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;问题复现&quot;&gt;&lt;a href=&quot;#问题复现&quot; class=&quot;headerlink&quot; title=&quot;问题复现&quot;&gt;&lt;/a&gt;问题复现&lt;/h3&gt;&lt;p&gt;在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
+05-03 09:53:02.356 W/System.err:     at android.os.StatFs.doStat(StatFs.java:46)
+05-03 09:53:02.370 W/System.err:     at android.os.StatFs.&amp;lt;init&amp;gt;(StatFs.java:39)
+05-03 09:53:02.386 W/System.err:     at gdky005.testexception.SDCardUtil.getSDAvailableBlocks(SDCardUtil.java:166)
+05-03 09:53:02.401 W/System.err:     at gdky005.testexception.MainActivity.testSDCard(MainActivity.java:69)
+05-03 09:53:02.410 W/System.err:     at gdky005.testexception.MainActivity$1.onClick(MainActivity.java:26)
+05-03 09:53:02.412 D/DhcpClient: Received packet: f4:5c:89:c2:6d:7b NAK, reason (none)
+05-03 09:53:02.417 W/System.err:     at android.view.View.performClick(View.java:5637)
+05-03 09:53:02.425 W/System.err:     at android.view.View$PerformClick.run(View.java:22429)
+05-03 09:53:02.431 W/System.err:     at android.os.Handler.handleCallback(Handler.java:751)
+05-03 09:53:02.435 W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:95)
+05-03 09:53:02.439 W/System.err:     at android.os.Looper.loop(Looper.java:154)
+05-03 09:53:02.442 W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6119)
+05-03 09:53:02.445 W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+05-03 09:53:02.449 W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+05-03 09:53:02.452 W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+05-03 09:53:02.461 W/System.err: Caused by: android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)
+05-03 09:53:02.463 W/System.err:     at libcore.io.Posix.statvfs(Native Method)
+05-03 09:53:02.466 W/System.err:     at libcore.io.BlockGuardOs.statvfs(BlockGuardOs.java:304)
+05-03 09:53:02.469 W/System.err:     at android.system.Os.statvfs(Os.java:506)
+05-03 09:53:02.471 W/System.err:     at android.os.StatFs.doStat(StatFs.java:44)
+05-03 09:53:02.472 W/System.err:     ... 13 more
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体崩溃路径是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;代码中调用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;context.getExternalFilesDir(null);  //获取 外置 SD 卡 私有目录
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;具体原因&quot;&gt;&lt;a href=&quot;#具体原因&quot; class=&quot;headerlink&quot; title=&quot;具体原因&quot;&gt;&lt;/a&gt;具体原因&lt;/h3&gt;&lt;p&gt;在主 app 中 因为使用了 targetSdkVersion 低于 android 6.0（23）的 19， 意味着 app 支持的最高目标版本是 android 4.4 （19）。 targetSdkVersion 是 Android 提供向前兼容的主要依据。 因此系统检查到 这个低于 android 6.0（23）， 默认给 app 自动开启了所有的权限（这也是之前一直疑惑的点）。当在 手机的系统大约等于 android 6.0（23），默认拥有了所有的权限，因此 app 可以正常运行。&lt;/p&gt;
+&lt;p&gt;但是根据 听云 的崩溃手机信息来看，确实是崩溃了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;经过大量尝试以及测试，终于发现问题是处在  targetSdkVersion 这里。 如果 tartgetSdkVersion 大约23，即使关闭 SD 卡的存储权限， 也可以通过  context.getExternalFilesDir(null);  拿到 SD 卡的位置 app 私有存储目录。&lt;/p&gt;
+&lt;p&gt;但是，当 tartgetSdkVersion \&amp;lt; 23, 关闭 SD 卡的存储权限后， 通过 context.getExternalFilesDir(null);  不可以拿到 SD 卡的外置 app 私有目录，会提示 「Invalid path: /storage/emulated/0/Android/data/」。&lt;/p&gt;
+&lt;p&gt;因为在 6.0 以上的手机，检测到 app 的 tartgetSdkVersion \&amp;lt; 23，默认给了所有的权限，但是当 关闭 存储权限后，意味着 SD 卡的读写权限都没有了。当调用到 context.getExternalFilesDir(null);  的时候，系统认为 当前 app 的最高 运行版本是 低于 23 的，所有不会给 app 在 SD 卡创建 app 的私有目录。所有尝试获取 SD 卡的 app 私有目录的时候，就会获取不到路径，因为没有 SD 卡的读写权限啊。&lt;/p&gt;
+&lt;p&gt;这里需要说明一下：当 tartgetSdkVersion &gt; 23，调用 context.getExternalFilesDir(null); ，系统会给 app 在 SD 卡的 Android/data/ + 包名 + files , 以这样的形式 创建一个 app 的私有文件夹，这也是 6.0 以后的新特性。例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/storage/emulated/0/Android/data/gdky005.testexception/files
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个目录其实就等同于 Linux 里面的一个 app 的私有账户目录，只有当前 app 能访问，其他 app 直接访问不了，所以也被称之为 app 的外置私有目录。 app 的 tartgetSdkVersion \&amp;lt; 23， 因为系统没有给 它创建 私有目录，而且他没有 SD 卡的读写权限，所以 也不可以自行创建 app 的私有目录。&lt;/p&gt;
+&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;由于 app 的 targetSdkVersion \&amp;lt; 23，默认 app 拥有所有的权限，但是当 用户手动禁用 SD 卡的存储权限，或者 Rom, 第三方服务 禁用，那么就会造成很严重的问题。无法使用外置app的私有目录，就会报错。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不过在 原生的 android 系统里面会提示用户： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;如果第三方服务或者 rom 自动禁用的话，也许看不到警告。 &lt;/li&gt;
+&lt;li&gt;例如三星等系统，在 app 安装好以后，会自动弹出权限框，让用户选择权限。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;处理措施：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;try catch&lt;/li&gt;
+&lt;li&gt;targetSdkVersion &gt;= 23 参考：&lt;a href=&quot;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;尝试 自动创建文件 检测是否成功，并验证，如果失败，立即使用 app 的内置私有目录&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题复现&quot;&gt;&lt;a href=&quot;#问题复现&quot; class=&quot;headerlink&quot; title=&quot;问题复现&quot;&gt;&lt;/a&gt;问题复现&lt;/h3&gt;&lt;p&gt;在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+    
+    </summary>
+    
+      <category term="android" scheme="http://gdky005.com/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://gdky005.com/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion</title>
@@ -180,266 +250,6 @@
     
     
       <category term="卓客Team" scheme="http://gdky005.com/tags/%E5%8D%93%E5%AE%A2Team/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>标准的Android git和HG的忽略文件是什么样的呢？</title>
-    <link href="http://gdky005.com/2016/08/25/%E6%A0%87%E5%87%86%E7%9A%84Android-git%E5%92%8CHG%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F/"/>
-    <id>http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/</id>
-    <published>2016-08-25T03:00:40.000Z</published>
-    <updated>2016-08-25T03:46:27.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;什么是忽略文件？&quot;&gt;&lt;a href=&quot;#什么是忽略文件？&quot; class=&quot;headerlink&quot; title=&quot;什么是忽略文件？&quot;&gt;&lt;/a&gt;什么是忽略文件？&lt;/h3&gt;&lt;p&gt;当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。&lt;/p&gt;
-&lt;h3 id=&quot;忽略文件的作用？&quot;&gt;&lt;a href=&quot;#忽略文件的作用？&quot; class=&quot;headerlink&quot; title=&quot;忽略文件的作用？&quot;&gt;&lt;/a&gt;忽略文件的作用？&lt;/h3&gt;&lt;p&gt;当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。&lt;/p&gt;
-&lt;h3 id=&quot;通用的忽略文件&quot;&gt;&lt;a href=&quot;#通用的忽略文件&quot; class=&quot;headerlink&quot; title=&quot;通用的忽略文件&quot;&gt;&lt;/a&gt;通用的忽略文件&lt;/h3&gt;&lt;p&gt;以下提供两种忽略文件的模板，满足大部分需求。&lt;/p&gt;
-&lt;h5 id=&quot;1-git-的忽略文件模板：&quot;&gt;&lt;a href=&quot;#1-git-的忽略文件模板：&quot; class=&quot;headerlink&quot; title=&quot;1. git 的忽略文件模板：&quot;&gt;&lt;/a&gt;1. git 的忽略文件模板：&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gitgit.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果我们有其他文件也不用提交的画，可以参考下面的样式添加进去即可：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*~
-.DS_Store
-
-# Android Studio
-*.iml
-.idea
-.gradle
-
-build
-
-
-# Created by .ignore support plugin (hsz.mobi)
-syntax: glob
-
-### Android template
-# Built application files
-*.apk
-*.ap_
-
-# Files for the ART/Dalvik VM
-*.dex
-
-# Java class files
-*.class
-
-# Generated files
-bin/
-gen/
-out/
-
-# Gradle files
-.gradle/
-build/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Proguard folder generated by Eclipse
-proguard/
-
-# Log Files
-*.log
-
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
-
-# Intellij
-*.iml
-.idea/workspace.xml
-
-# Keystore files
-*.jks
-### Eclipse template
-
-.metadata
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-.settings/
-.loadpath
-.recommenders
-
-# Eclipse Core
-.project
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored &amp;quot;Eclipse launch configurations&amp;quot;
-*.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
-
-# Code Recommenders
-.recommenders/
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-out
-gen
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;2-HG-Mercurial-的忽略文件模板：&quot;&gt;&lt;a href=&quot;#2-HG-Mercurial-的忽略文件模板：&quot; class=&quot;headerlink&quot; title=&quot;2. HG/Mercurial 的忽略文件模板：&quot;&gt;&lt;/a&gt;2. HG/Mercurial 的忽略文件模板：&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gitmercurial.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工具，但是随着git 的用户群体庞大，git越来越灵活，简单易用，因此 HG也就慢慢退出了我们的视线。最有名的 github 里面也大量使用到git。但是作为一种管理工具，在不同的环境场景下，也可能需要使用HG，尤其是公司的备份管理等，都十分的安全。使用方式很简单，在主项目的根目录下 创建或者修改： .hgignore 文件即可。 这个文件也可以直接放到mode 里面去。 这里提供忽略文件如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Created by .ignore support plugin (hsz.mobi)
-syntax: glob
-
-### Android template
-# Built application files
-*.apk
-*.ap_
-
-# Files for the ART/Dalvik VM
-*.dex
-
-# Java class files
-*.class
-
-# Generated files
-bin/
-gen/
-out/
-
-# Gradle files
-.gradle/
-build/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Proguard folder generated by Eclipse
-proguard/
-
-# Log Files
-*.log
-
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
-
-
-# Keystore files
-*.jks
-### Eclipse template
-
-.metadata
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-.settings/
-.loadpath
-.recommenders
-
-# Eclipse Core
-.project
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored &amp;quot;Eclipse launch configurations&amp;quot;
-*.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
-
-# Code Recommenders
-.recommenders/
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;什么是忽略文件？&quot;&gt;&lt;a href=&quot;#什么是忽略文件？&quot; class=&quot;headerlink&quot;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="http://gdky005.com/tags/git/"/>
     
   </entry>
   
