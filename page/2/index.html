@@ -282,6 +282,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="url">
+                  从 volley 切换到 OkHttp 遇到的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-20T18:17:30+08:00" content="2016-06-20">
+              2016-06-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
+                    <span itemprop="name">okhttp3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
+之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="url">
                   分享Java Collection 的一张图
                 </a>
@@ -1343,112 +1469,6 @@ Command line and GUI tools for produce Java source code
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/27/Fragment-not-attached-to-Activity-异常/" itemprop="url">
-                  Fragment not attached to Activity 异常
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-27T10:48:17+08:00" content="2015-11-27">
-              2015-11-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/27/Fragment-not-attached-to-Activity-异常/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/27/Fragment-not-attached-to-Activity-异常/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          关于Fragment（XXFragment） not attached to Activity 异常出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/27/Fragment-not-attached-to-Activity-异常/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1494,7 +1514,7 @@ Command line and GUI tools for produce Java source code
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
