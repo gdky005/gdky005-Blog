@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[在 Idea 中用 GUI 图形，生成 可执行的jar]]></title>
+      <url>http://gdky005.com/2017/05/03/%E5%9C%A8-Idea-%E4%B8%AD%E7%94%A8-GUI-%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%94%9F%E6%88%90-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84jar/</url>
+      <content type="html"><![CDATA[<p>参考地址： <a href="http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse" target="_blank" rel="external">http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse</a></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png" alt=""></p>
+<p>选中这个东西：</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)]]></title>
       <url>http://gdky005.com/2017/05/03/android-6-0-%E6%9D%83%E9%99%90%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90%EF%BC%9Aandroid-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/</url>
       <content type="html"><![CDATA[<h3 id="问题复现"><a href="#问题复现" class="headerlink" title="问题复现"></a>问题复现</h3><p>在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： </p>

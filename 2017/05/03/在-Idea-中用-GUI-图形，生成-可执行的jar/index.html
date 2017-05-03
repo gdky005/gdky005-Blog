@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="okhttp3" />
+  <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
 
 
 
@@ -82,22 +82,25 @@
 
 
 
-<meta name="description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta name="description" content="参考地址： http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse
+
+选中这个东西：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从 volley 切换到 OkHttp 遇到的坑">
-<meta property="og:url" content="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/index.html">
+<meta property="og:title" content="在 Idea 中用 GUI 图形，生成 可执行的jar">
+<meta property="og:url" content="http://gdky005.com/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
-<meta property="og:updated_time" content="2016-06-24T07:55:09.000Z">
+<meta property="og:description" content="参考地址： http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse
+
+选中这个东西：">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png">
+<meta property="og:updated_time" content="2017-05-03T06:21:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从 volley 切换到 OkHttp 遇到的坑">
-<meta name="twitter:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta name="twitter:title" content="在 Idea 中用 GUI 图形，生成 可执行的jar">
+<meta name="twitter:description" content="参考地址： http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse
+
+选中这个东西：">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png">
 
 
 
@@ -123,7 +126,7 @@
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  <title> 从 volley 切换到 OkHttp 遇到的坑 | 孤独狂饮 </title>
+  <title> 在 Idea 中用 GUI 图形，生成 可执行的jar | 孤独狂饮 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +289,7 @@
             
             
               
-                从 volley 切换到 OkHttp 遇到的坑
+                在 Idea 中用 GUI 图形，生成 可执行的jar
               
             
           </h1>
@@ -298,38 +301,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T18:17:30+08:00" content="2016-06-20">
-              2016-06-20
+            <time itemprop="dateCreated" datetime="2017-05-03T13:42:18+08:00" content="2017-05-03">
+              2017-05-03
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount"></span>
+                <a href="/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,136 +341,10 @@
       
 
       
-        <p>这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。</p>
-<p>之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.</p>
-<h3 id="代理异常？"><a href="#代理异常？" class="headerlink" title="代理异常？"></a>代理异常？</h3><p>切换成功后，遇到的第一个问题就是：代理功能没法使用，我们客户端 是有联通流量包的功能的，因此必须要加 代理功能。</p>
-<p>根据 okhttp 里面  issue 的回答，弄好多次都不行，折腾了一两天左右。 最后也懒得管了，先放放，优先解决其他问题。 </p>
-<p>之后过了几天，再回来弄这块的时候，就突然好了，兴奋坏了。赶紧查查和之前的有没有什么差异？</p>
-<p>经过对比后发现：原来是 之前写 volley 的时候是这样的：</p>
-<pre><code>HttpURLConnection connection;
-    if (&quot;https&quot;.equals(url.getProtocol())) {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP,
-                InetSocketAddress
-                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGETCPPORT));
-        connection = (HttpURLConnection) url
-                .openConnection(proxy);
-        connection.addRequestProperty(&quot;Proxy-Authorization&quot;,
-                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
-    } else {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP,
-                InetSocketAddress
-                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGEPORT));
-        connection = (HttpURLConnection) url
-                .openConnection(proxy);
-        connection.addRequestProperty(&quot;Authorization&quot;,
-                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
-    }
-    connection.addRequestProperty(&quot;Proxy-Connection&quot;, &quot;Keep-Alive&quot;);
-</code></pre><p>主要区分了 https 和 http, 然后里面传入的 key 和 端口号都不一样。</p>
-<p>但是在 okhttp 里面貌似是不需要区分的。只需要这样写：</p>
-<pre><code>/**
-     * 设置联通流量 代理功能
-     * @param builder
-     */
-    private void setUnicomProxy(OkHttpClient.Builder builder) {
-        //添加联通代理功能
-        if (TrafficUtil.getUnicomProxyAvailable()) {
-            Authenticator proxyAuthenticator = new Authenticator() {
-                @Override
-                public okhttp3.Request authenticate(Route route, Response response) throws IOException {
-                    return response.request().newBuilder().header(&quot;Proxy-Authorization&quot;, &quot;Basic &quot; +
-                            &quot;MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;).header(&quot;Proxy-Connection&quot;,
-                            &quot;Keep-Alive&quot;).build();
-                }
-            };
-
-            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(FLOWPACKAGEHOST,
-                    FLOWPACKAGETCPPORT)));
-            builder.proxyAuthenticator(proxyAuthenticator);
-        }
-    }
-</code></pre><p>就可以了。<br><code>FLOWPACKAGEHOST -&gt; test.proxy.1111.com (这是域名)</code><br><code>FLOWPACKAGETCPPORT -&gt; 8143</code><br>这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。</p>
-<p><code>备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈</code></p>
-<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：</p>
-<pre><code>    @NonNull
-    private SSLContext getSslContext(InputStream... certificates) {
-        SSLContext sslContext = null;
-
-        try {
-            CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keyStore.load(null);
-            int index = 0;
-            for (InputStream certificate : certificates) {
-                String certificateAlias = Integer.toString(index++);
-                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate
-                        (certificate));
-                try {
-                    if (certificate != null)
-                        certificate.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            sslContext = SSLContext.getInstance(&quot;TLS&quot;);
-
-            TrustManagerFactory trustManagerFactory =
-                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-
-            trustManagerFactory.init(keyStore);
-            sslContext.init(null, trustManagerFactory.getTrustManagers(),
-                    new SecureRandom());
-
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
-        }   finally {
-        }
-
-        return sslContext;
-    }
-
-/**
-     * 启用 OkHttps 域名校验功能
-     * @param builder
-     */
-    private void setOkhttpSSLContext(OkHttpClient.Builder builder) {
-        SSLContext sslContext = getSslContext(KaolaApplication.mContext.getResources().openRawResource(R
-                .raw.kl_magic));
-
-        if (sslContext != null) {
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    HostnameVerifier hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-                    return hostnameVerifier.verify(&quot;xxx.com&quot;, session); //启用xxx 域名校验 (这里是一个非常重要的地方，缺少了这一步肯定不行)
-                }
-            });
-            builder.sslSocketFactory(sslContext.getSocketFactory());
-        }
-    }
-</code></pre><p>这句是非常重要的：<br><code>hostnameVerifier.verify(&quot;xxx.com&quot;, session);</code>主要是进行 https 的域名校验，用证书匹配你的域名，如果匹配成功，那么就可以直接使用，否则 https 握手失败，无法正确发送请求。</p>
-<p>之前尝试过使用 使用<br>    builder.hostnameVerifier(new AllowAllHostnameVerifier());</p>
-<p>这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。</p>
-<h3 id="post-参数不能为空？"><a href="#post-参数不能为空？" class="headerlink" title="post 参数不能为空？"></a>post 参数不能为空？</h3><p>这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).</p>
-<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="external">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
-<p>具体参考这个：</p>
-<pre><code>public void addRequest(int method, final Map&lt;String, String&gt; params, final String baseUrl,
-                           final TypeReference&lt;? extends BaseResponse&gt; type, final JsonResultCallback callback) {
-            ......
-          if (params.size() == 0 &amp;&amp; method == Request.Method.POST)
-            params.put(&quot;temp&quot;, &quot;temp&quot;); //解决 method POST must have a request body.;
-            ......
-}
-</code></pre><p>这三个问题解决后，基本就可以放心使用了。</p>
+        <p>参考地址： <a href="http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse" target="_blank" rel="external">http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse</a></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png" alt=""></p>
+<p>选中这个东西：</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png" alt=""></p>
 
       
     </div>
@@ -510,28 +368,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/okhttp3/" rel="tag">#okhttp3</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/20/Java-Collection-Cheat-Sheet/" rel="next" title="分享Java Collection 的一张图">
-                <i class="fa fa-chevron-left"></i> 分享Java Collection 的一张图
+              <a href="/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/" rel="next" title="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)">
+                <i class="fa fa-chevron-left"></i> android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/20/网络请求的-UA/" rel="prev" title="网络请求的 UA">
-                网络请求的 UA <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -546,10 +394,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/"
-     data-title="从 volley 切换到 OkHttp 遇到的坑"
+        <div class="ds-share flat" data-thread-key="2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/"
+     data-title="在 Idea 中用 GUI 图形，生成 可执行的jar"
      data-content=""
-     data-url="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
+     data-url="http://gdky005.com/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -579,8 +427,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/"
-           data-title="从 volley 切换到 OkHttp 遇到的坑" data-url="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
+      <div class="ds-thread" data-thread-key="2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/"
+           data-title="在 Idea 中用 GUI 图形，生成 可执行的jar" data-url="http://gdky005.com/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/">
       </div>
     
   </div>
@@ -707,7 +555,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理异常？"><span class="nav-number">1.</span> <span class="nav-text">代理异常？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-STL证书-出错？"><span class="nav-number">2.</span> <span class="nav-text">SSL/STL证书 出错？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-参数不能为空？"><span class="nav-number">3.</span> <span class="nav-text">post 参数不能为空？</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

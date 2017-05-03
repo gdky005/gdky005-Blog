@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-05-03T03:37:31.000Z</updated>
+  <updated>2017-05-03T06:21:03.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 Idea 中用 GUI 图形，生成 可执行的jar</title>
+    <link href="http://gdky005.com/2017/05/03/%E5%9C%A8-Idea-%E4%B8%AD%E7%94%A8-GUI-%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%94%9F%E6%88%90-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84jar/"/>
+    <id>http://gdky005.com/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/</id>
+    <published>2017-05-03T05:42:18.000Z</published>
+    <updated>2017-05-03T06:21:03.000Z</updated>
+    
+    <content type="html">&lt;p&gt;参考地址： &lt;a href=&quot;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;选中这个东西：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考地址： &lt;a href=&quot;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;htt
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)</title>
@@ -215,41 +237,6 @@
     
     
       <category term="android" scheme="http://gdky005.com/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卓客Team团队组建成功</title>
-    <link href="http://gdky005.com/2016/11/01/%E5%8D%93%E5%AE%A2Team%E5%9B%A2%E9%98%9F%E7%BB%84%E5%BB%BA%E6%88%90%E5%8A%9F/"/>
-    <id>http://gdky005.com/2016/11/01/卓客Team团队组建成功/</id>
-    <published>2016-11-01T11:36:52.000Z</published>
-    <updated>2016-11-01T11:43:49.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;卓客Team团队组建成功&quot;&gt;&lt;a href=&quot;#卓客Team团队组建成功&quot; class=&quot;headerlink&quot; title=&quot;卓客Team团队组建成功&quot;&gt;&lt;/a&gt;卓客Team团队组建成功&lt;/h3&gt;&lt;p&gt;卓客Team团队 目前已经组建成功，接下来将完成一些很有意义的事情，请持续关注。&lt;/p&gt;
-&lt;h3 id=&quot;卓客Team-群规&quot;&gt;&lt;a href=&quot;#卓客Team-群规&quot; class=&quot;headerlink&quot; title=&quot;卓客Team 群规&quot;&gt;&lt;/a&gt;卓客Team 群规&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;群成员固定为20人，如有突出贡献者，可以破格入群。&lt;/li&gt;
-&lt;li&gt;这是一个活跃度很高的Team，每个人都应该展现自己的能力，提升在团队中的影响力。&lt;/li&gt;
-&lt;li&gt;请大家都参与课题的设计和讨论，提升个人基本知识技能，并增加团队活跃度。&lt;/li&gt;
-&lt;li&gt;希望大家能把好想法和想要研究的东西发到群里面，会被列入到要处理的事项里面。&lt;/li&gt;
-&lt;li&gt;做一些很有价值的事情，研究比较感兴趣的技术，撰写一些有技术内涵的文章。&lt;br&gt;在团队中的人，都应该为团队做出适当的贡献，有能力的展示才华，能力弱的可以在其他方面给团队做出贡献。&lt;/li&gt;
-&lt;li&gt;对申请加入到群组的人，务必完成一篇课题文章，带组员审核通过后，方可进入。&lt;br&gt;如有新人进入，可能会踢出某些不活跃的成员，请见谅。&lt;/li&gt;
-&lt;li&gt;对于活跃度不高的成员，采取适者生存的法则。&lt;/li&gt;
-&lt;li&gt;对于存在争议的问题，采取大于等于三分之二以上的票数为通过条件。&lt;/li&gt;
-&lt;li&gt;对团队中成员发出的文章或者团队的规定等有疑问或者感觉不合适的地方，可以直接提出修改，并在评论中提出个人观点。&lt;/li&gt;
-&lt;li&gt;对于不合理的地方，可以在相关平台上发表自己的意见。&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;卓客Team团队组建成功&quot;&gt;&lt;a href=&quot;#卓客Team团队组建成功&quot; class=&quot;headerlink&quot; title=&quot;卓客Team团队组建成功&quot;&gt;&lt;/a&gt;卓客Team团队组建成功&lt;/h3&gt;&lt;p&gt;卓客Team团队 目前已经组建成功，接下来将完成一些很有意义
-    
-    </summary>
-    
-      <category term="ZhuoKeTeam" scheme="http://gdky005.com/categories/ZhuoKeTeam/"/>
-    
-    
-      <category term="卓客Team" scheme="http://gdky005.com/tags/%E5%8D%93%E5%AE%A2Team/"/>
     
   </entry>
   
