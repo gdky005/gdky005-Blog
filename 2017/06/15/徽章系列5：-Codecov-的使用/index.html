@@ -1,0 +1,1001 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="徽章" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孤独狂饮" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="根据文中的指示：我们能看到一个开源的 github 项目 https://github.com/codecov/example-android， 不过看起来点晕晕的，但是还是看下了。
+我们之后都直接使用 Trivas CI 构建了。
+添加项目就不说了，进入后，点击 project changes, 找到自己的项目：，等生产报告后，进入该网站就能看见结果。
+利用 Jacoco 生成报告Codecov">
+<meta property="og:type" content="article">
+<meta property="og:title" content="徽章系列5： Codecov 的使用">
+<meta property="og:url" content="http://gdky005.com/2017/06/15/徽章系列5：-Codecov-的使用/index.html">
+<meta property="og:site_name" content="孤独狂饮">
+<meta property="og:description" content="根据文中的指示：我们能看到一个开源的 github 项目 https://github.com/codecov/example-android， 不过看起来点晕晕的，但是还是看下了。
+我们之后都直接使用 Trivas CI 构建了。
+添加项目就不说了，进入后，点击 project changes, 找到自己的项目：，等生产报告后，进入该网站就能看见结果。
+利用 Jacoco 生成报告Codecov">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-101.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-102.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-103.png">
+<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-104.png">
+<meta property="og:updated_time" content="2017-06-15T10:26:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="徽章系列5： Codecov 的使用">
+<meta name="twitter:description" content="根据文中的指示：我们能看到一个开源的 github 项目 https://github.com/codecov/example-android， 不过看起来点晕晕的，但是还是看下了。
+我们之后都直接使用 Trivas CI 构建了。
+添加项目就不说了，进入后，点击 project changes, 找到自己的项目：，等生产报告后，进入该网站就能看见结果。
+利用 Jacoco 生成报告Codecov">
+<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gdky005.com/2017/06/15/徽章系列5：-Codecov-的使用/"/>
+
+
+
+
+
+  <title>徽章系列5： Codecov 的使用 | 孤独狂饮</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孤独狂饮</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zhuoketeam">
+          <a href="/categories/ZhuoKeTeam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-android"></i> <br />
+            
+            卓客Team
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-shields">
+          <a href="/categories/shields" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-shield"></i> <br />
+            
+            shields_徽章系列文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/06/15/徽章系列5：-Codecov-的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">徽章系列5： Codecov 的使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T18:03:18+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-06-15T18:26:16+08:00">
+                2017-06-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shields/" itemprop="url" rel="index">
+                    <span itemprop="name">shields</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/06/15/徽章系列5：-Codecov-的使用/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/06/15/徽章系列5：-Codecov-的使用/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，但是还是看下了。</p>
+<p>我们之后都直接使用 Trivas CI 构建了。</p>
+<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
+<h3 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h3><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
+<p>1） 在 app 的 build.gradle 文件中 添加依赖</p>
+<pre><code>    //Jacoco 生成报告的依赖
+androidTestCompile(&apos;com.android.support.test:runner:0.5&apos;, {
+    exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
+})
+// Set this dependency to use JUnit 4 rules
+androidTestCompile(&apos;com.android.support.test:rules:0.5&apos;, {
+    exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
+})
+// Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+androidTestCompile(&apos;com.android.support.test.espresso:espresso-contrib:2.2.2&apos;, {
+    exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
+    exclude group: &apos;com.android.support&apos;, module: &apos;support-v4&apos;
+    exclude group: &apos;com.android.support&apos;, module: &apos;appcompat-v7&apos;
+    exclude group: &apos;com.android.support&apos;, module: &apos;design&apos;
+    exclude group: &apos;com.android.support&apos;, module: &apos;recyclerview-v7&apos;
+})
+androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&apos;, {
+    exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
+})
+</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-101.png" alt=""></p>
+<pre><code>debug{
+        testCoverageEnabled true
+}
+</code></pre><p>3) 可以在尝试在本地生成报告：</p>
+<pre><code>./gradlew :app:createDebugAndroidTestCoverageReport 生成测试报告。  app 就是咱们项目中要测试的 module
+</code></pre><p>测试报告地址：app/build/reports/coverage/debug/index.html。 </p>
+<h3 id="上报数据给-Codecov"><a href="#上报数据给-Codecov" class="headerlink" title="上报数据给 Codecov"></a>上报数据给 Codecov</h3><ol>
+<li>使用Github账号登录 <a href="https://codecov.io/，" target="_blank" rel="external">https://codecov.io/，</a> 并提供授权给该应用。</li>
+<li><p>在.travis.yml文件中添加命令将测试覆盖率报告上传给Codecov。</p>
+<p> after_success:</p>
+<pre><code>- bash &lt;(curl -s https://codecov.io/bash)
+</code></pre></li>
+</ol>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-102.png" alt=""></p>
+<h3 id="Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器"><a href="#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器" class="headerlink" title="Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器"></a>Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器</h3><p>因为之前修改过很多次，过程很繁琐，直接给配置文件了，相信大家一眼就能看出来。</p>
+<p>完整的配置文件是：</p>
+<pre><code>language: android
+jdk: oraclejdk8
+sudo: false
+
+env:
+  global:
+      - ANDROID_API_LEVEL=25
+      - ANDROID_BUILD_TOOLS_VERSION=25.0.2
+      - ANDROID_ABI=armeabi-v7a
+      - ANDROID_TAG=google_apis
+      - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
+android:
+  components:
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
+
+  licenses:
+      - android-sdk-license-.+
+      - &apos;.+&apos;
+
+before_install:
+  - chmod +x gradlew
+  - mkdir &quot;$ANDROID_HOME/licenses&quot; || true
+  - echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;
+  - echo -e &quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-preview-license&quot;
+
+before_script:
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t &quot;android-&quot;$ANDROID_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - emulator -avd test -no-skin -no-window &amp;
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &amp;
+
+script:
+  - ./gradlew assembleRelease
+  - ./gradlew :app:createDebugAndroidTestCoverageReport --info --stacktrace
+
+after_success:
+  - bash &lt;(curl -s https://codecov.io/bash)
+</code></pre><h3 id="codecov-总结"><a href="#codecov-总结" class="headerlink" title="codecov 总结"></a>codecov 总结</h3><p>Travis-CI 对 android 的单元测试支持不是很好，因为需要开启虚拟机，开启这个过程就得10分钟（我的测试时间），很耗费时间。有时候也连接不上，一次跑下来估计得个 20分钟左右吧。所以，稳定性确实不是很高。如果不做单元测试，而只是做发布之类的，稳定性还是高的。 </p>
+<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-103.png" alt=""></p>
+<p><strong>所以 要不要使用单元测试 还是根据项目决定吧。 </strong></p>
+<h3 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-104.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友,一起交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      gdky005
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://gdky005.com/2017/06/15/徽章系列5：-Codecov-的使用/" title="徽章系列5： Codecov 的使用">http://gdky005.com/2017/06/15/徽章系列5：-Codecov-的使用/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/徽章/" rel="tag"># 徽章</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/15/徽章系列6：-Api-Level-的使用/" rel="next" title="徽章系列6： Api_Level 的使用">
+                <i class="fa fa-chevron-left"></i> 徽章系列6： Api_Level 的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/15/徽章系列4：-Circle-CI-的使用/" rel="prev" title="徽章系列4： Circle CI 的使用">
+                徽章系列4： Circle CI 的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="gdky005" />
+          <p class="site-author-name" itemprop="name">gdky005</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gdky005" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gdky005" target="_blank" title="CSDN博客">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN博客
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/gdky005" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用-Jacoco-生成报告"><span class="nav-number">1.</span> <span class="nav-text">利用 Jacoco 生成报告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上报数据给-Codecov"><span class="nav-number">2.</span> <span class="nav-text">上报数据给 Codecov</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器"><span class="nav-number">3.</span> <span class="nav-text">Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codecov-总结"><span class="nav-number">4.</span> <span class="nav-text">codecov 总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-codecov-的徽章"><span class="nav-number">5.</span> <span class="nav-text">获取 codecov 的徽章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gdky005</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt42YTPf';
+      var conf = 'prod_0b7078cc25e9bce8404115eafb3d25c6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
+
+  
+
+</body>
+</html>

@@ -229,7 +229,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-android"></i> <br />
             
-            menu.zhuoketeam
+            卓客Team
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-shields">
+          <a href="/categories/shields" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-shield"></i> <br />
+            
+            shields_徽章系列文章
           </a>
         </li>
       
@@ -272,6 +282,1511 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/" itemprop="url">android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T11:36:44+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-03T11:37:31+08:00">
+                2017-05-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/" class="cy_cmt_count" data-xid="2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
+05-03 09:53:02.356 W/System.err:     at android.os.StatFs.doStat(StatFs.java:46)
+05-03 09
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/" itemprop="url">如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T10:34:33+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-03T10:35:30+08:00">
+                2017-05-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/" class="cy_cmt_count" data-xid="2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+英文原文：Picking your compileSdkVersion, minSdkVersion, and targetSdkVersion
+当你发布一个应用之后，(取决于具体的发布时间)可能没过几个月 Android 系统就发布了一个新版本。这对你的应用意味着什么，所有东西都不能用了？
+别担心，向前兼容是 Android 非常关注的事情。用户在升级到新版 Android 的时候，用以前版本的 SDK 构建的现有应用应该不会出问题。这就是 compileSdkVersion, minSdkVersion 和 targetSdkVersion 的作用：他们分别控制可以使用哪些 API ，要
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/" itemprop="url">怎么关闭小米锁屏音乐？最终解决方案以及原理分析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-31T11:29:48+08:00">
+                2017-03-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-03-31T11:30:41+08:00">
+                2017-03-31
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/" class="cy_cmt_count" data-xid="2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          相关图片我就不贴了，参考下面遇到的这些问题：http://www.miui.com/thread-4005188-2-1.htmlhttp://www.miui.com/forum.php?mod=viewthread&amp;tid=2617209&amp;mobile=1http://www.miui.com/forum.php?mod=viewthread&amp;tid=3960406http://www.miui.com/thread-2592275-1-1.html
+『启动最近任务，把音乐类的APP给关掉。』
+我这里有一个实际的场景，大家可以参考下：我的小米53G 内存版本手机 之
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/03/02/升级android-7-1一些经历/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/02/升级android-7-1一些经历/" itemprop="url">升级android 7.1一些经历</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:56:48+08:00">
+                2017-03-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-03-02T11:01:02+08:00">
+                2017-03-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/03/02/升级android-7-1一些经历/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2017/03/02/升级android-7-1一些经历/" class="cy_cmt_count" data-xid="2017/03/02/升级android-7-1一些经历/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          我一直用的测试机是华为 nexus P6, 7.0出来的时候，刷了一个 7.0 玩，感觉还不错，有些你在 7.0之下的版本绝不会出现的问题，出现了好多。
+当7.1 出现的时候，本来不想升级，但是 android 组的 leader 让我把这个 P6 升级为 7.1。为了让测试的性能组测试 vovi 新机器适配。想着刷就刷呗，应该没啥问题。
+可悲的事情就来了，因为我的这个 P6升级到 7.0后就 root 了，刷了 twrp 启动方式。结果直接挂代理后，升级 7.1 后就悲剧了，机子死活开不了机。
+通过 http://www.pixcn.cn/thread-23317-1-1.html ，找到了
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/02/升级android-7-1一些经历/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/11/01/卓客Team团队组建成功/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/01/卓客Team团队组建成功/" itemprop="url">卓客Team团队组建成功</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T19:36:52+08:00">
+                2016-11-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-11-01T19:43:49+08:00">
+                2016-11-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ZhuoKeTeam/" itemprop="url" rel="index">
+                    <span itemprop="name">ZhuoKeTeam</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2016/11/01/卓客Team团队组建成功/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/11/01/卓客Team团队组建成功/" class="cy_cmt_count" data-xid="2016/11/01/卓客Team团队组建成功/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          卓客Team团队组建成功卓客Team团队 目前已经组建成功，接下来将完成一些很有意义的事情，请持续关注。
+卓客Team 群规
+群成员固定为20人，如有突出贡献者，可以破格入群。
+这是一个活跃度很高的Team，每个人都应该展现自己的能力，提升在团队中的影响力。
+请大家都参与课题的设计和讨论，提升个人基本知识技能，并增加团队活跃度。
+希望大家能把好想法和想要研究的东西发到群里面，会被列入到要处理的事项里面。
+做一些很有价值的事情，研究比较感兴趣的技术，撰写一些有技术内涵的文章。在团队中的人，都应该为团队做出适当的贡献，有能力的展示才华，能力弱的可以在其他方面给团队做出贡献。
+对申请加入到群组的人，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/01/卓客Team团队组建成功/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/" itemprop="url">标准的Android git和HG的忽略文件是什么样的呢？</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-25T11:00:40+08:00">
+                2016-08-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-08-25T11:46:27+08:00">
+                2016-08-25
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/" class="cy_cmt_count" data-xid="2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+什么是忽略文件？当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。
+忽略文件的作用？当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。
+通用的忽略文件以下提供两种忽略文件的模板，满足大部分需求。
+1. git 的忽略文件模板：请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/25/标准的Android-git和HG的忽略文件是什么样的呢？/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/08/08/OkHttp和Okio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/08/OkHttp和Okio/" itemprop="url">OkHttp和Okio</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-08T18:48:10+08:00">
+                2016-08-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-08-08T18:49:49+08:00">
+                2016-08-08
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2016/08/08/OkHttp和Okio/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/08/08/OkHttp和Okio/" class="cy_cmt_count" data-xid="2016/08/08/OkHttp和Okio/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          本文摘要文本将介绍OkHttp和Okio基本使用
+OkHttpHTTP 是现在APP访问网络最流行的方式。通过它我们可以交换数据和媒体信息。而高效的使用HTTP可以让你的加载数据更快并且节省带宽。
+OkHttp就是一种HTTP客户端连接，它有如下特性：
+
+HTTP/2多路复用Socket到同一个主机，共享链接。
+采用连接池技术，可以有效的减少Http链接数量。
+无缝集成GZIP压缩技术。
+支持Response Cache，避免重复请求。
+域名多IP支持。
+
+OkHttp可以处理常见的网络问题：
+
+如果OkHttp连接一个域名失败后，它会尝试连接下一个该域名的IP地址。（需要DNS支持）
+OkH
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/08/OkHttp和Okio/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/07/25/HTTPS的七个误解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/25/HTTPS的七个误解/" itemprop="url">HTTPS的七个误解</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T11:20:13+08:00">
+                2016-07-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-07-25T11:25:45+08:00">
+                2016-07-25
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2016/07/25/HTTPS的七个误解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/07/25/HTTPS的七个误解/" class="cy_cmt_count" data-xid="2016/07/25/HTTPS的七个误解/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
+我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
+
+误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命令，HTTPS是可以缓存的。
+微软的IE项目经理Eric Lawrence写道：
+
+“说来也许令人震惊，只要HTTP头允许这样做，所有版本的IE都缓存HTTPS内容。比如，如果头命令是Cache-Co
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/25/HTTPS的七个误解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -426,168 +1941,21 @@
       
         
           
-            <h3 id="花絮"><a href="#花絮" class="headerlink" title="花絮"></a>花絮</h3><p>本文为完整版，加了一些彩蛋哦！文末有面试和必备的技能点总结。</p>
-<blockquote>
-<p>也许会有人感叹某些人的运气比较好，但是他们不曾知道对方吃过多少苦，受过多少委屈。某些时候就是需要我们用心去发现突破点，然后顺势而上，抓住机遇，那么你将会走向另外一条大道，成就另外一个全新的自我。</p>
-</blockquote>
-<p>先简单说说我最近的面试经历吧。面试的公司很多，其中有让我心血沸腾的经历，也有让我感到失望到无助的经历，我将这些体会都记录下来，细想之后很值得，面了这么多公司，要是最后什么也没有留下来，那就太浪费了。至少对于我来说有些东西在整理总结之后才能得到一个肯定的答案。希望这些能对即将换工作或者打算看看机会的你有一些帮助。</p>
-<blockquote>
-<p>下文真的很长，你可以把这篇文章当做看小说一样，快速浏览一下，但是希望你能将文中提到的那些技能掌握。那也就不枉费我花了一两天时间专门整理这些。我的这些经验仅供参考，希望你能做的比我好，同时希望你在以后的面试中能轻松应对。</p>
-</blockquote>
-<h3 id="为何离职？"><a href="#为何离职？" class="headerlink" title="为何离职？"></a>为何离职？</h3><p>先从我的换工作的动机开始说吧。</p>
-<p>公司裁员的时候老大说:『你就留下好好干吧，以后不管公司怎么分股票、期权，肯定少不了你』。我非常信任我的老大，跟着老大一起工作，感觉是一种享受。</p>
-<p>但是没想到裁员后，公司内部大动荡，主业务线从客户端A 业务线转移到另外的B 业务线上。我主要负责A客户端的架构，这下可真闲下来了。B 业务线那边的业务量还是很忙的，没时间配合我做一些架构上的事情。于是我每天就看看资料，补充点能量。</p>
-<p>呆了几天后，就后悔当初没有拿 N+1 走，有一种被老大忽悠的感觉。 因为公司接下来的操作让我很是不爽，先是晚上打车不能超过30，然后福利大减，瞬间没有工作的心情了。再过了一两周后公司宣布新一轮融资成功，可惜只融到了 2千多万美元（按照预期应会更高），然后接着招新人。</p>
-<p>我特么无语了，站在公司的角度是没有任何问题的，可以节省开销，也可以容纳新鲜血液。但是我作为一个老员工，心寒，走的员工都拿到了 N+1，我们这些老员工什么也没有得到，反而福利大减，伤人啊! 现在即使我想走，什么也得不到，一种莫名的恼火涌上心头（只怪本人经历尚浅，看不清一些大的趋势，还是老鸟们聪明，拿钱走人，然后换一个新工作，好不自在啊）。</p>
-<p>不过理智分析一些这样确实有好处，可以给自己留很多的时间来选择更好的公司。就如此刻的我一样，在公司悠闲的上着班，骑驴找马，遇到合适的，可以立刻走。其实细想一下，如果我当时拿了 N+1 走了后，可能会迫切的需要一份合适的工作，然后迅速入职。至于新公司怎么样，还真不敢确定。</p>
-<p>已经动了想走的心，意味着再也不可能在这里很安分的待下去了。</p>
-<h3 id="面试分级"><a href="#面试分级" class="headerlink" title="面试分级"></a>面试分级</h3><p>于是我决定开始投递简历（世界那么大，我想去外面的世界看看）。这次看机会与往常不同，我决定好好准备一番，然后开始投递简历，主要渠道是 “X钩”，辅助渠道是猎头。</p>
-<p>这次看机会我将所有公司分为三类： </p>
-<ol>
-<li>A类： BAT公司，非常靠谱，各项待遇都是很优厚的</li>
-<li>B类：一些知名的互联网公司（基本都在C轮以上），基本很靠谱，该有的都少不了</li>
-<li>C类：就是那些正在招聘的公司，没啥名气，虽然钱多但是事也多。靠不靠谱真还不知道，只能碰运气</li>
-</ol>
-<h3 id="基础知识不可少"><a href="#基础知识不可少" class="headerlink" title="基础知识不可少"></a>基础知识不可少</h3><p>以前我基本都是直接去面试，总以为Android工作好几年了，出去面试基本没啥问题，因此带着那份傲娇的自信 总是碰壁，尤其遇到很多基础性的问题，一时真不知道怎么回答？还有一些问题之前都记得很准确，但是在面试官问的时候，就一个大写的懵逼表情。</p>
-<p>在我出去面试之前，我已经把 《大话数据结构》 基本看完了（想想我之前的生活，每天早上七点多起床，然后看几页，洗漱完就去公司）。虽然没怎么记住，但是遇到这些相关问题，还是能很容易回答出来的。因为有了以前的教训，而且这次我也是很认真的准备了好久（可以说蓄谋已久啦，我心里其实很明白互联网公司可能存在很多风险，尤其是没有盈利的公司，唯有技术这东西必须牢牢掌握住，才能立于不败之地），因此我准备把Java基础巩固下，但是手头没啥合适的书籍和资料。</p>
-<p>还好民间有很多厉害的开发者，他们不以盈利为目的，只为完成某种需求，开发一款 app,然后发布到应用市场，给需要的人。于是我就找到一个 “Java面试训练” 的App,下载量还可以，就安装到手机上，开启刷题模式，应该刷了10来天吧（都是在上班，下班时间看一点，虽然时间比较零散，但是这样记得最深刻）。在之后的面试中，基本很少遇见一些奇葩的java基础。</p>
-<blockquote>
-<p>这里不得不提一件事，那就是从 app 崛起的那一刻起，就有很多的 中间商，一个小作坊的屋子里有很多电脑或者不知名的设备，屋子里慢慢的数据线，犹如蜘蛛网一样连接着很多设备，做着一些神秘的事情。不用我说你们应该也知道他们做着一些很肮脏的事情，我就不细说干什么了，简单举个例子：这群人的老大看中某个市场上某款游戏非常火爆，或者 app 特别的火，于是通过反编译等技术修改这些 app,然后重新打包上线到一些不是很知名的app 渠道或者小型应用时长，还有一些论坛，一旦有用户下载，就会在 app中弹出广告，在游戏中做各种充值操作，甚至在你无意间点到一个按钮就会自动扣除你的话费。这是前几年干的事情，新闻中也纰漏了很多，这里只能说监管不力。</p>
-<p><br><br>但是随后各个公司都意识到这样的安全问题于是有了 app加固的技术，无法修改 app,即便修改了，但是也运行不起来，所以一定要注重安全性问题。</p>
-</blockquote>
-<h3 id="刚踏入架构师之路的经历"><a href="#刚踏入架构师之路的经历" class="headerlink" title="刚踏入架构师之路的经历"></a>刚踏入架构师之路的经历</h3><p>这次我给自己的规划是做一个架构师，但是我深知架构师可不是闹着玩的，必须要有很强的一面，因此我在简历里面写的只是“架构师方向”。我在K公司 做得是架构师方向，因此我觉得有必要朝着这个方向发力，虽然现在不是很厉害，但是坚持一两年后，即使不是非常厉害，但是也距离非常厉害很近（这里使用了《孙子兵法》的一句：“求其上,得其中;求其中,得其下,求其下,必败。” ）。</p>
-<p>这个想法来源于在K 公司我第一任leader曾经跟我说过的话：『对于新东西，如果你觉得掌握了，但是不应用到项目里面来，是没有什么意义的，时间长了还是会忘记的。』我很庆幸我有一个好老大（我是属于双领导型的，K 公司 A项目的负责人是我的leader，但是我的直接汇报对象是 K 公司的副技术总监，下文就成为老大），用他的话来说就是经常踢着我的屁股走。</p>
-<p>当我在网上了解到很多实用的新技术时，跟他随意吐露一句话，他就能非常用心的倾听我的想法，并鼓励我将这些东西带入到项目中来。从那以后我就开始看很多新技术，感觉合适的会引进到我们的项目中。从之后的证明中来看，是非常有价值的。</p>
-<p>曾经遇到的情况是这样的：当我刚进入K公司后，打杂一个多月，就被关到了 小黑屋（呜呜呜，好可怕的小黑屋，996的制度）。然后才开始正常的架构师之路，第一步就是统一开发环境，在我来公司后，我发现公司的android同事用的开发工具种类真是繁多啊，神马 Eclipse、IntelliJ IDEA、Android Studio、Windows、Ubuntu、Mac。刚进公司的时候我曾经用鄙夷的眼神看过那些 Eclipse 的童鞋，真是无力吐槽了。于是我给 老大说：『咱们的开发环境最好统一起来，现在各式各样的工具，弄个东西真费劲。』于是老大二话不说，就在群里跟大家吼，都务必切换到 Android Studio（以下简称 AS），由我来监督并执行。于是我拿着鸡毛当令箭，给大伙把地址什么的都找好，发到群里去，让他们自己下载（后期我们就搭建了 ftp服务器将这些常用的工具都放在里面，省的再去下载了）。 翻墙工具我使用 goagent（不怎么稳定），给其他人分享也太费劲了，因此让他们自己搞定。老大自己有一个 VPS，于是给大伙共享后，环境基本就统一了。</p>
-<blockquote>
-<p>期间有一个小插曲：<br>一个年龄 比我大的同事在用 Eclipse，在我推广我的 AS 时，他说比较忙，没时间弄。我就急了，因为我刚到公司不久，老大分配给我的任务，推行不下去，这可不行啊，没说几句吵起来了。最后我也知道不能太着急，但是已经吵了，关系肯定不咋样，老大当时开会去了，我知道自己太心虚了，因此主动给老大承认错误，说我和那谁谁吵架了，因为他不用AS。最后在老大的劝说下，这个人就勉强切换到 AS了。<br>其实这个人就是我之后的新Leader，每每想到这里我就全身发冷汗，Leader要虐你，你还能有好活路么？还好这个Leader人比较好，人也比较大气会处事，不怎么跟我计较。我已经对着佛祖忏悔了N多次。</p>
-</blockquote>
-<h3 id="第一天面试"><a href="#第一天面试" class="headerlink" title="第一天面试"></a>第一天面试</h3><p>我用 “X钩” 开始捡一些不怎么有名的C 类公司投递，很快就收到了很多的 面试邀请。</p>
-<h5 id="首次面试——国外输入法"><a href="#首次面试——国外输入法" class="headerlink" title="首次面试——国外输入法"></a>首次面试——国外输入法</h5><p>记得当时去的第一家公司是做国外做输入法的，做的还不错。从外面能看见一栋略微有点老的大厦，办公环境很一般。</p>
-<p>进去后很巧的是遇见了一个熟人，第一位面试官竟然认识我之前在X游的一个同事，然后我们就聊开了，他也没怎么难为我，就问了我几个很简单的问题，例如：handler的原理，多线程。我按照记忆中的样子说给他听，然后就第一关就轻松过了。</p>
-<p>等了一会，另外一个面试官进来了，问了一长串问题，基本就是 Android的相关的基础，然后第二个又轻松过了。</p>
-<p>等到第三关的时候，一个年龄稍微大的人进来了，很容易能看出，这个人应是该技术团队的负责人，问了一些工作经历后，然后问了一个最让我印象深刻的问题是：『你了解过Android上的黑科技么？比如Android 5.0 之上有一个辅助功能，如果用户开启后，就能像豌豆荚那样自动安装app,等同于拥有了root权限，但是手机重启后，这个就自动关闭了，有没有办法可以自动打开呢？』据他了解，有很多不知名的小App 都实现了，但是很多大公司都没用。 我想好好一会，说可能这些app 被厂商列入了白名单，因此重启手机后还能自动打开那个辅助功能。我实在想不出如何能实现这样的效果。最后他告诉我，其实他们也是分析了好久，才发现，那些小App, 都是开启了一个进程（或者是service，具体记不清了，有兴趣的童鞋可以试试）来守护，因此能够开启。这么一说，我也瞬间明白了。</p>
-<p>但同时我提到这样做会可能会导致耗电量增加啊，对方的一句话把我真雷住了。“那能费多少电。。。” ，我瞬间无语了。但是他们可能因为某些需求必须如此做，因此要实现这样的功能，相对于电量来说应该也能接受，不至于比什么都玩不了的强，体验也确实提升了很多。不用用户每次去开启那个开关，虽然有点风险，但是相对于Android上的风险来说，确实低很多。</p>
-<p>等第三轮面试完成后，然后Hr 小妹妹带我到一个很大的会议室，见到一个很年轻的人，听Hr说，这个人应是CEO之类的，反正职称很高。他就问了些职业规划，平时有什么兴趣爱好，以后有什么打算，薪资要多少？我说到公司后可以先接触一些业务层面的东西，然后慢慢再走架构路线，之后可以负责主要核心模块。平时就看看书，参加沙龙活动，没事打打游戏。他也简单回答我一些问题。之后就是让我先走，等通知。</p>
-<p>傻傻的我还就这样高兴的走了，因为我总体感觉还是很棒的，毕竟连过4轮哈。从最后的结果中能明白，其实应该是要的薪资太高了。为什么这么说呢？因为一般情况下，最后一轮就是简单看看你这个人怎么样，技术关肯定没问题，否则前三关就 pass 了。可能对方觉得你要的薪资和你的实力不符合，也可能他们想再对比看看，选择一个更合适的人选。</p>
-<h5 id="58到家"><a href="#58到家" class="headerlink" title="58到家"></a>58到家</h5><p>从上一家公司面过后，我就紧接着去第二家公司 58到家，在大屯路东地铁站附近。到了后刚好12点，电话联系后，他们说班车司机都午休去了，要等到2点才能过去（58到家面试需要从地铁站做班车过去，路程还算能接受的）。然后我就吃了点饭，在附近网吧 撸一局，看时间点差不多了，我就去那块坐车了，差不多走了5分钟做就到了。</p>
-<p>北苑路北美国际商务中心，这块有很多公司，什么珍爱网之类的都在那附近。</p>
-<p>第一轮面试我的是一个小伙，问了一些基本的Android基础，然后问了一下 android的绘图原理，我说： onMeasure, onLayout, onDraw。 然后他说每一个什么作用？ 那个onMeasuer主要做什么的？并举了一个例子：一个自定义的滚动View A里面如何放另外一个滚动的View B？我说把 View B将 onMeasure 里面的高设置成最大，这样就能解决冲突问题。最后他简单说了一些 onMeasure 里面的几个参数，我对此加深了解了。</p>
-<p>第一关也就这样过去了，等到第二关的时候看起来一个挺帅气的男人带着一个很显眼的婚戒跟我说一些项目流程上的东西，因为我在K 公司这块跟老大接触的比较多，因此一般问题难不住我，轻松就过了。</p>
-<p>等到第三关的时候，问我一些工作经历，然后问问职业发展规划，平时的兴趣爱好，以及你觉得得你和其他人有什么优势。我挺好奇的，为什么最后的这些面试官都要问类似的问题，之后从一个关系还不错的猎头那里了解到，其实他们也就是了解下以后的动向，以及看看这个人的人品。关于优势我是这么说的：我说到公司后可以先接触一些业务层面的东西，然后慢慢再走架构路线，之后可以负责主要核心模块。其实和上面的回答一样，这基本就是所说的套路。他们可以用套路，我们为何不可呢？ 嘿嘿，别学我，自己根据实际情况来。</p>
-<p>本以为就结束了，没想到他们说 CTO不在，可能还有复试，先让HR大美女跟我谈谈。HR慢条斯理的跟我说了一些待遇什么的，了解了下我的状况，问我要多少。我基本和上一个公司说的一个样。</p>
-<p>之后再来复试的时候，这个大美女HR给我了一些建议，说这个CTO是阿里出来的，喜欢会说话的人，想到什么就说什么，别紧张。在这面的时候，我就很放松，该怎么说就怎说，他也问了一些职业发展规划，以及我的经历，基本10来分钟就结束。我只想说大美女 HR 真真是体贴入微，感觉很 Nice, 这轮基本也顺利过了。之后这个HR直接说我被评为T5，但是以后可以继续努力，我也欣然接受了。不管怎么样，反正拿到offer再说，之后慢慢对比。</p>
-<h5 id="楚楚街"><a href="#楚楚街" class="headerlink" title="楚楚街"></a>楚楚街</h5><p>说起这第三家 楚楚街 我就一肚子火，也不是说第三家不好，只是在去的路上让我备受折磨。从大屯路东 到 知春路，坐地铁应该几十分钟就到了。当时已经快四点了，5点面试，然后我就打算坐车去（不想再挤地铁了，想轻轻松松的过去），特么的为了省那几块钱，我选择拼车，在路上本以为只需要最多一个小时就到，没想到花了我1个半小时(只能感叹北京的车真多，路上堵的不行不行的)。哎，到他们公司的时候都快6点了，还好我提前在电话里和HR说过，他们说6点也是可以的。于是第三个面试就开始了。</p>
-<p>首先过来第一位面试官，看样子应该是 Android 技术 leader，开始问了我一些基础的面试题，比如：View 的事件分发机制，View的绘图，ListView 的实现原理（这个应该是几年前面试的时候经常问题，没想到现在也能遇见）。聊了好一会，然后他拿出他们的客户端给我演示了一个页面，说这个界面比较卡顿，让我分析下原因。我看过后，提出了几个有效的检测卡顿的方案，他们的这个界面主要是Listview 的 item 里面包含了一个 viewpager，然后 viewpager 的 item 里面有一个大view, 上面有N 多图片 + 动画效果，因此实现起来很麻烦,最后导致性能卡顿（不得不说产品同学，你的想象力真丰富啊，有没有考虑过研发同学的心情）。然后，他感觉得到了共鸣，因此接下来说话就比较放松了，他说和我年龄差不多，感觉我还是很厉害的（我不禁惶恐不安，我感觉还行，但是应该不是他说的很厉害，可能只是工作时间长了，该积累下来的东西大部分都有了），互留了微信，方便以后的交流（事实是没有啥交流的，只是当你面试通过后，可以有一个拉你入伙的渠道，嘿嘿，不晓得对不）。</p>
-<p>第二个进来的面试官长得挺帅气的，手上戴着戒指（之所以提到这个，是因为在我在我的印象中这个最亮眼，很多次在和他交流的过程中，我都比较紧张，我就盯着这块看用来放松，说真的如果看着对方的眼睛，双方可能都不会自在，当然除非你很有自信的时候是可以的）。开始简单问了下工作经历，然后就开始聊技术，第一个就是问我知道不知道 二分法，我当时楞了一下，猛然间反应不过来，最后专门确认问了下是不是 二分查找。然后我说在一个数组里面每次查找的时候从中间点开始对比，大于就右边找，小于就左边找，顺带提了一句这要在一个顺序的数组里面。然后面试官就说，二分查找还得每次先排一次序？我当时说是的，结果就感觉很2，可能没理解清楚面试官表达的是什么或者说我的表达有问题，其实我想说最开始的数组就是一个有序数组，但是面试官可能误解了我的意思，以为每次查到后，都要先排一次序（只能说悲催啊）。</p>
-<p>这个问题过了后就再问了我一个问题：『你来说说 Java 的内存管理。』这个问题在一两年前上就栽过跟头，所以当时专门看过相关文章。但是当我回答的时候，由于长时间没怎么看过了，记忆有点松动，大体的说出来了，但是不够准确（回去后就好好补充了下，在之后的面试过程中遇到的概率还是非常大的，尤其在第二面的时候）。然后他问我要多少薪资，我当时说 XX，然后他就问我是不是可以低一些呢？我开始说可以低一点，但是当他问低多少的时候，我心想上面两个公司的 offer 基本感觉到手了，这个可以适当的要高点，能给就来，给不了那就算了（我事后想想才明白，这种2B 的想法绝对不能有，要时刻保持低调，把握住任何一次机会）。最后他说，我得对得起兄弟们（怎么说呢？估计是刚回答的时候不是特别的满意，还有感觉我要的太高了），你这个薪资我没法跟上面谈。然后可想而知，当然肯定没有结果了。</p>
-<p>因此奉劝各位，要时刻保持低调，谦虚谨慎，莫要装B，否则肯定遭雷劈，我这就是一个活生生的例子。</p>
-<h3 id="第二轮B-类公司面试："><a href="#第二轮B-类公司面试：" class="headerlink" title="第二轮B 类公司面试："></a>第二轮B 类公司面试：</h3><p>面试有很多，说起来可能会长篇大论，以下就总结性的说说，不再说明具体细节，只说我们之后在面试的时候应该注意的地方，以及他们对应聘者的要求。</p>
-<h5 id="映客-amp-amp-蘑菇街"><a href="#映客-amp-amp-蘑菇街" class="headerlink" title="映客 &amp;&amp; 蘑菇街"></a>映客 &amp;&amp; 蘑菇街</h5><p>映客直播在望京soho,很高大上的地方，t1,t2,t3分别对应从低到高的大楼。到公司后，感觉还可以，第一个面我的人是一个技术，基本就问到一些Android 的面试题，没有任何悬念就过了，第二面的时候，感觉那个人还是比较随和的，问了 Java 内存管理的东西，以及一些其他的问题，最后还都聊得挺开心，第三面的时候直接就是 HR谈薪资，很容易就过了。</p>
-<p>在望京 soho 还去过 蘑菇街，里面的人技术比较好，我当时过去的时候已经6点了。那个面试官就跟我聊人生理想，提到一些 Android系统原理性的东西，但是感觉回答的不是很好。面试官感觉还是很不错的，然后给我说你以后要多看看例如 handler 原理，windowManager 的东西，并且从源码上去分析，网络上的理论知识还是要结合实践的，真是受教了。这部分我有点弱，虽然知道原理，但是看过源码的东西还是很少的，以后需要注重补充。他说他才是高级，我要应聘的这个 架构师肯定是不行的，问我是否愿意做其他的，我当然表示愿意了，现在要综合提升能力，才能往更高层走。</p>
-<p>最后的最后，他很搞笑的跟我说：『我这人真不骗人』。我还纳闷啥意思，最后他说：『今天已经很晚了，第二轮的面试官不在，我明天给你向上反馈下（从之后的一个同事的口中才明白，一般说第二轮的面试官不在，基本就是说你没戏，很委婉的一种说法而已）』。</p>
-<p>结束后我看了一下表，我晕，一面就面试我了一个半小时，真特么无语了。不过收获还是很大的，知道自己的不足后，就知道需要补充哪些东西了。</p>
-<h5 id="乐视"><a href="#乐视" class="headerlink" title="乐视"></a>乐视</h5><p>去了一趟姚家园的乐视，只能说看着挺风光的，但是进去后，特么的真虐人。</p>
-<p>电梯分区，还只能在一边的乘坐，很不赶巧的是我去的时间刚好是10点，对于他们公司来说这就是高峰期，电梯根本排不上队，而且乱糟糟的（之前在X游的时候，大家都是排队的，这边没有，可能地方太小了，排不开吧）。电梯上不去了，看来只能跟一些人爬楼梯，一直爬到9层，感觉都喘不过气了。</p>
-<p>上去后一个很美的 HR（长腿姐）带我找面试官，然后表示没有会议室，原来的会议室都变成工位了，所以让我先在一个小角落呆着（保洁阿姨的专属位置），过了好一会面试官姗姗来迟，也是一些非常基础性的东西，最主要的是他们提到了推送，怎么实现，已经存活情况说了一些。</p>
-<p>第二个面试官也是特么来得晚，等了 N 久，闲的无聊就和保洁阿姨聊天，顺带看看他们的办公环境，只能说真心挤得慌。第二位面试官来了后就看看我的经历，因为第一轮的技术面都过了，因此简单聊了下，就说说他们的发展前景，要做海外产品。听我的兴致勃勃，很开心，然后让我等会。</p>
-<p>他们基本都去吃饭了，留下了我在那里干等，然后来了一个HR 的小妹妹，跟我谈薪资以及经历，貌似对我一两年换工作有很大意见，哥就好好给她普及了一番互联网界的基础知识。没想到就在快要搞定的时候，这个小妹妹的老大过来了，然后就看见一个身材超棒，腿很长的漂亮姐姐 HR（长腿姐），坐在我的对面（小妹妹示意我这是她的老大）。瞬间不爽了，都马上谈完了，结果换人再来，真无语了。只能将刚刚的辉煌时刻再来装 B一次，然后谈薪资神马的，给的也不是很多，我要 XX，她说那么多，只能给我薪资范围最低的一个档次。好吧，就接着吧，然后非要我先填写一份背景调查表，如果没有问题后，才给我发 offer，我看到美女拿着那份很大的 纸张，瞬间无语了。</p>
-<p>我当时就不怎么开心，然后长腿姐毕竟老练的很问到：『说你是不是有事？』。我说是的，待会1点还有其他地方的面试，然后她说：『那你先回去吧，这个表格发你邮箱，你写好后发给我。』然后长腿姐就送我出去，我又特么的一路爬楼梯下去（9层啊），电梯等了 N 久都下不去。</p>
-<h3 id="接下来说说几个有意思的公司"><a href="#接下来说说几个有意思的公司" class="headerlink" title="接下来说说几个有意思的公司"></a>接下来说说几个有意思的公司</h3><h5 id="新浪"><a href="#新浪" class="headerlink" title="新浪"></a>新浪</h5><p>新浪位于理想国际大厦，记得几年前去新浪面试的时候，傻傻的都没准备就去了，结果第一关就挂了。</p>
-<p>这次是下午去，外面还飘着毛毛细雨。去了后竟然特么的让我做面试题，哥已经不做面试题很多年。但是想起了之前的经历，还是老老实实写写，据我估计面试的哥们应该会问上面的东西。还好这次做了万全的准备，刷了 N 多面试题，补充了基础的数据结构理论知识。写起来如行云流水，嗖嗖嗖的没几分钟就完了。</p>
-<p>第一个面试的哥们看看卷子，没啥意见，然后问最后一道纠错编程题有没有什么问题，我虽然指出了几个错误，但是感觉他还不是特别满意。因此我仔细看了下，原来是一个静态变量引用了 Activity 的上下文,然后指出，他再问了一些偏底层的东西以及性能优化的地方，轻轻松松就过了。</p>
-<p>等到第二面的时候，这个人一看就是技术大牛，问了很多 Java 层面的东西，多态，抽象类，多线程，内存管理等等。我感觉回答的不是太好，多态那有点问题，其他的应该还可以。</p>
-<p>然后就进入了第三面，第三面的面试官应该是部门负责人，问了工作经历上的事情以及兴趣爱好，之后的发展方向，想做什么层面的。最后很不幸的是在等待第四面的时候，最开始给我题的美眉告诉我时间很晚了，让我先回去，之后等消息。</p>
-<p>至少这次来比第一次高级了很多，不至于第一轮就被刷下去。最后分析了下原因，还是薪资要的太高了，尤其是这类公司。</p>
-<h5 id="滴滴"><a href="#滴滴" class="headerlink" title="滴滴"></a>滴滴</h5><p>滴滴位于西二旗，应该有两个办公地点，其实我一直很想去滴滴，福利待遇很不错。一年前去过一次，很可惜在第一轮的时候，因为在某些适配方面回答的不是太好，因此失去了机会。</p>
-<p>这次已经准备很多了，进来后还是在去年的位置上坐下等面试官。说实话感觉滴滴成长的很快，办公环境都变的更漂亮了，哈哈哈。</p>
-<p>这个面试官一看就是一个技术宅，开始对我各种炮轰。面试题一个接一个的，在我连续回答十来个题后，看见他还在问，记得在提及到 volatile 的作用的时候，我就开始不爽了，这个东西记得之前在源码里面见过，但是具体的一时说不上来，看着他那样子，埋头在纸上给我出题，我就不怎么配合了。面试了那么多家，就你问了 N 多问题，还有完没完了（其实这也算是抗压的一种面试方式）？我直接说不知道，然后他再问了几个基础性的东西，我想都不想直接说不知道，他貌似已经看出来我已经很不爽了，然后说，那你说说你项目中有没有比较 NB 或者比较有亮点的地方。我的回答直接是：没有。然后他也就不怎么问了，说那先这样。我说：好，就这样，我先走了。 然后潇洒的离开滴滴。</p>
-<p>现在想想真特么的很2B，应该低调低调再低调。也可能是那天下午太累了，上午面试了两家，而且已经拿到两家的 offer 了，还都不错，在这特么憋屈，才表现的如此差劲。其实对于问题，知道的话就好好说，不知道的话，可以说说思路和想法，然后说说以后会怎么做，利用迂回包抄策略去应答，准没错。至少给面试官知道你还是可以动脑子的人。</p>
-<p>在此我真心后悔当时的冲动，向滴滴那位面试官表示歉意。其实不用那样的，我们只需在面试的时候尽力表现自我就可以，以后切莫带着情绪去看待或者回答问题。</p>
-<p>对于人生中的很多问题也是这样的，这次栽倒坑里去了（用我老大的话来说，你不在这里踩坑，总有一天也会在另外一个地方踩到，到时候的损失就不可估计，趁着年轻多多历练自己），总结之后才能更近一步。</p>
-<h5 id="百度外卖"><a href="#百度外卖" class="headerlink" title="百度外卖"></a>百度外卖</h5><p>百度外卖现在已经不属于百度了，而是单独分出来。</p>
-<p>我的一个同事去了百度外卖，我感觉他的能力和我差不多，我就让他推荐了。</p>
-<p>去后，上了一个很长的台阶（感觉很庄重的样子），要刷卡才能进去。等了好长时间，面试官把我领到楼下的公共办公桌，就是那种中间空地，周围都是楼层，能看见其他人在楼层间走动。一个年龄见长的面试官，开始感觉挺随和的，然后说跟我聊聊 Android 基础。</p>
-<p>第一个问就是：『咱们先来谈谈 Android 的四大组件。』我彻底懵逼了，尼玛，跟我谈四大组件，有意思么? 没想到一直到最后都跟我谈这些，一个接一个的问。说到广播那块，关于一个 app 被杀掉进程后，是否还能收到广播的问题纠结了好久。</p>
-<p>然后让我画我之前设计的架构图，我就随便画了画，但是没想到这个看起来很好的面试官让我大跌眼镜，他用鄙夷的笑容告诉我：『你这也太初级了。』我当时心里有几万只草泥马在崩腾，你都30+了，就不知道鼓励新人啊，我都说过我刚做架构的时间不长，而且鄙视我，有本事你也弄一个架构给我看看啊，一点不尊重我们年轻一辈的劳动成果。也许就怪我当时我真就按照他说的草草画几笔吧，没怎么认真对待。我去其他公司面试的时候，虽然这个图不怎么样，但是至少能解决 某些领域的问题，其他面试官都很谦虚。这个百度外卖的面试官，真不是我喜欢的领导，如果以后真让他来带我，那就真完蛋了，很多时候我们都是因为某些人扼杀了我们最初美好的萌芽，而从此失去了创新的意识。</p>
-<p>很庆幸的是我在 K 公司的时候，老大一直鼓励我创新，遇到想做的就去做，所以一路下来，虽然很累，但是干的很开心。</p>
-<p>所以每当有人问当初为什么选择K 公司的时候，我都会自豪的说：『我的老大很不错，我在那里很很舒服，很开心』。记得在我离开的时候老大给我最后劝告就是：『你要时刻反思自己此刻是不是已经被别人洗脑了。』</p>
-<h3 id="第三轮："><a href="#第三轮：" class="headerlink" title="第三轮："></a>第三轮：</h3><h5 id="1-百度"><a href="#1-百度" class="headerlink" title="1.百度"></a>1.百度</h5><p>百度位于海淀区上地十街附近，有很多大厦。 我去的是一个做国外工具的部门，去了后，被百度的环境和氛围震惊到了，在一个很大的技术园区，有网易，百度，腾讯公司，对面还有一个大楼正在修建，估计会是另外一个互联网公司的场地。</p>
-<p>进入大厦里面后，由于还没来得及吃饭，边吃手里的饼，边浏览下百度的外围办公区。进入百度的大楼后，两个入口都设有刷卡机。</p>
-<p>在空闲区等了好一会，然后一个人带我进入大厦。在进去之前，到前台那块面试官输入自己的邮箱账号，然后让我填写其他登记信息，我印象最深的是显示器上边贴着一个纸条，说：请离开的时候在此登记，否则会进入百度的黑名单（意思就这样，具体记不清了）。当时震惊了半天，没想到竟然这个严格。</p>
-<p>和面试官进入大楼里面后，只记得的印象是：很整洁，高大。出楼梯后，脚踩着厚厚的地毯，稍微走快点，都感觉很松弛，脚下如踩棉花一样。</p>
-<p>为什么有地毯，而不是地板砖————到了夏天很多漂亮的长腿美女穿着高跟鞋踩在地板砖上是一个怎么样的体验呢？噔噔噔…… </p>
-<p>我在等候区等到第一个面试官，然后我们简单聊了下 Android技术，其中有两点有必要提下：</p>
-<ul>
-<li><p>其中一点是：说说 View 的事件分发机制。然后我就说了好多，从 WindowManager->window->Decorview->子 view。最后我说当所有的 view 都不处理事件，事件会最后会传递到 Activity 的 onTouchEvent 上。然后面试官立刻说：『哈？你这是颠覆我的三观啊？』 然后我意识到可能有问题，但是记得 《Android 艺术开发探索》上确实写过到 Activity，但是不是到 onTouchEvent还真没底。面试官很自信的样子，让我颤抖了。但是随着我的坚信，面试官说：『不行，我不能冤枉你是不！』立刻在手边的 MBP 上看了一下，自言自语感叹道：『还真有啊！』 我顿时无语了。</p>
-</li>
-<li><p>另外一点是：问我 Service 上能不能弹出对话框。对于这个问题，我印象最深刻了，记得一年前的时候，在另外一个公司就因为这个问题让我尴尬万分，回去后专门对这块进行补充。我的回答是可以的，但是面试官面带差异的表情告诉我这是不行的，Dialog 必须要依附于 Window 才能显示出来。然后我的解释会让面试官郁闷一会：我说这个是可以弹出的，我之前也专门试过，不过他弹出是有条件的。 条件是：</p>
-<ul>
-<li>必须在 Manifest 里面注册系统权限</li>
-<li>在显示 dialog 的时候必须要加一个 flag.<br>我的理由是：系统对话框可以在低电量的时候弹出对话框，我们同样也可以采用该方式来实现。</li>
-</ul>
-</li>
-</ul>
-<p>面试官语塞，然后给我说 Dialog 是必须要依附在 Window 上，Toast 其实也是一个 Window。我听着这些话，就想起以前看过的一篇文章上也确实是这么说的。估计该面试官回去要好好补充下一些知识了哦。 然后该面试官让我不能用 Arraylist,用数组 写一个队列。这块刚好我在之前项目中特意用了一下，写的时候，主要有三个方法： put(), get(),peek(). 然后考虑下队列的特性，一端进入，一端出去。我当时遇到了盲点，没怎么写完，最后给面试官说了下思路，大体是对的。但是关于选择位置那块没怎么想好。不过这不阻碍我进入第二轮。</p>
-<p>第二轮面试的时候，面试官带了很多纸张，我瞬间压力山大，知道不太妙。不出所料，这个面试官，从动画实现原理，到 handler 实现原理，一步步深入各种原理，当我感觉回答的不错的时候，然后他就顺着我的问题继续深入。我只能说我尽力了，有些东西，平时开发的时候真心不注意，但是就因为没有留意，所以就没法继续回答他的问题。</p>
-<p>面试官把我带出大厦的那一刻，我心情很不好，很可惜没进入百度，之后应该需要准备很多东西。我要说，我还会再来的，哈哈哈！ 最后也归还身上的一个牌子到前台后，省的被拉入到黑名单（好吓人的样子）。</p>
-<p>以后有时间多看看原理性的东西，最好整理一个自己的博客，写上自己的一些看法和感悟，这样记得最深刻，即使几年后也不会遗忘，只是看看别人总结的东西，真的就不怎么记得住。</p>
-<p>关于博客可以使用 Hexo, 我的博客也是如此，可以整理一些自己的东西与心得。</p>
-<h3 id="2-阿里"><a href="#2-阿里" class="headerlink" title="2.阿里"></a>2.阿里</h3><p>这次去的是一个阿里的高德部门，在望京 Soho 附近的 首开广场。去了以后首先找厕所，你们知道么？厕所竟然从大厦楼层的的一个角转了一大半圈才找到，回来后进入找不到前台了…… 瞬间无语了。问了好一个美女才回到前台，然后接待我的 HR美女貌似等得不太耐烦了（宝宝心里苦，厕所好远，都找不到回来的路了）。在一个小型会议室等待面试官，看了下布置氛围和环境，感觉太棒了，很多东西都体贴入微。</p>
-<blockquote>
-<p>回顾上次阿里的悲痛遭遇<br><br><br>其实这是我第二次来这边面试了，上一次过来的时候，是刚过完年。提到这里我就苦不堪言，为何如此说呢？当时是2016年2月15日，因为我参加好朋友的婚礼（不得不说，我这个年纪的人都开始结婚了，这次回去有4个好朋友都结婚，可想而知，一场完了以后还有另一场，虽然累，但是值得）推迟了好几天才回北京，在参加同学婚礼的时候接收到阿里高德部门的面试邀请。回到北京的当天是12点多，然后回家，一个关系非常好的朋友说今天她们要宴请公司的人吃饭，因为她们结婚了，让我帮忙弄个 MTV。我想这是朋友的终身大事，因此必须要好好干。<br><br><br>我下午4点是阿里高德的面试，因此时间很紧促。我凭借我大学的技能在两个小时内搞定这个 MTV，总体来说还不错，就迅速发给朋友，弄完已经3点了，然后打车立刻去首开广场。<br><br><br>高德的面试是4点钟，匆匆赶到后，就等待面试官。面试很不理想，因为什么都没有准备，而且心力憔悴。面试官问的是一些基础的 Java 问题，很可惜我没怎么回答好。于是就深深的浪费了一次机会，之后和朋友提起此事，无比后悔，当时其实是可以和 HR 电话再约一个时间的。<br><br><br>这次对我的打击很大很大，因为这是我这么多年第一次面试 BAT 的职位，一上来就受挫，很不是滋味。<strong>我在这里失利后我就各种准备资料，增强自己的能力，面试前必须要刷题，虽然简单，但是不失为一种方法，虽然不一定有用，但是会加深印象，尤其是去 BAT 这些公司，一定要准备好，否则就别浪费机会，这就是我的教训和经验。</strong><br><br><br>为了6月份的这次面试策划了很久。以前对什么可能都不是很上心，但是这个事件深深的刺激我了。</p>
-</blockquote>
-<p>第一个面试官来了后问了一些基本问题，很顺利就进入到第二轮面试。</p>
-<p>第二轮也基本是技术面试，问了一些 Android 基础和 Java 基础以及内存管理。</p>
-<p>第三轮的面试官应是部门负责人，看起来很好说话的，问了一些经历和基本情况后，问我薪资要多少以及之后的发展方向。我说要 XX，之后希望在架构方面发展，但是也可以从业务开始。貌似这里回答的不怎么好。然后让我留了他的联系方式，我知道很有戏哦。</p>
-<p>因为我在进入 K 公司的时候也是这样的，老大感觉我很不错，于是留了微信后，我基本就顺利入职。</p>
-<p>回去后的一两天还是很焦虑的，但是我知道大公司都是有流程的，因此我告诉自己不要焦急。过了一两天后他主动加我微信，然后问了些基本情况后，就说他要做最后的总结，让我等着，最迟一周后就有消息。我感觉希望超大的，开心了好久，本以为就可以这样过去。但是一周时间过去了，没人通知我，我开始焦急了，于是我开始主动和他说话，反思自己是否有什么地方做的不好。</p>
-<p>经过很多面试后我总结出了结论就是要薪资太高了，于是我在微信里面给他说，只要能过去，薪资低点也是可以的。但是问了他好几次，他都没有回话，看着微信消息记录，都是我发给他，而他没有回复，已经过去好多天了，我知道没希望了，他说不管怎么样都会给我回复的，但是我真绝望了。</p>
-<p>就像相亲一样，遇到一个不错的美女，开始都一起聊得很不错，她开始加你好友，并且和你说看好你，不管能不能做女朋友，她之后一定会回复，但是苦苦等待一段时间后，不管你怎么给她说话，但是她就是不理你。可能她真的忙，但是也不可能连续一两天都这么忙吧。于是你知道没结果，因为无言等同于没有希望。为了避免一些幻想的存在，你会将她删除掉，不想留下任何关于他的信息。</p>
-<p>同样我也是把这个阿里高德的老大的联系方式删掉，微信也删掉。在我失去希望的时候，过了几天看见他要主动加我，但是我想可能只是安慰的话语，最多告诉我，我不适合他们的职位，因此我为了避免尴尬，直接删除那个加我好友的请求（如果说真的合适的话，应该会很重视你的，不可能好几天都回复，怎么有一种备胎的感觉，呜呜呜，我不想被发好人卡，宁愿做高傲的兔子，也不想做纸老虎，虽然尽管只是纸老虎，但是也会拥有属于它的一片森林）。</p>
-<p>于是阿里的这次机会就失去了。</p>
-<p>总结后的结论就是：去大公司要的薪资不要太高，否则对方只能感谢你的到来，因为比你优秀的人太多了。</p>
-<h3 id="聚美优品"><a href="#聚美优品" class="headerlink" title="聚美优品"></a>聚美优品</h3><p>聚美优品 位于东四十条地铁站附近。路过一个竹亭子后，进入大厦里面需要用身份证在前台那块登记后给我一个纸条，上面写着我的身份证信息，然后在门禁卡附近刷二维码进入（真担心个人信息泄露哦，当然一般情况下没人会关注你是谁的，千万别干坏事哦，会被查出来的，哈哈哈）。</p>
-<p>推荐我去聚美优品的同事接我上去后，带我到前台填写基本信息。我只写了最基本的信息，然后她说，你就写这么点啊。我说，其实这些信息够用了，写那么多没用，还会暴露你的个人信息。面试成功后，如果有需要可以写详细些，但是一般去面试最好别写身份证信息。工作经历基本也只是最近两个，之前的就不用写了，写那么多没什么用，简历中都会有的。</p>
-<p>记得刚工作那会，傻傻的全写了，真耽误了不少时间。过了一会，她把我交给 漂亮的HR 温柔姐，然后就先忙去了。温柔姐告诉我一般情况下有两轮基本就过了，先让架构师老大直接面我，让我先等候。</p>
-<p>过了一会温柔姐不好意思的跟我说架构老大先让一个技术面我，问我是否有意见，我当然没意见了，这是很标准的面试流程（如果你有意见，建议还是别说太多的话，基本都这样的，要淡定）。</p>
-<p>一面技术给我一种很成熟的感觉，开始问了我一些基础技术问题，外加 Java 内存管理知识。后给我出了一道算法题，说有一个数组最多存储6个数，如果有普通用户的话，存储四个 vip的客户，另外两个是普通用户（留出一定的空间给普通用户），让考虑全面点（一般都是结合实际场景，让你写出一个算法，要具备的能力就是抽象，处理问题的思路与细节，还有最基本的编码功底）。</p>
-<p>然后我就考虑各种情况，第一种是非空情况，然后下面就是几个大的 if else, 至少四个条件，基本涵盖了全部情况，然后每个条件里面写上对应的存储数据的过程。由于我的四个大条件都把距离占的差不多了，在写里面细节的时候，用中文描述。过了一会他回来后，看了下说：『你这个还有中文啊！』 我尴尬的笑着说：『我先写条件的，最后发现没有空位了，只能用文字代替了，你看我正在另外一个纸上写全部的完整算法。』指了指纸上刚写一小半的代码。他也会心一笑，并指出算法上应该改进的地方，基本 ok 啦。</p>
-<p>然后等第二轮的面试，看起来更成熟，但是说话有一种很亲近的感觉。问了基本情况，然后拿出他们的 app 让我看看首页的实现效果，说说怎么实现的。对于这种情况，基本就是考察你的抽象能力，以及分析问题的能力。我先说出使用 ListView 的 header，footview,然后使用 ListView 的 type 来实现。然后简单说了一些性能优化的东西，该面试官提出我的做法可能会存在性能瓶颈。其实他说出这块是在指导我说这块会有问题，我当然明白他的意思，于是说这块采用 recyclerview + fresco 来实现，可以有效的改善问题（其实提到这些，就说明你看过很多新技术了，有时间最好还是要自己练练这些东西，毕竟孰能生巧）。</p>
-<p>他也没深究，基本就感觉不错，开始谈了谈他们的目前状况，以及即将遇到的问题。他在只言片语中都把我当做内部人看，我也心里感觉很舒服。最后告诉我如果我愿意，他就向上报备了，意思是可以继续下一轮。当时他问到我的薪资的时候，因为之前已经说了 N 多次，有的成功，有的感觉很亏，于是这次我并没有说，只是笑笑，而对方说：『那就按照年薪算吧，你打算要多少呢？』我当时什么也没有多想，然后就说：『我希望在我现有的薪资基础上，能上涨15% - 20%。』他经过在手机上一阵比划后，告诉我可以达到我的预期效果。整个过程感觉很愉悦。</p>
-<p>因为面过了一些，并有offer，但是还是想多看看，结果把自己搞的疲惫不堪。但是最后的最后，温柔姐给我打电话说面试通过。</p>
-<h3 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h3><p>最终我辞职后在家休息几天，没事的时候去咖啡馆看看书，上上网，好好过几天轻松的日子，然后再说定去哪里工作。</p>
-<h3 id="总结：面试和必备的技能"><a href="#总结：面试和必备的技能" class="headerlink" title="总结：面试和必备的技能"></a>总结：面试和必备的技能</h3><p>这里只简单列举一些东西，可能不是特别全，但是却特别适用，也不一定按照下面的流程，有可能是穿插的，也有可能都有，根据公司的规模以及面试官的心情而定（哈哈哈 ，你们就自求多福吧）。建议大家还是要将下面的东西全部掌握，没事写写代码，练练手，在项目中能用到的地方一定要用，有可能会遇到很多坑，一定要自己想办法填坑，之后回忆起这段经历，肯定可以敢理直气壮的跟别人讨论。如果你说的头头是道，那么对方会先输一层，然后在心里对你佩服。</p>
-<ol>
-<li>一般情况下第一轮都是基础面试，需要扎实的基础<ul>
-<li>最常用的Android 基础知识</li>
-<li>Java 基础知识</li>
-<li>了解一些 常用东西的原理，例如：handler， thread 等</li>
-<li>项目中的技术点</li>
-</ul>
-</li>
-<li>第二轮的时候需要了解更深层次的东西<ul>
-<li>Android 事件分发机制原理</li>
-<li>Android 绘图机制原理</li>
-<li>WindowManager 的相关知识</li>
-<li>进程间传输方式</li>
-<li>Java 内存管理机制</li>
-<li>一些常用的 list,map 原理，以及子类之间的差别</li>
-</ul>
-</li>
-<li>能进入第三轮基本没什么问题，但是要注意以下问题<ul>
-<li>该轮一般是 老大或者部门负责人，问的问题一般都看 深度与广度</li>
-<li>当问及薪水的时候，要说一个合适的，小公司随意，大公司一定要慎重，当心里没底的时候，可以告诉对方，让对方给一个合理的薪资。一般都是在原工资基础之上增长，听猎头说一般涨幅都在15%-30%，超 NB 的可以要30%及以上，如果感觉自己还不错的，挺厉害的，建议最高20%，一般人就定在15% 左右最靠谱。公司内部一般有一套机制，根据公司情况而定。</li>
-<li>我们的面试原则就是拿到合理薪资，得到 offer</li>
-<li>个人发展情况，这个问题很难回答，如果和公司方向不符合，极有可能和公司无缘。建议多试探性的问问公司缺少什么，你能否给予公司对应的东西。当然对于有自我追求的人，那可以放心大胆的提。我的方向就是架构师，哈哈哈，挺极端的，别学我哦。我感觉选择都是双向的，因此我知道自己需要的是什么。</li>
-<li>你最擅长什么UI 还是其他什么？这个问题更不好回答。你要说你擅长 UI，是不是意味着你其他能力就不行？虽然我不知道面试官的用意，但是我能感觉到，这个问题不是那么好回答，我会回答说自己都行，来什么业务接什么需求。可能回答不太好，总之和公司的职位吻合就行，这样总不至于出错吧。</li>
-</ul>
-</li>
-</ol>
-<p>如果你有面试的疑问或者困惑，可以加我的微信公众账号:<a href="http://7xlcno.com1.z0.glb.clouddn.com/weixingdky005_mianshishuo.jpg" title="面试说" target="_blank" rel="external">mianshishuo</a>, 可以扫描下方二维码，一起来吐槽面试中的感受。我将不定期分享最新的 Android 面试题与面试经验。也可以将你们的面试经验与问题发给我一同讨论，非常感谢。</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/weixingdky005_mianshishuo.jpg" alt="" title="微信公众账号：面试说"></p>
+          花絮本文为完整版，加了一些彩蛋哦！文末有面试和必备的技能点总结。
 
-          
+也许会有人感叹某些人的运气比较好，但是他们不曾知道对方吃过多少苦，受过多少委屈。某些时候就是需要我们用心去发现突破点，然后顺势而上，抓住机遇，那么你将会走向另外一条大道，成就另外一个全新的自我。
+
+先简单说说我最近的面试经历吧。面试的公司很多，其中有让我心血沸腾的经历，也有让我感到失望到无助的经历，我将这些体会都记录下来，细想之后很值得，面了这么多公司，要是最后什么也没有留下来，那就太浪费了。至少对于我来说有些东西在整理总结之后才能得到一个肯定的答案。希望这些能对即将换工作或者打算看看机会的你有一些帮助。
+
+下文真的很长，你可
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/08/一个五年Android开发者百度、阿里、聚美、映客的面试心经/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -773,2626 +2141,27 @@
       
         
           
-            <h3 id="App的内存使用可以通过以下三个工具分析："><a href="#App的内存使用可以通过以下三个工具分析：" class="headerlink" title="App的内存使用可以通过以下三个工具分析："></a>App的内存使用可以通过以下三个工具分析：</h3><ul>
-<li>Heap Viewer</li>
-<li>Memory Monitor</li>
-<li>Allocation Tracker<br>并且，这个三个是互补的可视化内存分析工具。</li>
-</ul>
-<ol>
-<li>使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。</li>
-<li>运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。</li>
-<li>使用 Allocation Tracker 可以确定出你的代码中存在的问题。</li>
-</ol>
-<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt=""></p>
-<ul>
-<li>显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。</li>
-<li>可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。</li>
-<li>提供一种快速看出App 是否是由于 运行内存不足 而导致的 crash(崩溃)的方法。</li>
-<li>当前运行的app ，每一秒更新占用内存的状况。</li>
-<li>有助于识别潜在的内存泄漏。</li>
-<li>有助于识别 App 的 GC模式,并确定它们是否正常和你所希望的样子。</li>
-<li>它很容易使用，并且很容易看明白</li>
-<li>然而，Memory Monitor 不能告诉你哪些对象是有问题的，或者给你指出代码中存在的问题</li>
-</ul>
-<h3 id="Heap-Viewer"><a href="#Heap-Viewer" class="headerlink" title="Heap Viewer"></a>Heap Viewer</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png" alt="Allocation Tracker"></p>
-<ul>
-<li>根据类型 分配许多对象 的快照图。</li>
-<li>每一次的样本数据 是自动采集或者你手动触发。</li>
-<li>帮助确定哪些对象类型可能是内存泄漏。</li>
-<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt=""></a></li>
-<li>显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小</li>
-<li>帮助识别 内存的改变是通过 循环分配或重新分配。</li>
-<li>可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。</li>
-<li>然而，它需要时间和经验来学习理解这个工具的使用。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/网络请求的-UA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/网络请求的-UA/" itemprop="url">网络请求的 UA</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:27:54+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:29:18+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/网络请求的-UA/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/网络请求的-UA/" class="cy_cmt_count" data-xid="2016/06/20/网络请求的-UA/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。<br>一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：</p>
-<p><code>appName + versionName + versonCode + 渠道号 + 设备基本信息</code></p>
-<p>这里写一些大体的代码，其他可以自行封装：</p>
-<p>拼接数据：</p>
-<p><code>appName: mContext.getString(R.string.appname)</code></p>
-<p><code>versionName:  DeviceUtil.getVersionName(mContext)</code></p>
-<p><code>versonCode: DeviceUtil.getVersionCode(mContext)</code></p>
-<p><code>渠道号：DeviceUtil.getChannelTag(mContext)</code></p>
-<p>设备基本信息:<br><code>build.MODEL         Nexus 6</code></p>
-<p><code>build.MANUFACTURER  motorola</code></p>
-<p><code>build.BRAND            google</code></p>
-<p><code>build.FINGERPRINT    google/shamu/shamu:6.0.1/MMB29S/2489379:user/release-keys</code></p>
-<p><code>Build.VERSION.RELEASE 6.0.1</code></p>
-<p><code>Build.VERSION.SDKINT 23</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="url">从 volley 切换到 OkHttp 遇到的坑</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:17:30+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-24T15:55:09+08:00">
-                2016-06-24
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" class="cy_cmt_count" data-xid="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。</p>
-<p>之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.</p>
-<h3 id="代理异常？"><a href="#代理异常？" class="headerlink" title="代理异常？"></a>代理异常？</h3><p>切换成功后，遇到的第一个问题就是：代理功能没法使用，我们客户端 是有联通流量包的功能的，因此必须要加 代理功能。</p>
-<p>根据 okhttp 里面  issue 的回答，弄好多次都不行，折腾了一两天左右。 最后也懒得管了，先放放，优先解决其他问题。 </p>
-<p>之后过了几天，再回来弄这块的时候，就突然好了，兴奋坏了。赶紧查查和之前的有没有什么差异？</p>
-<p>经过对比后发现：原来是 之前写 volley 的时候是这样的：</p>
-<pre><code>HttpURLConnection connection;
-    if (&quot;https&quot;.equals(url.getProtocol())) {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP,
-                InetSocketAddress
-                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGETCPPORT));
-        connection = (HttpURLConnection) url
-                .openConnection(proxy);
-        connection.addRequestProperty(&quot;Proxy-Authorization&quot;,
-                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
-    } else {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP,
-                InetSocketAddress
-                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGEPORT));
-        connection = (HttpURLConnection) url
-                .openConnection(proxy);
-        connection.addRequestProperty(&quot;Authorization&quot;,
-                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
-    }
-    connection.addRequestProperty(&quot;Proxy-Connection&quot;, &quot;Keep-Alive&quot;);
-</code></pre><p>主要区分了 https 和 http, 然后里面传入的 key 和 端口号都不一样。</p>
-<p>但是在 okhttp 里面貌似是不需要区分的。只需要这样写：</p>
-<pre><code>/**
-     * 设置联通流量 代理功能
-     * @param builder
-     */
-    private void setUnicomProxy(OkHttpClient.Builder builder) {
-        //添加联通代理功能
-        if (TrafficUtil.getUnicomProxyAvailable()) {
-            Authenticator proxyAuthenticator = new Authenticator() {
-                @Override
-                public okhttp3.Request authenticate(Route route, Response response) throws IOException {
-                    return response.request().newBuilder().header(&quot;Proxy-Authorization&quot;, &quot;Basic &quot; +
-                            &quot;MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;).header(&quot;Proxy-Connection&quot;,
-                            &quot;Keep-Alive&quot;).build();
-                }
-            };
-
-            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(FLOWPACKAGEHOST,
-                    FLOWPACKAGETCPPORT)));
-            builder.proxyAuthenticator(proxyAuthenticator);
-        }
-    }
-</code></pre><p>就可以了。<br><code>FLOWPACKAGEHOST -&gt; test.proxy.1111.com (这是域名)</code><br><code>FLOWPACKAGETCPPORT -&gt; 8143</code><br>这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。</p>
-<p><code>备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈</code></p>
-<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：</p>
-<pre><code>    @NonNull
-    private SSLContext getSslContext(InputStream... certificates) {
-        SSLContext sslContext = null;
-
-        try {
-            CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keyStore.load(null);
-            int index = 0;
-            for (InputStream certificate : certificates) {
-                String certificateAlias = Integer.toString(index++);
-                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate
-                        (certificate));
-                try {
-                    if (certificate != null)
-                        certificate.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            sslContext = SSLContext.getInstance(&quot;TLS&quot;);
-
-            TrustManagerFactory trustManagerFactory =
-                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-
-            trustManagerFactory.init(keyStore);
-            sslContext.init(null, trustManagerFactory.getTrustManagers(),
-                    new SecureRandom());
-
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
-        }   finally {
-        }
-
-        return sslContext;
-    }
-
-/**
-     * 启用 OkHttps 域名校验功能
-     * @param builder
-     */
-    private void setOkhttpSSLContext(OkHttpClient.Builder builder) {
-        SSLContext sslContext = getSslContext(KaolaApplication.mContext.getResources().openRawResource(R
-                .raw.kl_magic));
-
-        if (sslContext != null) {
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    HostnameVerifier hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-                    return hostnameVerifier.verify(&quot;xxx.com&quot;, session); //启用xxx 域名校验 (这里是一个非常重要的地方，缺少了这一步肯定不行)
-                }
-            });
-            builder.sslSocketFactory(sslContext.getSocketFactory());
-        }
-    }
-</code></pre><p>这句是非常重要的：<br><code>hostnameVerifier.verify(&quot;xxx.com&quot;, session);</code>主要是进行 https 的域名校验，用证书匹配你的域名，如果匹配成功，那么就可以直接使用，否则 https 握手失败，无法正确发送请求。</p>
-<p>之前尝试过使用 使用<br>    builder.hostnameVerifier(new AllowAllHostnameVerifier());</p>
-<p>这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。</p>
-<h3 id="post-参数不能为空？"><a href="#post-参数不能为空？" class="headerlink" title="post 参数不能为空？"></a>post 参数不能为空？</h3><p>这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).</p>
-<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="external">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
-<p>具体参考这个：</p>
-<pre><code>public void addRequest(int method, final Map&lt;String, String&gt; params, final String baseUrl,
-                           final TypeReference&lt;? extends BaseResponse&gt; type, final JsonResultCallback callback) {
-            ......
-          if (params.size() == 0 &amp;&amp; method == Request.Method.POST)
-            params.put(&quot;temp&quot;, &quot;temp&quot;); //解决 method POST must have a request body.;
-            ......
-}
-</code></pre><p>这三个问题解决后，基本就可以放心使用了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="url">分享Java Collection 的一张图</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T17:09:48+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:18:56+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/Java-Collection-Cheat-Sheet/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/" class="cy_cmt_count" data-xid="2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
-<p>我们可以看出他们之间的关系以及差别。</p>
-<p>例如：HashMap, HastTable,  Vector 和 LinkedList等</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png" alt="Java Collection Cheat Sheet"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Okio-简单处理I-O操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/Okio-简单处理I-O操作/" itemprop="url">Okio 简单处理I/O操作</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:59:24+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:18:47+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okio/" itemprop="url" rel="index">
-                    <span itemprop="name">okio</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/Okio-简单处理I-O操作/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/Okio-简单处理I-O操作/" class="cy_cmt_count" data-xid="2016/06/20/Okio-简单处理I-O操作/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Android 善用Okio简化处理I/O操作<br>Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。</p>
-<pre><code>compile &apos;com.squareup.okio:okio:1.6.0&apos;
-</code></pre><p>Ohio 有两个关键接口， Sink 和 Source, 这两个接口都继承了 Colseable 接口；而 Sink 可以简单的看成 OutputStream, Source 可以简单的看做 InputStream. 而这两个接口凑是支持读写超时设置的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_01.png" alt=""></p>
-<p>它们各自有一个支持缓冲区的子类接口，BufferedSink 和 BufferedSource,而 BufferedSink有一个实现类 RealBufferedSink， BufferedSource有一个实现类 RealBufferedSource；此外 Sink 和 Source 有一个支持 gzip 的实现类 GzipSink和GzipSource；一个具有委托功能的抽象类ForwardingSink 和 ForwardingSource; 还有一个实现类便是 InflaterSource 和 DeflaterSink, 这两个类主要用于压缩，为 GzipSink 和 GzipSource 服务；<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_02.png" alt=""></p>
-<p>BufferedSink中定义了一系列写入缓存区的方法，比如write方法写byte数组，writeUtf8写字符串，还有一些列的writeByte，writeString，writeShort，writeInt，writeLong，writeDecimalLong等等方法；BufferedSource定义的方法和BufferedSink极为相似，只不过一个是写一个是读，基本上都是一一对应的，如readUtf8，readByte，readString，readShort，readInt等等等等。这两个接口中的方法有兴趣的点源码进去看就可以了。</p>
-<p>而这两个支持缓冲区的接口的实现类 RealBufferedSink 和 RealBufferedSource 都是通过包装一个 Sink + Buffer 或者 Source + Buffer 进行实现的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_03.png" alt=""></p>
-<p>用 RealBufferedSink 来说，实际调用的 write 的一系列方法，都是直接对成员变量 buffer 进行的操作，当写入 buffer 成功后，最后调用一个方法将 buffer 中的内容写入到 sink 中，举例：</p>
-<pre><code>public BufferedSink writeLong(long v) throws IOException {
-    if (this.closed) {
-        throw new IllegalStateException(&quot;closed&quot;);
-    } else {
-        this.buffer.writeLong(v);
-        return this.emitCompleteSegments();
-    }
-}
-</code></pre><p>可以看到，首先会判断closed成员变量是否是标记着关闭，如果已经关闭了则扔出一个异常，否则将内容写入到buffer，写入完成后调用了一个emitCompleteSegments的方法，该方法中做了什么呢,没错，就是将buffer中的内容写入到sink成员变量中去，然后将自身返回。</p>
-<pre><code>public BufferedSink emitCompleteSegments() throws IOException {
-        if(this.closed) {
-            throw new IllegalStateException(&quot;closed&quot;);
-        } else {
-            long byteCount = this.buffer.completeSegmentByteCount();
-            if(byteCount &gt; 0L) {
-                this.sink.write(this.buffer, byteCount);
-            }
-            return this;
-        }
-    }
-</code></pre><p>这两个实现类的内部的所有方法都是类似的，这里不一一展开。<br>而这一切的背后都有一个叫做 Buffer 的类在支持着缓冲区， Buffer 是 BufferedSink 和 BufferedSource 的实现类，因此它即可以用来读数据，也可以用来写数据，其内部使用了一个 Segment 和 SegmentPool, 维持着一个链表，其循环利用的机制 和 Android 中的 Message 的利用机制是一模一样的。</p>
-<pre><code>final class SegmentPool {
-    static final long MAX_SIZE = 65536L;
-    static Segment next;
-    static long byteCount;
-
-    private SegmentPool() {
-    }
-
-    static Segment take() {
-        Class var0 = SegmentPool.class;
-
-        synchronized(SegmentPool.class) {
-            if(next != null) {
-                Segment result = next;
-                next = result.next;
-                result.next = null;
-                byteCount -= 2048L;
-                return result;
-            }
-        }
-        return new Segment();
-    }
-
-    static void recycle(Segment segment) {
-        if(segment.next == null &amp;&amp; segment.prev == null) {
-            if(!segment.shared) {
-                Class var1 = SegmentPool.class;
-
-                synchronized(SegmentPool.class) {
-                    if(byteCount + 2048L &lt;= 65536L) {
-                        byteCount += 2048L;
-                        segment.next = next;
-                        segment.pos = segment.limit = 0;
-                        next = segment;
-                    }
-                }
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-}
-</code></pre><p>内部一个成员变量 next 指向 链表下一个元素，take 首先判断池中是否存在可用的，存在则返回，不存在则 new 一个，而 recycle 则是将不再使用的 Segment 重新扔到池中去，从而达到一个 Segment 池的作用。</p>
-<p>而Okio暴露给外部使用的类便是Okio这个类，其内部有大量的静态方法,包括通过一个Source获得BufferedSource，通过一个Sink获得一个BufferedSink。这个过程很简单，我们调用Okio的buffer方法即可返回我们需要的，如下</p>
-<pre><code>Okio.buffer(sink)
-Okio.buffer(source)
-</code></pre><p>但是上面两个方法需要传递一个Sink或者Source，那么这个Sink和Source又是如何获得的呢。其实方法也在Okio这个类中。我们可以调用sink方法获得一个Sink，调用source方法获得一个Source，而数据的来源或者目的可以是一个File，一个输入或者输出流，一个Socket链接等等。如下</p>
-<pre><code>Okio.sink(new File(&quot;***&quot;));
-Okio.sink(new FileOutputStream(new File(&quot;***&quot;)));
-Okio.sink(new Socket(&quot;***&quot;,8888));
-
-Okio.source(new File(&quot;***&quot;));
-Okio.source(new FileInputStream(new File(&quot;***&quot;)));
-Okio.source(new Socket(&quot;****&quot;,8888));
-</code></pre><p>这样你可能还不过瘾，那么让我们连起来应用一下，现在我们从本地读一个文件，读完后再往另一个文件中写入内容。</p>
-<pre><code>public static void main(String[] args) {
-        Source source = null;
-        BufferedSource bufferedSource = null;
-
-        try {
-            File file = new File(&quot;resources/test.txt&quot;);
-            source = Okio.source(file);
-            bufferedSource = Okio.buffer(source);
-            String content = bufferedSource.readUtf8();
-            System.out.println(content);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeQuietly(bufferedSource);
-        }
-
-        Sink sink = null;
-        BufferedSink bufferedSink = null;
-        try {
-            File dest = new File(&quot;resources/dest.txt&quot;);
-            sink = Okio.sink(dest);
-            bufferedSink = Okio.buffer(sink);
-            bufferedSink.writeUtf8(&quot;11111111111&quot;);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeQuietly(bufferedSink);
-        }
-    }
-
-    public static void closeQuietly(Closeable closeable) {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (RuntimeException rethrown) {
-                throw rethrown;
-            } catch (Exception ignored) {
-            }
-        }
-    }
-</code></pre><p>或许有时候网络请求中，我们需要使用到Gzip的功能，那么，我们可以简单的使用一下gzip的功能</p>
-<pre><code>public static void main(String[] args) {
-        Sink sink = null;
-        BufferedSink bufferedSink = null;
-        GzipSink gzipSink=null;
-
-        try {
-            File dest = new File(&quot;resources/gzip.txt&quot;);
-            sink = Okio.sink(dest);
-            gzipSink=new GzipSink(sink);
-            bufferedSink = Okio.buffer(gzipSink);
-            bufferedSink.writeUtf8(&quot;android vs ios&quot;);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeQuietly(bufferedSink);
-        }
-
-        Source source = null;
-        BufferedSource bufferedSource = null;
-        GzipSource gzipSource=null;
-
-        try {
-            File file = new File(&quot;resources/gzip.txt&quot;);
-            source = Okio.source(file);
-            gzipSource=new GzipSource(source);
-            bufferedSource = Okio.buffer(gzipSource);
-            String content = bufferedSource.readUtf8();
-            System.out.println(content);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeQuietly(bufferedSource);
-        }
-    }
-
-    public static void closeQuietly(Closeable closeable) {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (RuntimeException rethrown) {
-                throw rethrown;
-            } catch (Exception ignored) {
-            }
-        }
-    }
-</code></pre><p>验证是否正确的方法便是查看该写入的文件是否是乱码，以及读出来是否是原来的字符串。<br>对比一下原来的gzip压缩与解压缩的方式，你就会发现还是简单了不少的</p>
-<pre><code>public class GzipUtil {
-        /**
-         * GZIP压缩
-         *
-         * @param data
-         * @return
-         * @throws Exception
-         */
-        public static byte[] gzip(byte[] data) throws Exception {
-            if (data == null || data.length == 0) {
-                return null;
-            }
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            GZIPOutputStream zos;
-            BufferedInputStream bis = new BufferedInputStream(new ByteArrayInputStream(data));
-            byte[] buf = new byte[512];
-            int len;
-
-            try {
-                zos = new GZIPOutputStream(out);
-                while ((len = bis.read(buf)) != -1) {
-                    zos.write(buf, 0, len);
-                    zos.flush();
-                }
-                bis.close();
-                zos.close();
-                return out.toByteArray();
-            } finally {
-                if (out != null) {
-                    try {
-                        out.close();
-                    } catch (Exception e2) {
-                    }
-                }
-            }
-        }
-
-        /**
-         * Gzip解压缩
-         *
-         * @param b
-         * @return
-         */
-        public static byte[] unGzip(byte[] b) {
-            if (b == null || b.length == 0) {
-                return null;
-            }
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            ByteArrayInputStream in = new ByteArrayInputStream(b);
-
-            try {
-                GZIPInputStream gunzip = new GZIPInputStream(in);
-                byte[] buffer = new byte[256];
-                int n;
-                while ((n = gunzip.read(buffer)) &gt;= 0) {
-                    out.write(buffer, 0, n);
-                }
-                return out.toByteArray();
-            } catch (IOException e) {
-                Log.e(WDCore.getInstance().getConfiguration().getLogTag(), &quot;uncompress error&quot;, e);
-            } finally {
-                try {
-                    if (out != null) {
-                        out.close();
-                    }
-                    if (in != null) {
-                        in.close();
-                    }
-                } catch (Exception e2) {
-                }
-            }
-            return null;
-        }
-    }
-</code></pre><p>此外还有一个 ByteString 类，这个类可以用来做各种变化，它将 byte 转为 String， 而这个 String 可以是 utft8的值，也可以是 base64后的值，也可以是 md5的值， 也可以是 sha256的值，总是就是各种变化，最后去的你想要的值。</p>
-<p>在需要的地方使用 Okio 库，可以极大的提升效率，也会带来很大的便利性。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="url">OkHttp3 源码分析【缓存策略】</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:35:10+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:06:02+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/OkHttp3-源码分析【缓存策略】/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/" class="cy_cmt_count" data-xid="2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
-<h3 id="Http-缓存基础知识"><a href="#Http-缓存基础知识" class="headerlink" title="Http 缓存基础知识"></a>Http 缓存基础知识</h3><p>分析源目前，我们先回顾一下 Http 的缓存 Header 的含义</p>
-<ol>
-<li><p>Expires<br>表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存<br> Expires: Thu, 12 Jan 2017 11:01:33 GMT</p>
-</li>
-<li><p>Cache-Control<br>相对值，单位是秒，指定某个文件被续多少秒的时间，从而避免额外的网络请求。比expired更好的选择，它不用要求服务器与客户端的时间同步，也不用服务器时刻同步修改配置Expired中的绝对时间，而且它的优先级比Expires更高。比如简书静态资源有如下的header，表示可以续31536000秒，也就是一年。</p>
-<p> Cache-Control: max-age=31536000, public</p>
-</li>
-<li><p>修订文件名（Reving Filenames）<br>如果我们通过设置 header 保证了客户端可以缓存的，而此时远程服务器更新了文件如何解决呢？这个时候可以通过修改 url 的文件名版本后缀进行缓存，比如下文是又拍云的公共CDN就提供了多个版本的JQuery<br> upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js</p>
-</li>
-<li><p>条件 get 请求 （Conditional GET Requests） 与 304<br>如果缓存过期或者轻质放弃缓存，在此情况下，缓存策略全部交给服务器判断，客户端只用发送 条件 get 请求 即可，如果缓存是有效的， 则返回 304 not Modifiled, 否则直接返回 body.</p>
-</li>
-</ol>
-<p>请求的方式有两种：</p>
-<ul>
-<li>Last-Modified-Date:<br>  Last-Modified: Tue, 12 Jan 2016 09:31:27 GMT</li>
-</ul>
-<p>客户端再次发送时，通过发送<br>    If-Modified-Since: Tue, 12 Jan 2016 09:31:27 GMT</p>
-<p>交给服务器进行判断，如果任然可以缓存使用，服务器就返回 304.</p>
-<ul>
-<li>ETag<br>ETag 是对资源文件的一种摘要，客户端并不需要了解实现细节。当客户端第一次请求，服务器返回了<br>  ETag: “5694c7ef-24dc”</li>
-</ul>
-<p>客户端再次请求时，通过发送<br>    If-None-Match:”5694c7ef-24dc”</p>
-<p>交给服务器进行判断，如果还能使用缓存，服务器就返回 304</p>
-<blockquote>
-<p>如果 ETag 和 Last-Modified 都有，则必须一次性都发给服务器，它们没有优先级之分，反正这里客户端没有任何判断的逻辑。</p>
-</blockquote>
-<ul>
-<li>其他标签<ul>
-<li>no-cache/no-store: 不使用缓存<ul>
-<li>only-if-cached: 只使用缓存</li>
-<li>Date:The date and time that the message was sent</li>
-<li>Age： CDN 反代服务器 到原始服务器获取数据延迟的缓存时间</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="external">这里看</a></p>
-</blockquote>
-<p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
-<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。</p>
-<ol>
-<li>总体请求流程分析<br>CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出<br>Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)</li>
-</ol>
-<p>Request:<br>开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。</p>
-<p>cacheCandildate:<br>也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.</p>
-<p>当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt=""></p>
-<blockquote>
-<p>以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论</p>
-</blockquote>
-<p>基本上与上文中的图片完全一致，以上就是 OkHttp 的缓存策略。</p>
-<blockquote>
-<p>关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断</p>
-</blockquote>
-<ol>
-<li>CacheStrategy 的加工过程</li>
-</ol>
-<p>CacheStrategy 使用 Factory模式进行构造，参数如下</p>
-<pre><code>InternalCache responseCache = Internal.instance.internalCache(client);
-//cacheCandidate从disklurcache中获取
-//request的url被md5序列化为key,进行缓存查询
-Response cacheCandidate = responseCache != null ? responseCache.get(request) : null;
-//请求与缓存
-factory = new CacheStrategy.Factory(now, request, cacheCandidate);
-cacheStrategy = factory.get();
-//输出结果
-networkRequest = cacheStrategy.networkRequest;
-cacheResponse = cacheStrategy.cacheResponse;
-//进行一大堆的if判断，内容同上表格
-.....
-</code></pre><p>可以看出Factory.get()是最关键的缓存策略的判断，我们点入get()方法，可以发现是对getCandidate()的一个封装，我们接着点开getCandidate()，全是if与数学计算，详细代码如下</p>
-<pre><code>private CacheStrategy getCandidate() {
-  //如果缓存没有命中(即null),网络请求也不需要加缓存Header了
-  if (cacheResponse == null) {
-    //`没有缓存的网络请求,查上文的表可知是直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  // 如果缓存的TLS握手信息丢失,返回进行直接连接
-  if (request.isHttps() &amp;&amp; cacheResponse.handshake() == null) {
-    //直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  //检测response的状态码,Expired时间,是否有no-cache标签
-  if (!isCacheable(cacheResponse, request)) {
-    //直接访问
-    return new CacheStrategy(request, null);
-  }
-
-  CacheControl requestCaching = request.cacheControl();
-  //如果请求报文使用了`no-cache`标签(这个只可能是开发者故意添加的)
-  //或者有ETag/Since标签(也就是条件GET请求)
-  if (requestCaching.noCache() || hasConditions(request)) {
-    //直接连接,把缓存判断交给服务器
-    return new CacheStrategy(request, null);
-  }
-  //根据RFC协议计算
-  //计算当前age的时间戳
-  //now - sent + age (s)
-  long ageMillis = cacheResponseAge();
-  //大部分情况服务器设置为max-age
-  long freshMillis = computeFreshnessLifetime();
-
-  if (requestCaching.maxAgeSeconds() != -1) {
-    //大部分情况下是取max-age
-    freshMillis = Math.min(freshMillis, SECONDS.toMillis(requestCaching.maxAgeSeconds()));
-  }
-
-  long minFreshMillis = 0;
-  if (requestCaching.minFreshSeconds() != -1) {
-    //大部分情况下设置是0
-    minFreshMillis = SECONDS.toMillis(requestCaching.minFreshSeconds());
-  }
-
-  long maxStaleMillis = 0;
-  //ParseHeader中的缓存控制信息
-  CacheControl responseCaching = cacheResponse.cacheControl();
-  if (!responseCaching.mustRevalidate() &amp;&amp; requestCaching.maxStaleSeconds() != -1) {
-    //设置最大过期时间,一般设置为0
-    maxStaleMillis = SECONDS.toMillis(requestCaching.maxStaleSeconds());
-  }
-
-  //缓存在过期时间内,可以使用
-  //大部分情况下是进行如下判断
-  //now - sent + age + 0 &lt; max-age + 0
-  if (!responseCaching.noCache() &amp;&amp; ageMillis + minFreshMillis &lt; freshMillis + maxStaleMillis) {
-    //返回上次的缓存
-    Response.Builder builder = cacheResponse.newBuilder();
-    return new CacheStrategy(null, builder.build());
-  }
-
-  //缓存失效, 如果有etag等信息
-  //进行发送`conditional`请求,交给服务器处理
-  Request.Builder conditionalRequestBuilder = request.newBuilder();
-
-  if (etag != null) {
-    conditionalRequestBuilder.header(&quot;If-None-Match&quot;, etag);
-  } else if (lastModified != null) {
-    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, lastModifiedString);
-  } else if (servedDate != null) {
-    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, servedDateString);
-  }
-  //下面请求实质还说网络请求
-  Request conditionalRequest = conditionalRequestBuilder.build();
-  return hasConditions(conditionalRequest) ? new CacheStrategy(conditionalRequest,
-      cacheResponse) : new CacheStrategy(conditionalRequest, null);
-}
-</code></pre><p>太长不看的话，大多数常见的情况可以用这个估算</p>
-<pre><code>now - sent + age &lt; max-age
-</code></pre><blockquote>
-<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt=""></p>
-</blockquote>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
-<ol>
-<li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
-<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="external">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
-<li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
-<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
-</ol>
-<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="external">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="url">OkHttp3源码分析【任务队列】</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:34:26+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:05:36+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/OkHttp3源码分析【任务队列】/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/" class="cy_cmt_count" data-xid="2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ol>
-<li>线程池基础</li>
-<li>反向代理模块</li>
-<li>OkHttp 的任务调度</li>
-</ol>
-<p>OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。</p>
-<h1 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h1><ol>
-<li>线程池好处有哪些<br>线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库：</li>
-</ol>
-<p>多线程技术主要解决 处理器单元时间内多个线程执行的问题，他可以显著减少处理器单元内的闲置时间，增加处理器单元的吞吐能力。但如果对多线程应用不当，会增加对单个任务的处理时间。可以举例：<br>如果一台服务完成一项任务的时间为 T</p>
-<pre><code>T1 创建线程的时间
-T2 在线程中执行任务的时间，包括线程间同步所需时间
-T3 线程销毁的时间
-</code></pre><p>显然T ＝ T1＋T2＋T3。注意这是一个极度简化的假设。</p>
-<p>可以看出 T1 T3 是多线程本身带来的开销，我们渴望减少 T1，T3的时间，从而减少 T 的时间。但一些线程的使用者并没有注意到这一点，多余在程序中 频繁的创建或销毁线程，导致 T1 T3 占的比例更高。显然这是突出了线程的弱点（T1，T3），而不是有点（并发性）。</p>
-<p>线程池的技术是关注如何缩短或调整 T1，T3 的时间的技术，从而提高服务器程序性能。</p>
-<ul>
-<li>通过对线程缓存，减少创建和销毁的时间损失<ul>
-<li>通过控制线程数据的阈值，减少当线程过少带来的 CPU 闲置（比如说 长时间卡在I/O 上）与线程过多时对 JVM 对对内存与线程切换压力</li>
-</ul>
-</li>
-</ul>
-<p>在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了</p>
-<ol>
-<li>OkHttp 配置的线程池</li>
-</ol>
-<p>在 OkHttp 中，使用如下构造了单例线程池<br>    public synchronized ExecutorService executorService() {<br>      if (executorService == null) {<br>        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,<br>            new SynchronousQueue<runnable>(), Util.threadFactory(“OkHttp Dispatcher”, false));<br>      }<br>      return executorService;<br>    }</runnable></p>
-<p>参数说明：</p>
-<ul>
-<li>int corePoolSize: 最小并发线程数，这里并发同时包括空闲与活动的线程，如果是0的话，空闲一段时间后所有线程将全部被销毁。</li>
-<li>int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃<em>处理机制</em>来处理</li>
-<li>long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive</li>
-<li>TimeUnit unit: 时间单位，一般用秒</li>
-<li>BlockingQueue\<runnable\> workQueue:  工作队列</runnable\></li>
-<li>ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等</li>
-</ul>
-<p>可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。</p>
-<p>也就是说， 在实际运行中，当收到10个并发请求是，线程池会创建十个线程，当工作完成后，线程池会在60s 后相继关闭所有线程。</p>
-<blockquote>
-<p>在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers</p>
-</blockquote>
-<h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
-<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
-<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\<readyasynccalls\>对应 Nginx 的内部缓存</readyasynccalls\></p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
-<p>具体成员如下：</p>
-<ul>
-<li>maxRequests = 64：最大并发请求数为64</li>
-<li>maxRequestsPerHost = 5：每个主机最大请求数为5</li>
-<li>Dispatcher：分发者，也就是生产者（默认在主线程）</li>
-<li>AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）</li>
-<li>ExecutorService：消费者池（也就是线程池）</li>
-<li>Deque\<readyasynccalls\>：缓存（用数组实现，可自动扩容，无大小限制）</readyasynccalls\></li>
-<li>Deque\<runningasynccalls\>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</runningasynccalls\></li>
-</ul>
-<p>通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间</p>
-<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build(" target="_blank" rel="external">http://qq.com&quot;).get().build(</a>);<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
-<pre><code>  }
-
-  @Override public void onResponse(Call call, Response response) throws IOException {
-
-  }
-});
-</code></pre><p>当 HttpClient 的请求入队 时，根据代码，我们可以发现实际上是 Dispatcher 进行了 入队 操作</p>
-<pre><code>synchronized void enqueue(AsyncCall call) {
-  if (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) {
-      //添加正在运行的请求
-    runningAsyncCalls.add(call);
-       //线程池执行请求
-    executorService().execute(call);
-  } else {
-      //添加到缓存队列
-    readyAsyncCalls.add(call);
-  }
-}
-</code></pre><p>可以发现请求是否进入缓存的条件如下：<br>    (runningRequests&lt;64 &amp;&amp; runningRequestsPerHost&lt;5)</p>
-<p>如果满足条件，那么久直接把 AsyncCall 直接加到 runningCalls 的队列中，并在现场中执行（线程池会根据当前负载自动创建，销毁，缓存相应的线程）。反之就放入readyAsyncCalls进行缓存等待。</p>
-<p>我们再分析请求元素AsyncCall（本质是实现了Runnable接口），它内部的 execute方法是：<br>    @Override protected void execute() {<br>      boolean signalledCallback = false;<br>      try {<br>          //执行耗时IO任务<br>        Response response = getResponseWithInterceptorChain(forWebSocket);<br>        if (canceled) {<br>          signalledCallback = true;<br>          //回调，注意这里回调是在线程池中，而不是想当然的主线程回调<br>          responseCallback.onFailure(RealCall.this, new IOException(“Canceled”));<br>        } else {<br>          signalledCallback = true;<br>          //回调，同上<br>          responseCallback.onResponse(RealCall.this, response);<br>        }<br>      } catch (IOException e) {<br>        if (signalledCallback) {<br>          // Do not signal the callback twice!<br>          logger.log(Level.INFO, “Callback failure for “ + toLoggableString(), e);<br>        } else {<br>          responseCallback.onFailure(RealCall.this, e);<br>        }<br>      } finally {<br>          //最关键的代码<br>        client.dispatcher().finished(this);<br>      }<br>    }</p>
-<p>当任务执行完成后，无是否有 异常，finally 代码段总会被执行，也就是会调用 Dispatcher 的 finished 函数，打开源码，就能发现它将正在运行的任务 Call从 队列 runningAsyncCalls 中移除后，执行 promoteCalls()函数<br>    private void promoteCalls() {<br>        //如果目前是最大负荷运转，接着等<br>      if (runningAsyncCalls.size() &gt;= maxRequests) return; // Already running max capacity.<br>      //如果缓存等待区是空的，接着等<br>      if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.</p>
-<pre><code>  for (Iterator&lt;AsyncCall&gt; i = readyAsyncCalls.iterator(); i.hasNext(); ) {
-    AsyncCall call = i.next();
-
-    if (runningCallsForHost(call) &lt; maxRequestsPerHost) {
-        //将缓存等待区最后一个移动到运行区中，并执行
-      i.remove();
-      runningAsyncCalls.add(call);
-      executorService().execute(call);
-    }
-
-    if (runningAsyncCalls.size() &gt;= maxRequests) return; // Reached max capacity.
-  }
-}
-</code></pre><p>这样，就主动的把缓存队列向前走了一步，而没有使用锁等复杂编码</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>通过上述的分析，我们知道了：</p>
-<ol>
-<li>OkHttp 采用 Dispatcher 技术，类似于 Nginx, 与线程池配合实现高并发，低阻塞的运行</li>
-<li>OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出</li>
-<li>OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度</li>
-</ol>
-<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="external">http://www.jianshu.com/p/6637369d02e7</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="url">Okhttp3源码分析【DiskLruCache】</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T15:57:46+08:00">
-                2016-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:05:47+08:00">
-                2016-06-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/" class="cy_cmt_count" data-xid="2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ul>
-<li>Cache 的简介</li>
-<li>LinkedHashMap 原理</li>
-<li>OkHttp 的文件系统</li>
-</ul>
-<p>本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 <strong>缓存策略</strong></p>
-<h3 id="1-Cache-的简介"><a href="#1-Cache-的简介" class="headerlink" title="1.Cache 的简介"></a>1.Cache 的简介</h3><p>缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘，网络，CDN反代缓存，DNS递归查询，OS页面置换，都可以看作缓存。它有如下的特点：</p>
-<ol>
-<li>缓存载体与持久载体总是相对的，容量远远小于持久容量，成本高于持久容量，速度高于持久容量。比如硬盘与网络，目前主流的SSD硬盘可以达到500MB/S，而很多地区网速却只有4M，将网络中的文件存到硬盘中，硬盘就相当于缓存；再比如内存与硬盘，主流的DDR3内存的速度可以达到10GB/S，而硬盘相对的慢了很多数量级别，将硬盘的游戏加载到内存，内存就相对于硬盘是一种缓存。</li>
-<li>需要实现 <em>排序依据</em>， 子啊 java 中，可以使用 Comparable\<t\>作为排序的接口。</t\></li>
-<li>需要一种 <em>页面置换算法</em> 将旧页面取代去掉 换成新页面，如 最久未使用算法（LRU）、先进先出（FIFO）、最近最少使用算法（LFU）、非最近使用算法（NMRU）等</li>
-<li>如果缓存中没有，就需要从原始地址获取，这个步骤叫做『回源』，CDN厂商会标注“回源率”作为卖点</li>
-</ol>
-<p>在 OkHttp 中，使用 FileSystem 作为缓存载体（磁盘相对于网络的缓存），使用 LRU 作为 页面置换算法 （封装了 LinkedHashMap）。</p>
-<blockquote>
-<p>1.Comparable\<t\>是java用来排序的接口，推荐参考阅读《Java Software Structures Designing and Using Data Structures》<br>2.页面置换算法可以参考阅读《现代操作系统》的中译本</t\></p>
-</blockquote>
-<h3 id="2-LinkedHashMap-原理"><a href="#2-LinkedHashMap-原理" class="headerlink" title="2.LinkedHashMap 原理"></a>2.LinkedHashMap 原理</h3><ol>
-<li>源码概述分析<br>在学之前，应该先了解下 LinkedHashMap。 LinkedHashMap 继承于 HashMap.</li>
-</ol>
-<p>在 HashMap 中，维护了一个 Node\<k,v\>[] table,当 put操作时，将元素按照计算后的 hash 值 放入到 数组相应位置 table[has] 中，最后迭代式，从 table[0] 开始向后迭代，具体的顺序取决于元素的 HashCode, 所以我们常说 HashMap 的元素迭代是不可预测的。</k,v\></p>
-<p>而在 LinkedHashMap 中，除了 Node\<k,v\><a href="#"></a> table， 还维护着 Entry\<k,v\> head,tail。 当 put 元素后，调用以下回调函数 对链表 将元素移动到链尾 已经清理旧元素<br>    // move node to last<br>    void afterNodeAccess(Node<k,v> e)<br>    // possibly remove eldest<br>    void afterNodeInsertion(boolean evict)</k,v></k,v\></k,v\></p>
-<p>当 get 元素时，如果设置 accessOrder 为 true 时，通过调用如下回调 元素到链尾， 这里强调 移动，如果元素本身已经在 链表中，那它只会移动，而不是新建<br>    // move node to last<br>    void afterNodeAccess(Node<k,v> e)</k,v></p>
-<p>综上，当你返回对元素进行 get/put 操作时，经常使用的元素会被移动到 tail 中，而长期不用的元素 会被移动到 head</p>
-<p>最后 迭代时，迭代是从旧元素 迭代到新元素，这就是 LRU 的实现<br>    head &lt;–&gt; …. &lt;–&gt; tail</p>
-<pre><code>旧元素 &lt;-----------&gt; 反复使用的新元素
-</code></pre><p>在 Okhttp 中，使用了 DiskLruCache 对 LinkedHashMap 进行封装实现了 LRU， 如图进行初始化<br>    //按照访问顺序排序的Map，设置accessOrder为true<br>    map = new LinkedHashMap&lt;&gt;(0, 0.75f, true);</p>
-<h3 id="3-OkHttp-的文件系统"><a href="#3-OkHttp-的文件系统" class="headerlink" title="3.OkHttp 的文件系统"></a>3.OkHttp 的文件系统</h3><p>OkHttp 中的关键对象如下：</p>
-<ul>
-<li>FileSystem: 使用 Okio 对 File 的封装，简化了 IO 操作</li>
-<li>DiskLruCache.Editor: 添加了同步锁，并对 FileSystem 进行高度封装</li>
-<li>DiskLruCache.Entry: 维护着 key 对应的多个文件</li>
-<li>Cache.Entry: Response java 对象 与 Okio 流 的序列化/反序列化类</li>
-<li>DiskLruCache: 维护着文件的创建， 清理，读取。 内部有线程池，LinkedHashMap（也是 LruCache）</li>
-<li>Cache: 被上级代码调用，提供透明的 put/get 操作，封装了缓存检查条件与 DiskLruCache, 开发者只用配置大小即可，不需要手动管理</li>
-<li>Response/Request: OkHttp 的请求与回应</li>
-</ul>
-<ol>
-<li>文件初级封装（FileSystem）<br>众所周知，文件读写是流操作，是一堆 try catch 操作，在 OkHttp 中设计了 FileSystem.SYSTEM 作为文件层的管理。通过用 Okio 库中的 source/sink对 File 进行包装，而不用更为头痛 的 Inputstream 这类东西，使用上层调用与管道操作一样简单。<br> File(低级操作，步骤繁琐) -&gt; Okio(封装) －&gt; FileSystem(友好工具类)</li>
-</ol>
-<p>Okio 很不错，可以去<a href="https://github.com/square/okio" target="_blank" rel="external">这里</a>查看。</p>
-<ol>
-<li>文件高级封装（DiskLruCache.Entry/Editor/Snapshot）<br>本部分进行了如下操作，进行了实际的 put/get 操作<br> FileSystem &lt;– DiskLruCache.Entry/Editor –&gt; source/sink(更少参数)</li>
-</ol>
-<p>DiskLruCache.Entry 针对每个请求的 url 对应文件进行维护（而没有进行创建/读取等操作）， 它内部维护了2个 File数组，一般来说 每个 url 对应对应2~4个文件。 文件名的规则是{md5(url) + {0,1}}, 后面的 0 或者 1 ，分别表示 ENTRY_METADATA 与 ENTRY_BODY。</p>
-<p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
-<p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
-<ul>
-<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
-<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
-</ul>
-<ol>
-<li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
-<p>Resonse(java对象) \&lt;— Cache.Entry —> source/sink(文件io)</p>
-</blockquote>
-</li>
-</ol>
-<p>可以通过 find usage 位置相同，概括如下：<br>如果信息本身是二进制，就直接写入到文件中；如果文本是信息，就按照预设的格式写入即可。<br>    至于序列化后的东西到底是什么，可以直接在shell下运行cat命令或者打开文本编辑器进行输出查看。</p>
-<pre><code>注意这里的Cache.Entry与上面的DiskLruCache.Entry是两个完全不同的对象
-</code></pre><ol>
-<li><p>缓存的自动清理<br>在 DiskLruCache 初始化时，将简历线程池，最少0个线程池，最大一个线程，线程空闲可活60s, 线程名叫做【OkHttp DiskLruCache】,当 JVM 退出时，线程自动结束。</p>
-<p> new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,</p>
-<pre><code>new LinkedBlockingQueue&lt;Runnable&gt;(), Util.threadFactory(&quot;OkHttp DiskLruCache&quot;, true))
-</code></pre></li>
-</ol>
-<p>当需要清理时，执行清理任务，它将在每次 get/set 后调用</p>
-<pre><code>private final Runnable cleanupRunnable = new Runnable() {
-  public void run() {
-    synchronized (DiskLruCache.this) {
-      if (!initialized | closed) {
-        return; // Nothing to do
-      }
-      try {
-        //遍历LRU缓存(从旧到新进行遍历map),并删除文件
-        //直到小于MaxSize为止
-        trimToSize();
-        if (journalRebuildRequired()) {
-          rebuildJournal();
-          redundantOpCount = 0;
-        }
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
-};
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>OkHttp 通过对文件进行了多次封装，实现了简单的I/O 操作</li>
-<li>OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作</li>
-<li>OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理</li>
-</ol>
-<p>摘自：<a href="http://www.jianshu.com/p/23b8aa490a6b" target="_blank" rel="external">http://www.jianshu.com/p/23b8aa490a6b</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/03/12/代码面试最常用的10大算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孤独狂饮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/12/代码面试最常用的10大算法/" itemprop="url">代码面试最常用的10大算法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-12T08:32:44+08:00">
-                2016-03-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
-                2016-04-19
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2016/03/12/代码面试最常用的10大算法/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://gdky005.com/2016/03/12/代码面试最常用的10大算法/" class="cy_cmt_count" data-xid="2016/03/12/代码面试最常用的10大算法/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="代码面试最常用的10大算法"><a href="#代码面试最常用的10大算法" class="headerlink" title="代码面试最常用的10大算法"></a>代码面试最常用的10大算法</h3><blockquote>
-<p>面试也是一门学问，在面试之前做好充分的准备则是成功的必须条件，而程序员在代码面试时，常会遇到编写算法的相关问题，比如排序、二叉树遍历等等。</p>
-</blockquote>
-<p>在程序员的职业生涯中，算法亦算是一门基础课程，尤其是在面试的时候，很多公司都会让程序员编写一些算法实例，例如快速排序、二叉树查找等等。<br>本文总结了程序员在代码面试中最常遇到的10大算法类型，想要真正了解这些算法的原理，还需程序员们花些功夫。</p>
-<h3 id="1-String-Array-Matrix"><a href="#1-String-Array-Matrix" class="headerlink" title="1. String/Array/Matrix"></a>1. String/Array/Matrix</h3><pre><code>toCharArray() //get char array of a String
-Arrays.sort()  //sort an array
-Arrays.toString(char[] a) //convert to string
-charAt(int x) //get a char at the specific index
-length() //string length
-length //array size 
-substring(int beginIndex) 
-substring(int beginIndex, int endIndex)
-Integer.valueOf()//string to integer
-String.valueOf()/integer to string
-</code></pre><p>String/arrays很容易理解，但与它们有关的问题常常需要高级的算法去解决，例如动态编程、递归等。<br>下面列出一些需要高级算法才能解决的经典问题：</p>
-<ul>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/" target="_blank" rel="external">Evaluate Reverse Polish Notation</a></li>
-<li><a href="http://www.programcreek.com/2013/12/leetcode-solution-of-longest-palindromic-substring-java/" target="_blank" rel="external">Longest Palindromic Substring</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-solution-word-break/" target="_blank" rel="external">单词分割</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-word-ladder/" target="_blank" rel="external">字梯</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-median-of-two-sorted-arrays-java/" target="_blank" rel="external">Median of Two Sorted Arrays</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-regular-expression-matching-in-java/" target="_blank" rel="external">正则表达式匹配￼Java</a></li>
-<li><a href="http://merge%20intervals/" target="_blank" rel="external">合并间隔</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-insert-interval/" target="_blank" rel="external">插入间隔</a></li>
-<li><a href="http://www.programcreek.com/2012/12/leetcode-solution-of-two-sum-in-java/" target="_blank" rel="external">Two Sum</a></li>
-<li>3Sum</li>
-<li>4Sum</li>
-<li>3Sum Closest</li>
-<li>String to Integer</li>
-<li>合并排序数组</li>
-<li>Valid Parentheses</li>
-<li>实现strStr()</li>
-<li>Set Matrix Zeroes</li>
-<li>搜索插入位置</li>
-<li>Longest Consecutive Sequence</li>
-<li>Valid Palindrome</li>
-<li>螺旋矩阵</li>
-<li>搜索一个二维矩阵</li>
-<li>旋转图像</li>
-<li>三角形</li>
-<li>Distinct Subsequences Total</li>
-<li>Maximum Subarray</li>
-<li>删除重复的排序数组</li>
-<li>删除重复的排序数组2</li>
-<li>查找没有重复的最长子串</li>
-<li>包含两个独特字符的最长子串</li>
-<li>Palindrome Partitioning</li>
-</ul>
-<h3 id="2-链表"><a href="#2-链表" class="headerlink" title="2. 链表"></a>2. 链表</h3><p>在Java中实现链表是非常简单的，每个节点都有一个值，然后把它链接到下一个节点。   </p>
-<pre><code>class Node {
-    int val;
-    Node next;
-
-    Node(int x) {
-        val = x;
-        next = null;
-    }
-}
-</code></pre><p>比较流行的两个链表例子就是栈和队列。</p>
-<h4 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h4><pre><code>class Stack{
-    Node top; 
-
-    public Node peek(){
-        if(top != null){
-            return top;
-        }
-
-        return null;
-    }
-
-    public Node pop(){
-        if(top == null){
-            return null;
-        }else{
-            Node temp = new Node(top.val);
-            top = top.next;
-            return temp;    
-        }
-    }
-
-    public void push(Node n){
-        if(n != null){
-            n.next = top;
-            top = n;
-        }
-    }
-}
-</code></pre><h4 id="队列（Queue）"><a href="#队列（Queue）" class="headerlink" title="队列（Queue）"></a>队列（Queue）</h4><pre><code>class Queue{
-    Node first, last;
-&amp;nbsp;
-    public void enqueue(Node n){
-        if(first == null){
-            first = n;
-            last = first;
-        }else{
-            last.next = n;
-            last = n;
-        }
-    }
-&amp;nbsp;
-    public Node dequeue(){
-        if(first == null){
-            return null;
-        }else{
-            Node temp = new Node(first.val);
-            first = first.next;
-            return temp;
-        }   
-    }
-}
-</code></pre><p>值得一提的是，Java标准库中已经包含一个叫做Stack的类，链表也可以作为一个队列使用（add()和remove()）。（链表实现队列接口）如果你在面试过程中，需要用到栈或队列解决问题时，你可以直接使用它们。<br>在实际中，需要用到链表的算法有：</p>
-<ul>
-<li>插入两个数字</li>
-<li>重新排序列表</li>
-<li>链表周期</li>
-<li>Copy List with Random Pointer</li>
-<li>合并两个有序列表</li>
-<li>合并多个排序列表</li>
-<li>从排序列表中删除重复的</li>
-<li>分区列表</li>
-<li>LRU缓存</li>
-</ul>
-<h3 id="3-树-amp-堆"><a href="#3-树-amp-堆" class="headerlink" title="3. 树&amp;堆"></a>3. 树&amp;堆</h3><p>这里的树通常是指二叉树。</p>
-<pre><code>class TreeNode{
-    int value;
-    TreeNode left;
-    TreeNode right;
-} 
-</code></pre><p>下面是一些与二叉树有关的概念：</p>
-<ul>
-<li>二叉树搜索：对于所有节点，顺序是：left children \&lt;= current node \&lt;= right children；</li>
-<li>平衡vs.非平衡：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树；</li>
-<li>满二叉树：除最后一层无任何子节点外，每一层上的所有结点都有两个子结点；</li>
-<li>完美二叉树（Perfect Binary Tree）：一个满二叉树，所有叶子都在同一个深度或同一级，并且每个父节点都有两个子节点；</li>
-<li>完全二叉树：若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。</li>
-</ul>
-<p>堆（Heap）是一个基于树的数据结构，也可以称为优先队列（ PriorityQueue），在队列中，调度程序反复提取队列中第一个作业并运行，因而实际情况中某些时间较短的任务将等待很长时间才能结束，或者某些不短小，但具有重要性的作业，同样应当具有优先权。堆即为解决此类问题设计的一种数据结构。</p>
-<p>下面列出一些基于二叉树和堆的算法：</p>
-<ul>
-<li>二叉树前序遍历</li>
-<li>二叉树中序遍历</li>
-<li>二叉树后序遍历</li>
-<li>字梯</li>
-<li>验证二叉查找树</li>
-<li>把二叉树变平放到链表里</li>
-<li>二叉树路径和</li>
-<li>从前序和后序构建二叉树</li>
-<li>把有序数组转换为二叉查找树</li>
-<li>把有序列表转为二叉查找树</li>
-<li>最小深度二叉树</li>
-<li>二叉树最大路径和</li>
-<li>平衡二叉树</li>
-</ul>
-<h3 id="4-Graph"><a href="#4-Graph" class="headerlink" title="4. Graph"></a>4. Graph</h3><p>与Graph相关的问题主要集中在深度优先搜索和宽度优先搜索。深度优先搜索非常简单，你可以从根节点开始循环整个邻居节点。下面是一个非常简单的宽度优先搜索例子，核心是用队列去存储节点。</p>
-<p><img src="http://cms.csdnimg.cn/article/201404/10/534655cfcf7a0.jpg" alt=""></p>
-<h4 id="第一步，定义一个GraphNode"><a href="#第一步，定义一个GraphNode" class="headerlink" title="第一步，定义一个GraphNode"></a>第一步，定义一个GraphNode</h4><pre><code>class GraphNode{ 
-    int val;
-    GraphNode next;
-    GraphNode[] neighbors;
-    boolean visited;
-
-    GraphNode(int x) {
-        val = x;
-    }
-
-    GraphNode(int x, GraphNode[] n){
-        val = x;
-        neighbors = n;
-    }
-
-    public String toString(){
-        return &quot;value: &quot;+ this.val; 
-    }
-}
-</code></pre><h4 id="第二步，定义一个队列"><a href="#第二步，定义一个队列" class="headerlink" title="第二步，定义一个队列"></a>第二步，定义一个队列</h4><pre><code>class Queue{
-    GraphNode first, last;
-
-    public void enqueue(GraphNode n){
-        if(first == null){
-            first = n;
-            last = first;
-        }else{
-            last.next = n;
-            last = n;
-        }
-    }
-
-    public GraphNode dequeue(){
-        if(first == null){
-            return null;
-        }else{
-            GraphNode temp = new GraphNode(first.val, first.neighbors);
-            first = first.next;
-            return temp;
-        }   
-    }
-}
-</code></pre><h4 id="第三步，使用队列进行宽度优先搜索"><a href="#第三步，使用队列进行宽度优先搜索" class="headerlink" title="第三步，使用队列进行宽度优先搜索"></a>第三步，使用队列进行宽度优先搜索</h4><pre><code>public class GraphTest {
-
-    public static void main(String[] args) {
-        GraphNode n1 = new GraphNode(1); 
-        GraphNode n2 = new GraphNode(2); 
-        GraphNode n3 = new GraphNode(3); 
-        GraphNode n4 = new GraphNode(4); 
-        GraphNode n5 = new GraphNode(5); 
-
-        n1.neighbors = new GraphNode[]{n2,n3,n5};
-        n2.neighbors = new GraphNode[]{n1,n4};
-        n3.neighbors = new GraphNode[]{n1,n4,n5};
-        n4.neighbors = new GraphNode[]{n2,n3,n5};
-        n5.neighbors = new GraphNode[]{n1,n3,n4};
-
-        breathFirstSearch(n1, 5);
-    }
-
-    public static void breathFirstSearch(GraphNode root, int x){
-        if(root.val == x)
-            System.out.println(&quot;find in root&quot;);
-
-        Queue queue = new Queue();
-        root.visited = true;
-        queue.enqueue(root);
-
-        while(queue.first != null){
-            GraphNode c = (GraphNode) queue.dequeue();
-            for(GraphNode n: c.neighbors){
-
-                if(!n.visited){
-                    System.out.print(n + &quot; &quot;);
-                    n.visited = true;
-                    if(n.val == x)
-                        System.out.println(&quot;Find &quot;+n);
-                    queue.enqueue(n);
-                }
-            }
-        }
-    }
-}
-</code></pre><h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><pre><code>value: 2 value: 3 value: 5 Find value: 5 
-value: 4
-</code></pre><p>实际中，基于Graph需要经常用到的算法：</p>
-<ul>
-<li>克隆Graph</li>
-</ul>
-<h3 id="5-排序"><a href="#5-排序" class="headerlink" title="5. 排序"></a>5. 排序</h3><p>不同排序算法的时间复杂度，大家可以到wiki上查看它们的基本思想。</p>
-<p><img src="http://cms.csdnimg.cn/article/201404/10/53465710a87e6.jpg" alt=""></p>
-<p>BinSort、Radix Sort和CountSort使用了不同的假设，所有，它们不是一般的排序方法。   </p>
-<p>下面是这些算法的具体实例，另外，你还可以阅读： <a href="http://www.programcreek.com/2014/03/how-developers-sort-in-java/" target="_blank" rel="external">Java开发者在实际操作中是如何排序的</a>。</p>
-<ul>
-<li>归并排序</li>
-<li>快速排序</li>
-<li>插入排序</li>
-</ul>
-<h3 id="6-递归和迭代"><a href="#6-递归和迭代" class="headerlink" title="6. 递归和迭代"></a>6. 递归和迭代</h3><p>下面通过一个例子来说明什么是递归。</p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><blockquote>
-<p>这里有n个台阶，每次能爬1或2节，请问有多少种爬法？</p>
-</blockquote>
-<h4 id="步骤1：查找n和n-1之间的关系"><a href="#步骤1：查找n和n-1之间的关系" class="headerlink" title="步骤1：查找n和n-1之间的关系"></a>步骤1：查找n和n-1之间的关系</h4><p>为了获得n，这里有两种方法：一个是从第一节台阶到n-1或者从2到n-2。如果f(n)种爬法刚好是爬到n节，那么f(n)=f(n-1)+f(n-2)。   </p>
-<h4 id="步骤2：确保开始条件是正确的"><a href="#步骤2：确保开始条件是正确的" class="headerlink" title="步骤2：确保开始条件是正确的"></a>步骤2：确保开始条件是正确的</h4><p>f(0) = 0;<br>f(1) = 1; </p>
-<pre><code>public static int f(int n){
-    if(n &lt;= 2) return n;
-    int x = f(n-1) + f(n-2);
-    return x;
-}
-</code></pre><p>递归方法的时间复杂度指数为n，这里会有很多冗余计算。<br>    f(5)<br>    f(4) + f(3)<br>    f(3) + f(2) + f(2) + f(1)<br>    f(2) + f(1) + f(2) + f(2) + f(1)</p>
-<p>该递归可以很简单地转换为迭代。<br>    public static int f(int n) {</p>
-<pre><code>    if (n &lt;= 2){
-        return n;
-    }
-
-    int first = 1, second = 2;
-    int third = 0;
-
-    for (int i = 3; i &lt;= n; i++) {
-        third = first + second;
-        first = second;
-        second = third;
-    }
-
-    return third;
-}
-</code></pre><p>在这个例子中，迭代花费的时间要少些。关于迭代和递归，你可以去 <a href="http://www.programcreek.com/2012/10/iteration-vs-recursion-in-java/" target="_blank" rel="external">这里</a>看看。</p>
-<h3 id="7-动态规划"><a href="#7-动态规划" class="headerlink" title="7. 动态规划"></a>7. 动态规划</h3><p>动态规划主要用来解决如下技术问题：</p>
-<ul>
-<li>通过较小的子例来解决一个实例；</li>
-<li>对于一个较小的实例，可能需要许多个解决方案；</li>
-<li>把较小实例的解决方案存储在一个表中，一旦遇上，就很容易解决；</li>
-<li><p>附加空间用来节省时间。<br>上面所列的爬台阶问题完全符合这四个属性，因此，可以使用动态规划来解决：<br>  public static int[] A = new int[100];</p>
-<p>  public static int f3(int n) {</p>
-<pre><code>if (n &lt;= 2)
-    A[n]= n;
-
-if(A[n] &gt; 0)
-    return A[n];
-else
-    A[n] = f3(n-1) + f3(n-2);//store results so only calculate once!
-return A[n];
-</code></pre><p>  }</p>
-</li>
-</ul>
-<p>一些基于动态规划的算法：</p>
-<ul>
-<li>编辑距离</li>
-<li>最长回文子串</li>
-<li>单词分割</li>
-<li>最大的子数组</li>
-</ul>
-<h3 id="8-位操作"><a href="#8-位操作" class="headerlink" title="8. 位操作"></a>8. 位操作</h3><p>位操作符：<br><img src="http://cms.csdnimg.cn/article/201404/10/53465e7bc51e0.jpg" alt=""></p>
-<p>从一个给定的数n中找位i（i从0开始，然后向右开始）</p>
-<pre><code>public static boolean getBit(int num, int i){
-    int result = num &amp; (1&lt;&lt;i);
-
-    if(result == 0){
-        return false;
-    }else{
-        return true;
-    }
-}
-</code></pre><p>例如，获取10的第二位：<br>    i=1, n=10<br>    1&lt;&lt;1= 10<br>    1010&amp;10=10<br>    10 is not 0, so return true;</p>
-<p>典型的位算法：</p>
-<ul>
-<li>Find Single Number</li>
-<li>Maximum Binary Gap</li>
-</ul>
-<h3 id="9-概率"><a href="#9-概率" class="headerlink" title="9. 概率"></a>9. 概率</h3><p>通常要解决概率相关问题，都需要很好地格式化问题，下面提供一个简单的例子： </p>
-<blockquote>
-<p>有50个人在一个房间，那么有两个人是同一天生日的可能性有多大？（忽略闰年，即一年有365天）</p>
-</blockquote>
-<pre><code>public static double caculateProbability(int n){
-    double x = 1; 
-
-    for(int i=0; i&lt;n; i++){
-        x *=  (365.0-i)/365.0;
-    }
-
-    double pro = Math.round((1-x) * 100);
-    return pro/100;
-}I
-</code></pre><p>结果：</p>
-<blockquote>
-<p>calculateProbability(50) = 0.97</p>
-<h3 id="10-组合和排列"><a href="#10-组合和排列" class="headerlink" title="10. 组合和排列"></a>10. 组合和排列</h3></blockquote>
-<p>组合和排列的主要差别在于顺序是否重要。<br>例1：</p>
-<blockquote>
-<p>1、2、3、4、5这5个数字，输出不同的顺序，其中4不可以排在第三位，3和5不能相邻，请问有多少种组合？<br>例2：<br>有5个香蕉、4个梨、3个苹果，假设每种水果都是一样的，请问有多少种不同的组合？</p>
-</blockquote>
-<p>基于它们的一些常见算法</p>
-<ul>
-<li>排列</li>
-<li>排列2</li>
-<li>排列顺序</li>
-</ul>
-<p>来自：<a href="http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview" target="_blank" rel="external">http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview</a></p>
-
-          
+          App的内存使用可以通过以下三个工具分析：
+Heap Viewer
+Memory Monitor
+Allocation Tracker并且，这个三个是互补的可视化内存分析工具。
+
+
+使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。
+运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。
+使用 Allocation Tracker 可以确定出你的代码中存在的问题。
+
+Memory Monitor
+
+显示你的 App 当前某一时刻的内存状态（包括可用内存，和占
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/20/使用-Android-Studio-内存分析工具/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3429,7 +2198,7 @@ return A[n];
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3474,7 +2243,7 @@ return A[n];
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3485,7 +2254,7 @@ return A[n];
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -3496,7 +2265,7 @@ return A[n];
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

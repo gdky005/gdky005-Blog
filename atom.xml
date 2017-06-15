@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-06-15T10:00:04.000Z</updated>
+  <updated>2017-06-15T10:36:18.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -16,227 +16,684 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>徽章系列8：生成个性徽章</title>
-    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/"/>
-    <id>http://gdky005.com/2017/06/15/徽章系列8：生成个性徽章/</id>
-    <published>2017-06-15T09:59:30.000Z</published>
-    <updated>2017-06-15T10:00:04.000Z</updated>
+    <title>打造一个高逼格的android开源项目——小白全攻略</title>
+    <link href="http://gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/"/>
+    <id>http://gdky005.com/2017/06/15/打造一个高逼格的android开源项目——小白全攻略/</id>
+    <published>2017-06-15T10:34:29.000Z</published>
+    <updated>2017-06-15T10:36:18.000Z</updated>
     
-    <content type="html">&lt;p&gt;官网： &lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://shields.io/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;有什么用？&quot;&gt;&lt;a href=&quot;#有什么用？&quot; class=&quot;headerlink&quot; title=&quot;有什么用？&quot;&gt;&lt;/a&gt;有什么用？&lt;/h3&gt;&lt;p&gt;彰显个人魅力，体现某种功能。例如咱们做一个跳转到我的博客的 个人徽章。&lt;/p&gt;
-&lt;h3 id=&quot;怎么玩？&quot;&gt;&lt;a href=&quot;#怎么玩？&quot; class=&quot;headerlink&quot; title=&quot;怎么玩？&quot;&gt;&lt;/a&gt;怎么玩？&lt;/h3&gt;&lt;p&gt;滚动网页到最下面：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-111.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且时不时能在解决的最上面看到好多的彩色标签，看起来很酷，很专业，有逼格。一下子就能提升很多的好感度。&lt;/p&gt;
+&lt;h3 id=&quot;范例&quot;&gt;&lt;a href=&quot;#范例&quot; class=&quot;headerlink&quot; title=&quot;范例&quot;&gt;&lt;/a&gt;范例&lt;/h3&gt;&lt;p&gt;**&lt;br&gt;我们以最流行的 android 开源项目 &lt;a href=&quot;https://github.com/PhilJay/MPAndroidChart&quot; title=&quot;MPAndroidChart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MPAndroidChart&lt;/a&gt; 为例来看看。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-0.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前两个蓝色的标签：开始两个蓝色的标签是开源项目主要贡献者 Twitter 的联系方式，点击后可以跳入到 Twitter 的主页，查看该大神的 动态。&lt;/li&gt;
+&lt;li&gt;橘色的标签：是国外比较有名的 开源项目网站 &lt;a href=&quot;https://android-arsenal.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android-arsenal&lt;/a&gt;， 很多开源项目都会在这里找到，有该项目的详细介绍。包含组员，版本号，github 项目基础信息等等。点击后会进入 MPAndroidChart 项目的首页，能看到有好多想知道的，不想知道的各种信息。&lt;/li&gt;
+&lt;li&gt;release蓝色的标签： 点击后能进入到比较有名的 &lt;a href=&quot;https://jitpack.io/#PhilJay/MPAndroidChart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jitpack.io&lt;/a&gt; 对应的MPAndroidChart 页面，直接获取 MPAndroidChart 的最新版本，也能看到之前的构建历史。下面会重点介绍 jitpack.io 的使用。&lt;/li&gt;
+&lt;li&gt;绿色的标签： 这个比较有意思，是 当前想支持的最低版本，MPAndroidChart的最低版本是 api-8。 点击后会进入到Android 2.2–2.2.3 Froyo (API level 8) 的详细介绍。这个功能是 android-arsenal 专门提供 开发者使用的。 下面也会有所介绍。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面我们将 这些标签称之为 徽章 （&lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shields&lt;/a&gt;）。&lt;/p&gt;
+&lt;h3 id=&quot;Top-30-android-开源项目徽章&quot;&gt;&lt;a href=&quot;#Top-30-android-开源项目徽章&quot; class=&quot;headerlink&quot; title=&quot;Top 30 android 开源项目徽章&quot;&gt;&lt;/a&gt;Top 30 android 开源项目徽章&lt;/h3&gt;&lt;p&gt;我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;统计情况如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Retrofit 0&lt;/li&gt;
+&lt;li&gt;okhttp 0&lt;/li&gt;
+&lt;li&gt;Butter Knife 0&lt;/li&gt;
+&lt;li&gt;MPAndroidChart 4 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-2.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-Universal-Image-Loader 2 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-3.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;glide 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-4.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;leakcanary 0 &lt;/li&gt;
+&lt;li&gt;EventBus 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-5.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;picasso 0 &lt;/li&gt;
+&lt;li&gt;zxing 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-6.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;iosched 0&lt;/li&gt;
+&lt;li&gt;Fresco 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-7.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;lottie-android 0&lt;/li&gt;
+&lt;li&gt;RxAndroid 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-8.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;libgdx 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-9.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;SlidingMenu 0&lt;/li&gt;
+&lt;li&gt;PhotoView 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-10.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;android-async-http 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-11.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;material-dialogs 5 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-12.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;AndroidUtilCode 0&lt;/li&gt;
+&lt;li&gt;androidannotations 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-13.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Material-Animations 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-14.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;fastjson 5 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-15.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;ViewPagerIndicator 0 &lt;/li&gt;
+&lt;li&gt;plaid 0 &lt;/li&gt;
+&lt;li&gt;PocketHub 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-16.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;tinker 4 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-17.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-CleanArchitecture 2  &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-18.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-19.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-PullToRefresh 0 &lt;/li&gt;
+&lt;li&gt;MaterialDesignLibrary 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-20.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们是筛选容器就是 30个，统计日期：2017年04月27日（随着时间推移，可能略微有变动）。使用标签的有 18个，未使用的有12个。 使用概率大约是：60%。如果筛选容器的范围再大一点可能更多，没有使用徽章的12个项目，可能由于历史原因，或者个人原因未使用，但是不管怎么说，使用徽章的人会越来越多。&lt;/p&gt;
+&lt;h3 id=&quot;为什么要使用徽章？&quot;&gt;&lt;a href=&quot;#为什么要使用徽章？&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用徽章？&quot;&gt;&lt;/a&gt;为什么要使用徽章？&lt;/h3&gt;&lt;p&gt;徽章 &lt;a href=&quot;https://github.com/badges/shields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shields&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;徽章的使用不仅仅是为了装 B，而是为了让开源想更高效。进入项目主页一眼能看出需要的东西，例如该项目能否编译通过，当前最新的版本是什么等。&lt;/p&gt;
+&lt;p&gt;徽章能突出视野，github 默认给我们展示的是黑白世界，但是通过 徽章，将会得到改变。重要的信息可以一目了然。&lt;/p&gt;
+&lt;h3 id=&quot;最常用徽章有哪些？&quot;&gt;&lt;a href=&quot;#最常用徽章有哪些？&quot; class=&quot;headerlink&quot; title=&quot;最常用徽章有哪些？&quot;&gt;&lt;/a&gt;最常用徽章有哪些？&lt;/h3&gt;&lt;p&gt;一份不太靠谱的标准，不过你应该掌握:&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-21.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;（PS: 上图中的图标顺序对应下面的顺序）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;jitpack 徽章：&lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JitPack&lt;/a&gt; 是一个仓库，类似 maven，binary, 主要是帮我们生产 android 项目的 aar or jar 的平台。基于 GitHub，可以很方便将 library 发布到远程，然后可以用 gradle 依赖到任何一个项目中。&lt;/li&gt;
+&lt;li&gt;travis-ci 徽章：&lt;a href=&quot;https://travis-ci.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Travis-CI&lt;/a&gt; 是一个线托管的CI服务，不需要自己搭服务器，在网页上点几下就好，用起来更方便。最重要的是，它对开源项目是免费的。&lt;/li&gt;
+&lt;li&gt;circle-ci 徽章：&lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Cricle-CI&lt;/a&gt; 是也一个线托管的CI服务，和上面相同，不过这个相对来说比较好用一些，可以 SSH 到测试容器，方便在出问题的时候上去调试找原因，界面相对好看一些。&lt;/li&gt;
+&lt;li&gt;codecov 徽章：&lt;a href=&quot;https://codecov.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Codecov&lt;/a&gt; 是开源的测试结果展示平台，将测试结果可视化。Github上许多开源项目都使用了Codecov来展示单测结果。&lt;/li&gt;
+&lt;li&gt;api level 徽章：&lt;a href=&quot;https://android-arsenal.com/api&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Api-Leavel&lt;/a&gt; 是 android-arsenal 网站提供的 android api 展示的徽章。可以在项目主页中直接使用 badge 的内容。 &lt;/li&gt;
+&lt;li&gt;codacy 徽章：编程代码自动审查服务平台。帮助开发者及时发现代码中的 bug，提升软件运行质量，主要包括代码质量、语法规范、功能可用性方面的检查。&lt;/li&gt;
+&lt;li&gt;个人专属 徽章：&lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shiedls&lt;/a&gt; 根据自己的需求可以定制很多样式的徽章，全凭个人 爱好，怎么开心怎么玩。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;环境说明&quot;&gt;&lt;a href=&quot;#环境说明&quot; class=&quot;headerlink&quot; title=&quot;环境说明&quot;&gt;&lt;/a&gt;环境说明&lt;/h3&gt;&lt;p&gt;这里我用一个简单的 android 项目来做一个说明，其他语言也是可以的，这里仅仅展示一个实例。&lt;/p&gt;
+&lt;p&gt;我的本机的android环境说明如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mac&lt;/li&gt;
+&lt;li&gt;Android Studio 2.4 preview 4&lt;/li&gt;
+&lt;li&gt;gradle: 3.4.1&lt;/li&gt;
+&lt;li&gt;java: 1.8.0_73&lt;/li&gt;
+&lt;li&gt;buildToolsVersion: 25.0.2&lt;/li&gt;
+&lt;li&gt;compileSdkVersion: 25&lt;/li&gt;
+&lt;li&gt;minSdkVersion: 14&lt;/li&gt;
+&lt;li&gt;support: appcompat-v7:25.1.0&lt;/li&gt;
+&lt;li&gt;constraint: constraint-layout:1.0.0-beta4&lt;/li&gt;
+&lt;li&gt;classpath: com.android.tools.build:gradle:2.4.0-alpha4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用其他版本或者环境也是可以的, 这里只是说明。 如果任何遇到问题，可以在我的博客里面留言，联系详情为：&lt;a href=&quot;http://www.gdky005.com/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.gdky005.com/about/&lt;/a&gt; 因为该文的完整版真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有疑问或非常感兴趣的同学，可以来次探讨，也许一些新功能就是你们发觉的呢。 （PS：本应该在文末尾添加联系方式的，但是无奈，很多网站都有爬虫系统，好不容易写的文章就被爬走了，导致很多小伙伴遇到问题后，各种留言，但是我就是看不到，所以这次采取特殊方式，见谅哈）&lt;/p&gt;
+&lt;h3 id=&quot;JitPack-的使用&quot;&gt;&lt;a href=&quot;#JitPack-的使用&quot; class=&quot;headerlink&quot; title=&quot;JitPack 的使用&quot;&gt;&lt;/a&gt;JitPack 的使用&lt;/h3&gt;&lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Android-Library&quot; class=&quot;headerlink&quot; title=&quot;创建 Android Library&quot;&gt;&lt;/a&gt;创建 Android Library&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;在 AS 中创建标准的 android 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-22.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;创建 Library：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-23.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-24.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-25.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;创建 badge library 成功。&lt;h5 id=&quot;配置相关文件&quot;&gt;&lt;a href=&quot;#配置相关文件&quot; class=&quot;headerlink&quot; title=&quot;配置相关文件&quot;&gt;&lt;/a&gt;配置相关文件&lt;/h5&gt;进入 &lt;a href=&quot;https://jitpack.io/docs/ANDROID/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jitpack android&lt;/a&gt; 可以看到 jitpack 为我们提供的文档帮助。  &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-26.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;在项目的根目录下的 build.gradle 文件中添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-27.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;在 library 下的 build.gradle 中添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-28.png&quot; alt=&quot;&quot;&gt; ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;classpath &amp;apos;com.github.dcendents:android-maven-gradle-plugin:1.5&amp;apos; // Add this line
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 badge (library) :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apply plugin: &amp;apos;com.github.dcendents.android-maven&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;a href=&quot;#发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot; class=&quot;headerlink&quot; title=&quot;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;/a&gt;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;点击 大绿色 按钮，并填写信息：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png&quot; alt=&quot;&quot;&gt;。 那个协议，你们随意，这里只是演示。&lt;/li&gt;
+&lt;li&gt;创建成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png&quot; alt=&quot;&quot;&gt;，拷贝当前项目地址。&lt;/li&gt;
+&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
+&lt;li&gt;现在我们给 library 的 badge 项目添加一个工具类：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png&quot; alt=&quot;&quot;&gt;， 并提交到 github。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;Github-打-release-or-tag&quot;&gt;&lt;a href=&quot;#Github-打-release-or-tag&quot; class=&quot;headerlink&quot; title=&quot;Github 打 release or tag&quot;&gt;&lt;/a&gt;Github 打 release or tag&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建第一个 release 分支：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;发布成功以后就能看到: &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;一般用 release 就可以了， 在适当的时候 用  tag。&lt;/p&gt;
+&lt;h5 id=&quot;在-JitPack-上生成-aar&quot;&gt;&lt;a href=&quot;#在-JitPack-上生成-aar&quot; class=&quot;headerlink&quot; title=&quot;在 JitPack 上生成 aar&quot;&gt;&lt;/a&gt;在 JitPack 上生成 aar&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;进入 &lt;a href=&quot;https://jitpack.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io/&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;将 github 的项目地址： &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;， 直接拷贝 到 jitpack 网页中的文本框中。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-40.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;点击 Look Up 后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-41.png&quot; alt=&quot;&quot;&gt;， 等里面的那个圈圈 转完 以后，出现 绿色的这个：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-42.png&quot; alt=&quot;&quot;&gt; 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-43.png&quot; alt=&quot;&quot;&gt; &lt;/li&gt;
+&lt;li&gt;如果是红色的，说明有错误，点开查看，修改后重新构建。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;在-app-Demo-中测试是否生效&quot;&gt;&lt;a href=&quot;#在-app-Demo-中测试是否生效&quot; class=&quot;headerlink&quot; title=&quot;在 app Demo 中测试是否生效&quot;&gt;&lt;/a&gt;在 app Demo 中测试是否生效&lt;/h5&gt;&lt;p&gt;点击 get 后，能看到： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-44.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;给项目根目录下的 build.gradle 添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-45.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;给app 项目里面的 build.gradle 添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-46.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;maven { url &amp;apos;https://jitpack.io&amp;apos; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 app 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compile &amp;apos;com.github.gdky005:AndroidBadge:v1.0.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-47.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;在项目的最底下也能看到： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-48.png&quot; alt=&quot;&quot;&gt;。 运行 app 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-49.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;问题来了，我们修改library-后也能调用到吗？&quot;&gt;&lt;a href=&quot;#问题来了，我们修改library-后也能调用到吗？&quot; class=&quot;headerlink&quot; title=&quot;问题来了，我们修改library 后也能调用到吗？&quot;&gt;&lt;/a&gt;问题来了，我们修改library 后也能调用到吗？&lt;/h5&gt;&lt;p&gt;让咱们一起试试吧：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 badge 项目中的 1.0.0 为  1.0.1 ： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-50.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-51.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-52.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-53.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;然后再去 jitpack 上看看：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-54.png&quot; alt=&quot;&quot;&gt; 多了一个 v1.0.1, 点击 get 吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-55.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-56.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-57.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;发布成功后，我们去 app 里面试试。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-58.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;同步后，直接运行 app。非常好，我们的修改的东西已经变了：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-59.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;至此， jitpack 基本也差不多了，但是貌似缺少了最重要的一点吧。&lt;/p&gt;
+&lt;h5 id=&quot;jitpack-的徽章怎么弄&quot;&gt;&lt;a href=&quot;#jitpack-的徽章怎么弄&quot; class=&quot;headerlink&quot; title=&quot;jitpack 的徽章怎么弄&quot;&gt;&lt;/a&gt;jitpack 的徽章怎么弄&lt;/h5&gt;&lt;p&gt;还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-60.png&quot; alt=&quot;&quot;&gt; 点击后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-61.png&quot; alt=&quot;&quot;&gt; 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拷贝内容：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-62.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;打开 github 的 AndroidBridge 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-63.png&quot; alt=&quot;&quot;&gt;，点击该文件。&lt;/li&gt;
+&lt;li&gt;让我们在线编辑下： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-64.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;给 github 中的 这个 readme.md 文件添加点东西吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-65.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;让我们 保存下。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-66.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;然后回到项目&lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;首页&lt;/a&gt;看看：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-67.png&quot; alt=&quot;&quot;&gt; 棒棒的，添加成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;Travis-CI-的使用&quot;&gt;&lt;a href=&quot;#Travis-CI-的使用&quot; class=&quot;headerlink&quot; title=&quot;Travis CI 的使用&quot;&gt;&lt;/a&gt;Travis CI 的使用&lt;/h3&gt;&lt;p&gt;官网： &lt;a href=&quot;http://travis-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://travis-ci.org/&lt;/a&gt;&lt;br&gt;ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。&lt;br&gt;需要提醒的是：每次提交代码后都会重新下载需要的资源文件哦，所以时间很长，耐心等待吧。&lt;/p&gt;
+&lt;h5 id=&quot;TravisCI-有什么用？&quot;&gt;&lt;a href=&quot;#TravisCI-有什么用？&quot; class=&quot;headerlink&quot; title=&quot;TravisCI 有什么用？&quot;&gt;&lt;/a&gt;TravisCI 有什么用？&lt;/h5&gt;&lt;p&gt;travis-ci 就是 自动化 CI 工具，类似于大公司经常使用的 Jenkins，但是 travis-ci 是在云端的，而是支持 github, 还免费，我们可以 用 travis-ci 做很多的事情，不仅仅是 编译看 项目有没有问题。例如在项目构建结束以后，我们可以打包，并发布 apk 到都 蒲公英， fir，也可以用邮件通知给相关的开发人员和业务任务。 做一些简单处理，轻轻松松。这部分内容到后面尽快整理，在写一篇。&lt;/p&gt;
+&lt;h5 id=&quot;添加-github-项目到-travis-ci&quot;&gt;&lt;a href=&quot;#添加-github-项目到-travis-ci&quot; class=&quot;headerlink&quot; title=&quot;添加 github 项目到 travis-ci&quot;&gt;&lt;/a&gt;添加 github 项目到 travis-ci&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;进入 Travis 官网后，使用 GitHub 账号 登录，成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-68.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;点击 加号 ，能看到你 GitHub 里面的所有：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-69.png&quot; alt=&quot;&quot;&gt;， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。&lt;/li&gt;
+&lt;li&gt;点击这里：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-70.png&quot; alt=&quot;&quot;&gt;，开启 Travis 构建。点击这个可以配置该项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-71.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;默认是空的：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-72.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;在-项目中添加-travis-ci-需要的-travis-yml-文件&quot;&gt;&lt;a href=&quot;#在-项目中添加-travis-ci-需要的-travis-yml-文件&quot; class=&quot;headerlink&quot; title=&quot;在 项目中添加 travis-ci 需要的 .travis.yml 文件&quot;&gt;&lt;/a&gt;在 项目中添加 travis-ci 需要的 .travis.yml 文件&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;在项目根目录下直接创建 一个 .travis.yml 的文件。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-73.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;直接在文件里面添加代码：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-74.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;.travis.yml 文件 源代码&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;language: android
+jdk: oraclejdk8
+sudo: false
+
+android:
+  components:
+    - tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-android-m2repository
+    - extra-android-support
+  licenses:
+      - android-sdk-license-.+
+      - &amp;apos;.+&amp;apos;
+
+before_install:
+  - chmod +x gradlew
+  - mkdir &amp;quot;$ANDROID_HOME/licenses&amp;quot; || true
+  - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+  - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+
+script:
+  - ./gradlew assembleRelease
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为该文很长很长，所以暂时就不解释具体含义了，可以看看官方文档。&lt;/p&gt;
+&lt;h5 id=&quot;push-项目到-github-travis-ci-自动监测构建&quot;&gt;&lt;a href=&quot;#push-项目到-github-travis-ci-自动监测构建&quot; class=&quot;headerlink&quot; title=&quot;push 项目到 github, travis-ci 自动监测构建&quot;&gt;&lt;/a&gt;push 项目到 github, travis-ci 自动监测构建&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-75.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;下面黑色部分是构建的过程：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-76.png&quot; alt=&quot;&quot;&gt;，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-77.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-78.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;回到首页刷新后，能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-79.png&quot; alt=&quot;&quot;&gt; 说明我们已经构建成功了。&lt;/p&gt;
+&lt;h5 id=&quot;travis-yml-需要注意的地方&quot;&gt;&lt;a href=&quot;#travis-yml-需要注意的地方&quot; class=&quot;headerlink&quot; title=&quot;.travis.yml 需要注意的地方&quot;&gt;&lt;/a&gt;.travis.yml 需要注意的地方&lt;/h5&gt;&lt;p&gt;初次使用  Travis 的试试，总遇到 说 android 的一些协议未接受而构建失败，导致耗费了一两天，曾经一度想放弃，但是最终坚持了下来，通过各种搜索，摸索，猜测，终于搞定。其实最初的项目是这个：&lt;a href=&quot;https://github.com/gdky005/TestJitpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/TestJitpack&lt;/a&gt; ，里面有很多辛酸史记录，从提交记录能看得出来，有兴趣的可以研究研究，也许能解决你现在的问题。&lt;/p&gt;
+&lt;p&gt;Travis CI 协议问题解决方法：&lt;a href=&quot;http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最重要部分在这里：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;machine:
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - mkdir -p &amp;quot;$ANDROID_HOME/licenses&amp;quot;
+    - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+    - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;添加-travis-ci-徽章到-github&quot;&gt;&lt;a href=&quot;#添加-travis-ci-徽章到-github&quot; class=&quot;headerlink&quot; title=&quot;添加 travis-ci 徽章到 github&quot;&gt;&lt;/a&gt;添加 travis-ci 徽章到 github&lt;/h5&gt;&lt;p&gt;激动的时刻再次到来，让我们找找徽章在哪里呢？&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-80.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;让我们来选择 markdonw 格式：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-81.png&quot; alt=&quot;&quot;&gt; 并复制上。&lt;/p&gt;
+&lt;p&gt;同样如上修改 readme.md。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-82.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;加空格后，直接贴上去：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-83.png&quot; alt=&quot;&quot;&gt;，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。&lt;/p&gt;
+&lt;p&gt;回到项目首页以后就能发现：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-84.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;添加 Travis 徽章成功。&lt;/p&gt;
+&lt;p&gt;Bye the way! 上面是最初级的构建过程，如果遇到单元测试就不行了，还得参考 我的开源项目 &lt;a href=&quot;https://github.com/gdky005/TestJitpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TestJitpack&lt;/a&gt;。 不过有点乱，后面整理下。&lt;/p&gt;
+&lt;h3 id=&quot;Circle-CI-的使用&quot;&gt;&lt;a href=&quot;#Circle-CI-的使用&quot; class=&quot;headerlink&quot; title=&quot;Circle CI 的使用&quot;&gt;&lt;/a&gt;Circle CI 的使用&lt;/h3&gt;&lt;p&gt; 官网: &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot;&gt;&lt;a href=&quot;#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot; class=&quot;headerlink&quot; title=&quot;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&quot;&gt;&lt;/a&gt;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&lt;/h5&gt;&lt;p&gt;Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-85.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。&lt;/p&gt;
+&lt;p&gt;Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。&lt;/p&gt;
+&lt;p&gt;说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。&lt;/p&gt;
+&lt;h5 id=&quot;添加项目到-Circle-CI&quot;&gt;&lt;a href=&quot;#添加项目到-Circle-CI&quot; class=&quot;headerlink&quot; title=&quot;添加项目到 Circle CI&quot;&gt;&lt;/a&gt;添加项目到 Circle CI&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;登录主页面：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-86.png&quot; alt=&quot;&quot;&gt;， 在 project 里面自己的账号下搜索刚创建的项目。&lt;/li&gt;
+&lt;li&gt;一般直接选择 Ubuntu 即可:&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-87.png&quot; alt=&quot;&quot;&gt;,点击绿色  Build project.&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-88.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-89.png&quot; alt=&quot;&quot;&gt;， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot;&gt;&lt;a href=&quot;#在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot; class=&quot;headerlink&quot; title=&quot;在 项目中添加 Circle CI 需要的 circle.yml 文件&quot;&gt;&lt;/a&gt;在 项目中添加 Circle CI 需要的 circle.yml 文件&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;在项目的根目录下 添加 circle.yml 文件；&lt;/li&gt;
+&lt;li&gt;添加 circle 的代码到文件中：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-90.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;circle.yml 源代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;machine:
+  java:
+      version: oraclejdk8
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - mkdir -p &amp;quot;$ANDROID_HOME/licenses&amp;quot;
+    - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+    - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+
+
+  override:
+    - echo y | android update sdk --no-ui --filter &amp;quot;android-25&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;build-tools-25.0.2&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-m2repository&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-support&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-google-m2repositor&amp;quot;
+    - ./gradlew dependencies || true
+
+test:
+  override:
+    - ./gradlew build
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;push-项目到-github-Circle-CI-自动监测构建&quot;&gt;&lt;a href=&quot;#push-项目到-github-Circle-CI-自动监测构建&quot; class=&quot;headerlink&quot; title=&quot;push 项目到 github, Circle CI 自动监测构建&quot;&gt;&lt;/a&gt;push 项目到 github, Circle CI 自动监测构建&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;提交代码后，发布到 github，Circle CI 会自动执行。&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-91.png&quot; alt=&quot;&quot;&gt; 点击进来后，会看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-92.png&quot; alt=&quot;&quot;&gt;， 说明已经开始 构建了， 下载需要的东西：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-93.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;构建中的一些步骤：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-94.png&quot; alt=&quot;&quot;&gt;， 相对 Travis 来说展示更直观。&lt;/li&gt;
+&lt;li&gt;看到 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-95.png&quot; alt=&quot;&quot;&gt; 说明构建成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;添加-Circle-CI-徽章到-github&quot;&gt;&lt;a href=&quot;#添加-Circle-CI-徽章到-github&quot; class=&quot;headerlink&quot; title=&quot;添加 Circle CI 徽章到 github&quot;&gt;&lt;/a&gt;添加 Circle CI 徽章到 github&lt;/h5&gt;&lt;p&gt;我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-96.png&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-97.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-98.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;回项目主页刷新后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-99.png&quot; alt=&quot;&quot;&gt; 非常 happy, 已经添加成功了。&lt;/p&gt;
+&lt;h3 id=&quot;接下来添加什么呢？&quot;&gt;&lt;a href=&quot;#接下来添加什么呢？&quot; class=&quot;headerlink&quot; title=&quot;接下来添加什么呢？&quot;&gt;&lt;/a&gt;接下来添加什么呢？&lt;/h3&gt;&lt;p&gt;Github上许多开源项目都使用了Codecov来展示单元测试结果， 就它了。&lt;/p&gt;
+&lt;h3 id=&quot;Codecov-的使用&quot;&gt;&lt;a href=&quot;#Codecov-的使用&quot; class=&quot;headerlink&quot; title=&quot;Codecov 的使用&quot;&gt;&lt;/a&gt;Codecov 的使用&lt;/h3&gt;&lt;p&gt;根据文中的指示：我们能看到一个开源的 github 项目 &lt;a href=&quot;https://github.com/codecov/example-android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/codecov/example-android&lt;/a&gt;， 不过看起来点晕晕的，但是还是看下了。&lt;/p&gt;
+&lt;p&gt;我们之后都直接使用 Trivas CI 构建了。&lt;/p&gt;
+&lt;p&gt;添加项目就不说了，进入后，点击 project changes, 找到自己的项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png&quot; alt=&quot;&quot;&gt;，等生产报告后，进入该网站就能看见结果。&lt;/p&gt;
+&lt;h5 id=&quot;利用-Jacoco-生成报告&quot;&gt;&lt;a href=&quot;#利用-Jacoco-生成报告&quot; class=&quot;headerlink&quot; title=&quot;利用 Jacoco 生成报告&quot;&gt;&lt;/a&gt;利用 Jacoco 生成报告&lt;/h5&gt;&lt;p&gt;Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化&lt;/p&gt;
+&lt;p&gt;1） 在 app 的 build.gradle 文件中 添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //Jacoco 生成报告的依赖
+androidTestCompile(&amp;apos;com.android.support.test:runner:0.5&amp;apos;, {
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;support-annotations&amp;apos;
+})
+// Set this dependency to use JUnit 4 rules
+androidTestCompile(&amp;apos;com.android.support.test:rules:0.5&amp;apos;, {
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;support-annotations&amp;apos;
+})
+// Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+androidTestCompile(&amp;apos;com.android.support.test.espresso:espresso-contrib:2.2.2&amp;apos;, {
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;support-annotations&amp;apos;
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;support-v4&amp;apos;
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;appcompat-v7&amp;apos;
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;design&amp;apos;
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;recyclerview-v7&amp;apos;
+})
+androidTestCompile(&amp;apos;com.android.support.test.espresso:espresso-core:2.2.2&amp;apos;, {
+    exclude group: &amp;apos;com.android.support&amp;apos;, module: &amp;apos;support-annotations&amp;apos;
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-101.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;debug{
+        testCoverageEnabled true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3) 可以在尝试在本地生成报告：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./gradlew :app:createDebugAndroidTestCoverageReport 生成测试报告。  app 就是咱们项目中要测试的 module
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;测试报告地址：app/build/reports/coverage/debug/index.html。 &lt;/p&gt;
+&lt;h5 id=&quot;上报数据给-Codecov&quot;&gt;&lt;a href=&quot;#上报数据给-Codecov&quot; class=&quot;headerlink&quot; title=&quot;上报数据给 Codecov&quot;&gt;&lt;/a&gt;上报数据给 Codecov&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;使用Github账号登录 &lt;a href=&quot;https://codecov.io/，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://codecov.io/，&lt;/a&gt; 并提供授权给该应用。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在.travis.yml文件中添加命令将测试覆盖率报告上传给Codecov。&lt;/p&gt;
+&lt;p&gt; after_success:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- bash &amp;lt;(curl -s https://codecov.io/bash)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-102.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器&quot;&gt;&lt;a href=&quot;#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器&quot; class=&quot;headerlink&quot; title=&quot;Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器&quot;&gt;&lt;/a&gt;Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器&lt;/h5&gt;&lt;p&gt;因为之前修改过很多次，过程很繁琐，直接给配置文件了，相信大家一眼就能看出来。&lt;/p&gt;
+&lt;p&gt;完整的配置文件是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;language: android
+jdk: oraclejdk8
+sudo: false
+
+env:
+  global:
+      - ANDROID_API_LEVEL=25
+      - ANDROID_BUILD_TOOLS_VERSION=25.0.2
+      - ANDROID_ABI=armeabi-v7a
+      - ANDROID_TAG=google_apis
+      - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
+android:
+  components:
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
+
+  licenses:
+      - android-sdk-license-.+
+      - &amp;apos;.+&amp;apos;
+
+before_install:
+  - chmod +x gradlew
+  - mkdir &amp;quot;$ANDROID_HOME/licenses&amp;quot; || true
+  - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+  - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+
+before_script:
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t &amp;quot;android-&amp;quot;$ANDROID_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - emulator -avd test -no-skin -no-window &amp;amp;
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &amp;amp;
+
+script:
+  - ./gradlew assembleRelease
+  - ./gradlew :app:createDebugAndroidTestCoverageReport --info --stacktrace
+
+after_success:
+  - bash &amp;lt;(curl -s https://codecov.io/bash)
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;codecov-总结&quot;&gt;&lt;a href=&quot;#codecov-总结&quot; class=&quot;headerlink&quot; title=&quot;codecov 总结&quot;&gt;&lt;/a&gt;codecov 总结&lt;/h5&gt;&lt;p&gt;Travis-CI 对 android 的单元测试支持不是很好，因为需要开启虚拟机，开启这个过程就得10分钟（我的测试时间），很耗费时间。有时候也连接不上，一次跑下来估计得个 20分钟左右吧。所以，稳定性确实不是很高。如果不做单元测试，而只是做发布之类的，稳定性还是高的。 &lt;/p&gt;
+&lt;p&gt;单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-103.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以 要不要使用单元测试 还是根据项目决定吧。 &lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;获取-codecov-的徽章&quot;&gt;&lt;a href=&quot;#获取-codecov-的徽章&quot; class=&quot;headerlink&quot; title=&quot;获取 codecov 的徽章&quot;&gt;&lt;/a&gt;获取 codecov 的徽章&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-104.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Api-Level-的使用&quot;&gt;&lt;a href=&quot;#Api-Level-的使用&quot; class=&quot;headerlink&quot; title=&quot;Api_Level 的使用&quot;&gt;&lt;/a&gt;Api_Level 的使用&lt;/h3&gt;&lt;p&gt;让 codecov 慢慢构建吧，我们先继续。&lt;/p&gt;
+&lt;p&gt;官网：&lt;a href=&quot;https://android-arsenal.com/api&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://android-arsenal.com/api&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Api-Level-有什么用？&quot;&gt;&lt;a href=&quot;#Api-Level-有什么用？&quot; class=&quot;headerlink&quot; title=&quot;Api_Level 有什么用？&quot;&gt;&lt;/a&gt;Api_Level 有什么用？&lt;/h5&gt;&lt;p&gt;Api_Level 是 arsenal 网站给各位开发者的一个福利，我们的 android 开源项目一般都有一个最低的构建版本。平时我们都是在 md 文件中写上 支持版本是 14+等很多样式，但是 不够醒目，有了 Api_Level 后，打开开源项目主页就知道，最低版本是多少。 不用看文档也能明白，轻松不少。 对应的 api 的一些特性和修改也能在这里展现。&lt;/p&gt;
+&lt;h5 id=&quot;Api-Level-怎么玩？&quot;&gt;&lt;a href=&quot;#Api-Level-怎么玩？&quot; class=&quot;headerlink&quot; title=&quot;Api_Level 怎么玩？&quot;&gt;&lt;/a&gt;Api_Level 怎么玩？&lt;/h5&gt;&lt;p&gt;如果你的开源项目最低支持版本是：14，那么就选择这里：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-105.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-106.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;把这个拷贝下来，放入我们的 md 文档中吧。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-107.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;codacy-的使用&quot;&gt;&lt;a href=&quot;#codacy-的使用&quot; class=&quot;headerlink&quot; title=&quot;codacy 的使用&quot;&gt;&lt;/a&gt;codacy 的使用&lt;/h3&gt;&lt;p&gt;官网： &lt;a href=&quot;https://www.codacy.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.codacy.com&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;codacy-是什么？&quot;&gt;&lt;a href=&quot;#codacy-是什么？&quot; class=&quot;headerlink&quot; title=&quot;codacy 是什么？&quot;&gt;&lt;/a&gt;codacy 是什么？&lt;/h5&gt;&lt;p&gt;codacy 编程代码自动审查服务平台，可以帮我们分析存在的问题 或者说是 bug,主要包括代码质量、语法规范、功能可用性方面的检查。&lt;/p&gt;
+&lt;h5 id=&quot;codacy-怎么使用？&quot;&gt;&lt;a href=&quot;#codacy-怎么使用？&quot; class=&quot;headerlink&quot; title=&quot;codacy 怎么使用？&quot;&gt;&lt;/a&gt;codacy 怎么使用？&lt;/h5&gt;&lt;p&gt;进入官网，添加自己的需要的 project。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-108.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;完成后，等待一段时间就好了，会给你发邮件通知，已经完成。&lt;/p&gt;
+&lt;p&gt;完成后的效果是：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-109.png&quot; alt=&quot;&quot;&gt;，咱们的这个项目评级是 B。&lt;/p&gt;
+&lt;h5 id=&quot;codacy-徽章呢？&quot;&gt;&lt;a href=&quot;#codacy-徽章呢？&quot; class=&quot;headerlink&quot; title=&quot;codacy 徽章呢？&quot;&gt;&lt;/a&gt;codacy 徽章呢？&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-110.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;拷贝下来，手动放到 咱们的项目的 md 文档中把。比较放心一些，如果点击后面的 add badge ,会自动加到项目中，需要我们 pull request 里面处理下。&lt;/p&gt;
+&lt;p&gt;搞定。&lt;/p&gt;
+&lt;h3 id=&quot;生成个性徽章&quot;&gt;&lt;a href=&quot;#生成个性徽章&quot; class=&quot;headerlink&quot; title=&quot;生成个性徽章&quot;&gt;&lt;/a&gt;生成个性徽章&lt;/h3&gt;&lt;p&gt;官网： &lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://shields.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;有什么用？&quot;&gt;&lt;a href=&quot;#有什么用？&quot; class=&quot;headerlink&quot; title=&quot;有什么用？&quot;&gt;&lt;/a&gt;有什么用？&lt;/h5&gt;&lt;p&gt;彰显个人魅力，体现某种功能。例如咱们做一个跳转到我的博客的 个人徽章。&lt;/p&gt;
+&lt;h5 id=&quot;怎么玩？&quot;&gt;&lt;a href=&quot;#怎么玩？&quot; class=&quot;headerlink&quot; title=&quot;怎么玩？&quot;&gt;&lt;/a&gt;怎么玩？&lt;/h5&gt;&lt;p&gt;滚动网页到最下面：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-111.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在对应的地方填写相应的东西（也支持中文哦）， 完成后点击后面的 Make Badge 按钮试试看。&lt;/p&gt;
 &lt;p&gt;我想我的个人图标是这种浅蓝色： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-112.png&quot; alt=&quot;&quot;&gt; ，那么我就在 color 中直接写：7AD6FD&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-113.png&quot; alt=&quot;&quot;&gt; 点击生成 一个地址， 先保存下面。&lt;/p&gt;
-&lt;h3 id=&quot;这个原理是什么呢？-（回答最开始的问题）&quot;&gt;&lt;a href=&quot;#这个原理是什么呢？-（回答最开始的问题）&quot; class=&quot;headerlink&quot; title=&quot;这个原理是什么呢？ （回答最开始的问题）&quot;&gt;&lt;/a&gt;这个原理是什么呢？ （回答最开始的问题）&lt;/h3&gt;&lt;p&gt;徽章的格式即是 markdown 的格式: &lt;/p&gt;
+&lt;h5 id=&quot;这个原理是什么呢？-（回答最开始的问题）&quot;&gt;&lt;a href=&quot;#这个原理是什么呢？-（回答最开始的问题）&quot; class=&quot;headerlink&quot; title=&quot;这个原理是什么呢？ （回答最开始的问题）&quot;&gt;&lt;/a&gt;这个原理是什么呢？ （回答最开始的问题）&lt;/h5&gt;&lt;p&gt;徽章的格式即是 markdown 的格式: &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[![A\](B)\](D)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A 表示的页面中需要显示的内容， B 表示的是图片的地址，D 表示的是点击后需要跳转的链接的地址。&lt;/p&gt;
-&lt;h3 id=&quot;合成我的个人专属图标吧&quot;&gt;&lt;a href=&quot;#合成我的个人专属图标吧&quot; class=&quot;headerlink&quot; title=&quot;合成我的个人专属图标吧&quot;&gt;&lt;/a&gt;合成我的个人专属图标吧&lt;/h3&gt;&lt;p&gt;图片地址是上面存下来的。 前面显示内容：作者。按照上面的规范出来的结果就是：&lt;/p&gt;
+&lt;h5 id=&quot;合成我的个人专属图标吧&quot;&gt;&lt;a href=&quot;#合成我的个人专属图标吧&quot; class=&quot;headerlink&quot; title=&quot;合成我的个人专属图标吧&quot;&gt;&lt;/a&gt;合成我的个人专属图标吧&lt;/h5&gt;&lt;p&gt;图片地址是上面存下来的。 前面显示内容：作者。按照上面的规范出来的结果就是：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[![作者\](https:\//img.shields.io\/badge\/%E4%BD%9C%E8%80%85-gdky005-7AD6FD.svg)\](http:\//www.gdky005.com)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;把这段代码 粘贴到 我们的 md 文档中，个性专属徽章就出来了，而且点击后能到我们想去的地方。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-114.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;很酷吧，其实还可以做很多这样的事情。&lt;/p&gt;
+&lt;p&gt;本文的 中的 项目地址是： &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;&lt;br&gt;需要逐步了解项目的过程或者 根据步骤出现问题的话，可以check 对应的节点，看看代码是否不同，然后自行修改，我特意保存了该进度。如果下图中 git提交的记录：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-115.png&quot; alt=&quot;&quot;&gt;  &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-116.png&quot; alt=&quot;&quot;&gt; &lt;/p&gt;
+&lt;p&gt;相信小伙伴们肯定能做出更有意思的东西，到时候记得与我和大家分享，比较有特色的，我会将你们的链接挂载到 github 项目里面。&lt;/p&gt;
+&lt;p&gt;因为该文真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有需要帮助或许分享新技能的小伙伴请进入。&lt;/p&gt;
+&lt;p&gt;本文完整地址请在 &lt;a href=&quot;http://www.gdky005.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的博客&lt;/a&gt; 里面查看，会修复 文章存在的问题，并补充一些相关细节。针对 小伙伴们提出的问题，将在博客中修改和增加。如果大家觉得不错，并且很喜欢的话，麻烦 GitHub 中 start 下，不胜感激。&lt;/p&gt;
+&lt;h3 id=&quot;最后真想说一句&quot;&gt;&lt;a href=&quot;#最后真想说一句&quot; class=&quot;headerlink&quot; title=&quot;最后真想说一句&quot;&gt;&lt;/a&gt;最后真想说一句&lt;/h3&gt;&lt;p&gt;咱们不玩虚的，玩点有技术含量的东西。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;官网： &lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://shields.io/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;有什么用？&quot;&gt;&lt;a href=&quot;#有什么用？&quot; class=&quot;heade
+      &lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且
     
     </summary>
     
+      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
+    
+    
+      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
     
   </entry>
   
   <entry>
-    <title>在 Idea 中用 GUI 图形，生成 可执行的jar</title>
-    <link href="http://gdky005.com/2017/05/03/%E5%9C%A8-Idea-%E4%B8%AD%E7%94%A8-GUI-%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%94%9F%E6%88%90-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84jar/"/>
-    <id>http://gdky005.com/2017/05/03/在-Idea-中用-GUI-图形，生成-可执行的jar/</id>
-    <published>2017-05-03T05:42:18.000Z</published>
-    <updated>2017-05-03T06:21:03.000Z</updated>
+    <title>徽章系列1： Top 30 android 开源项目徽章</title>
+    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/"/>
+    <id>http://gdky005.com/2017/06/15/徽章系列1：-Top-30-android-开源项目徽章/</id>
+    <published>2017-06-15T10:05:56.000Z</published>
+    <updated>2017-06-15T10:25:16.000Z</updated>
     
-    <content type="html">&lt;p&gt;参考地址： &lt;a href=&quot;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;选中这个东西：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;参考地址： &lt;a href=&quot;http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;htt
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)</title>
-    <link href="http://gdky005.com/2017/05/03/android-6-0-%E6%9D%83%E9%99%90%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90%EF%BC%9Aandroid-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/"/>
-    <id>http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/</id>
-    <published>2017-05-03T03:36:44.000Z</published>
-    <updated>2017-05-03T03:37:31.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;问题复现&quot;&gt;&lt;a href=&quot;#问题复现&quot; class=&quot;headerlink&quot; title=&quot;问题复现&quot;&gt;&lt;/a&gt;问题复现&lt;/h3&gt;&lt;p&gt;在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
-05-03 09:53:02.356 W/System.err:     at android.os.StatFs.doStat(StatFs.java:46)
-05-03 09:53:02.370 W/System.err:     at android.os.StatFs.&amp;lt;init&amp;gt;(StatFs.java:39)
-05-03 09:53:02.386 W/System.err:     at gdky005.testexception.SDCardUtil.getSDAvailableBlocks(SDCardUtil.java:166)
-05-03 09:53:02.401 W/System.err:     at gdky005.testexception.MainActivity.testSDCard(MainActivity.java:69)
-05-03 09:53:02.410 W/System.err:     at gdky005.testexception.MainActivity$1.onClick(MainActivity.java:26)
-05-03 09:53:02.412 D/DhcpClient: Received packet: f4:5c:89:c2:6d:7b NAK, reason (none)
-05-03 09:53:02.417 W/System.err:     at android.view.View.performClick(View.java:5637)
-05-03 09:53:02.425 W/System.err:     at android.view.View$PerformClick.run(View.java:22429)
-05-03 09:53:02.431 W/System.err:     at android.os.Handler.handleCallback(Handler.java:751)
-05-03 09:53:02.435 W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:95)
-05-03 09:53:02.439 W/System.err:     at android.os.Looper.loop(Looper.java:154)
-05-03 09:53:02.442 W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6119)
-05-03 09:53:02.445 W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
-05-03 09:53:02.449 W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
-05-03 09:53:02.452 W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
-05-03 09:53:02.461 W/System.err: Caused by: android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)
-05-03 09:53:02.463 W/System.err:     at libcore.io.Posix.statvfs(Native Method)
-05-03 09:53:02.466 W/System.err:     at libcore.io.BlockGuardOs.statvfs(BlockGuardOs.java:304)
-05-03 09:53:02.469 W/System.err:     at android.system.Os.statvfs(Os.java:506)
-05-03 09:53:02.471 W/System.err:     at android.os.StatFs.doStat(StatFs.java:44)
-05-03 09:53:02.472 W/System.err:     ... 13 more
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体崩溃路径是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Invalid path: /storage/emulated/0/Android/data/gdky005.testexception/files
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;代码中调用：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;context.getExternalFilesDir(null);  //获取 外置 SD 卡 私有目录
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;具体原因&quot;&gt;&lt;a href=&quot;#具体原因&quot; class=&quot;headerlink&quot; title=&quot;具体原因&quot;&gt;&lt;/a&gt;具体原因&lt;/h3&gt;&lt;p&gt;在主 app 中 因为使用了 targetSdkVersion 低于 android 6.0（23）的 19， 意味着 app 支持的最高目标版本是 android 4.4 （19）。 targetSdkVersion 是 Android 提供向前兼容的主要依据。 因此系统检查到 这个低于 android 6.0（23）， 默认给 app 自动开启了所有的权限（这也是之前一直疑惑的点）。当在 手机的系统大约等于 android 6.0（23），默认拥有了所有的权限，因此 app 可以正常运行。&lt;/p&gt;
-&lt;p&gt;但是根据 听云 的崩溃手机信息来看，确实是崩溃了。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;经过大量尝试以及测试，终于发现问题是处在  targetSdkVersion 这里。 如果 tartgetSdkVersion 大约23，即使关闭 SD 卡的存储权限， 也可以通过  context.getExternalFilesDir(null);  拿到 SD 卡的位置 app 私有存储目录。&lt;/p&gt;
-&lt;p&gt;但是，当 tartgetSdkVersion \&amp;lt; 23, 关闭 SD 卡的存储权限后， 通过 context.getExternalFilesDir(null);  不可以拿到 SD 卡的外置 app 私有目录，会提示 「Invalid path: /storage/emulated/0/Android/data/」。&lt;/p&gt;
-&lt;p&gt;因为在 6.0 以上的手机，检测到 app 的 tartgetSdkVersion \&amp;lt; 23，默认给了所有的权限，但是当 关闭 存储权限后，意味着 SD 卡的读写权限都没有了。当调用到 context.getExternalFilesDir(null);  的时候，系统认为 当前 app 的最高 运行版本是 低于 23 的，所有不会给 app 在 SD 卡创建 app 的私有目录。所有尝试获取 SD 卡的 app 私有目录的时候，就会获取不到路径，因为没有 SD 卡的读写权限啊。&lt;/p&gt;
-&lt;p&gt;这里需要说明一下：当 tartgetSdkVersion &gt; 23，调用 context.getExternalFilesDir(null); ，系统会给 app 在 SD 卡的 Android/data/ + 包名 + files , 以这样的形式 创建一个 app 的私有文件夹，这也是 6.0 以后的新特性。例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/storage/emulated/0/Android/data/gdky005.testexception/files
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个目录其实就等同于 Linux 里面的一个 app 的私有账户目录，只有当前 app 能访问，其他 app 直接访问不了，所以也被称之为 app 的外置私有目录。 app 的 tartgetSdkVersion \&amp;lt; 23， 因为系统没有给 它创建 私有目录，而且他没有 SD 卡的读写权限，所以 也不可以自行创建 app 的私有目录。&lt;/p&gt;
-&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;由于 app 的 targetSdkVersion \&amp;lt; 23，默认 app 拥有所有的权限，但是当 用户手动禁用 SD 卡的存储权限，或者 Rom, 第三方服务 禁用，那么就会造成很严重的问题。无法使用外置app的私有目录，就会报错。&lt;/p&gt;
+    <content type="html">&lt;p&gt;我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;统计情况如下：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;不过在 原生的 android 系统里面会提示用户： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;如果第三方服务或者 rom 自动禁用的话，也许看不到警告。 &lt;/li&gt;
-&lt;li&gt;例如三星等系统，在 app 安装好以后，会自动弹出权限框，让用户选择权限。&lt;/li&gt;
+&lt;li&gt;Retrofit 0&lt;/li&gt;
+&lt;li&gt;okhttp 0&lt;/li&gt;
+&lt;li&gt;Butter Knife 0&lt;/li&gt;
+&lt;li&gt;MPAndroidChart 4 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-2.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-Universal-Image-Loader 2 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-3.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;glide 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-4.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;leakcanary 0 &lt;/li&gt;
+&lt;li&gt;EventBus 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-5.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;picasso 0 &lt;/li&gt;
+&lt;li&gt;zxing 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-6.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;iosched 0&lt;/li&gt;
+&lt;li&gt;Fresco 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-7.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;lottie-android 0&lt;/li&gt;
+&lt;li&gt;RxAndroid 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-8.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;libgdx 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-9.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;SlidingMenu 0&lt;/li&gt;
+&lt;li&gt;PhotoView 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-10.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;android-async-http 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-11.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;material-dialogs 5 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-12.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;AndroidUtilCode 0&lt;/li&gt;
+&lt;li&gt;androidannotations 3 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-13.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Material-Animations 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-14.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;fastjson 5 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-15.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;ViewPagerIndicator 0 &lt;/li&gt;
+&lt;li&gt;plaid 0 &lt;/li&gt;
+&lt;li&gt;PocketHub 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-16.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;tinker 4 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-17.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-CleanArchitecture 2  &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-18.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-19.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Android-PullToRefresh 0 &lt;/li&gt;
+&lt;li&gt;MaterialDesignLibrary 1 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-20.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;处理措施：&lt;/p&gt;
+&lt;p&gt;我们是筛选容器就是 30个，统计日期：2017年04月27日（随着时间推移，可能略微有变动）。使用标签的有 18个，未使用的有12个。 使用概率大约是：60%。如果筛选容器的范围再大一点可能更多，没有使用徽章的12个项目，可能由于历史原因，或者个人原因未使用，但是不管怎么说，使用徽章的人会越来越多。&lt;/p&gt;
+&lt;h3 id=&quot;为什么要使用徽章？&quot;&gt;&lt;a href=&quot;#为什么要使用徽章？&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用徽章？&quot;&gt;&lt;/a&gt;为什么要使用徽章？&lt;/h3&gt;&lt;p&gt;徽章 &lt;a href=&quot;https://github.com/badges/shields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shields&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;徽章的使用不仅仅是为了装 B，而是为了让开源想更高效。进入项目主页一眼能看出需要的东西，例如该项目能否编译通过，当前最新的版本是什么等。&lt;/p&gt;
+&lt;p&gt;徽章能突出视野，github 默认给我们展示的是黑白世界，但是通过 徽章，将会得到改变。重要的信息可以一目了然。&lt;/p&gt;
+&lt;h3 id=&quot;最常用徽章有哪些？&quot;&gt;&lt;a href=&quot;#最常用徽章有哪些？&quot; class=&quot;headerlink&quot; title=&quot;最常用徽章有哪些？&quot;&gt;&lt;/a&gt;最常用徽章有哪些？&lt;/h3&gt;&lt;p&gt;一份不太靠谱的标准，不过你应该掌握:&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-21.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;（PS: 上图中的图标顺序对应下面的顺序）&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;try catch&lt;/li&gt;
-&lt;li&gt;targetSdkVersion &gt;= 23 参考：&lt;a href=&quot;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;尝试 自动创建文件 检测是否成功，并验证，如果失败，立即使用 app 的内置私有目录&lt;/li&gt;
+&lt;li&gt;jitpack 徽章：&lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JitPack&lt;/a&gt; 是一个仓库，类似 maven，binary, 主要是帮我们生产 android 项目的 aar or jar 的平台。基于 GitHub，可以很方便将 library 发布到远程，然后可以用 gradle 依赖到任何一个项目中。&lt;/li&gt;
+&lt;li&gt;travis-ci 徽章：&lt;a href=&quot;https://travis-ci.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Travis-CI&lt;/a&gt; 是一个线托管的CI服务，不需要自己搭服务器，在网页上点几下就好，用起来更方便。最重要的是，它对开源项目是免费的。&lt;/li&gt;
+&lt;li&gt;circle-ci 徽章：&lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Cricle-CI&lt;/a&gt; 是也一个线托管的CI服务，和上面相同，不过这个相对来说比较好用一些，可以 SSH 到测试容器，方便在出问题的时候上去调试找原因，界面相对好看一些。&lt;/li&gt;
+&lt;li&gt;codecov 徽章：&lt;a href=&quot;https://codecov.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Codecov&lt;/a&gt; 是开源的测试结果展示平台，将测试结果可视化。Github上许多开源项目都使用了Codecov来展示单测结果。&lt;/li&gt;
+&lt;li&gt;api level 徽章：&lt;a href=&quot;https://android-arsenal.com/api&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Api-Leavel&lt;/a&gt; 是 android-arsenal 网站提供的 android api 展示的徽章。可以在项目主页中直接使用 badge 的内容。 &lt;/li&gt;
+&lt;li&gt;codacy 徽章：编程代码自动审查服务平台。帮助开发者及时发现代码中的 bug，提升软件运行质量，主要包括代码质量、语法规范、功能可用性方面的检查。&lt;/li&gt;
+&lt;li&gt;个人专属 徽章：&lt;a href=&quot;https://shields.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shiedls&lt;/a&gt; 根据自己的需求可以定制很多样式的徽章，全凭个人 爱好，怎么开心怎么玩。&lt;/li&gt;
 &lt;/ol&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;问题复现&quot;&gt;&lt;a href=&quot;#问题复现&quot; class=&quot;headerlink&quot; title=&quot;问题复现&quot;&gt;&lt;/a&gt;问题复现&lt;/h3&gt;&lt;p&gt;在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
+      &lt;p&gt;我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-1.png
     
     </summary>
     
-      <category term="android" scheme="http://gdky005.com/categories/android/"/>
+      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
     
     
-      <category term="android" scheme="http://gdky005.com/tags/android/"/>
+      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
     
   </entry>
   
   <entry>
-    <title>如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion</title>
-    <link href="http://gdky005.com/2017/05/03/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9-compileSdkVersion-minSdkVersion-%E5%92%8C-targetSdkVersion/"/>
-    <id>http://gdky005.com/2017/05/03/如何选择-compileSdkVersion-minSdkVersion-和-targetSdkVersion/</id>
-    <published>2017-05-03T02:34:33.000Z</published>
-    <updated>2017-05-03T02:35:30.000Z</updated>
+    <title>徽章系列2：JitPack 的使用</title>
+    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://gdky005.com/2017/06/15/徽章系列2：JitPack-的使用/</id>
+    <published>2017-06-15T10:05:15.000Z</published>
+    <updated>2017-06-15T10:25:55.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;img src=&quot;https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androidversion.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;英文原文：&lt;a href=&quot;https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.tz5zzucma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Picking your compileSdkVersion, minSdkVersion, and targetSdkVersion&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;当你发布一个应用之后，(取决于具体的发布时间)可能没过几个月 Android 系统就发布了一个新版本。这对你的应用意味着什么，所有东西都不能用了？&lt;/p&gt;
-&lt;p&gt;别担心，&lt;strong&gt;向前兼容&lt;/strong&gt;是 Android 非常关注的事情。用户在升级到新版 Android 的时候，用以前版本的 SDK 构建的现有应用应该不会出问题。这就是 &lt;strong&gt;compileSdkVersion&lt;/strong&gt;, &lt;strong&gt;minSdkVersion&lt;/strong&gt; 和 &lt;strong&gt;targetSdkVersion&lt;/strong&gt; 的作用：他们分别控制可以使用哪些 API ，要求的 API 级别是什么，以及应用的兼容模式。&lt;/p&gt;
-&lt;h3 id=&quot;compileSdkVersion&quot;&gt;&lt;a href=&quot;#compileSdkVersion&quot; class=&quot;headerlink&quot; title=&quot;compileSdkVersion&quot;&gt;&lt;/a&gt;compileSdkVersion&lt;/h3&gt;&lt;p&gt;compileSdkVersion 告诉 Gradle 用哪个 Android SDK 版本编译你的应用。使用任何新添加的 API 就需要使用对应 Level 的 Android SDK。&lt;/p&gt;
-&lt;p&gt;需要强调的是&lt;strong&gt;修改 compileSdkVersion 不会改变运行时的行为&lt;/strong&gt;。当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。（你真的应该修复这些警告，他们的出现一定是有原因的）&lt;/p&gt;
-&lt;p&gt;因此我们强烈推荐&lt;strong&gt;总是使用最新的 SDK 进行编译&lt;/strong&gt;。在现有代码上使用新的编译检查可以获得很多好处，避免新弃用的 API ，并且为使用新的 API 做好准备。&lt;/p&gt;
-&lt;p&gt;注意，如果使用 &lt;a href=&quot;http://developer.android.com/tools/support-library/index.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Support Library&lt;/a&gt;，那么使用最新发布的 Support Library 就需要使用最新的 SDK 编译。例如，要使用 23.1.1 版本的 Support Library ，compileSdkVersion 就必需至少是 23 （大版本号要一致！）。通常，新版的 Support Library 随着新的系统版本而发布，它为系统新增加的 API 和新特性提供兼容性支持。&lt;/p&gt;
-&lt;h3 id=&quot;minSdkVersion&quot;&gt;&lt;a href=&quot;#minSdkVersion&quot; class=&quot;headerlink&quot; title=&quot;minSdkVersion&quot;&gt;&lt;/a&gt;minSdkVersion&lt;/h3&gt;&lt;p&gt;如果 compileSdkVersion 设置为可用的最新 API，那么 &lt;strong&gt;minSdkVersion 则是应用可以运行的最低要求&lt;/strong&gt;。minSdkVersion 是 Google Play 商店用来判断用户设备是否可以安装某个应用的标志之一。&lt;/p&gt;
-&lt;p&gt;在开发时 minSdkVersion 也起到一个重要角色：&lt;a href=&quot;http://developer.android.com/tools/debugging/improving-w-lint.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lint&lt;/a&gt; 默认会在项目中运行，它在你使用了高于 minSdkVersion  的 API 时会警告你，帮你避免调用不存在的 API 的运行时问题。如果只在较高版本的系统上才使用某些 API，通常使用&lt;a href=&quot;http://developer.android.com/training/basics/supporting-devices/platforms.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#version-codes&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;运行时检查系统版本&lt;/a&gt;的方式解决。&lt;/p&gt;
-&lt;p&gt;请记住，你所使用的库，如 &lt;a href=&quot;http://developer.android.com/tools/support-library/features.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Support Library&lt;/a&gt; 或 &lt;a href=&quot;https://developers.google.com/android/guides/overview?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google Play services&lt;/a&gt;，可能有他们自己的 minSdkVersion 。你的应用设置的 minSdkVersion 必需大于等于这些库的 minSdkVersion 。例如有三个库，它们的 minSdkVersion 分别是 4, 7 和 9 ，那么你的 minSdkVersion  必需至少是 9 才能使用它们。在少数情况下，你仍然想用一个比你应用的 minSdkVersion 还高的库（处理所有的边缘情况，确保它只在较新的平台上使用），你可以使用 &lt;a href=&quot;http://tools.android.com/tech-docs/new-build-system/user-guide/manifest-merger?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#TOC-tools:overrideLibrary-marker&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tools:overrideLibrary&lt;/a&gt; 标记，但请做彻底的测试！&lt;/p&gt;
-&lt;p&gt;当你决定使用什么 minSdkVersion 时候，你应该&lt;strong&gt;参考当前的 &lt;a href=&quot;http://developer.android.com/about/dashboards/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android 分布统计&lt;/a&gt;&lt;/strong&gt;，它显示了最近 7 天所有访问 Google Play 的设备信息。他们就是你把应用发布到 Google Play 时的潜在用户。最终这是一个商业决策问题，取决于为了支持额外 3% 的设备，确保最佳体验而付出的开发和测试成本是否值得。&lt;/p&gt;
-&lt;p&gt;当然，如果某个新的 API 是你整个应用的关键，那么确定 minSdkVersion 的值就比较容易了。不过要记得 14 亿设备中的 0.7％ 也是个不小的数字。&lt;/p&gt;
-&lt;h3 id=&quot;targetSdkVersion&quot;&gt;&lt;a href=&quot;#targetSdkVersion&quot; class=&quot;headerlink&quot; title=&quot;targetSdkVersion&quot;&gt;&lt;/a&gt;targetSdkVersion&lt;/h3&gt;&lt;p&gt;三个版本号中最有趣的就是 targetSdkVersion 了。 &lt;strong&gt;targetSdkVersion 是 Android 提供向前兼容的主要依据&lt;/strong&gt;，在应用的 targetSdkVersion 没有更新之前系统不会应用最新的行为变化。这允许你在适应新的行为变化之前就可以使用新的 API （因为你已经更新了 compileSdkVersion 不是吗？）。&lt;/p&gt;
-&lt;p&gt;targetSdkVersion 所暗示的许多行为变化都记录在 &lt;a href=&quot;http://developer.android.com/reference/android/os/Build.VERSION_CODES.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;VERSION_CODES&lt;/a&gt; 文档中了，但是所有恐怖的细节也都列在每次发布的平台亮点中了，在这个 &lt;a href=&quot;http://developer.android.com/guide/topics/manifest/uses-sdk-element.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#ApiLevels&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;API Level&lt;/a&gt; 表中可以方便地找到相应的链接。&lt;/p&gt;
-&lt;p&gt;例如，&lt;a href=&quot;http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android 6.0 变化文档&lt;/a&gt;中谈了 target 为 API 23 时会如何把你的应用转换到&lt;a href=&quot;http://android-developers.blogspot.com/2015/08/building-better-apps-with-runtime.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;运行时权限模型&lt;/a&gt;上，&lt;a href=&quot;http://developer.android.com/about/versions/android-4.4.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#Behaviors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android 4.4 行为&lt;/a&gt;变化阐述了 target 为 API 19 及以上时使用 &lt;a href=&quot;http://developer.android.com/reference/android/app/AlarmManager.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#set%28int,%20long,%20android.app.PendingIntent%29&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;set()&lt;/a&gt; 和 &lt;a href=&quot;http://developer.android.com/reference/android/app/AlarmManager.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#setRepeating%28int,%20long,%20long,%20android.app.PendingIntent%29&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;setRepeating()&lt;/a&gt; 设置 alarm 会有怎样的行为变化。&lt;/p&gt;
-&lt;p&gt;由于某些行为的变化对用户是非常明显的（&lt;a href=&quot;http://android-developers.blogspot.com/2012/01/say-goodbye-to-menu-button.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;弃用的 menu 按钮&lt;/a&gt;，运行时权限等），所以&lt;strong&gt;将 target 更新为最新的 SDK 是所有应用都应该优先处理的事情&lt;/strong&gt;。但这不意味着你一定要使用所有新引入的功能，也不意味着你可以不做任何测试就盲目地更新 targetSdkVersion ，&lt;a href=&quot;http://android-developers.blogspot.com/2012/01/say-goodbye-to-menu-button.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;请一定在更新 targetSdkVersion 之前做测试！&lt;/a&gt;你的用户会感谢你的。&lt;/p&gt;
-&lt;h3 id=&quot;Gradle-和-SDK-版本&quot;&gt;&lt;a href=&quot;#Gradle-和-SDK-版本&quot; class=&quot;headerlink&quot; title=&quot;Gradle 和 SDK 版本&quot;&gt;&lt;/a&gt;Gradle 和 SDK 版本&lt;/h3&gt;&lt;p&gt;所以设置正确的 compileSdkVersion, minSdkVersion 和 targetSdkVersion 很重要。如你所想， &lt;a href=&quot;http://developer.android.com/tools/building/plugin-for-gradle.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gradle&lt;/a&gt; 和 &lt;a href=&quot;http://developer.android.com/tools/studio/index.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Studio&lt;/a&gt; 都在构建系统中集成了它们。在你的模块的 build.gradle 文件中（也可以在 Android Studio 的项目结构选项中）设置：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;android {
-  compileSdkVersion 23
-  buildToolsVersion &amp;quot;23.0.1&amp;quot;
+    <content type="html">&lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Android-Library&quot; class=&quot;headerlink&quot; title=&quot;创建 Android Library&quot;&gt;&lt;/a&gt;创建 Android Library&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;在 AS 中创建标准的 android 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-22.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;创建 Library：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-23.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-24.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-25.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;创建 badge library 成功。&lt;h3 id=&quot;配置相关文件&quot;&gt;&lt;a href=&quot;#配置相关文件&quot; class=&quot;headerlink&quot; title=&quot;配置相关文件&quot;&gt;&lt;/a&gt;配置相关文件&lt;/h3&gt;进入 &lt;a href=&quot;https://jitpack.io/docs/ANDROID/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jitpack android&lt;/a&gt; 可以看到 jitpack 为我们提供的文档帮助。  &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-26.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;在项目的根目录下的 build.gradle 文件中添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-27.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;在 library 下的 build.gradle 中添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-28.png&quot; alt=&quot;&quot;&gt; ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;classpath &amp;apos;com.github.dcendents:android-maven-gradle-plugin:1.5&amp;apos; // Add this line
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 badge (library) :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apply plugin: &amp;apos;com.github.dcendents.android-maven&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;a href=&quot;#发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot; class=&quot;headerlink&quot; title=&quot;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;/a&gt;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;点击 大绿色 按钮，并填写信息：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png&quot; alt=&quot;&quot;&gt;。 那个协议，你们随意，这里只是演示。&lt;/li&gt;
+&lt;li&gt;创建成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png&quot; alt=&quot;&quot;&gt;，拷贝当前项目地址。&lt;/li&gt;
+&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
+&lt;li&gt;现在我们给 library 的 badge 项目添加一个工具类：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png&quot; alt=&quot;&quot;&gt;， 并提交到 github。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;Github-打-release-or-tag&quot;&gt;&lt;a href=&quot;#Github-打-release-or-tag&quot; class=&quot;headerlink&quot; title=&quot;Github 打 release or tag&quot;&gt;&lt;/a&gt;Github 打 release or tag&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建第一个 release 分支：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;发布成功以后就能看到: &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;一般用 release 就可以了， 在适当的时候 用  tag。&lt;/p&gt;
+&lt;h3 id=&quot;在-JitPack-上生成-aar&quot;&gt;&lt;a href=&quot;#在-JitPack-上生成-aar&quot; class=&quot;headerlink&quot; title=&quot;在 JitPack 上生成 aar&quot;&gt;&lt;/a&gt;在 JitPack 上生成 aar&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;进入 &lt;a href=&quot;https://jitpack.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io/&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;将 github 的项目地址： &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;， 直接拷贝 到 jitpack 网页中的文本框中。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-40.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;点击 Look Up 后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-41.png&quot; alt=&quot;&quot;&gt;， 等里面的那个圈圈 转完 以后，出现 绿色的这个：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-42.png&quot; alt=&quot;&quot;&gt; 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-43.png&quot; alt=&quot;&quot;&gt; &lt;/li&gt;
+&lt;li&gt;如果是红色的，说明有错误，点开查看，修改后重新构建。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;在-app-Demo-中测试是否生效&quot;&gt;&lt;a href=&quot;#在-app-Demo-中测试是否生效&quot; class=&quot;headerlink&quot; title=&quot;在 app Demo 中测试是否生效&quot;&gt;&lt;/a&gt;在 app Demo 中测试是否生效&lt;/h3&gt;&lt;p&gt;点击 get 后，能看到： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-44.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;给项目根目录下的 build.gradle 添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-45.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;给app 项目里面的 build.gradle 添加：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-46.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;maven { url &amp;apos;https://jitpack.io&amp;apos; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 app 的 build.gradle :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compile &amp;apos;com.github.gdky005:AndroidBadge:v1.0.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-47.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;在项目的最底下也能看到： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-48.png&quot; alt=&quot;&quot;&gt;。 运行 app 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-49.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;问题来了，我们修改library-后也能调用到吗？&quot;&gt;&lt;a href=&quot;#问题来了，我们修改library-后也能调用到吗？&quot; class=&quot;headerlink&quot; title=&quot;问题来了，我们修改library 后也能调用到吗？&quot;&gt;&lt;/a&gt;问题来了，我们修改library 后也能调用到吗？&lt;/h3&gt;&lt;p&gt;让咱们一起试试吧：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 badge 项目中的 1.0.0 为  1.0.1 ： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-50.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-51.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-52.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-53.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;然后再去 jitpack 上看看：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-54.png&quot; alt=&quot;&quot;&gt; 多了一个 v1.0.1, 点击 get 吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-55.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-56.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-57.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;发布成功后，我们去 app 里面试试。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-58.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;同步后，直接运行 app。非常好，我们的修改的东西已经变了：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-59.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;至此， jitpack 基本也差不多了，但是貌似缺少了最重要的一点吧。&lt;/p&gt;
+&lt;h3 id=&quot;jitpack-的徽章怎么弄&quot;&gt;&lt;a href=&quot;#jitpack-的徽章怎么弄&quot; class=&quot;headerlink&quot; title=&quot;jitpack 的徽章怎么弄&quot;&gt;&lt;/a&gt;jitpack 的徽章怎么弄&lt;/h3&gt;&lt;p&gt;还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-60.png&quot; alt=&quot;&quot;&gt; 点击后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-61.png&quot; alt=&quot;&quot;&gt; 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拷贝内容：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-62.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;打开 github 的 AndroidBridge 项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-63.png&quot; alt=&quot;&quot;&gt;，点击该文件。&lt;/li&gt;
+&lt;li&gt;让我们在线编辑下： &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-64.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;给 github 中的 这个 readme.md 文件添加点东西吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-65.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;让我们 保存下。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-66.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;然后回到项目&lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;首页&lt;/a&gt;看看：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-67.png&quot; alt=&quot;&quot;&gt; 棒棒的，添加成功。&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Andro
+    
+    </summary>
+    
+      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
+    
+    
+      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>徽章系列3： Travis CI 的使用</title>
+    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://gdky005.com/2017/06/15/徽章系列3：-Travis-CI-的使用/</id>
+    <published>2017-06-15T10:04:35.000Z</published>
+    <updated>2017-06-15T10:26:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;官网： &lt;a href=&quot;http://travis-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://travis-ci.org/&lt;/a&gt;&lt;br&gt;ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。&lt;br&gt;需要提醒的是：每次提交代码后都会重新下载需要的资源文件哦，所以时间很长，耐心等待吧。&lt;/p&gt;
+&lt;h3 id=&quot;TravisCI-有什么用？&quot;&gt;&lt;a href=&quot;#TravisCI-有什么用？&quot; class=&quot;headerlink&quot; title=&quot;TravisCI 有什么用？&quot;&gt;&lt;/a&gt;TravisCI 有什么用？&lt;/h3&gt;&lt;p&gt;travis-ci 就是 自动化 CI 工具，类似于大公司经常使用的 Jenkins，但是 travis-ci 是在云端的，而是支持 github, 还免费，我们可以 用 travis-ci 做很多的事情，不仅仅是 编译看 项目有没有问题。例如在项目构建结束以后，我们可以打包，并发布 apk 到都 蒲公英， fir，也可以用邮件通知给相关的开发人员和业务任务。 做一些简单处理，轻轻松松。这部分内容到后面尽快整理，在写一篇。&lt;/p&gt;
+&lt;h3 id=&quot;添加-github-项目到-travis-ci&quot;&gt;&lt;a href=&quot;#添加-github-项目到-travis-ci&quot; class=&quot;headerlink&quot; title=&quot;添加 github 项目到 travis-ci&quot;&gt;&lt;/a&gt;添加 github 项目到 travis-ci&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;进入 Travis 官网后，使用 GitHub 账号 登录，成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-68.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;点击 加号 ，能看到你 GitHub 里面的所有：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-69.png&quot; alt=&quot;&quot;&gt;， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。&lt;/li&gt;
+&lt;li&gt;点击这里：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-70.png&quot; alt=&quot;&quot;&gt;，开启 Travis 构建。点击这个可以配置该项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-71.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;默认是空的：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-72.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;在-项目中添加-travis-ci-需要的-travis-yml-文件&quot;&gt;&lt;a href=&quot;#在-项目中添加-travis-ci-需要的-travis-yml-文件&quot; class=&quot;headerlink&quot; title=&quot;在 项目中添加 travis-ci 需要的 .travis.yml 文件&quot;&gt;&lt;/a&gt;在 项目中添加 travis-ci 需要的 .travis.yml 文件&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;在项目根目录下直接创建 一个 .travis.yml 的文件。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-73.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;直接在文件里面添加代码：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-74.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;.travis.yml 文件 源代码&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;language: android
+jdk: oraclejdk8
+sudo: false
 
-  defaultConfig {
-    applicationId &amp;quot;com.example.checkyourtargetsdk&amp;quot;
-    minSdkVersion 7
-    targetSdkVersion 23
-    versionCode 1
-    versionName “1.0”
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编译时用到的 compileSdkVersion 是和构建工具版本一起设置的 Android 设置之一。其他两个稍有不同，他们在构建变体(&lt;a href=&quot;http://developer.android.com/tools/building/plugin-for-gradle.html?utm_campaign=adp_series_sdkversion_010616&amp;amp;utm_source=medium&amp;amp;utm_medium=blog#buildVariants&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;build variant&lt;/a&gt;)的那里声明。defaultConfig 是所有构建变体的基础，也是设置这些默认值的地方。你可以想象在一个更复杂的系统中，应用的某些版本可能会有不同的 minSdkVersion 。&lt;/p&gt;
-&lt;p&gt;minSdkVersion 和 targetSdkVersion 与 compileSdkVersion 的另一个不同之处是它们会被包含进最终的 APK 文件中，如果你查看生成的 AndroidManifest.xml 文件，你会看到类似下面这样的标签：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;uses-sdk android:targetSdkVersion=&amp;quot;23&amp;quot; android:minSdkVersion=&amp;quot;7&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果你在 manifest 文件中手工设置，你会发现 Gradle 在构建时会忽略它们（尽管其它构建系统可能会明确依赖它们）。&lt;/p&gt;
-&lt;h3 id=&quot;综合来看&quot;&gt;&lt;a href=&quot;#综合来看&quot; class=&quot;headerlink&quot; title=&quot;综合来看&quot;&gt;&lt;/a&gt;综合来看&lt;/h3&gt;&lt;p&gt;如果你按照上面示例那样配置，你会发现这三个值的关系是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;minSdkVersion &amp;lt;= targetSdkVersion &amp;lt;= compileSdkVersion
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种直觉是合理的，如果 compileSdkVersion 是你的最大值，minSdkVersion 是最小值，那么最大值必需至少和最小值一样大且 target 必需在二者之间。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;理想上&lt;/strong&gt;，在稳定状态下三者的关系应该更像这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;minSdkVersion (lowest possible) &amp;lt;= 
-            targetSdkVersion == compileSdkVersion (latest SDK)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用较低的 minSdkVersion 来覆盖最大的人群，用最新的 SDK 设置 target 和 compile 来获得最好的外观和行为。#BuildBetterApps&lt;/p&gt;
-&lt;h3 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h3&gt;&lt;p&gt;译者注： Android Development Patterns 系列视频见 YouTube 或 优酷 。&lt;br&gt;来自： &lt;a href=&quot;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androiddeveloperpatterns-1024x317.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+android:
+  components:
+    - tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-android-m2repository
+    - extra-android-support
+  licenses:
+      - android-sdk-license-.+
+      - &amp;apos;.+&amp;apos;
+
+before_install:
+  - chmod +x gradlew
+  - mkdir &amp;quot;$ANDROID_HOME/licenses&amp;quot; || true
+  - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+  - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+
+script:
+  - ./gradlew assembleRelease
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为该文很长很长，所以暂时就不解释具体含义了，可以看看官方文档。&lt;/p&gt;
+&lt;h3 id=&quot;push-项目到-github-travis-ci-自动监测构建&quot;&gt;&lt;a href=&quot;#push-项目到-github-travis-ci-自动监测构建&quot; class=&quot;headerlink&quot; title=&quot;push 项目到 github, travis-ci 自动监测构建&quot;&gt;&lt;/a&gt;push 项目到 github, travis-ci 自动监测构建&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-75.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;下面黑色部分是构建的过程：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-76.png&quot; alt=&quot;&quot;&gt;，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-77.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-78.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;回到首页刷新后，能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-79.png&quot; alt=&quot;&quot;&gt; 说明我们已经构建成功了。&lt;/p&gt;
+&lt;h3 id=&quot;travis-yml-需要注意的地方&quot;&gt;&lt;a href=&quot;#travis-yml-需要注意的地方&quot; class=&quot;headerlink&quot; title=&quot;.travis.yml 需要注意的地方&quot;&gt;&lt;/a&gt;.travis.yml 需要注意的地方&lt;/h3&gt;&lt;p&gt;初次使用  Travis 的试试，总遇到 说 android 的一些协议未接受而构建失败，导致耗费了一两天，曾经一度想放弃，但是最终坚持了下来，通过各种搜索，摸索，猜测，终于搞定。其实最初的项目是这个：&lt;a href=&quot;https://github.com/gdky005/TestJitpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/TestJitpack&lt;/a&gt; ，里面有很多辛酸史记录，从提交记录能看得出来，有兴趣的可以研究研究，也许能解决你现在的问题。&lt;/p&gt;
+&lt;p&gt;Travis CI 协议问题解决方法：&lt;a href=&quot;http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最重要部分在这里：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;machine:
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - mkdir -p &amp;quot;$ANDROID_HOME/licenses&amp;quot;
+    - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+    - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;添加-travis-ci-徽章到-github&quot;&gt;&lt;a href=&quot;#添加-travis-ci-徽章到-github&quot; class=&quot;headerlink&quot; title=&quot;添加 travis-ci 徽章到 github&quot;&gt;&lt;/a&gt;添加 travis-ci 徽章到 github&lt;/h3&gt;&lt;p&gt;激动的时刻再次到来，让我们找找徽章在哪里呢？&lt;br&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-80.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;让我们来选择 markdonw 格式：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-81.png&quot; alt=&quot;&quot;&gt; 并复制上。&lt;/p&gt;
+&lt;p&gt;同样如上修改 readme.md。 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-82.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;加空格后，直接贴上去：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-83.png&quot; alt=&quot;&quot;&gt;，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。&lt;/p&gt;
+&lt;p&gt;回到项目首页以后就能发现：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-84.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;添加 Travis 徽章成功。&lt;/p&gt;
+&lt;p&gt;Bye the way! 上面是最初级的构建过程，如果遇到单元测试就不行了，还得参考 我的开源项目 &lt;a href=&quot;https://github.com/gdky005/TestJitpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TestJitpack&lt;/a&gt;。 不过有点乱，后面整理下。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androidversion.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;英文原文：&lt;a href=&quot;https://medium.com/goog
+      &lt;p&gt;官网： &lt;a href=&quot;http://travis-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://travis-ci.org/&lt;/a&gt;&lt;br&gt;ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。&lt;br&gt;需要提醒
     
     </summary>
     
-      <category term="android" scheme="http://gdky005.com/categories/android/"/>
+      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
     
     
-      <category term="android" scheme="http://gdky005.com/tags/android/"/>
+      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
     
   </entry>
   
   <entry>
-    <title>怎么关闭小米锁屏音乐？最终解决方案以及原理分析</title>
-    <link href="http://gdky005.com/2017/03/31/%E6%80%8E%E4%B9%88%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E9%94%81%E5%B1%8F%E9%9F%B3%E4%B9%90%EF%BC%9F%E6%9C%80%E7%BB%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
-    <id>http://gdky005.com/2017/03/31/怎么关闭小米锁屏音乐？最终解决方案以及原理分析/</id>
-    <published>2017-03-31T03:29:48.000Z</published>
-    <updated>2017-03-31T03:30:41.000Z</updated>
+    <title>徽章系列4： Circle CI 的使用</title>
+    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/</id>
+    <published>2017-06-15T10:03:52.000Z</published>
+    <updated>2017-06-15T10:26:09.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;a href=&quot;#相关图片我就不贴了，参考下面遇到的这些问题：&quot; class=&quot;headerlink&quot; title=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;/a&gt;相关图片我就不贴了，参考下面遇到的这些问题：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.miui.com/thread-4005188-2-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/thread-4005188-2-1.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=2617209&amp;amp;mobile=1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=2617209&amp;amp;mobile=1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=3960406&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/forum.php?mod=viewthread&amp;amp;tid=3960406&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.miui.com/thread-2592275-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.miui.com/thread-2592275-1-1.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;『启动最近任务，把音乐类的APP给关掉。』&lt;/p&gt;
-&lt;h3 id=&quot;我这里有一个实际的场景，大家可以参考下：&quot;&gt;&lt;a href=&quot;#我这里有一个实际的场景，大家可以参考下：&quot; class=&quot;headerlink&quot; title=&quot;我这里有一个实际的场景，大家可以参考下：&quot;&gt;&lt;/a&gt;我这里有一个实际的场景，大家可以参考下：&lt;/h3&gt;&lt;p&gt;我的小米53G 内存版本手机 之前启动的时候手机可用内存基本都1G 左右，清理完内存后是1.3G。但是最近清理后总发现是1G 左右，内存平时都是800-900MB，也没太在意。&lt;/p&gt;
-&lt;p&gt;最近发现每次锁屏后总是显示小米音乐锁屏界面，可难看了，用着很是别扭，之前还有 小米锁屏画报展示的，但是这几天总是显示这个音乐锁屏界面。感觉很不爽，越是网上各种搜索，结果大家还都是没什么好版本，所以也提供了一些，但是针对某些场景，不适用于我此刻的情况。&lt;br&gt;先罗列下基本的解决办法吧：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;如果你当前在使用音乐软件听歌，这个肯定是去不掉的，因为音乐软件针对小米系统做了专门的功能，小米应用市场上线有这个要求哦。&lt;/li&gt;
-&lt;li&gt;重启手机后 就没有了。&lt;/li&gt;
-&lt;li&gt;刚在听歌，但是已经不听歌了，把这个 app 从 最近的任务 管理中杀掉即可。&lt;/li&gt;
+    <content type="html">&lt;p&gt; 官网: &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot;&gt;&lt;a href=&quot;#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot; class=&quot;headerlink&quot; title=&quot;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&quot;&gt;&lt;/a&gt;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&lt;/h3&gt;&lt;p&gt;Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-85.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。&lt;/p&gt;
+&lt;p&gt;Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。&lt;/p&gt;
+&lt;p&gt;说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。&lt;/p&gt;
+&lt;h3 id=&quot;添加项目到-Circle-CI&quot;&gt;&lt;a href=&quot;#添加项目到-Circle-CI&quot; class=&quot;headerlink&quot; title=&quot;添加项目到 Circle CI&quot;&gt;&lt;/a&gt;添加项目到 Circle CI&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;登录主页面：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-86.png&quot; alt=&quot;&quot;&gt;， 在 project 里面自己的账号下搜索刚创建的项目。&lt;/li&gt;
+&lt;li&gt;一般直接选择 Ubuntu 即可:&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-87.png&quot; alt=&quot;&quot;&gt;,点击绿色  Build project.&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-88.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-89.png&quot; alt=&quot;&quot;&gt;， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;基本就这几种情况。但是我目前和大多数人一样，遇到了一种极其奇葩的问题，那就是我明明没有听歌，最近任务里面也没有音乐软件，清理内存后 还是 显示音乐锁屏界面啊。 即使我重新启动机器也不行，这就奇了怪了。之前锁屏的时候有 小米锁屏画报，还能展示各种图片，看着赏心悦目，但是现在那个东东都不出来了，什么情况呢？&lt;/p&gt;
-&lt;h3 id=&quot;下面我用-一个-程序员-的角度去分析这种情况。&quot;&gt;&lt;a href=&quot;#下面我用-一个-程序员-的角度去分析这种情况。&quot; class=&quot;headerlink&quot; title=&quot;下面我用 一个 程序员 的角度去分析这种情况。&quot;&gt;&lt;/a&gt;下面我用 一个 程序员 的角度去分析这种情况。&lt;/h3&gt;&lt;p&gt;首先呢，我记得我们之前开发 音乐类 app 的时候，上线小米应用商店，不给通过，说必须加小米锁屏。然后我们就加上了，默认情况下，当用户锁屏后再启动会有自己的锁屏界面，但是有时候小米为了一些性能方面的考虑不让显示，需要直接显示他们的小米锁屏音乐界面。因此基本上市场上的音乐类软件都有小米锁屏界面的 sdk 哦。因为每个软件都有锁屏的 sdk, 所以当听音乐的时候，就会触发这个。你锁屏后再次解锁，就能看到这个了，这是大前提。&lt;/p&gt;
-&lt;h3 id=&quot;下面开始重点来了。&quot;&gt;&lt;a href=&quot;#下面开始重点来了。&quot; class=&quot;headerlink&quot; title=&quot;下面开始重点来了。&quot;&gt;&lt;/a&gt;下面开始重点来了。&lt;/h3&gt;&lt;p&gt;现在没有运行音乐软件，但是还是出现了这个，这是怎么回事呢？ 去最近的任务管理也看到不？这个锁屏 SDK 的界面为什么出来了？&lt;br&gt;我在搜索相关资料的时候，一个人的回答提醒了我：『启动最近任务，把音乐类的APP给关掉。』&lt;/p&gt;
-&lt;p&gt;我的任务管理中没有啊，突然意识到可能是之前在任务管理中把某些音乐类软件的进程锁定。才造成这种情况，那么我就是试试把手机上所以的音乐类软件打开，其实也就那么几个，网易音乐，酷我，企鹅 FM。然后惊奇的发现，果然如我所料，企鹅 FM 在任务管理中 的小图标上有一个锁。这次我把这个小锁上滑去掉后，再次清理内存就发现，内存一下子就剩 1.3GB 了。 锁屏，解锁，终于出现了小米锁屏画报，这是太好了，这个问题就这样解决了。关键问题还是在这里：音乐类 app 被锁定后，清理内存的时候，会把这个任务干掉，但是由于被锁定了，其实还在内存中。只是在图标上看不到而已，如果手机被 root了，可以用其他的软件清理内存，就可以了。这里还需要注意一点，虽然手机被重启了，但是由于 app 是锁定的状态，所以还是会被启动，app 一启动，就能看得见那个 小米锁屏界面。但是你在任务管理中却看不见，这也是 小米系统的一个 bug 吧。目前这样解决即可。&lt;/p&gt;
-&lt;p&gt;如果还有疑问，或者不懂的地方，加 weixin: gdky005, 备注锁屏即可。&lt;/p&gt;
+&lt;h3 id=&quot;在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot;&gt;&lt;a href=&quot;#在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot; class=&quot;headerlink&quot; title=&quot;在 项目中添加 Circle CI 需要的 circle.yml 文件&quot;&gt;&lt;/a&gt;在 项目中添加 Circle CI 需要的 circle.yml 文件&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;在项目的根目录下 添加 circle.yml 文件；&lt;/li&gt;
+&lt;li&gt;添加 circle 的代码到文件中：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-90.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;circle.yml 源代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;machine:
+  java:
+      version: oraclejdk8
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - mkdir -p &amp;quot;$ANDROID_HOME/licenses&amp;quot;
+    - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
+    - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
+
+
+  override:
+    - echo y | android update sdk --no-ui --filter &amp;quot;android-25&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;build-tools-25.0.2&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-m2repository&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-support&amp;quot;
+    - echo y | android update sdk --no-ui --filter &amp;quot;extra-google-m2repositor&amp;quot;
+    - ./gradlew dependencies || true
+
+test:
+  override:
+    - ./gradlew build
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;push-项目到-github-Circle-CI-自动监测构建&quot;&gt;&lt;a href=&quot;#push-项目到-github-Circle-CI-自动监测构建&quot; class=&quot;headerlink&quot; title=&quot;push 项目到 github, Circle CI 自动监测构建&quot;&gt;&lt;/a&gt;push 项目到 github, Circle CI 自动监测构建&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;提交代码后，发布到 github，Circle CI 会自动执行。&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-91.png&quot; alt=&quot;&quot;&gt; 点击进来后，会看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-92.png&quot; alt=&quot;&quot;&gt;， 说明已经开始 构建了， 下载需要的东西：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-93.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
+&lt;li&gt;构建中的一些步骤：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-94.png&quot; alt=&quot;&quot;&gt;， 相对 Travis 来说展示更直观。&lt;/li&gt;
+&lt;li&gt;看到 &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-95.png&quot; alt=&quot;&quot;&gt; 说明构建成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;添加-Circle-CI-徽章到-github&quot;&gt;&lt;a href=&quot;#添加-Circle-CI-徽章到-github&quot; class=&quot;headerlink&quot; title=&quot;添加 Circle CI 徽章到 github&quot;&gt;&lt;/a&gt;添加 Circle CI 徽章到 github&lt;/h3&gt;&lt;p&gt;我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-96.png&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-97.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-98.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;回项目主页刷新后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-99.png&quot; alt=&quot;&quot;&gt; 非常 happy, 已经添加成功了。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;a href=&quot;#相关图片我就不贴了，参考下面遇到的这些问题：&quot; class=&quot;headerlink&quot; title=&quot;相关图片我就不贴了，参考下面遇到的这些问题：&quot;&gt;&lt;/a&gt;相关图片我就不贴了，参考下面遇到的这些问
+      &lt;p&gt; 官网: &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Circle-CI-和-Travis-CI-有什么区别？需要一
     
     </summary>
     
+      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
     
-      <category term="原理" scheme="http://gdky005.com/tags/%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
     
   </entry>
   
