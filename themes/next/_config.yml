@@ -47,6 +47,7 @@ menu:
   home: /
   zhuoketeam: /categories/ZhuoKeTeam
   # categories: /categories
+  shields: /categories/shields
   archives: /archives
   about: /about
   # tags: /tags
@@ -68,6 +69,7 @@ menu_icons:
   tags: tags
   archives: archive
   commonweal: heartbeat
+  shields: shield
 
 
 
@@ -235,8 +237,8 @@ excerpt_description: true
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
-  length: 150
+  enable: true
+  length: 300
 
 # Post meta display settings
 post_meta:
