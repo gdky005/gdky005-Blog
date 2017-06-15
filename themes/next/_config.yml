@@ -348,14 +348,17 @@ changyan:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
-##  type: button
+# baidushare: true
+    # type: button
 
 # Share
-#jiathis:
-# Warning: JiaThis does not support https.
-#add_this_id:
+jiathis: true
+# # Warning: JiaThis does not support https.
+add_this_id: 2059573
 
+#Share
+sharesdk: false
+shareSDKappkey: 1eb8aa8a30e62
 
 
 # Share
