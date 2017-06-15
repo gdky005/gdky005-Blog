@@ -5,12 +5,22 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="PYy4juDrbG" />
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -27,7 +37,12 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -59,9 +74,11 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
@@ -75,7 +92,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -94,34 +111,40 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"right","display":"always"},
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
-<script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-  <title> 孤独狂饮 </title>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+  <link rel="canonical" href="http://gdky005.com/page/4/"/>
+
+
+
+
+
+  <title>孤独狂饮 - 只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</title>
   
+
+
 
 
 
@@ -129,7 +152,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      hm.src = "https://hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -142,36 +165,46 @@
 
 
 
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-right 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta custom-logo">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">孤独狂饮</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孤独狂饮</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</h1>
+      
   </div>
-  <p class="site-subtitle">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -184,7 +217,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,9 +227,9 @@
         <li class="menu-item menu-item-zhuoketeam">
           <a href="/categories/ZhuoKeTeam" rel="section">
             
-              <i class="menu-item-icon fa fa-android fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-android"></i> <br />
             
-            卓客Team
+            menu.zhuoketeam
           </a>
         </li>
       
@@ -204,7 +237,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -214,7 +247,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -222,34 +255,13 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -264,41 +276,63 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/" itemprop="url">
-                  Android录音使用 byte 类型获取分贝或声音振幅
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/" itemprop="url">Android录音使用 byte 类型获取分贝或声音振幅</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-08T18:10:20+08:00" content="2015-10-08">
-              2015-10-08
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-08T18:10:20+08:00">
+                2015-10-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -306,26 +340,63 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/" class="cy_cmt_count" data-xid="2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -333,22 +404,88 @@
       
         
           
-          以下是获取声音振幅的代码：
-try {
+            <p>以下是获取声音振幅的代码：</p>
+<pre><code>try {
         while (isRecording) {
             read = audioRecord.read(data, 0, recBufSize);
-//                L.i(context, &quot;开始获取音
-          ...
+//                L.i(context, &quot;开始获取音频TTT：&quot; + data.length);
+            if (AudioRecord.ERROR_INVALID_OPERATION != read &amp;&amp; retry &lt;= 3) {
+//                    L.i(context, &quot;发出的音频TTT：&quot; + data.length);
+                //录音成功，重置录音失败的次数
+                retry = 0;
+                int up = kaoLaRecordCore.upload(data, data.length); //TODO  算长度
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/08/Android录音使用-byte-类型获取分贝或声音振幅/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+                long v = 0;
+                long tv = 0;
+                // 将 data 内容取出，进行平方和运算
+                for (int i = 0; i &lt; data.length; i+=2) {
+                    tv = data[i+1] * 128 + data[i];
+                    tv *= tv;
+                    v += tv;
+                }
+                // 平方和除以数据总长度，得到音量大小。
+                double mean = v / (double) read;
+                double volume = 10 * Math.log10(mean * 2);
+                KL.d(AudioThread.class, &quot;分贝值:&quot; + volume);
+
+                EventBus.getDefault().post((int)volume, ChatManager.TAG_VOICE_DB);
+
+                KL.d(AudioThread.class, &quot;分贝值: {}，v = {}， read  = {}， mean = {}  &quot;, volume, v,
+                        read, mean);
+
+//                    L.i(context, &quot;上传录音状态TTT：&quot; + up);
+//                    if (isTest) {
+//                        try {
+//                            os.write(data);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+            } else {
+                L.i(AudioThread.class, &quot;TTT录音权限可能有问题，暂时不能录音: read={}, retry:{}&quot;, read, retry);
+                if (retry &lt;= 3) {
+                    retry++;
+                } else {
+                    isRecording = false;
+                    EventBus.getDefault().post(context.getString(R.string.podcast_record_permission), TAG_MIC_FORBID_STATE);
+                    break;
+                }
+
+            }
+//                L.i(context, &quot;上次音频TTT：&quot; + data.length);
+
+            Thread.sleep(10);
+
+            if (isRecording())
+                pauseThread();
+        }
+
+//            if (isTest) {
+//                try {
+//                    os.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        L.i(AudioThread.class, &quot;上传出现异常&quot;);
+
+    }
+</code></pre><p>效果是：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">15</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">41</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">42</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">43</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">44</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">48</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">47</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">47</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">50</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">50</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">49</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">48</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">50</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">50</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">48</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">47</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">48</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">44</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">46</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">44</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">44</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">44</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">45</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">64</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">65</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">65</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">57</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">60</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">58</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">55</span></span><br><span class="line">当前接受到的分贝值: <span class="built_in">%s</span>，v =<span class="number">55</span></span><br></pre></td></tr></table></figure>
+<p>声音在0-100以内，基本声音维持在 40-60之间</p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -358,6 +495,8 @@ try {
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -374,41 +513,63 @@ try {
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/26/Android-和-IOS-应用查找bug-利器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/26/Android-和-IOS-应用查找bug-利器/" itemprop="url">
-                  Android 和 IOS 应用查找bug 利器
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/26/Android-和-IOS-应用查找bug-利器/" itemprop="url">Android 和 IOS 应用查找bug 利器</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-26T15:12:50+08:00" content="2015-09-26">
-              2015-09-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-26T15:12:50+08:00">
+                2015-09-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -416,26 +577,63 @@ try {
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/26/Android-和-IOS-应用查找bug-利器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/Android-和-IOS-应用查找bug-利器/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/26/Android-和-IOS-应用查找bug-利器/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/26/Android-和-IOS-应用查找bug-利器/" class="cy_cmt_count" data-xid="2015/09/26/Android-和-IOS-应用查找bug-利器/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -443,21 +641,49 @@ try {
       
         
           
-          来源: Trinea codeKK
-查找bug 的神器： bugtags
-快速反馈 App Bug 的工具 Bugtags，任何人随时随地一键提交 Bug。
-Bugtags是国内首款为改善移动产品质量而专门打造的测试平台产品。使用Bugtags平台可以随时随地对移动产品提出准确的改善意见，使得测试更
-          ...
+            <p><a href="http://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=207368806&amp;idx=1&amp;sn=ab1203e49d15b5a81a30d3c199fdc80d&amp;scene=1&amp;srcid=0926RMXXJe3DfggnLTgzVz8M&amp;key=2877d24f51fa5384040fd32a20a0f93b7082eb623889c7a2011c660a4a0d9f50a45893beadd645cda8dba79b97cead62&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">来源: Trinea codeKK</a></p>
+<p>查找bug 的神器： <a href="https://bugtags.com" target="_blank" rel="external">bugtags</a></p>
+<p>快速反馈 App Bug 的工具 Bugtags，任何人随时随地一键提交 Bug。<br><br><br></p>
+<pre><code>Bugtags是国内首款为改善移动产品质量而专门打造的测试平台产品。使用Bugtags平台可以随时随地对移动产品提出准确的改善意见，使得测试更简单，修复问题更轻松，产品用户满意度更高。
+</code></pre><p><img src="http://mmbiz.qpic.cn/mmbiz/KfDGLcEiauQjMjV5yhOicj2pQm6m7nJsiarkheNAVo58icUrJzj3y1CojAocibU7jXe0xxlhck079iarhYrZ7Iqg2v7Q/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<h3 id="它在移动端是的主要功能包括："><a href="#它在移动端是的主要功能包括：" class="headerlink" title="它在移动端是的主要功能包括："></a>它在移动端是的主要功能包括：</h3><ol>
+<li><p>任何地方快速标记 Bug，分配给对应开发<br>跟他们官网说的一样，测试从未如此简单！</p>
+</li>
+<li><p>自动记录 App Crash Bug<br>App Crash 时会自动提交日志到后台，这个原理也是大家熟知的 Thread.UncaughtExceptionHandler。</p>
+</li>
+<li><p>无网下次重传</p>
+</li>
+<li><p>摇一摇作为彩蛋<br>Bugtags 启动模式有三种，除了截图中的悬浮球，还有摇一摇提交 Bug，可以作为 Release 版的彩蛋。</p>
+</li>
+</ol>
+<h3 id="传统的-App-Bug-发现过程是这样的："><a href="#传统的-App-Bug-发现过程是这样的：" class="headerlink" title="传统的 App Bug 发现过程是这样的："></a>传统的 App Bug 发现过程是这样的：</h3><blockquote>
+<p>测试的妹子们截图传到 PC，再上传到 Bug 管理系统，添加具体描述，分配给相应开发</p>
+<p>产品经理跑过来“这个这个地方有问题，你改下”</p>
+<p>老板拿着手机过来，直接扔给你，立即调试这个“老板级”Bug</p>
+</blockquote>
+<h3 id="使用方式："><a href="#使用方式：" class="headerlink" title="使用方式："></a>使用方式：</h3><ol>
+<li>在 <a href="https://bugtags.com" target="_blank" rel="external">bugtags</a> 里面集成开发对应的SDK，</li>
+<li>添加依赖<br> <code>compile &#39;com.bugtags.library:bugtags-lib:latest.integration&#39;</code></li>
+<li>在 Application 初始化</li>
+</ol>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">　<span class="meta">@Override</span></span><br><span class="line">　public void onCreate() &#123;</span><br><span class="line">　　<span class="keyword">super</span>.onCreate();</span><br><span class="line"></span><br><span class="line">　　<span class="comment">// 在这里初始化</span></span><br><span class="line">　　<span class="type">Bugtags</span>.start(<span class="string">"App key"</span>, <span class="keyword">this</span>, <span class="type">Bugtags</span>.<span class="type">BTGInvocationEventBubble</span>);</span><br><span class="line">　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="添加回调"><a href="#添加回调" class="headerlink" title="添加回调"></a>添加回调</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">BaseActivity</span> <span class="selector-tag">extends</span> <span class="selector-tag">Activity</span>&#123;</span><br><span class="line">　<span class="variable">@Override</span></span><br><span class="line">　protected void onResume() &#123;</span><br><span class="line">　　super<span class="selector-class">.onResume</span>();</span><br><span class="line">　　<span class="comment">// 注：回调 1</span></span><br><span class="line">　　Bugtags<span class="selector-class">.onResume</span>(this);</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="variable">@Override</span></span><br><span class="line">　protected void onPause() &#123;</span><br><span class="line">　　super<span class="selector-class">.onPause</span>();</span><br><span class="line">　　<span class="comment">// 注：回调 2</span></span><br><span class="line">　　Bugtags<span class="selector-class">.onPause</span>(this);</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="variable">@Override</span></span><br><span class="line">　public boolean dispatchTouchEvent(MotionEvent event) &#123;</span><br><span class="line">　　<span class="comment">// 注：回调 3</span></span><br><span class="line">　　Bugtags<span class="selector-class">.onDispatchTouchEvent</span>(this, event);</span><br><span class="line">　　return super<span class="selector-class">.dispatchTouchEvent</span>(event);</span><br><span class="line">　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有 BaseActivity，可新建此类作为所有 Activity 的基类，统一的 BaseActivity 在开发中还是很有必要的。</p>
+<p>PS：MIUI 需要手动打开悬浮窗的显示，打开方式：安全中心-&gt; 授权管理-&gt;应用权限管理，点击选择应用，勾选“显示悬浮窗”开关。</p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<h6 id="目前他们也在计划开放-API，方便其他系统接入。"><a href="#目前他们也在计划开放-API，方便其他系统接入。" class="headerlink" title="目前他们也在计划开放 API，方便其他系统接入。"></a>目前他们也在计划开放 API，方便其他系统接入。</h6><hr>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/26/Android-和-IOS-应用查找bug-利器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -467,6 +693,8 @@ Bugtags是国内首款为改善移动产品质量而专门打造的测试平台�
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -483,41 +711,63 @@ Bugtags是国内首款为改善移动产品质量而专门打造的测试平台�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/26/比较好的Android网站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/26/比较好的Android网站/" itemprop="url">
-                  比较好的Android网站
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/26/比较好的Android网站/" itemprop="url">比较好的Android网站</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-26T14:53:07+08:00" content="2015-09-26">
-              2015-09-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-26T14:53:07+08:00">
+                2015-09-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -525,26 +775,63 @@ Bugtags是国内首款为改善移动产品质量而专门打造的测试平台�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/26/比较好的Android网站/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/比较好的Android网站/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/26/比较好的Android网站/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/26/比较好的Android网站/" class="cy_cmt_count" data-xid="2015/09/26/比较好的Android网站/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -552,30 +839,39 @@ Bugtags是国内首款为改善移动产品质量而专门打造的测试平台�
       
         
           
-          这是分享一些比较靠谱的干货，可以参考下面的链接：
+            <p>这是分享一些比较靠谱的干货，可以参考下面的链接：<br></p>
+<ul>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=208024947&amp;idx=1&amp;sn=4102a3f1d369ba79abeb85e77e4c380d&amp;scene=1&amp;srcid=0926h7Wvn1gzNIiKmoZAutR7&amp;key=2877d24f51fa53849e88d66a9ce9a449de0155a91172f2a5651c1f2ac390e16557f401453ad7bde87faa0d3cea54edd5&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">12大Android开发资源，你有几种会用？</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=208024947&amp;idx=2&amp;sn=e6bf1c5afb0e09147484a61c68583b3e&amp;scene=1&amp;srcid=0926n9p8bsx5NQNAg274lTGy&amp;key=2877d24f51fa53849e59745839e77136216893f3c5ca91bf1643cac1ee58f0273dc7c25e2ccc7e5a106d67b1f6ae0e35&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">快速提高Android开发效率的Web工具</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=207916695&amp;idx=4&amp;sn=69a69ba7986eeb9fda0054354db828a4&amp;scene=1&amp;srcid=0926JcG6UjZuN7LEu7giAoR9&amp;key=2877d24f51fa5384d6ea3cacc96f2528b69686dc8361b29874eeb4222c2e834b41848230fe4fac051415bf5da2397b5c&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android酷炫实用的开源框架（UI框架）</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzA4MTM2MjE2MA==&amp;mid=207581833&amp;idx=3&amp;sn=97bfca775b657f19f990a80fa401392e&amp;scene=1&amp;srcid=09265F2U0UdTJJXCpg11k4ll&amp;key=2877d24f51fa5384dc8ed7b7573bddb2d5833b9e68fffbc5daf583cdfd9fca708ff7204b977b535b22b1aa38ed000d0b&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android开发六个建议（经验之谈）</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208540095&amp;idx=1&amp;sn=8a4c7e4d5d9a64839992462f27b4bb95&amp;scene=1&amp;srcid=09266oDuhW22HgxDuGmM0WYC&amp;key=2877d24f51fa538442a9029d560dd31f7b485dbafe774de9fcf0bf9b1ddf126068ca03ffe066d71f88efbf2ebed6fb1d&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android Studio常用插件</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208525243&amp;idx=1&amp;sn=8afc00211b37af68f1995a3e8ad45111&amp;scene=1&amp;srcid=0926NrC0khf5Fa9fJEwRfRPY&amp;key=2877d24f51fa5384e71a8cf8116e305d18e01bd016dee5916dd2026497b682ffefe46d56bb71bd0a9fd74991acc84e3e&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android App 性能优化实践</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208510253&amp;idx=2&amp;sn=28598cc02ad39b73ca615e886c8eb24c&amp;scene=1&amp;srcid=0926DwVYFw4g4Od2AAnu6iHa&amp;key=2877d24f51fa538406d88df4db226b76df6775aab891b2af8b585d7de15b6d2145a0e5fa22b51441da14cd57f418cb93&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android Support 库百分比布局</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDAxNTY4MA==&amp;mid=208554056&amp;idx=1&amp;sn=b98bfef690e316fa5dc0fccef8dae198&amp;scene=1&amp;srcid=0926PFrnACpa0rgVOJL2BLlc&amp;key=2877d24f51fa5384648c85ac5ce9f46629ad54f9691ab6d6dd0e1f2b8ef87a9427beb751553d9f28d1c245b1cd5b2efd&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">Android 项目部署之Nexus私服搭建和应用</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=207368806&amp;idx=1&amp;sn=ab1203e49d15b5a81a30d3c199fdc80d&amp;scene=1&amp;srcid=0926RMXXJe3DfggnLTgzVz8M&amp;key=2877d24f51fa5384ca0148e1fa1a60810f32d881772f440d182f540f603f059bae8bb10be1d320ea1db238b465c4a0f2&amp;ascene=0&amp;uin=MTA5NTgyNjA0MA%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.5+build(14F27)&amp;version=11020012&amp;pass_ticket=DiIrR6XymKM2K2hxm76gAWEBFZQ9pdsonmtfjw3IgzG9PNaJi00dUtdbVQgTUwir" target="_blank" rel="external">移动应用 Bug 快速反馈利器</a> </p>
+</li>
+</ul>
+<p>后续将整理一些比较又实用价值的文章分享给大家</p>
+<hr>
 
-12大Android开发资源，你有几种会用？
-
-快速提高Android开发效率的Web工具
-
-Android酷炫实用的开源框架（UI框架）
-
-Android开发六个建议（经验之谈）
-
-Android Studio常用插件
-
-Android App 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/26/比较好的Android网站/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -585,6 +881,8 @@ Android App
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -601,52 +899,78 @@ Android App
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/19/android-monkey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/19/android-monkey/" itemprop="url">
-                  monkey 测试命令，保存到SD，遇到崩溃继续
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/19/android-monkey/" itemprop="url">monkey 测试命令，保存到SD，遇到崩溃继续</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-19T19:16:05+08:00" content="2015-09-19">
-              2015-09-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-19T19:16:05+08:00">
+                2015-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/android/" itemprop="url" rel="index">
                     <span itemprop="name">android</span>
                   </a>
@@ -654,7 +978,6 @@ Android App
 
                 
                 
-
               
             </span>
           
@@ -662,26 +985,63 @@ Android App
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/19/android-monkey/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/19/android-monkey/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/19/android-monkey/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/19/android-monkey/" class="cy_cmt_count" data-xid="2015/09/19/android-monkey/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -689,18 +1049,19 @@ Android App
       
         
           
-          开始测试：1monkey -p com.itings.myradio -c android.intent.category.LAUNCHER -s 500 --hprof --ignore-crashes --ignore-timeouts --ignore-security-exceptions 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/19/android-monkey/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+            <h3 id="开始测试："><a href="#开始测试：" class="headerlink" title="开始测试："></a>开始测试：</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monkey -<span class="selector-tag">p</span> com<span class="selector-class">.itings</span><span class="selector-class">.myradio</span> -c android<span class="selector-class">.intent</span><span class="selector-class">.category</span><span class="selector-class">.LAUNCHER</span> -s <span class="number">500</span> --hprof --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --throttle <span class="number">50</span> -v -v <span class="number">600000</span>&gt;/mnt/sdcard/monkey1<span class="selector-class">.txt</span> &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="保存monkey-和-logcat-的日志"><a href="#保存monkey-和-logcat-的日志" class="headerlink" title="保存monkey 和 logcat 的日志"></a>保存monkey 和 logcat 的日志</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monkey -<span class="selector-tag">p</span> com<span class="selector-class">.itings</span><span class="selector-class">.myradio</span> -c android<span class="selector-class">.intent</span><span class="selector-class">.category</span><span class="selector-class">.LAUNCHER</span> -s <span class="number">500</span> --hprof --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --throttle <span class="number">50</span> -v -v -v <span class="number">15000000</span>&gt;&gt;/mnt/sdcard/monkey_kaola<span class="selector-class">.txt</span> &amp; logcat  -v <span class="selector-tag">time</span> &gt;&gt;/mnt/sdcard/logcat.txt</span><br></pre></td></tr></table></figure>
+<h3 id="终止："><a href="#终止：" class="headerlink" title="终止："></a>终止：</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb <span class="keyword">shell</span></span><br><span class="line"><span class="keyword">ps</span>|<span class="keyword">grep</span> monkey</span><br><span class="line">kill id</span><br></pre></td></tr></table></figure>
+<h6 id="adb-logcat-s-com-xx-xx"><a href="#adb-logcat-s-com-xx-xx" class="headerlink" title="adb logcat -s com.xx.xx"></a>adb logcat -s com.xx.xx</h6>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -710,6 +1071,8 @@ Android App
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -726,41 +1089,63 @@ Android App
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/19/AndroidStudio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/19/AndroidStudio/" itemprop="url">
-                  AndroidStudio
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/19/AndroidStudio/" itemprop="url">AndroidStudio</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-19T17:02:01+08:00" content="2015-09-19">
-              2015-09-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-19T17:02:01+08:00">
+                2015-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -768,26 +1153,63 @@ Android App
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/19/AndroidStudio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/19/AndroidStudio/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/19/AndroidStudio/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/19/AndroidStudio/" class="cy_cmt_count" data-xid="2015/09/19/AndroidStudio/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -795,24 +1217,39 @@ Android App
       
         
           
-          Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：
-
-1.修改系统hosts文件，添加如下2行
-203.208.46.146   dl-ssl.google.com
+            <p>Android Studio 是可以在线增量更新的，但是可能连不上服务器更新，解决办法如下：</p>
+<ul>
+<li><p>1.修改系统hosts文件，添加如下2行</p>
+<pre><code>203.208.46.146   dl-ssl.google.com
 203.208.46.146   dl.google.com
+</code></pre></li>
+<li><p>2.修改Android Studio\bin目录下的studio.vmoptions (32位系统) 或者 studio64.vmoptions (64位系统)文件，添加如下3行</p>
+<pre><code>-Djava.net.preferIPv4Stack=true  
+-Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml  
+-Didea.patches.url=http://dl.google.com/android/studio/patches/
+</code></pre><p>  <strong>重启Android Studio应该就可以更新了，更新时应使用管理员权限打开Android Studio。
+</strong></p>
+</li>
+<li><p>3.如果仍然无效，将url里的修改http为https，然后重启点击Check Update试试。</p>
+</li>
+<li><p>4.android studio首次安装运行时卡在更新处理方法</p>
+<p>  01.这是在检查你的 Android SDK 。有人会在这里卡上很长时间，很大的原因就是：网络连接有问题。可以通过配置hosts 的方式来解决。如果检查需要更新，则需要你进行安装 。</p>
+<p>  02.如果想跳过这一步，可以进行如下操作：在Android Studio安装目录下的 bin 目录下，找到 idea.properties 文件，在文件最后追加</p>
+<pre><code>disable.android.first.run=true 
+</code></pre></li>
+</ul>
+<p>本方法适用于在某些网络下无法直接更新的问题</p>
+<hr>
 
-2.修改Android St
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/19/AndroidStudio/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -822,6 +1259,8 @@ Android App
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -838,41 +1277,63 @@ Android App
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/13/Android-gradle工作原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/13/Android-gradle工作原理/" itemprop="url">
-                  Android_gradle工作原理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/13/Android-gradle工作原理/" itemprop="url">Android_gradle工作原理</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-13T12:47:49+08:00" content="2015-09-13">
-              2015-09-13
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-13T12:47:49+08:00">
+                2015-09-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -880,26 +1341,63 @@ Android App
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/13/Android-gradle工作原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/13/Android-gradle工作原理/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/13/Android-gradle工作原理/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/13/Android-gradle工作原理/" class="cy_cmt_count" data-xid="2015/09/13/Android-gradle工作原理/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -907,21 +1405,26 @@ Android App
       
         
           
-          在最新的Android Studio 里面，Android 的标准工作方式是使用 gradle 构建的，目前也是非常流行的（不过也存在一些 eclipse 目录方式的，不太好，能用gradle 构建最好，可以使用依赖等快速开发模式）。
-gradle 构建流程：下图是google官方的构建流程图
+            <p>在最新的Android Studio 里面，Android 的标准工作方式是使用 gradle 构建的，目前也是非常流行的（<em>不过也存在一些 eclipse 目录方式的，不太好，能用gradle 构建最好，可以使用依赖等快速开发模式</em>）。</p>
+<h3 id="gradle-构建流程："><a href="#gradle-构建流程：" class="headerlink" title="gradle 构建流程："></a>gradle 构建流程：</h3><p>下图是google官方的构建流程图</p>
+<p><img src="http://i1.tietuku.com/4fa0701d09e5704a.png" alt="andoroid gradle工作原理图"></p>
+<h3 id="简单可以分为以下几类："><a href="#简单可以分为以下几类：" class="headerlink" title="简单可以分为以下几类："></a>简单可以分为以下几类：</h3><ol>
+<li>AndroidManifest.xml 合并</li>
+<li>Resource (包含应用的 string, style, drawable, .png, .jpg, .xml)合并</li>
+<li>Asserts 合并</li>
+</ol>
+<p><strong>以上是常用的，当然还有其他合并，不过对于一般用户都没有问题。剩下的，基本和 Android 的构建基本一致。</strong></p>
+<hr>
 
-简
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/13/Android-gradle工作原理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -931,6 +1434,8 @@ gradle 构建流程：下图是google官方的构建流程图
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -947,41 +1452,63 @@ gradle 构建流程：下图是google官方的构建流程图
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/13/是什么使你无法完成工作？——番茄告诉你/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/" itemprop="url">
-                  是什么使你无法完成工作？——番茄告诉你
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/" itemprop="url">是什么使你无法完成工作？——番茄告诉你</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-13T12:28:36+08:00" content="2015-09-13">
-              2015-09-13
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-13T12:28:36+08:00">
+                2015-09-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -989,26 +1516,63 @@ gradle 构建流程：下图是google官方的构建流程图
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/13/是什么使你无法完成工作？——番茄告诉你/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/13/是什么使你无法完成工作？——番茄告诉你/" class="cy_cmt_count" data-xid="2015/09/13/是什么使你无法完成工作？——番茄告诉你/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1016,30 +1580,40 @@ gradle 构建流程：下图是google官方的构建流程图
       
         
           
-          是什么让你无法完成胜任的工作呢？
-面对复杂，望而却步
-无聊琐事，越拖越久
-小事忙活一天，大事一样没办
-最后期限，步步紧逼
-从休息回到工作，心智调整不过来
-一错再错，不长记性
-没想到一件事越做越复杂
-头脑被各种想法占据
-时间都用来学习适应复杂的工作了
-只顾埋头工作，忘了抬头看路
-把预估当做承诺
-流程管
-          ...
+            <h1 id="是什么让你无法完成胜任的工作呢？"><a href="#是什么让你无法完成胜任的工作呢？" class="headerlink" title="是什么让你无法完成胜任的工作呢？"></a>是什么让你无法完成胜任的工作呢？</h1><ul>
+<li>面对复杂，望而却步</li>
+<li>无聊琐事，越拖越久</li>
+<li>小事忙活一天，大事一样没办</li>
+<li>最后期限，步步紧逼</li>
+<li>从休息回到工作，心智调整不过来</li>
+<li>一错再错，不长记性</li>
+<li>没想到一件事越做越复杂</li>
+<li>头脑被各种想法占据</li>
+<li>时间都用来学习适应复杂的工作了</li>
+<li>只顾埋头工作，忘了抬头看路</li>
+<li>把预估当做承诺</li>
+<li>流程管理，纸上谈兵</li>
+<li>牵着不走，打着倒退</li>
+<li>完美主义，碍手碍脚</li>
+<li>前怕虎，后怕狼，害怕失败和评论</li>
+</ul>
+<p>如有以上烦恼，请看下图：</p>
+<h3 id="番茄工作法"><a href="#番茄工作法" class="headerlink" title="番茄工作法"></a>番茄工作法</h3><pre><code>番茄工作法是简单易行的时间管理方法，是由弗朗西斯科·西里洛于1992年创立的一种相对于GTD更微观的时间管理方法。
+使用番茄工作法，选择一个待完成的任务，将番茄时间设为25分钟，专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起，然后在纸上画一个X短暂休息一下（5分钟就行），每4个番茄时段多休息一会儿
+</code></pre><p>如有以上烦恼，没事多看看 下图：</p>
+<p><img src="http://i3.tietuku.com/ab907523c2054c41.png" alt="番茄工作法"></p>
+<p>必要的时候请使用 戴明循环（PDCA）工作法。</p>
+<hr>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/13/是什么使你无法完成工作？——番茄告诉你/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1049,6 +1623,8 @@ gradle 构建流程：下图是google官方的构建流程图
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1065,41 +1641,63 @@ gradle 构建流程：下图是google官方的构建流程图
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2015/09/11/日志指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/09/11/日志指南/" itemprop="url">
-                  日志指南
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/09/11/日志指南/" itemprop="url">日志指南</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-11T10:12:24+08:00" content="2015-09-11">
-              2015-09-11
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-11T10:12:24+08:00">
+                2015-09-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -1107,26 +1705,63 @@ gradle 构建流程：下图是google官方的构建流程图
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/11/日志指南/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/11/日志指南/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2015/09/11/日志指南/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2015/09/11/日志指南/" class="cy_cmt_count" data-xid="2015/09/11/日志指南/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1134,23 +1769,159 @@ gradle 构建流程：下图是google官方的构建流程图
       
         
           
-          参考：最佳日志实践
+            <p>参考：<a href="http://www.bitstech.net/2014/01/07/log-best-practice/" target="_blank" rel="external">最佳日志实践</a></p>
+<p><br></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><br></p>
+<pre><code>几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
 
-前言
-几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
+日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
 
-日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受
-          ...
+日志作用：
+- 好的日志记录系统出现问题时能快速定位
+- 可以通过对日志的观察和分析
+- 提前发现系统可能的风险
+- 避免线上事故的发生
+</code></pre><p><br></p>
+<h2 id="一、日志级别"><a href="#一、日志级别" class="headerlink" title="一、日志级别"></a>一、日志级别</h2><p><br></p>
+<h6 id="通常使用的日志库（如log4j-logback-等）"><a href="#通常使用的日志库（如log4j-logback-等）" class="headerlink" title="通常使用的日志库（如log4j, logback 等）"></a>通常使用的日志库（如<strong>log4j</strong>, <strong>logback</strong> 等）</h6><p><strong>日志基本分为以下几类（从低到高）：</strong></p>
+<p><strong>VERBOSE</strong> – <em>The VERBOSE Level designates finer-grained informational events than the DEBUG</em></p>
+<p><strong>DEBUG</strong> – <em>The DEBUG Level designates fine-grained informational events that are most useful to debug an application.</em></p>
+<p><strong>INFO</strong> – <em>The INFO level designates informational messages that highlight the progress of the application at coarse-grained level.</em></p>
+<p><strong>WARN</strong> – <em>The WARN level designates potentially harmful situations.</em></p>
+<p><strong>ERROR</strong> – <em>The ERROR level designates error events that might still allow the application to continue running.</em></p>
+<p><strong>FATAL</strong> – <em>The FATAL level designates very severe error events that will presumably lead the application to abort.</em></p>
+<ul>
+<li>一个项目各个log级别的定义应该是清楚明确的，是每个开发人员所遵循的；</li>
+<li>即使是TRACE或者DEBUG级别的日志，也应该有一定的规范，要保证除了开发人员自己以外，包括测试人员和运维人员都可以方便地通过日志定位问题;</li>
+<li>对于日志级别的分类，有以下参考：</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FATAL — 表示需要立即被处理的系统级错误。当该错误发生时，表示服务已经出现了某种程度的不可用，系统管理员需要立即介入。这属于最严重的日志级别，因此该日志级别必须慎用，如果这种级别的日志经常出现，则该日志也失去了意义。通常情况下，一个进程的生命周期中应该只记录一次FATAL级别的日志，即该进程遇到无法恢复的错误而退出时。当然，如果某个系统的子系统遇到了不可恢复的错误，那该子系统的调用方也可以记入FATAL级别日志，以便通过日志报警提醒系统管理员修复；</span><br><span class="line"></span><br><span class="line"><span class="built_in">ERROR</span> — 该级别的错误也需要马上被处理，但是紧急程度要低于FATAL级别。当<span class="built_in">ERROR</span>错误发生时，已经影响了用户的正常访问。从该意义上来说，实际上<span class="built_in">ERROR</span>错误和FATAL错误对用户的影响是相当的。FATAL相当于服务已经挂了，而<span class="built_in">ERROR</span>相当于好死不如赖活着，然而活着却无法提供正常的服务，只能不断地打印<span class="built_in">ERROR</span>日志。特别需要注意的是，<span class="built_in">ERROR</span>和FATAL都属于服务器自己的异常，是需要马上得到人工介入并处理的。而对于用户自己操作不当，如请求参数错误等等，是绝对不应该记为<span class="built_in">ERROR</span>日志的；</span><br><span class="line"></span><br><span class="line">WARN — 该日志表示系统可能出现问题，也可能没有，这种情况如网络的波动等。对于那些目前还不是错误，然而不及时处理也会变为错误的情况，也可以记为WARN日志，例如一个存储系统的磁盘使用量超过阀值，或者系统中某个用户的存储配额快用完等等。对于WARN级别的日志，虽然不需要系统管理员马上处理，也是需要即使查看并处理的。因此此种级别的日志也不应太多，能不打WARN级别的日志，就尽量不要打；</span><br><span class="line"></span><br><span class="line">INFO — 该种日志记录系统的正常运行状态，例如某个子系统的初始化，某个请求的成功执行等等。通过查看INFO级别的日志，可以很快地对系统中出现的WARN,<span class="built_in">ERROR</span>,FATAL错误进行定位。INFO日志不宜过多，通常情况下，INFO级别的日志应该不大于<span class="keyword">TRACE</span>日志的<span class="number">10</span>%；</span><br><span class="line"></span><br><span class="line"><span class="keyword">DEBUG</span> <span class="keyword">or</span> <span class="keyword">TRACE</span> — 这两种日志具体的规范应该由项目组自己定义，该级别日志的主要作用是对系统每一步的运行状态进行精确的记录。通过该种日志，可以查看某一个操作每一步的执行过程，可以准确定位是何种操作，何种参数，何种顺序导致了某种错误的发生。可以保证在不重现错误的情况下，也可以通过<span class="keyword">DEBUG</span>（或<span class="keyword">TRACE</span>）级别的日志对问题进行诊断。需要注意的是，<span class="keyword">DEBUG</span>日志也需要规范日志格式，应该保证除了记录日志的开发人员自己外，其他的如运维，测试人员等也可以通过<span class="keyword">DEBUG</span>（或<span class="keyword">TRACE</span>）日志来定位问题；</span><br></pre></td></tr></table></figure>
+<p><strong>Rule 1</strong>：整个团队（包括运维人员）需要对日志级别有明确的规定，什么日志记入什么级别的日志，什么级别的错误出现要如何处理等</p>
+<p><br></p>
+<h2 id="二、对记录的日志要进行更新维护"><a href="#二、对记录的日志要进行更新维护" class="headerlink" title="二、对记录的日志要进行更新维护"></a>二、对记录的日志要进行更新维护</h2><p><br></p>
+<p>由于DEBUG（或TRACE）级别的日志对于定位问题至关重要，因此该种日志记录是否完备且不冗余、格式是否规范等也需要花费大量精力来优化。此处有以下几个比较好的实践：</p>
+<ul>
+<li>定义好整个团队记录DEBUG（或TRACE）日志的规范，保证每个开发记录的日志格式统一；</li>
+<li>整个团队（包括开发，运维和测试）定期对记录的日志内容进行Review；</li>
+</ul>
+<p><strong>Rule 2</strong>：需要定期对日志内容进行优化更新，目的就是通过日志快速准确的定位问题</p>
+<p><br></p>
+<h2 id="三、关于日志分类"><a href="#三、关于日志分类" class="headerlink" title="三、关于日志分类"></a>三、关于日志分类</h2><p><br></p>
+<p>日志从功能来说，可分为诊断日志、统计日志、审计日志。</p>
+<p>诊断日志， 典型的有：</p>
+<ul>
+<li>请求入口和出口</li>
+<li>外部服务调用和返回</li>
+<li>资源消耗操作: 打开文件等</li>
+<li>容错行为： 譬如云硬盘的副本修复操作</li>
+<li>程序异常： 譬如数据库无法连接</li>
+<li>后台操作：清理程序</li>
+<li>启动、关闭、配置加载</li>
+<li>抛出异常时，不记录日志</li>
+</ul>
+<p>统计日志：</p>
+<ul>
+<li>用户访问统计</li>
+<li>计费日志（如记录用户使用的网络资源或磁盘占用，格式较为严格，便于统计）</li>
+</ul>
+<p>审计日志：</p>
+<ul>
+<li><p>管理操作</p>
+<p>  将不同需求的日志记入到不同的日志文件中，可以方便相关问题（管理平台操作审计，用户操作计费等）的处理。针对每一种需求，需要对日志的格式，日志记录的内容等进行特别的记录。</p>
+</li>
+</ul>
+<p><strong>Rule 3</strong>：要明确不同日志的用途，对日志内容进行分类</p>
+<p><br></p>
+<h2 id="四、日志中不要记录无用信息"><a href="#四、日志中不要记录无用信息" class="headerlink" title="四、日志中不要记录无用信息"></a>四、日志中不要记录无用信息</h2><p><br></p>
+<p>例如一些测试的log: log.i(“tag”, “数据加载成功”)，可以打印一些比较有实用价值的Log， 例如：<br>log.i(“tag”, “数据加载成功，数据是：{}”， “XXXX”)</p>
+<p><strong>Rule 4</strong>: 绝不要打印没有用的日志，防止无用日志淹没重要信息</p>
+<p><br></p>
+<h2 id="五、5-日志记录信息要完整"><a href="#五、5-日志记录信息要完整" class="headerlink" title="五、5. 日志记录信息要完整"></a>五、5. 日志记录信息要完整</h2><p><br></p>
+<p>问题描述：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> InitMultiUpload（生成一个UploadID）</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby">  ……</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> CompleteMultiUpload（AbortMultiUpload）</span><br><span class="line"></span></span><br><span class="line">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span><br><span class="line"></span><br><span class="line">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span><br><span class="line"></span><br><span class="line">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span><br><span class="line"></span><br><span class="line">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> 在系统启动或初始化时记录重要的系统初始化参数</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的错误</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的警告</span><br><span class="line"></span>-<span class="ruby"> 在持久化数据修改时记录修改前和修改后的值</span><br><span class="line"></span>-<span class="ruby"> 记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span><br><span class="line"></span>-<span class="ruby"> 重要的状态变化（如NOS中对系统白名单的修改等）</span><br><span class="line"></span>-<span class="ruby"> 系统中一些长期执行的任务的执行进度</span></span><br></pre></td></tr></table></figure>
+<p><strong>不推荐记录日志的内容有：</strong></p>
+<ul>
+<li>函数入口信息 —— 除非该函数入口表示了一个重要事件的开始，或者将该信息记入DEBUG级别日志</li>
+<li>文件内容或者一大段消息的内容 —— 如果实在需要记录，则可以截取其中一些重要的信息来记入日志</li>
+<li>“良性”错误 —— 有时候虽然出现了错误，然而错误处理的流程可以正确解决这种情况，例如插入数据库时有重复的记录，尽管是个错误，然而错误处理流程可以对这种情况进行处理</li>
+</ul>
+<p><strong>Rule 5</strong>：日志信息要准确全面，能做到仅凭日志就可以定位问题</p>
+<p><em>解决办法：整理所有的请求处理流程，针对每一个操作（去重，分块上传……）打印特定的日志。</em></p>
+<p><br></p>
+<h2 id="六、测试的日志"><a href="#六、测试的日志" class="headerlink" title="六、测试的日志"></a>六、测试的日志</h2><p><br></p>
+<p>测试代码（单元测试，接口测试……）的日志同样重要。特别是，当一个测试失败时，可以通过日志很快确定是测试代码有问题，还是系统出现了故障，如果做不到这一点，那就需要优化测试的日志了。</p>
+<p>测试日志应该包含以下内容：</p>
+<ul>
+<li>测试执行的环境</li>
+<li>测试执行前的初始状态</li>
+<li>测试的详细步骤</li>
+<li>测试和系统的交互信息</li>
+<li>测试期望的返回结果</li>
+<li>测试实际的返回结果</li>
+</ul>
+<p><strong>Rule 6</strong>：要以同样严格的要求对待测试程序的日志</p>
+<p><br></p>
+<h2 id="七、从问题中完善日志"><a href="#七、从问题中完善日志" class="headerlink" title="七、从问题中完善日志"></a>七、从问题中完善日志</h2><p><br></p>
+<p>在线上出现问题的时候，需要尽快发现问题并解决，而同时，需要借此机会好好思考一下当前系统的日志是否合理。需要考虑以下问题：</p>
+<ul>
+<li>如果定位问题花费了很长时间，那就说明系统日志还存在问题，需要进一步完善和优化</li>
+<li>需要思考是否可以通过优化日志，来提前预判该问题是否可能发生（如某种资源耗尽而导致的错误，可以对资源的使用情况进行记录）</li>
+</ul>
+<p>通过系统出现的问题来优化日志，应该是一项长期的实践，不断地从日志发现系统的问题，不断地从系统异常发现日志的问题。</p>
+<p><strong>Rule 7</strong>：日志的优化是一件持续不断需要投入精力的事，需要不断从错误中学习</p>
+<p><br></p>
+<h2 id="八、对日志进行监控报警，比客户先发现系统问题"><a href="#八、对日志进行监控报警，比客户先发现系统问题" class="headerlink" title="八、对日志进行监控报警，比客户先发现系统问题"></a>八、对日志进行监控报警，比客户先发现系统问题</h2><p><br></p>
+<p>crash关键字报警：</p>
+<p>程序崩溃的时候，会出现crash 字样，可以获取到相关日志，会严重影响用户的实用，可以动态获取崩溃日志</p>
+<p>类似的关键字报警还有很多：如对空指针， 数组越界，内存溢出 等等。</p>
+<p><strong>Rule 8</strong>：对日志进行监控报警，比客户先发现系统问题</p>
+<p><br></p>
+<h2 id="九、关于日志格式"><a href="#九、关于日志格式" class="headerlink" title="九、关于日志格式"></a>九、关于日志格式</h2><p><br></p>
+<p>日志格式一定要统一，不能任由开发人员的喜好来。举例来说，对于NOS视频截图超时的ERROR日志，有以下几种方式打印：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“Gearman timeout exception for request ” + getRequestID() + ” <span class="attribute">value</span>: ” + value, e);</span><br><span class="line"></span><br><span class="line">第二种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“<span class="attribute">RequestID</span>: ” + getRequestID() + “, Error <span class="attribute">Message</span>: Gearman timeout <span class="attribute">exception</span>: ” + e);</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">logger<span class="selector-class">.error</span>(getErrorMessage(getRequestID(), getErrorMessage(), e));</span><br></pre></td></tr></table></figure>
+<p>第一种方式打印日志即是开发人员按照自己的喜好来的，这种方法带来的问题是：</p>
+<ul>
+<li>系统中日志格式不统一，不利于自动化处理</li>
+<li>有些日志可能只有开发人员自己才能看懂</li>
+<li>代码规范性不好</li>
+</ul>
+<p>而第三种方式，通过一个函数来规范日志格式，所有开发人员便可以通过该接口实现统一的日志。</p>
+<p><strong>Rule 9</strong>：日志格式要统一规范</p>
+<p><br></p>
+<h2 id="十、错误日志输出到不同文件"><a href="#十、错误日志输出到不同文件" class="headerlink" title="十、错误日志输出到不同文件"></a>十、错误日志输出到不同文件</h2><p><br></p>
+<p>在性能测试中遇到的另一个问题是，当并发量很大时，可能会有一些请求处理失败（如0.5%），为了对这些错误进行分析，需要去查这些错误请求的日志。而由于这种情况下并发量很大，使得对错误日志的分析变得困难。</p>
+<p>这种情况下可以将所有的错误日志同时输出到一个单独的文件之中。</p>
+<p><strong>Rule 10</strong>：将错误日志输出到一个单独的文件中进行分析</p>
+<p><br></p>
+<h2 id="十一、关于日志文件大小"><a href="#十一、关于日志文件大小" class="headerlink" title="十一、关于日志文件大小"></a>十一、关于日志文件大小</h2><p><br></p>
+<p>日志文件不宜过大，过大的日志文件对于日志监控，问题定位等都会带来不便。因此需要进行日志文件的切分，日志文件的切分可以通过log4j等日志工具来配置，日志文件应该按天来分割，还是按照小时来分割，应该根据日志量来决定，原则就是方便开发或运维人员能快速查找日志。</p>
+<p>为了防止日志文件将整个磁盘空间占满，需要定期对日志文件进行删除。例如，在收到磁盘报警时，可以将两个月以前的日志文件删除。此处比较好的实践是：</p>
+<ul>
+<li>将所有日志文件收集起来，这样即使在记录日志的机器上删除，也可以通过收集的日志对之前的问题进行定位；</li>
+<li>每天通过定时任务来删除过期日志，如每天在凌晨4点删除60天前的日志</li>
+</ul>
+<p><strong>Rule 11</strong>：要把日志的大小，如何切分，如何删除等作为规范建立起来</p>
+<!--###参考示例
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/11/日志指南/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+![示例图][1]
+
+
+1. 封装控制系统原生Log，然后根据不同的级别分别输出到Logcat和文件中，主要有类LogcatLog和FileLog实现
+2. 收集手机其他信息，在将log上报到服务器时一同上报，这些信息包括Settings信息、DropBox打印的log、应用的SharedPreference、设备分辨率信息等。所有这些被时限为XXColector类，可以根据需要（后台配置控制）进行上传。
+3. 将FileLog信息、Crash信息、以及Collector收集的手机信息上报到服务器。上报的方式主要分为：通过Email发送和通过HTTP（以及后台CGI）发送，当然你也可以选择发送到Google Form等。
+4. Crash异常捕获处理（即：继承实现UncaughtExceptionHandler），有LogCenter中实现。
+5. 良好的可配置信息，即：系统中所有的日志收集、发送方式都是后台可配置的。-->
+<hr>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1160,6 +1931,8 @@ gradle 构建流程：下图是google官方的构建流程图
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1207,23 +1980,30 @@ gradle 构建流程：下图是google官方的构建流程图
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
                alt="gdky005" />
           <p class="site-author-name" itemprop="name">gdky005</p>
-          <p class="site-description motion-element" itemprop="description">创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">8</span>
@@ -1233,6 +2013,8 @@ gradle 构建流程：下图是google官方的构建流程图
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">21</span>
@@ -1258,7 +2040,7 @@ gradle 构建流程：下图是google官方的构建流程图
               <span class="links-of-author-item">
                 <a href="https://github.com/gdky005" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
                 </a>
@@ -1267,7 +2049,7 @@ gradle 构建流程：下图是google官方的构建流程图
               <span class="links-of-author-item">
                 <a href="http://blog.csdn.net/gdky005" target="_blank" title="CSDN博客">
                   
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   CSDN博客
                 </a>
@@ -1276,7 +2058,7 @@ gradle 构建流程：下图是google官方的构建流程图
               <span class="links-of-author-item">
                 <a href="http://weibo.com/gdky005" target="_blank" title="Weibo">
                   
-                    <i class="fa fa-weibo"></i>
+                    <i class="fa fa-fw fa-weibo"></i>
                   
                   Weibo
                 </a>
@@ -1291,8 +2073,18 @@ gradle 构建流程：下图是google官方的构建流程图
         
         
 
+        
+
+
       </section>
 
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -1307,7 +2099,7 @@ gradle 构建流程：下图是google官方的构建流程图
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1315,8 +2107,9 @@ gradle 构建流程：下图是google官方的构建流程图
   <span class="author" itemprop="copyrightHolder">gdky005</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
@@ -1326,27 +2119,23 @@ gradle 构建流程：下图是google官方的构建流程图
   </a>
 </div>
 
+
         
-
 <div class="busuanzi-count">
-
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
 
   
-  
 </div>
-
 
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
   </div>
 
   
@@ -1369,219 +2158,145 @@ gradle 构建流程：下图是google官方的构建流程图
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
-  
-  
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gdky005"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt42YTPf"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
-    });}
+      });
+    </script>
 
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-  
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
 
+
+  
 
 </body>
 </html>

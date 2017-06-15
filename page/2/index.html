@@ -5,12 +5,22 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="PYy4juDrbG" />
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -27,7 +37,12 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -59,9 +74,11 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="gdky005,个人博客,andorid,开源, android开发" />
@@ -75,7 +92,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -94,34 +111,40 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"right","display":"always"},
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
-<script src="http://sdk.talkingdata.com/app/h5/v1?appid=787EF001985D5296C365AE9F8D9CAA77&vn=name&vc=2.0"></script>
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-  <title> 孤独狂饮 </title>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+  <link rel="canonical" href="http://gdky005.com/page/2/"/>
+
+
+
+
+
+  <title>孤独狂饮 - 只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</title>
   
+
+
 
 
 
@@ -129,7 +152,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      hm.src = "https://hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -142,36 +165,46 @@
 
 
 
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-right 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta custom-logo">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">孤独狂饮</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孤独狂饮</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</h1>
+      
   </div>
-  <p class="site-subtitle">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -184,7 +217,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,9 +227,9 @@
         <li class="menu-item menu-item-zhuoketeam">
           <a href="/categories/ZhuoKeTeam" rel="section">
             
-              <i class="menu-item-icon fa fa-android fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-android"></i> <br />
             
-            卓客Team
+            menu.zhuoketeam
           </a>
         </li>
       
@@ -204,7 +237,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -214,7 +247,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -222,34 +255,13 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -264,52 +276,78 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/使用-Android-Studio-内存分析工具/" itemprop="url">
-                  使用 Android Studio 内存分析工具
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/使用-Android-Studio-内存分析工具/" itemprop="url">使用 Android Studio 内存分析工具</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T18:33:33+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:33:33+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:36:13+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
                     <span itemprop="name">AndroidStudio</span>
                   </a>
@@ -317,7 +355,6 @@
 
                 
                 
-
               
             </span>
           
@@ -325,26 +362,63 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/使用-Android-Studio-内存分析工具/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/使用-Android-Studio-内存分析工具/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/使用-Android-Studio-内存分析工具/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/使用-Android-Studio-内存分析工具/" class="cy_cmt_count" data-xid="2016/06/20/使用-Android-Studio-内存分析工具/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -352,25 +426,48 @@
       
         
           
-          App的内存使用可以通过以下三个工具分析：
-Heap Viewer
-Memory Monitor
-Allocation Tracker并且，这个三个是互补的可视化内存分析工具。
+            <h3 id="App的内存使用可以通过以下三个工具分析："><a href="#App的内存使用可以通过以下三个工具分析：" class="headerlink" title="App的内存使用可以通过以下三个工具分析："></a>App的内存使用可以通过以下三个工具分析：</h3><ul>
+<li>Heap Viewer</li>
+<li>Memory Monitor</li>
+<li>Allocation Tracker<br>并且，这个三个是互补的可视化内存分析工具。</li>
+</ul>
+<ol>
+<li>使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。</li>
+<li>运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。</li>
+<li>使用 Allocation Tracker 可以确定出你的代码中存在的问题。</li>
+</ol>
+<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt=""></p>
+<ul>
+<li>显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。</li>
+<li>可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。</li>
+<li>提供一种快速看出App 是否是由于 运行内存不足 而导致的 crash(崩溃)的方法。</li>
+<li>当前运行的app ，每一秒更新占用内存的状况。</li>
+<li>有助于识别潜在的内存泄漏。</li>
+<li>有助于识别 App 的 GC模式,并确定它们是否正常和你所希望的样子。</li>
+<li>它很容易使用，并且很容易看明白</li>
+<li>然而，Memory Monitor 不能告诉你哪些对象是有问题的，或者给你指出代码中存在的问题</li>
+</ul>
+<h3 id="Heap-Viewer"><a href="#Heap-Viewer" class="headerlink" title="Heap Viewer"></a>Heap Viewer</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_02.png" alt="Allocation Tracker"></p>
+<ul>
+<li>根据类型 分配许多对象 的快照图。</li>
+<li>每一次的样本数据 是自动采集或者你手动触发。</li>
+<li>帮助确定哪些对象类型可能是内存泄漏。</li>
+<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt=""></a></li>
+<li>显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小</li>
+<li>帮助识别 内存的改变是通过 循环分配或重新分配。</li>
+<li>可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。</li>
+<li>然而，它需要时间和经验来学习理解这个工具的使用。</li>
+</ul>
 
-
-使用 Memory Monitor 可以查找非正常的 GC 导致的性能问题。
-运行 Heap Viewer可以确认出 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/使用-Android-Studio-内存分析工具/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -380,6 +477,8 @@ Allocation Tracker并且，这个三个是互补的可视化内存分析工具�
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -396,52 +495,78 @@ Allocation Tracker并且，这个三个是互补的可视化内存分析工具�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/网络请求的-UA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/网络请求的-UA/" itemprop="url">
-                  网络请求的 UA
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/网络请求的-UA/" itemprop="url">网络请求的 UA</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T18:27:54+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:27:54+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:29:18+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okhttp3/" itemprop="url" rel="index">
                     <span itemprop="name">okhttp3</span>
                   </a>
@@ -449,7 +574,6 @@ Allocation Tracker并且，这个三个是互补的可视化内存分析工具�
 
                 
                 
-
               
             </span>
           
@@ -457,26 +581,63 @@ Allocation Tracker并且，这个三个是互补的可视化内存分析工具�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/网络请求的-UA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/网络请求的-UA/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/网络请求的-UA/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/网络请求的-UA/" class="cy_cmt_count" data-xid="2016/06/20/网络请求的-UA/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -484,19 +645,30 @@ Allocation Tracker并且，这个三个是互补的可视化内存分析工具�
       
         
           
-          一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：
-appName + vers
-          ...
+            <p>一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。<br>一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：</p>
+<p><code>appName + versionName + versonCode + 渠道号 + 设备基本信息</code></p>
+<p>这里写一些大体的代码，其他可以自行封装：</p>
+<p>拼接数据：</p>
+<p><code>appName: mContext.getString(R.string.appname)</code></p>
+<p><code>versionName:  DeviceUtil.getVersionName(mContext)</code></p>
+<p><code>versonCode: DeviceUtil.getVersionCode(mContext)</code></p>
+<p><code>渠道号：DeviceUtil.getChannelTag(mContext)</code></p>
+<p>设备基本信息:<br><code>build.MODEL         Nexus 6</code></p>
+<p><code>build.MANUFACTURER  motorola</code></p>
+<p><code>build.BRAND            google</code></p>
+<p><code>build.FINGERPRINT    google/shamu/shamu:6.0.1/MMB29S/2489379:user/release-keys</code></p>
+<p><code>Build.VERSION.RELEASE 6.0.1</code></p>
+<p><code>Build.VERSION.SDKINT 23</code></p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/网络请求的-UA/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -506,6 +678,8 @@ appName + vers
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -522,52 +696,78 @@ appName + vers
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="url">
-                  从 volley 切换到 OkHttp 遇到的坑
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="url">从 volley 切换到 OkHttp 遇到的坑</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T18:17:30+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:17:30+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-24T15:55:09+08:00">
+                2016-06-24
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okhttp3/" itemprop="url" rel="index">
                     <span itemprop="name">okhttp3</span>
                   </a>
@@ -575,7 +775,6 @@ appName + vers
 
                 
                 
-
               
             </span>
           
@@ -583,26 +782,63 @@ appName + vers
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" class="cy_cmt_count" data-xid="2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -610,19 +846,146 @@ appName + vers
       
         
           
-          这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对
-          ...
+            <p>这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。</p>
+<p>之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.</p>
+<h3 id="代理异常？"><a href="#代理异常？" class="headerlink" title="代理异常？"></a>代理异常？</h3><p>切换成功后，遇到的第一个问题就是：代理功能没法使用，我们客户端 是有联通流量包的功能的，因此必须要加 代理功能。</p>
+<p>根据 okhttp 里面  issue 的回答，弄好多次都不行，折腾了一两天左右。 最后也懒得管了，先放放，优先解决其他问题。 </p>
+<p>之后过了几天，再回来弄这块的时候，就突然好了，兴奋坏了。赶紧查查和之前的有没有什么差异？</p>
+<p>经过对比后发现：原来是 之前写 volley 的时候是这样的：</p>
+<pre><code>HttpURLConnection connection;
+    if (&quot;https&quot;.equals(url.getProtocol())) {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGETCPPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&quot;Proxy-Authorization&quot;,
+                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
+    } else {
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                InetSocketAddress
+                        .createUnresolved(FLOWPACKAGEHOST, FLOWPACKAGEPORT));
+        connection = (HttpURLConnection) url
+                .openConnection(proxy);
+        connection.addRequestProperty(&quot;Authorization&quot;,
+                &quot;Basic MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;);
+    }
+    connection.addRequestProperty(&quot;Proxy-Connection&quot;, &quot;Keep-Alive&quot;);
+</code></pre><p>主要区分了 https 和 http, 然后里面传入的 key 和 端口号都不一样。</p>
+<p>但是在 okhttp 里面貌似是不需要区分的。只需要这样写：</p>
+<pre><code>/**
+     * 设置联通流量 代理功能
+     * @param builder
+     */
+    private void setUnicomProxy(OkHttpClient.Builder builder) {
+        //添加联通代理功能
+        if (TrafficUtil.getUnicomProxyAvailable()) {
+            Authenticator proxyAuthenticator = new Authenticator() {
+                @Override
+                public okhttp3.Request authenticate(Route route, Response response) throws IOException {
+                    return response.request().newBuilder().header(&quot;Proxy-Authorization&quot;, &quot;Basic &quot; +
+                            &quot;MzAwMDAwNDU4NDo0Mjk5NjREMEI1Q0QyODc6&quot;).header(&quot;Proxy-Connection&quot;,
+                            &quot;Keep-Alive&quot;).build();
+                }
+            };
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(FLOWPACKAGEHOST,
+                    FLOWPACKAGETCPPORT)));
+            builder.proxyAuthenticator(proxyAuthenticator);
+        }
+    }
+</code></pre><p>就可以了。<br><code>FLOWPACKAGEHOST -&gt; test.proxy.1111.com (这是域名)</code><br><code>FLOWPACKAGETCPPORT -&gt; 8143</code><br>这还是真是一个偶然的机会，歪打正着，否则估计得排除好久。</p>
+<p><code>备注： 上面 key 我随意修改了几个字符，看看就行，想要直接使用肯定不行的， 哈哈</code></p>
+<h3 id="SSL-STL证书-出错？"><a href="#SSL-STL证书-出错？" class="headerlink" title="SSL/STL证书 出错？"></a>SSL/STL证书 出错？</h3><p>这是第二个遇到的问题，证书一直没法用，一使用 https 的接口就失败。最后解决办法是：</p>
+<pre><code>    @NonNull
+    private SSLContext getSslContext(InputStream... certificates) {
+        SSLContext sslContext = null;
+
+        try {
+            CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates) {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate
+                        (certificate));
+                try {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+            trustManagerFactory.init(keyStore);
+            sslContext.init(null, trustManagerFactory.getTrustManagers(),
+                    new SecureRandom());
+
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }   finally {
+        }
+
+        return sslContext;
+    }
+
+/**
+     * 启用 OkHttps 域名校验功能
+     * @param builder
+     */
+    private void setOkhttpSSLContext(OkHttpClient.Builder builder) {
+        SSLContext sslContext = getSslContext(KaolaApplication.mContext.getResources().openRawResource(R
+                .raw.kl_magic));
+
+        if (sslContext != null) {
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    HostnameVerifier hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hostnameVerifier.verify(&quot;xxx.com&quot;, session); //启用xxx 域名校验 (这里是一个非常重要的地方，缺少了这一步肯定不行)
+                }
+            });
+            builder.sslSocketFactory(sslContext.getSocketFactory());
+        }
+    }
+</code></pre><p>这句是非常重要的：<br><code>hostnameVerifier.verify(&quot;xxx.com&quot;, session);</code>主要是进行 https 的域名校验，用证书匹配你的域名，如果匹配成功，那么就可以直接使用，否则 https 握手失败，无法正确发送请求。</p>
+<p>之前尝试过使用 使用<br>    builder.hostnameVerifier(new AllowAllHostnameVerifier());</p>
+<p>这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。</p>
+<h3 id="post-参数不能为空？"><a href="#post-参数不能为空？" class="headerlink" title="post 参数不能为空？"></a>post 参数不能为空？</h3><p>这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).</p>
+<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="external">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
+<p>具体参考这个：</p>
+<pre><code>public void addRequest(int method, final Map&lt;String, String&gt; params, final String baseUrl,
+                           final TypeReference&lt;? extends BaseResponse&gt; type, final JsonResultCallback callback) {
+            ......
+          if (params.size() == 0 &amp;&amp; method == Request.Method.POST)
+            params.put(&quot;temp&quot;, &quot;temp&quot;); //解决 method POST must have a request body.;
+            ......
+}
+</code></pre><p>这三个问题解决后，基本就可以放心使用了。</p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -632,6 +995,8 @@ appName + vers
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -648,52 +1013,78 @@ appName + vers
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="url">
-                  分享Java Collection 的一张图
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="url">分享Java Collection 的一张图</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T17:09:48+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T17:09:48+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:18:56+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
                   </a>
@@ -701,7 +1092,6 @@ appName + vers
 
                 
                 
-
               
             </span>
           
@@ -709,26 +1099,63 @@ appName + vers
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/Java-Collection-Cheat-Sheet/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/Java-Collection-Cheat-Sheet/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/Java-Collection-Cheat-Sheet/" class="cy_cmt_count" data-xid="2016/06/20/Java-Collection-Cheat-Sheet/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -736,20 +1163,20 @@ appName + vers
       
         
           
-          在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等
-我们可以看出他们之间的关系以及差别。
-例如：HashMap, HastTable,  Vector 和 Linke
-          ...
+            <p>在这张图中展示了 Collection 相关一些常用类，例如最常见的 Map（Interface）, Collection(Interface), List(Interface) 等等</p>
+<p>我们可以看出他们之间的关系以及差别。</p>
+<p>例如：HashMap, HastTable,  Vector 和 LinkedList等</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/java_array_big_img.png" alt="Java Collection Cheat Sheet"></p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/Java-Collection-Cheat-Sheet/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -759,6 +1186,8 @@ appName + vers
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -775,52 +1204,78 @@ appName + vers
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Okio-简单处理I-O操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/Okio-简单处理I-O操作/" itemprop="url">
-                  Okio 简单处理I/O操作
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/Okio-简单处理I-O操作/" itemprop="url">Okio 简单处理I/O操作</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:59:24+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:59:24+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:18:47+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okio/" itemprop="url" rel="index">
                     <span itemprop="name">okio</span>
                   </a>
@@ -828,7 +1283,6 @@ appName + vers
 
                 
                 
-
               
             </span>
           
@@ -836,26 +1290,63 @@ appName + vers
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/Okio-简单处理I-O操作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/Okio-简单处理I-O操作/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/Okio-简单处理I-O操作/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/Okio-简单处理I-O操作/" class="cy_cmt_count" data-xid="2016/06/20/Okio-简单处理I-O操作/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -863,19 +1354,270 @@ appName + vers
       
         
           
-          Android 善用Okio简化处理I/O操作Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。
-compile &apos;c
-          ...
+            <p>Android 善用Okio简化处理I/O操作<br>Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。</p>
+<pre><code>compile &apos;com.squareup.okio:okio:1.6.0&apos;
+</code></pre><p>Ohio 有两个关键接口， Sink 和 Source, 这两个接口都继承了 Colseable 接口；而 Sink 可以简单的看成 OutputStream, Source 可以简单的看做 InputStream. 而这两个接口凑是支持读写超时设置的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_01.png" alt=""></p>
+<p>它们各自有一个支持缓冲区的子类接口，BufferedSink 和 BufferedSource,而 BufferedSink有一个实现类 RealBufferedSink， BufferedSource有一个实现类 RealBufferedSource；此外 Sink 和 Source 有一个支持 gzip 的实现类 GzipSink和GzipSource；一个具有委托功能的抽象类ForwardingSink 和 ForwardingSource; 还有一个实现类便是 InflaterSource 和 DeflaterSink, 这两个类主要用于压缩，为 GzipSink 和 GzipSource 服务；<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_02.png" alt=""></p>
+<p>BufferedSink中定义了一系列写入缓存区的方法，比如write方法写byte数组，writeUtf8写字符串，还有一些列的writeByte，writeString，writeShort，writeInt，writeLong，writeDecimalLong等等方法；BufferedSource定义的方法和BufferedSink极为相似，只不过一个是写一个是读，基本上都是一一对应的，如readUtf8，readByte，readString，readShort，readInt等等等等。这两个接口中的方法有兴趣的点源码进去看就可以了。</p>
+<p>而这两个支持缓冲区的接口的实现类 RealBufferedSink 和 RealBufferedSource 都是通过包装一个 Sink + Buffer 或者 Source + Buffer 进行实现的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_03.png" alt=""></p>
+<p>用 RealBufferedSink 来说，实际调用的 write 的一系列方法，都是直接对成员变量 buffer 进行的操作，当写入 buffer 成功后，最后调用一个方法将 buffer 中的内容写入到 sink 中，举例：</p>
+<pre><code>public BufferedSink writeLong(long v) throws IOException {
+    if (this.closed) {
+        throw new IllegalStateException(&quot;closed&quot;);
+    } else {
+        this.buffer.writeLong(v);
+        return this.emitCompleteSegments();
+    }
+}
+</code></pre><p>可以看到，首先会判断closed成员变量是否是标记着关闭，如果已经关闭了则扔出一个异常，否则将内容写入到buffer，写入完成后调用了一个emitCompleteSegments的方法，该方法中做了什么呢,没错，就是将buffer中的内容写入到sink成员变量中去，然后将自身返回。</p>
+<pre><code>public BufferedSink emitCompleteSegments() throws IOException {
+        if(this.closed) {
+            throw new IllegalStateException(&quot;closed&quot;);
+        } else {
+            long byteCount = this.buffer.completeSegmentByteCount();
+            if(byteCount &gt; 0L) {
+                this.sink.write(this.buffer, byteCount);
+            }
+            return this;
+        }
+    }
+</code></pre><p>这两个实现类的内部的所有方法都是类似的，这里不一一展开。<br>而这一切的背后都有一个叫做 Buffer 的类在支持着缓冲区， Buffer 是 BufferedSink 和 BufferedSource 的实现类，因此它即可以用来读数据，也可以用来写数据，其内部使用了一个 Segment 和 SegmentPool, 维持着一个链表，其循环利用的机制 和 Android 中的 Message 的利用机制是一模一样的。</p>
+<pre><code>final class SegmentPool {
+    static final long MAX_SIZE = 65536L;
+    static Segment next;
+    static long byteCount;
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/Okio-简单处理I-O操作/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+    private SegmentPool() {
+    }
+
+    static Segment take() {
+        Class var0 = SegmentPool.class;
+
+        synchronized(SegmentPool.class) {
+            if(next != null) {
+                Segment result = next;
+                next = result.next;
+                result.next = null;
+                byteCount -= 2048L;
+                return result;
+            }
+        }
+        return new Segment();
+    }
+
+    static void recycle(Segment segment) {
+        if(segment.next == null &amp;&amp; segment.prev == null) {
+            if(!segment.shared) {
+                Class var1 = SegmentPool.class;
+
+                synchronized(SegmentPool.class) {
+                    if(byteCount + 2048L &lt;= 65536L) {
+                        byteCount += 2048L;
+                        segment.next = next;
+                        segment.pos = segment.limit = 0;
+                        next = segment;
+                    }
+                }
+            }
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+}
+</code></pre><p>内部一个成员变量 next 指向 链表下一个元素，take 首先判断池中是否存在可用的，存在则返回，不存在则 new 一个，而 recycle 则是将不再使用的 Segment 重新扔到池中去，从而达到一个 Segment 池的作用。</p>
+<p>而Okio暴露给外部使用的类便是Okio这个类，其内部有大量的静态方法,包括通过一个Source获得BufferedSource，通过一个Sink获得一个BufferedSink。这个过程很简单，我们调用Okio的buffer方法即可返回我们需要的，如下</p>
+<pre><code>Okio.buffer(sink)
+Okio.buffer(source)
+</code></pre><p>但是上面两个方法需要传递一个Sink或者Source，那么这个Sink和Source又是如何获得的呢。其实方法也在Okio这个类中。我们可以调用sink方法获得一个Sink，调用source方法获得一个Source，而数据的来源或者目的可以是一个File，一个输入或者输出流，一个Socket链接等等。如下</p>
+<pre><code>Okio.sink(new File(&quot;***&quot;));
+Okio.sink(new FileOutputStream(new File(&quot;***&quot;)));
+Okio.sink(new Socket(&quot;***&quot;,8888));
+
+Okio.source(new File(&quot;***&quot;));
+Okio.source(new FileInputStream(new File(&quot;***&quot;)));
+Okio.source(new Socket(&quot;****&quot;,8888));
+</code></pre><p>这样你可能还不过瘾，那么让我们连起来应用一下，现在我们从本地读一个文件，读完后再往另一个文件中写入内容。</p>
+<pre><code>public static void main(String[] args) {
+        Source source = null;
+        BufferedSource bufferedSource = null;
+
+        try {
+            File file = new File(&quot;resources/test.txt&quot;);
+            source = Okio.source(file);
+            bufferedSource = Okio.buffer(source);
+            String content = bufferedSource.readUtf8();
+            System.out.println(content);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeQuietly(bufferedSource);
+        }
+
+        Sink sink = null;
+        BufferedSink bufferedSink = null;
+        try {
+            File dest = new File(&quot;resources/dest.txt&quot;);
+            sink = Okio.sink(dest);
+            bufferedSink = Okio.buffer(sink);
+            bufferedSink.writeUtf8(&quot;11111111111&quot;);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeQuietly(bufferedSink);
+        }
+    }
+
+    public static void closeQuietly(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (RuntimeException rethrown) {
+                throw rethrown;
+            } catch (Exception ignored) {
+            }
+        }
+    }
+</code></pre><p>或许有时候网络请求中，我们需要使用到Gzip的功能，那么，我们可以简单的使用一下gzip的功能</p>
+<pre><code>public static void main(String[] args) {
+        Sink sink = null;
+        BufferedSink bufferedSink = null;
+        GzipSink gzipSink=null;
+
+        try {
+            File dest = new File(&quot;resources/gzip.txt&quot;);
+            sink = Okio.sink(dest);
+            gzipSink=new GzipSink(sink);
+            bufferedSink = Okio.buffer(gzipSink);
+            bufferedSink.writeUtf8(&quot;android vs ios&quot;);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeQuietly(bufferedSink);
+        }
+
+        Source source = null;
+        BufferedSource bufferedSource = null;
+        GzipSource gzipSource=null;
+
+        try {
+            File file = new File(&quot;resources/gzip.txt&quot;);
+            source = Okio.source(file);
+            gzipSource=new GzipSource(source);
+            bufferedSource = Okio.buffer(gzipSource);
+            String content = bufferedSource.readUtf8();
+            System.out.println(content);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeQuietly(bufferedSource);
+        }
+    }
+
+    public static void closeQuietly(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (RuntimeException rethrown) {
+                throw rethrown;
+            } catch (Exception ignored) {
+            }
+        }
+    }
+</code></pre><p>验证是否正确的方法便是查看该写入的文件是否是乱码，以及读出来是否是原来的字符串。<br>对比一下原来的gzip压缩与解压缩的方式，你就会发现还是简单了不少的</p>
+<pre><code>public class GzipUtil {
+        /**
+         * GZIP压缩
+         *
+         * @param data
+         * @return
+         * @throws Exception
+         */
+        public static byte[] gzip(byte[] data) throws Exception {
+            if (data == null || data.length == 0) {
+                return null;
+            }
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            GZIPOutputStream zos;
+            BufferedInputStream bis = new BufferedInputStream(new ByteArrayInputStream(data));
+            byte[] buf = new byte[512];
+            int len;
+
+            try {
+                zos = new GZIPOutputStream(out);
+                while ((len = bis.read(buf)) != -1) {
+                    zos.write(buf, 0, len);
+                    zos.flush();
+                }
+                bis.close();
+                zos.close();
+                return out.toByteArray();
+            } finally {
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (Exception e2) {
+                    }
+                }
+            }
+        }
+
+        /**
+         * Gzip解压缩
+         *
+         * @param b
+         * @return
+         */
+        public static byte[] unGzip(byte[] b) {
+            if (b == null || b.length == 0) {
+                return null;
+            }
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ByteArrayInputStream in = new ByteArrayInputStream(b);
+
+            try {
+                GZIPInputStream gunzip = new GZIPInputStream(in);
+                byte[] buffer = new byte[256];
+                int n;
+                while ((n = gunzip.read(buffer)) &gt;= 0) {
+                    out.write(buffer, 0, n);
+                }
+                return out.toByteArray();
+            } catch (IOException e) {
+                Log.e(WDCore.getInstance().getConfiguration().getLogTag(), &quot;uncompress error&quot;, e);
+            } finally {
+                try {
+                    if (out != null) {
+                        out.close();
+                    }
+                    if (in != null) {
+                        in.close();
+                    }
+                } catch (Exception e2) {
+                }
+            }
+            return null;
+        }
+    }
+</code></pre><p>此外还有一个 ByteString 类，这个类可以用来做各种变化，它将 byte 转为 String， 而这个 String 可以是 utft8的值，也可以是 base64后的值，也可以是 md5的值， 也可以是 sha256的值，总是就是各种变化，最后去的你想要的值。</p>
+<p>在需要的地方使用 Okio 库，可以极大的提升效率，也会带来很大的便利性。</p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -885,6 +1627,8 @@ compile &apos;c
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -901,52 +1645,78 @@ compile &apos;c
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="url">
-                  OkHttp3 源码分析【缓存策略】
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="url">OkHttp3 源码分析【缓存策略】</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:35:10+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:35:10+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:06:02+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okhttp3/" itemprop="url" rel="index">
                     <span itemprop="name">okhttp3</span>
                   </a>
@@ -954,7 +1724,6 @@ compile &apos;c
 
                 
                 
-
               
             </span>
           
@@ -962,26 +1731,63 @@ compile &apos;c
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/OkHttp3-源码分析【缓存策略】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/OkHttp3-源码分析【缓存策略】/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/" class="cy_cmt_count" data-xid="2016/06/20/OkHttp3-源码分析【缓存策略】/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -989,21 +1795,181 @@ compile &apos;c
       
         
           
-          本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
+            <p>本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇</p>
+<h3 id="Http-缓存基础知识"><a href="#Http-缓存基础知识" class="headerlink" title="Http 缓存基础知识"></a>Http 缓存基础知识</h3><p>分析源目前，我们先回顾一下 Http 的缓存 Header 的含义</p>
+<ol>
+<li><p>Expires<br>表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存<br> Expires: Thu, 12 Jan 2017 11:01:33 GMT</p>
+</li>
+<li><p>Cache-Control<br>相对值，单位是秒，指定某个文件被续多少秒的时间，从而避免额外的网络请求。比expired更好的选择，它不用要求服务器与客户端的时间同步，也不用服务器时刻同步修改配置Expired中的绝对时间，而且它的优先级比Expires更高。比如简书静态资源有如下的header，表示可以续31536000秒，也就是一年。</p>
+<p> Cache-Control: max-age=31536000, public</p>
+</li>
+<li><p>修订文件名（Reving Filenames）<br>如果我们通过设置 header 保证了客户端可以缓存的，而此时远程服务器更新了文件如何解决呢？这个时候可以通过修改 url 的文件名版本后缀进行缓存，比如下文是又拍云的公共CDN就提供了多个版本的JQuery<br> upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js</p>
+</li>
+<li><p>条件 get 请求 （Conditional GET Requests） 与 304<br>如果缓存过期或者轻质放弃缓存，在此情况下，缓存策略全部交给服务器判断，客户端只用发送 条件 get 请求 即可，如果缓存是有效的， 则返回 304 not Modifiled, 否则直接返回 body.</p>
+</li>
+</ol>
+<p>请求的方式有两种：</p>
+<ul>
+<li>Last-Modified-Date:<br>  Last-Modified: Tue, 12 Jan 2016 09:31:27 GMT</li>
+</ul>
+<p>客户端再次发送时，通过发送<br>    If-Modified-Since: Tue, 12 Jan 2016 09:31:27 GMT</p>
+<p>交给服务器进行判断，如果任然可以缓存使用，服务器就返回 304.</p>
+<ul>
+<li>ETag<br>ETag 是对资源文件的一种摘要，客户端并不需要了解实现细节。当客户端第一次请求，服务器返回了<br>  ETag: “5694c7ef-24dc”</li>
+</ul>
+<p>客户端再次请求时，通过发送<br>    If-None-Match:”5694c7ef-24dc”</p>
+<p>交给服务器进行判断，如果还能使用缓存，服务器就返回 304</p>
+<blockquote>
+<p>如果 ETag 和 Last-Modified 都有，则必须一次性都发给服务器，它们没有优先级之分，反正这里客户端没有任何判断的逻辑。</p>
+</blockquote>
+<ul>
+<li>其他标签<ul>
+<li>no-cache/no-store: 不使用缓存<ul>
+<li>only-if-cached: 只使用缓存</li>
+<li>Date:The date and time that the message was sent</li>
+<li>Age： CDN 反代服务器 到原始服务器获取数据延迟的缓存时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="external">这里看</a></p>
+</blockquote>
+<p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。</p>
+<ol>
+<li>总体请求流程分析<br>CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出<br>Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)</li>
+</ol>
+<p>Request:<br>开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。</p>
+<p>cacheCandildate:<br>也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.</p>
+<p>当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求</p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt=""></p>
+<blockquote>
+<p>以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论</p>
+</blockquote>
+<p>基本上与上文中的图片完全一致，以上就是 OkHttp 的缓存策略。</p>
+<blockquote>
+<p>关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断</p>
+</blockquote>
+<ol>
+<li>CacheStrategy 的加工过程</li>
+</ol>
+<p>CacheStrategy 使用 Factory模式进行构造，参数如下</p>
+<pre><code>InternalCache responseCache = Internal.instance.internalCache(client);
+//cacheCandidate从disklurcache中获取
+//request的url被md5序列化为key,进行缓存查询
+Response cacheCandidate = responseCache != null ? responseCache.get(request) : null;
+//请求与缓存
+factory = new CacheStrategy.Factory(now, request, cacheCandidate);
+cacheStrategy = factory.get();
+//输出结果
+networkRequest = cacheStrategy.networkRequest;
+cacheResponse = cacheStrategy.cacheResponse;
+//进行一大堆的if判断，内容同上表格
+.....
+</code></pre><p>可以看出Factory.get()是最关键的缓存策略的判断，我们点入get()方法，可以发现是对getCandidate()的一个封装，我们接着点开getCandidate()，全是if与数学计算，详细代码如下</p>
+<pre><code>private CacheStrategy getCandidate() {
+  //如果缓存没有命中(即null),网络请求也不需要加缓存Header了
+  if (cacheResponse == null) {
+    //`没有缓存的网络请求,查上文的表可知是直接访问
+    return new CacheStrategy(request, null);
+  }
 
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存
-          ...
+  // 如果缓存的TLS握手信息丢失,返回进行直接连接
+  if (request.isHttps() &amp;&amp; cacheResponse.handshake() == null) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/OkHttp3-源码分析【缓存策略】/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+  //检测response的状态码,Expired时间,是否有no-cache标签
+  if (!isCacheable(cacheResponse, request)) {
+    //直接访问
+    return new CacheStrategy(request, null);
+  }
+
+  CacheControl requestCaching = request.cacheControl();
+  //如果请求报文使用了`no-cache`标签(这个只可能是开发者故意添加的)
+  //或者有ETag/Since标签(也就是条件GET请求)
+  if (requestCaching.noCache() || hasConditions(request)) {
+    //直接连接,把缓存判断交给服务器
+    return new CacheStrategy(request, null);
+  }
+  //根据RFC协议计算
+  //计算当前age的时间戳
+  //now - sent + age (s)
+  long ageMillis = cacheResponseAge();
+  //大部分情况服务器设置为max-age
+  long freshMillis = computeFreshnessLifetime();
+
+  if (requestCaching.maxAgeSeconds() != -1) {
+    //大部分情况下是取max-age
+    freshMillis = Math.min(freshMillis, SECONDS.toMillis(requestCaching.maxAgeSeconds()));
+  }
+
+  long minFreshMillis = 0;
+  if (requestCaching.minFreshSeconds() != -1) {
+    //大部分情况下设置是0
+    minFreshMillis = SECONDS.toMillis(requestCaching.minFreshSeconds());
+  }
+
+  long maxStaleMillis = 0;
+  //ParseHeader中的缓存控制信息
+  CacheControl responseCaching = cacheResponse.cacheControl();
+  if (!responseCaching.mustRevalidate() &amp;&amp; requestCaching.maxStaleSeconds() != -1) {
+    //设置最大过期时间,一般设置为0
+    maxStaleMillis = SECONDS.toMillis(requestCaching.maxStaleSeconds());
+  }
+
+  //缓存在过期时间内,可以使用
+  //大部分情况下是进行如下判断
+  //now - sent + age + 0 &lt; max-age + 0
+  if (!responseCaching.noCache() &amp;&amp; ageMillis + minFreshMillis &lt; freshMillis + maxStaleMillis) {
+    //返回上次的缓存
+    Response.Builder builder = cacheResponse.newBuilder();
+    return new CacheStrategy(null, builder.build());
+  }
+
+  //缓存失效, 如果有etag等信息
+  //进行发送`conditional`请求,交给服务器处理
+  Request.Builder conditionalRequestBuilder = request.newBuilder();
+
+  if (etag != null) {
+    conditionalRequestBuilder.header(&quot;If-None-Match&quot;, etag);
+  } else if (lastModified != null) {
+    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, lastModifiedString);
+  } else if (servedDate != null) {
+    conditionalRequestBuilder.header(&quot;If-Modified-Since&quot;, servedDateString);
+  }
+  //下面请求实质还说网络请求
+  Request conditionalRequest = conditionalRequestBuilder.build();
+  return hasConditions(conditionalRequest) ? new CacheStrategy(conditionalRequest,
+      cacheResponse) : new CacheStrategy(conditionalRequest, null);
+}
+</code></pre><p>太长不看的话，大多数常见的情况可以用这个估算</p>
+<pre><code>now - sent + age &lt; max-age
+</code></pre><blockquote>
+<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt=""></p>
+</blockquote>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
+<ol>
+<li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
+<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="external">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
+<li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
+<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="external">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1013,6 +1979,8 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1029,52 +1997,78 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="url">
-                  OkHttp3源码分析【任务队列】
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="url">OkHttp3源码分析【任务队列】</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T16:34:26+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T16:34:26+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:05:36+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okhttp3/" itemprop="url" rel="index">
                     <span itemprop="name">okhttp3</span>
                   </a>
@@ -1082,7 +2076,6 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
 
                 
                 
-
               
             </span>
           
@@ -1090,26 +2083,63 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/OkHttp3源码分析【任务队列】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/OkHttp3源码分析【任务队列】/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/" class="cy_cmt_count" data-xid="2016/06/20/OkHttp3源码分析【任务队列】/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1117,24 +2147,116 @@ Expires表示到期时间，一般用在 response 报文中，当超过此事件
       
         
           
-          本文目录
-线程池基础
-反向代理模块
-OkHttp 的任务调度
+            <h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ol>
+<li>线程池基础</li>
+<li>反向代理模块</li>
+<li>OkHttp 的任务调度</li>
+</ol>
+<p>OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。</p>
+<h1 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h1><ol>
+<li>线程池好处有哪些<br>线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库：</li>
+</ol>
+<p>多线程技术主要解决 处理器单元时间内多个线程执行的问题，他可以显著减少处理器单元内的闲置时间，增加处理器单元的吞吐能力。但如果对多线程应用不当，会增加对单个任务的处理时间。可以举例：<br>如果一台服务完成一项任务的时间为 T</p>
+<pre><code>T1 创建线程的时间
+T2 在线程中执行任务的时间，包括线程间同步所需时间
+T3 线程销毁的时间
+</code></pre><p>显然T ＝ T1＋T2＋T3。注意这是一个极度简化的假设。</p>
+<p>可以看出 T1 T3 是多线程本身带来的开销，我们渴望减少 T1，T3的时间，从而减少 T 的时间。但一些线程的使用者并没有注意到这一点，多余在程序中 频繁的创建或销毁线程，导致 T1 T3 占的比例更高。显然这是突出了线程的弱点（T1，T3），而不是有点（并发性）。</p>
+<p>线程池的技术是关注如何缩短或调整 T1，T3 的时间的技术，从而提高服务器程序性能。</p>
+<ul>
+<li>通过对线程缓存，减少创建和销毁的时间损失<ul>
+<li>通过控制线程数据的阈值，减少当线程过少带来的 CPU 闲置（比如说 长时间卡在I/O 上）与线程过多时对 JVM 对对内存与线程切换压力</li>
+</ul>
+</li>
+</ul>
+<p>在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了</p>
+<ol>
+<li>OkHttp 配置的线程池</li>
+</ol>
+<p>在 OkHttp 中，使用如下构造了单例线程池<br>    public synchronized ExecutorService executorService() {<br>      if (executorService == null) {<br>        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,<br>            new SynchronousQueue<runnable>(), Util.threadFactory(“OkHttp Dispatcher”, false));<br>      }<br>      return executorService;<br>    }</runnable></p>
+<p>参数说明：</p>
+<ul>
+<li>int corePoolSize: 最小并发线程数，这里并发同时包括空闲与活动的线程，如果是0的话，空闲一段时间后所有线程将全部被销毁。</li>
+<li>int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃<em>处理机制</em>来处理</li>
+<li>long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive</li>
+<li>TimeUnit unit: 时间单位，一般用秒</li>
+<li>BlockingQueue\<runnable\> workQueue:  工作队列</runnable\></li>
+<li>ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等</li>
+</ul>
+<p>可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。</p>
+<p>也就是说， 在实际运行中，当收到10个并发请求是，线程池会创建十个线程，当工作完成后，线程池会在60s 后相继关闭所有线程。</p>
+<blockquote>
+<p>在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers</p>
+</blockquote>
+<h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
+<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
+<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\<readyasynccalls\>对应 Nginx 的内部缓存</readyasynccalls\></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
+<p>具体成员如下：</p>
+<ul>
+<li>maxRequests = 64：最大并发请求数为64</li>
+<li>maxRequestsPerHost = 5：每个主机最大请求数为5</li>
+<li>Dispatcher：分发者，也就是生产者（默认在主线程）</li>
+<li>AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）</li>
+<li>ExecutorService：消费者池（也就是线程池）</li>
+<li>Deque\<readyasynccalls\>：缓存（用数组实现，可自动扩容，无大小限制）</readyasynccalls\></li>
+<li>Deque\<runningasynccalls\>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</runningasynccalls\></li>
+</ul>
+<p>通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间</p>
+<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build(" target="_blank" rel="external">http://qq.com&quot;).get().build(</a>);<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
+<pre><code>  }
 
-OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
-线
-          ...
+  @Override public void onResponse(Call call, Response response) throws IOException {
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/OkHttp3源码分析【任务队列】/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+  }
+});
+</code></pre><p>当 HttpClient 的请求入队 时，根据代码，我们可以发现实际上是 Dispatcher 进行了 入队 操作</p>
+<pre><code>synchronized void enqueue(AsyncCall call) {
+  if (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) {
+      //添加正在运行的请求
+    runningAsyncCalls.add(call);
+       //线程池执行请求
+    executorService().execute(call);
+  } else {
+      //添加到缓存队列
+    readyAsyncCalls.add(call);
+  }
+}
+</code></pre><p>可以发现请求是否进入缓存的条件如下：<br>    (runningRequests&lt;64 &amp;&amp; runningRequestsPerHost&lt;5)</p>
+<p>如果满足条件，那么久直接把 AsyncCall 直接加到 runningCalls 的队列中，并在现场中执行（线程池会根据当前负载自动创建，销毁，缓存相应的线程）。反之就放入readyAsyncCalls进行缓存等待。</p>
+<p>我们再分析请求元素AsyncCall（本质是实现了Runnable接口），它内部的 execute方法是：<br>    @Override protected void execute() {<br>      boolean signalledCallback = false;<br>      try {<br>          //执行耗时IO任务<br>        Response response = getResponseWithInterceptorChain(forWebSocket);<br>        if (canceled) {<br>          signalledCallback = true;<br>          //回调，注意这里回调是在线程池中，而不是想当然的主线程回调<br>          responseCallback.onFailure(RealCall.this, new IOException(“Canceled”));<br>        } else {<br>          signalledCallback = true;<br>          //回调，同上<br>          responseCallback.onResponse(RealCall.this, response);<br>        }<br>      } catch (IOException e) {<br>        if (signalledCallback) {<br>          // Do not signal the callback twice!<br>          logger.log(Level.INFO, “Callback failure for “ + toLoggableString(), e);<br>        } else {<br>          responseCallback.onFailure(RealCall.this, e);<br>        }<br>      } finally {<br>          //最关键的代码<br>        client.dispatcher().finished(this);<br>      }<br>    }</p>
+<p>当任务执行完成后，无是否有 异常，finally 代码段总会被执行，也就是会调用 Dispatcher 的 finished 函数，打开源码，就能发现它将正在运行的任务 Call从 队列 runningAsyncCalls 中移除后，执行 promoteCalls()函数<br>    private void promoteCalls() {<br>        //如果目前是最大负荷运转，接着等<br>      if (runningAsyncCalls.size() &gt;= maxRequests) return; // Already running max capacity.<br>      //如果缓存等待区是空的，接着等<br>      if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.</p>
+<pre><code>  for (Iterator&lt;AsyncCall&gt; i = readyAsyncCalls.iterator(); i.hasNext(); ) {
+    AsyncCall call = i.next();
+
+    if (runningCallsForHost(call) &lt; maxRequestsPerHost) {
+        //将缓存等待区最后一个移动到运行区中，并执行
+      i.remove();
+      runningAsyncCalls.add(call);
+      executorService().execute(call);
+    }
+
+    if (runningAsyncCalls.size() &gt;= maxRequests) return; // Reached max capacity.
+  }
+}
+</code></pre><p>这样，就主动的把缓存队列向前走了一步，而没有使用锁等复杂编码</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>通过上述的分析，我们知道了：</p>
+<ol>
+<li>OkHttp 采用 Dispatcher 技术，类似于 Nginx, 与线程池配合实现高并发，低阻塞的运行</li>
+<li>OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出</li>
+<li>OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度</li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="external">http://www.jianshu.com/p/6637369d02e7</a></p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1144,6 +2266,8 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1160,52 +2284,78 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="url">
-                  Okhttp3源码分析【DiskLruCache】
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="url">Okhttp3源码分析【DiskLruCache】</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-20T15:57:46+08:00" content="2016-06-20">
-              2016-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T15:57:46+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T17:05:47+08:00">
+                2016-06-20
+              </time>
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/okhttp3/" itemprop="url" rel="index">
                     <span itemprop="name">okhttp3</span>
                   </a>
@@ -1213,7 +2363,6 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
 
                 
                 
-
               
             </span>
           
@@ -1221,26 +2370,63 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/" class="cy_cmt_count" data-xid="2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1248,24 +2434,108 @@ OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的�
       
         
           
-          本文目录
-Cache 的简介
-LinkedHashMap 原理
-OkHttp 的文件系统
+            <h3 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h3><ul>
+<li>Cache 的简介</li>
+<li>LinkedHashMap 原理</li>
+<li>OkHttp 的文件系统</li>
+</ul>
+<p>本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 <strong>缓存策略</strong></p>
+<h3 id="1-Cache-的简介"><a href="#1-Cache-的简介" class="headerlink" title="1.Cache 的简介"></a>1.Cache 的简介</h3><p>缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘，网络，CDN反代缓存，DNS递归查询，OS页面置换，都可以看作缓存。它有如下的特点：</p>
+<ol>
+<li>缓存载体与持久载体总是相对的，容量远远小于持久容量，成本高于持久容量，速度高于持久容量。比如硬盘与网络，目前主流的SSD硬盘可以达到500MB/S，而很多地区网速却只有4M，将网络中的文件存到硬盘中，硬盘就相当于缓存；再比如内存与硬盘，主流的DDR3内存的速度可以达到10GB/S，而硬盘相对的慢了很多数量级别，将硬盘的游戏加载到内存，内存就相对于硬盘是一种缓存。</li>
+<li>需要实现 <em>排序依据</em>， 子啊 java 中，可以使用 Comparable\<t\>作为排序的接口。</t\></li>
+<li>需要一种 <em>页面置换算法</em> 将旧页面取代去掉 换成新页面，如 最久未使用算法（LRU）、先进先出（FIFO）、最近最少使用算法（LFU）、非最近使用算法（NMRU）等</li>
+<li>如果缓存中没有，就需要从原始地址获取，这个步骤叫做『回源』，CDN厂商会标注“回源率”作为卖点</li>
+</ol>
+<p>在 OkHttp 中，使用 FileSystem 作为缓存载体（磁盘相对于网络的缓存），使用 LRU 作为 页面置换算法 （封装了 LinkedHashMap）。</p>
+<blockquote>
+<p>1.Comparable\<t\>是java用来排序的接口，推荐参考阅读《Java Software Structures Designing and Using Data Structures》<br>2.页面置换算法可以参考阅读《现代操作系统》的中译本</t\></p>
+</blockquote>
+<h3 id="2-LinkedHashMap-原理"><a href="#2-LinkedHashMap-原理" class="headerlink" title="2.LinkedHashMap 原理"></a>2.LinkedHashMap 原理</h3><ol>
+<li>源码概述分析<br>在学之前，应该先了解下 LinkedHashMap。 LinkedHashMap 继承于 HashMap.</li>
+</ol>
+<p>在 HashMap 中，维护了一个 Node\<k,v\>[] table,当 put操作时，将元素按照计算后的 hash 值 放入到 数组相应位置 table[has] 中，最后迭代式，从 table[0] 开始向后迭代，具体的顺序取决于元素的 HashCode, 所以我们常说 HashMap 的元素迭代是不可预测的。</k,v\></p>
+<p>而在 LinkedHashMap 中，除了 Node\<k,v\><a href="#"></a> table， 还维护着 Entry\<k,v\> head,tail。 当 put 元素后，调用以下回调函数 对链表 将元素移动到链尾 已经清理旧元素<br>    // move node to last<br>    void afterNodeAccess(Node<k,v> e)<br>    // possibly remove eldest<br>    void afterNodeInsertion(boolean evict)</k,v></k,v\></k,v\></p>
+<p>当 get 元素时，如果设置 accessOrder 为 true 时，通过调用如下回调 元素到链尾， 这里强调 移动，如果元素本身已经在 链表中，那它只会移动，而不是新建<br>    // move node to last<br>    void afterNodeAccess(Node<k,v> e)</k,v></p>
+<p>综上，当你返回对元素进行 get/put 操作时，经常使用的元素会被移动到 tail 中，而长期不用的元素 会被移动到 head</p>
+<p>最后 迭代时，迭代是从旧元素 迭代到新元素，这就是 LRU 的实现<br>    head &lt;–&gt; …. &lt;–&gt; tail</p>
+<pre><code>旧元素 &lt;-----------&gt; 反复使用的新元素
+</code></pre><p>在 Okhttp 中，使用了 DiskLruCache 对 LinkedHashMap 进行封装实现了 LRU， 如图进行初始化<br>    //按照访问顺序排序的Map，设置accessOrder为true<br>    map = new LinkedHashMap&lt;&gt;(0, 0.75f, true);</p>
+<h3 id="3-OkHttp-的文件系统"><a href="#3-OkHttp-的文件系统" class="headerlink" title="3.OkHttp 的文件系统"></a>3.OkHttp 的文件系统</h3><p>OkHttp 中的关键对象如下：</p>
+<ul>
+<li>FileSystem: 使用 Okio 对 File 的封装，简化了 IO 操作</li>
+<li>DiskLruCache.Editor: 添加了同步锁，并对 FileSystem 进行高度封装</li>
+<li>DiskLruCache.Entry: 维护着 key 对应的多个文件</li>
+<li>Cache.Entry: Response java 对象 与 Okio 流 的序列化/反序列化类</li>
+<li>DiskLruCache: 维护着文件的创建， 清理，读取。 内部有线程池，LinkedHashMap（也是 LruCache）</li>
+<li>Cache: 被上级代码调用，提供透明的 put/get 操作，封装了缓存检查条件与 DiskLruCache, 开发者只用配置大小即可，不需要手动管理</li>
+<li>Response/Request: OkHttp 的请求与回应</li>
+</ul>
+<ol>
+<li>文件初级封装（FileSystem）<br>众所周知，文件读写是流操作，是一堆 try catch 操作，在 OkHttp 中设计了 FileSystem.SYSTEM 作为文件层的管理。通过用 Okio 库中的 source/sink对 File 进行包装，而不用更为头痛 的 Inputstream 这类东西，使用上层调用与管道操作一样简单。<br> File(低级操作，步骤繁琐) -&gt; Okio(封装) －&gt; FileSystem(友好工具类)</li>
+</ol>
+<p>Okio 很不错，可以去<a href="https://github.com/square/okio" target="_blank" rel="external">这里</a>查看。</p>
+<ol>
+<li>文件高级封装（DiskLruCache.Entry/Editor/Snapshot）<br>本部分进行了如下操作，进行了实际的 put/get 操作<br> FileSystem &lt;– DiskLruCache.Entry/Editor –&gt; source/sink(更少参数)</li>
+</ol>
+<p>DiskLruCache.Entry 针对每个请求的 url 对应文件进行维护（而没有进行创建/读取等操作）， 它内部维护了2个 File数组，一般来说 每个 url 对应对应2~4个文件。 文件名的规则是{md5(url) + {0,1}}, 后面的 0 或者 1 ，分别表示 ENTRY_METADATA 与 ENTRY_BODY。</p>
+<p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
+<p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
+<ul>
+<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
+<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
+</ul>
+<ol>
+<li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
+<p>Resonse(java对象) \&lt;— Cache.Entry —> source/sink(文件io)</p>
+</blockquote>
+</li>
+</ol>
+<p>可以通过 find usage 位置相同，概括如下：<br>如果信息本身是二进制，就直接写入到文件中；如果文本是信息，就按照预设的格式写入即可。<br>    至于序列化后的东西到底是什么，可以直接在shell下运行cat命令或者打开文本编辑器进行输出查看。</p>
+<pre><code>注意这里的Cache.Entry与上面的DiskLruCache.Entry是两个完全不同的对象
+</code></pre><ol>
+<li><p>缓存的自动清理<br>在 DiskLruCache 初始化时，将简历线程池，最少0个线程池，最大一个线程，线程空闲可活60s, 线程名叫做【OkHttp DiskLruCache】,当 JVM 退出时，线程自动结束。</p>
+<p> new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,</p>
+<pre><code>new LinkedBlockingQueue&lt;Runnable&gt;(), Util.threadFactory(&quot;OkHttp DiskLruCache&quot;, true))
+</code></pre></li>
+</ol>
+<p>当需要清理时，执行清理任务，它将在每次 get/set 后调用</p>
+<pre><code>private final Runnable cleanupRunnable = new Runnable() {
+  public void run() {
+    synchronized (DiskLruCache.this) {
+      if (!initialized | closed) {
+        return; // Nothing to do
+      }
+      try {
+        //遍历LRU缓存(从旧到新进行遍历map),并删除文件
+        //直到小于MaxSize为止
+        trimToSize();
+        if (journalRebuildRequired()) {
+          rebuildJournal();
+          redundantOpCount = 0;
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+};
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>OkHttp 通过对文件进行了多次封装，实现了简单的I/O 操作</li>
+<li>OKHttp 通过对请求 url进行 md5 实现了与文件的映射，实现写入，删除的操作</li>
+<li>OkHttp 内部维护着清理线程池，实现对缓存文件的自动清理</li>
+</ol>
+<p>摘自：<a href="http://www.jianshu.com/p/23b8aa490a6b" target="_blank" rel="external">http://www.jianshu.com/p/23b8aa490a6b</a></p>
 
-本文对 put/get 过程进行分析，注意缓存的判断依据不是本文， 而是 缓存策略
-1.Cache 的简介缓存，顾名思义，也就是方便用户快速的获取值的一种储存方式。小到与CPU同频的昂贵的缓存颗粒，内存，硬盘
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1275,6 +2545,8 @@ OkHttp 的文件系统
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1291,41 +2563,63 @@ OkHttp 的文件系统
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/03/12/代码面试最常用的10大算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/12/代码面试最常用的10大算法/" itemprop="url">
-                  代码面试最常用的10大算法
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/03/12/代码面试最常用的10大算法/" itemprop="url">代码面试最常用的10大算法</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-12T08:32:44+08:00" content="2016-03-12">
-              2016-03-12
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-12T08:32:44+08:00">
+                2016-03-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -1333,26 +2627,63 @@ OkHttp 的文件系统
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/12/代码面试最常用的10大算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/代码面试最常用的10大算法/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/03/12/代码面试最常用的10大算法/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/03/12/代码面试最常用的10大算法/" class="cy_cmt_count" data-xid="2016/03/12/代码面试最常用的10大算法/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1360,21 +2691,369 @@ OkHttp 的文件系统
       
         
           
-          代码面试最常用的10大算法
-面试也是一门学问，在面试之前做好充分的准备则是成功的必须条件，而程序员在代码面试时，常会遇到编写算法的相关问题，比如排序、二叉树遍历等等。
+            <h3 id="代码面试最常用的10大算法"><a href="#代码面试最常用的10大算法" class="headerlink" title="代码面试最常用的10大算法"></a>代码面试最常用的10大算法</h3><blockquote>
+<p>面试也是一门学问，在面试之前做好充分的准备则是成功的必须条件，而程序员在代码面试时，常会遇到编写算法的相关问题，比如排序、二叉树遍历等等。</p>
+</blockquote>
+<p>在程序员的职业生涯中，算法亦算是一门基础课程，尤其是在面试的时候，很多公司都会让程序员编写一些算法实例，例如快速排序、二叉树查找等等。<br>本文总结了程序员在代码面试中最常遇到的10大算法类型，想要真正了解这些算法的原理，还需程序员们花些功夫。</p>
+<h3 id="1-String-Array-Matrix"><a href="#1-String-Array-Matrix" class="headerlink" title="1. String/Array/Matrix"></a>1. String/Array/Matrix</h3><pre><code>toCharArray() //get char array of a String
+Arrays.sort()  //sort an array
+Arrays.toString(char[] a) //convert to string
+charAt(int x) //get a char at the specific index
+length() //string length
+length //array size 
+substring(int beginIndex) 
+substring(int beginIndex, int endIndex)
+Integer.valueOf()//string to integer
+String.valueOf()/integer to string
+</code></pre><p>String/arrays很容易理解，但与它们有关的问题常常需要高级的算法去解决，例如动态编程、递归等。<br>下面列出一些需要高级算法才能解决的经典问题：</p>
+<ul>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-evaluate-reverse-polish-notation/" target="_blank" rel="external">Evaluate Reverse Polish Notation</a></li>
+<li><a href="http://www.programcreek.com/2013/12/leetcode-solution-of-longest-palindromic-substring-java/" target="_blank" rel="external">Longest Palindromic Substring</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-solution-word-break/" target="_blank" rel="external">单词分割</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-word-ladder/" target="_blank" rel="external">字梯</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-median-of-two-sorted-arrays-java/" target="_blank" rel="external">Median of Two Sorted Arrays</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-regular-expression-matching-in-java/" target="_blank" rel="external">正则表达式匹配￼Java</a></li>
+<li><a href="http://merge%20intervals/" target="_blank" rel="external">合并间隔</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-insert-interval/" target="_blank" rel="external">插入间隔</a></li>
+<li><a href="http://www.programcreek.com/2012/12/leetcode-solution-of-two-sum-in-java/" target="_blank" rel="external">Two Sum</a></li>
+<li>3Sum</li>
+<li>4Sum</li>
+<li>3Sum Closest</li>
+<li>String to Integer</li>
+<li>合并排序数组</li>
+<li>Valid Parentheses</li>
+<li>实现strStr()</li>
+<li>Set Matrix Zeroes</li>
+<li>搜索插入位置</li>
+<li>Longest Consecutive Sequence</li>
+<li>Valid Palindrome</li>
+<li>螺旋矩阵</li>
+<li>搜索一个二维矩阵</li>
+<li>旋转图像</li>
+<li>三角形</li>
+<li>Distinct Subsequences Total</li>
+<li>Maximum Subarray</li>
+<li>删除重复的排序数组</li>
+<li>删除重复的排序数组2</li>
+<li>查找没有重复的最长子串</li>
+<li>包含两个独特字符的最长子串</li>
+<li>Palindrome Partitioning</li>
+</ul>
+<h3 id="2-链表"><a href="#2-链表" class="headerlink" title="2. 链表"></a>2. 链表</h3><p>在Java中实现链表是非常简单的，每个节点都有一个值，然后把它链接到下一个节点。   </p>
+<pre><code>class Node {
+    int val;
+    Node next;
 
-在程序员的职业生涯中，算法亦算是一门基础课程，尤其是在面试的时候，很多公司都会让程序员编写一些算法实例，例如快速排序、二叉树查找等
-          ...
+    Node(int x) {
+        val = x;
+        next = null;
+    }
+}
+</code></pre><p>比较流行的两个链表例子就是栈和队列。</p>
+<h4 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h4><pre><code>class Stack{
+    Node top; 
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/12/代码面试最常用的10大算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+    public Node peek(){
+        if(top != null){
+            return top;
+        }
+
+        return null;
+    }
+
+    public Node pop(){
+        if(top == null){
+            return null;
+        }else{
+            Node temp = new Node(top.val);
+            top = top.next;
+            return temp;    
+        }
+    }
+
+    public void push(Node n){
+        if(n != null){
+            n.next = top;
+            top = n;
+        }
+    }
+}
+</code></pre><h4 id="队列（Queue）"><a href="#队列（Queue）" class="headerlink" title="队列（Queue）"></a>队列（Queue）</h4><pre><code>class Queue{
+    Node first, last;
+&amp;nbsp;
+    public void enqueue(Node n){
+        if(first == null){
+            first = n;
+            last = first;
+        }else{
+            last.next = n;
+            last = n;
+        }
+    }
+&amp;nbsp;
+    public Node dequeue(){
+        if(first == null){
+            return null;
+        }else{
+            Node temp = new Node(first.val);
+            first = first.next;
+            return temp;
+        }   
+    }
+}
+</code></pre><p>值得一提的是，Java标准库中已经包含一个叫做Stack的类，链表也可以作为一个队列使用（add()和remove()）。（链表实现队列接口）如果你在面试过程中，需要用到栈或队列解决问题时，你可以直接使用它们。<br>在实际中，需要用到链表的算法有：</p>
+<ul>
+<li>插入两个数字</li>
+<li>重新排序列表</li>
+<li>链表周期</li>
+<li>Copy List with Random Pointer</li>
+<li>合并两个有序列表</li>
+<li>合并多个排序列表</li>
+<li>从排序列表中删除重复的</li>
+<li>分区列表</li>
+<li>LRU缓存</li>
+</ul>
+<h3 id="3-树-amp-堆"><a href="#3-树-amp-堆" class="headerlink" title="3. 树&amp;堆"></a>3. 树&amp;堆</h3><p>这里的树通常是指二叉树。</p>
+<pre><code>class TreeNode{
+    int value;
+    TreeNode left;
+    TreeNode right;
+} 
+</code></pre><p>下面是一些与二叉树有关的概念：</p>
+<ul>
+<li>二叉树搜索：对于所有节点，顺序是：left children \&lt;= current node \&lt;= right children；</li>
+<li>平衡vs.非平衡：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树；</li>
+<li>满二叉树：除最后一层无任何子节点外，每一层上的所有结点都有两个子结点；</li>
+<li>完美二叉树（Perfect Binary Tree）：一个满二叉树，所有叶子都在同一个深度或同一级，并且每个父节点都有两个子节点；</li>
+<li>完全二叉树：若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。</li>
+</ul>
+<p>堆（Heap）是一个基于树的数据结构，也可以称为优先队列（ PriorityQueue），在队列中，调度程序反复提取队列中第一个作业并运行，因而实际情况中某些时间较短的任务将等待很长时间才能结束，或者某些不短小，但具有重要性的作业，同样应当具有优先权。堆即为解决此类问题设计的一种数据结构。</p>
+<p>下面列出一些基于二叉树和堆的算法：</p>
+<ul>
+<li>二叉树前序遍历</li>
+<li>二叉树中序遍历</li>
+<li>二叉树后序遍历</li>
+<li>字梯</li>
+<li>验证二叉查找树</li>
+<li>把二叉树变平放到链表里</li>
+<li>二叉树路径和</li>
+<li>从前序和后序构建二叉树</li>
+<li>把有序数组转换为二叉查找树</li>
+<li>把有序列表转为二叉查找树</li>
+<li>最小深度二叉树</li>
+<li>二叉树最大路径和</li>
+<li>平衡二叉树</li>
+</ul>
+<h3 id="4-Graph"><a href="#4-Graph" class="headerlink" title="4. Graph"></a>4. Graph</h3><p>与Graph相关的问题主要集中在深度优先搜索和宽度优先搜索。深度优先搜索非常简单，你可以从根节点开始循环整个邻居节点。下面是一个非常简单的宽度优先搜索例子，核心是用队列去存储节点。</p>
+<p><img src="http://cms.csdnimg.cn/article/201404/10/534655cfcf7a0.jpg" alt=""></p>
+<h4 id="第一步，定义一个GraphNode"><a href="#第一步，定义一个GraphNode" class="headerlink" title="第一步，定义一个GraphNode"></a>第一步，定义一个GraphNode</h4><pre><code>class GraphNode{ 
+    int val;
+    GraphNode next;
+    GraphNode[] neighbors;
+    boolean visited;
+
+    GraphNode(int x) {
+        val = x;
+    }
+
+    GraphNode(int x, GraphNode[] n){
+        val = x;
+        neighbors = n;
+    }
+
+    public String toString(){
+        return &quot;value: &quot;+ this.val; 
+    }
+}
+</code></pre><h4 id="第二步，定义一个队列"><a href="#第二步，定义一个队列" class="headerlink" title="第二步，定义一个队列"></a>第二步，定义一个队列</h4><pre><code>class Queue{
+    GraphNode first, last;
+
+    public void enqueue(GraphNode n){
+        if(first == null){
+            first = n;
+            last = first;
+        }else{
+            last.next = n;
+            last = n;
+        }
+    }
+
+    public GraphNode dequeue(){
+        if(first == null){
+            return null;
+        }else{
+            GraphNode temp = new GraphNode(first.val, first.neighbors);
+            first = first.next;
+            return temp;
+        }   
+    }
+}
+</code></pre><h4 id="第三步，使用队列进行宽度优先搜索"><a href="#第三步，使用队列进行宽度优先搜索" class="headerlink" title="第三步，使用队列进行宽度优先搜索"></a>第三步，使用队列进行宽度优先搜索</h4><pre><code>public class GraphTest {
+
+    public static void main(String[] args) {
+        GraphNode n1 = new GraphNode(1); 
+        GraphNode n2 = new GraphNode(2); 
+        GraphNode n3 = new GraphNode(3); 
+        GraphNode n4 = new GraphNode(4); 
+        GraphNode n5 = new GraphNode(5); 
+
+        n1.neighbors = new GraphNode[]{n2,n3,n5};
+        n2.neighbors = new GraphNode[]{n1,n4};
+        n3.neighbors = new GraphNode[]{n1,n4,n5};
+        n4.neighbors = new GraphNode[]{n2,n3,n5};
+        n5.neighbors = new GraphNode[]{n1,n3,n4};
+
+        breathFirstSearch(n1, 5);
+    }
+
+    public static void breathFirstSearch(GraphNode root, int x){
+        if(root.val == x)
+            System.out.println(&quot;find in root&quot;);
+
+        Queue queue = new Queue();
+        root.visited = true;
+        queue.enqueue(root);
+
+        while(queue.first != null){
+            GraphNode c = (GraphNode) queue.dequeue();
+            for(GraphNode n: c.neighbors){
+
+                if(!n.visited){
+                    System.out.print(n + &quot; &quot;);
+                    n.visited = true;
+                    if(n.val == x)
+                        System.out.println(&quot;Find &quot;+n);
+                    queue.enqueue(n);
+                }
+            }
+        }
+    }
+}
+</code></pre><h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><pre><code>value: 2 value: 3 value: 5 Find value: 5 
+value: 4
+</code></pre><p>实际中，基于Graph需要经常用到的算法：</p>
+<ul>
+<li>克隆Graph</li>
+</ul>
+<h3 id="5-排序"><a href="#5-排序" class="headerlink" title="5. 排序"></a>5. 排序</h3><p>不同排序算法的时间复杂度，大家可以到wiki上查看它们的基本思想。</p>
+<p><img src="http://cms.csdnimg.cn/article/201404/10/53465710a87e6.jpg" alt=""></p>
+<p>BinSort、Radix Sort和CountSort使用了不同的假设，所有，它们不是一般的排序方法。   </p>
+<p>下面是这些算法的具体实例，另外，你还可以阅读： <a href="http://www.programcreek.com/2014/03/how-developers-sort-in-java/" target="_blank" rel="external">Java开发者在实际操作中是如何排序的</a>。</p>
+<ul>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>插入排序</li>
+</ul>
+<h3 id="6-递归和迭代"><a href="#6-递归和迭代" class="headerlink" title="6. 递归和迭代"></a>6. 递归和迭代</h3><p>下面通过一个例子来说明什么是递归。</p>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><blockquote>
+<p>这里有n个台阶，每次能爬1或2节，请问有多少种爬法？</p>
+</blockquote>
+<h4 id="步骤1：查找n和n-1之间的关系"><a href="#步骤1：查找n和n-1之间的关系" class="headerlink" title="步骤1：查找n和n-1之间的关系"></a>步骤1：查找n和n-1之间的关系</h4><p>为了获得n，这里有两种方法：一个是从第一节台阶到n-1或者从2到n-2。如果f(n)种爬法刚好是爬到n节，那么f(n)=f(n-1)+f(n-2)。   </p>
+<h4 id="步骤2：确保开始条件是正确的"><a href="#步骤2：确保开始条件是正确的" class="headerlink" title="步骤2：确保开始条件是正确的"></a>步骤2：确保开始条件是正确的</h4><p>f(0) = 0;<br>f(1) = 1; </p>
+<pre><code>public static int f(int n){
+    if(n &lt;= 2) return n;
+    int x = f(n-1) + f(n-2);
+    return x;
+}
+</code></pre><p>递归方法的时间复杂度指数为n，这里会有很多冗余计算。<br>    f(5)<br>    f(4) + f(3)<br>    f(3) + f(2) + f(2) + f(1)<br>    f(2) + f(1) + f(2) + f(2) + f(1)</p>
+<p>该递归可以很简单地转换为迭代。<br>    public static int f(int n) {</p>
+<pre><code>    if (n &lt;= 2){
+        return n;
+    }
+
+    int first = 1, second = 2;
+    int third = 0;
+
+    for (int i = 3; i &lt;= n; i++) {
+        third = first + second;
+        first = second;
+        second = third;
+    }
+
+    return third;
+}
+</code></pre><p>在这个例子中，迭代花费的时间要少些。关于迭代和递归，你可以去 <a href="http://www.programcreek.com/2012/10/iteration-vs-recursion-in-java/" target="_blank" rel="external">这里</a>看看。</p>
+<h3 id="7-动态规划"><a href="#7-动态规划" class="headerlink" title="7. 动态规划"></a>7. 动态规划</h3><p>动态规划主要用来解决如下技术问题：</p>
+<ul>
+<li>通过较小的子例来解决一个实例；</li>
+<li>对于一个较小的实例，可能需要许多个解决方案；</li>
+<li>把较小实例的解决方案存储在一个表中，一旦遇上，就很容易解决；</li>
+<li><p>附加空间用来节省时间。<br>上面所列的爬台阶问题完全符合这四个属性，因此，可以使用动态规划来解决：<br>  public static int[] A = new int[100];</p>
+<p>  public static int f3(int n) {</p>
+<pre><code>if (n &lt;= 2)
+    A[n]= n;
+
+if(A[n] &gt; 0)
+    return A[n];
+else
+    A[n] = f3(n-1) + f3(n-2);//store results so only calculate once!
+return A[n];
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>一些基于动态规划的算法：</p>
+<ul>
+<li>编辑距离</li>
+<li>最长回文子串</li>
+<li>单词分割</li>
+<li>最大的子数组</li>
+</ul>
+<h3 id="8-位操作"><a href="#8-位操作" class="headerlink" title="8. 位操作"></a>8. 位操作</h3><p>位操作符：<br><img src="http://cms.csdnimg.cn/article/201404/10/53465e7bc51e0.jpg" alt=""></p>
+<p>从一个给定的数n中找位i（i从0开始，然后向右开始）</p>
+<pre><code>public static boolean getBit(int num, int i){
+    int result = num &amp; (1&lt;&lt;i);
+
+    if(result == 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+</code></pre><p>例如，获取10的第二位：<br>    i=1, n=10<br>    1&lt;&lt;1= 10<br>    1010&amp;10=10<br>    10 is not 0, so return true;</p>
+<p>典型的位算法：</p>
+<ul>
+<li>Find Single Number</li>
+<li>Maximum Binary Gap</li>
+</ul>
+<h3 id="9-概率"><a href="#9-概率" class="headerlink" title="9. 概率"></a>9. 概率</h3><p>通常要解决概率相关问题，都需要很好地格式化问题，下面提供一个简单的例子： </p>
+<blockquote>
+<p>有50个人在一个房间，那么有两个人是同一天生日的可能性有多大？（忽略闰年，即一年有365天）</p>
+</blockquote>
+<pre><code>public static double caculateProbability(int n){
+    double x = 1; 
+
+    for(int i=0; i&lt;n; i++){
+        x *=  (365.0-i)/365.0;
+    }
+
+    double pro = Math.round((1-x) * 100);
+    return pro/100;
+}I
+</code></pre><p>结果：</p>
+<blockquote>
+<p>calculateProbability(50) = 0.97</p>
+<h3 id="10-组合和排列"><a href="#10-组合和排列" class="headerlink" title="10. 组合和排列"></a>10. 组合和排列</h3></blockquote>
+<p>组合和排列的主要差别在于顺序是否重要。<br>例1：</p>
+<blockquote>
+<p>1、2、3、4、5这5个数字，输出不同的顺序，其中4不可以排在第三位，3和5不能相邻，请问有多少种组合？<br>例2：<br>有5个香蕉、4个梨、3个苹果，假设每种水果都是一样的，请问有多少种不同的组合？</p>
+</blockquote>
+<p>基于它们的一些常见算法</p>
+<ul>
+<li>排列</li>
+<li>排列2</li>
+<li>排列顺序</li>
+</ul>
+<p>来自：<a href="http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview" target="_blank" rel="external">http://www.csdn.net/article/2014-04-10/2819237-Top-10-Algorithms-for-Coding-Interview</a></p>
+
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1384,6 +3063,8 @@ OkHttp 的文件系统
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1400,41 +3081,63 @@ OkHttp 的文件系统
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/02/25/推荐processon-让流程图也可以共享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/25/推荐processon-让流程图也可以共享/" itemprop="url">
-                  推荐processon 让流程图也可以共享
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/02/25/推荐processon-让流程图也可以共享/" itemprop="url">推荐processon 让流程图也可以共享</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-25T10:32:02+08:00" content="2016-02-25">
-              2016-02-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-25T10:32:02+08:00">
+                2016-02-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2016-04-19T21:17:13+08:00">
+                2016-04-19
+              </time>
+            
           </span>
 
           
@@ -1442,26 +3145,63 @@ OkHttp 的文件系统
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/25/推荐processon-让流程图也可以共享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/推荐processon-让流程图也可以共享/" itemprop="commentsCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
               </span>
+              
+                <a href="/2016/02/25/推荐processon-让流程图也可以共享/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://gdky005.com/2016/02/25/推荐processon-让流程图也可以共享/" class="cy_cmt_count" data-xid="2016/02/25/推荐processon-让流程图也可以共享/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
           
-
-          
           
 
           
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
         </div>
       </header>
     
 
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1469,25 +3209,33 @@ OkHttp 的文件系统
       
         
           
-          推荐一个流程图共享的网站：https://www.processon.com/popular
-一次偶然的机会在微博里面看到 一图学git 的时候，发现这个图很实用
-原样图
-然后在里面可以看出常用的流程，对于某些方面的需求还是很有必要的。
-例如：
-IOS开发
-前端技能树
-Android Service
-          ...
+            <p>推荐一个流程图共享的网站：<br><a href="https://www.processon.com/popular" target="_blank" rel="external">https://www.processon.com/popular</a></p>
+<p>一次偶然的机会在微博里面看到 一图学git 的时候，发现这个图很实用</p>
+<p><img src="http://ww2.sinaimg.cn/bmiddle/c5131475jw1f1batea592j21kw0fy0wn.jpg" alt="https://www.processon.com/view/56ca927ce4b0362f22d848b5"><br><a href="https://www.processon.com/view/56ca927ce4b0362f22d848b5" title="原样图" target="_blank" rel="external">原样图</a></p>
+<p>然后在里面可以看出常用的流程，对于某些方面的需求还是很有必要的。</p>
+<h3 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h3><ul>
+<li><a href="https://www.processon.com/view/557051bee4b0d6a77d619124" target="_blank" rel="external">IOS开发</a></li>
+<li><a href="https://www.processon.com/view/55783184e4b0d6a77d9f9560" target="_blank" rel="external">前端技能树</a></li>
+<li><a href="https://www.processon.com/view/555097e7e4b09739f4652bf3" target="_blank" rel="external">Android Service总结1</a></li>
+<li><a href="https://www.processon.com/view/5550a05ee4b09739f46585b0" target="_blank" rel="external">Android Service总结2</a></li>
+<li><a href="https://www.processon.com/view/55b4e86ce4b0d2cdb5356e08" target="_blank" rel="external">Android测试工具</a></li>
+<li><a href="https://www.processon.com/view/55f69023e4b0a8c6fae84984" target="_blank" rel="external">Android中主要类的关系图 Activity Class</a></li>
+<li><a href="https://www.processon.com/view/55110a6ee4b00af64b0c3cba" target="_blank" rel="external">APP开发人员技能树</a></li>
+<li><a href="https://www.processon.com/view/568bc9eae4b002e52c0fb427" target="_blank" rel="external">EventBus源码分析简要图</a></li>
+<li><a href="https://www.processon.com/view/561ccd9de4b07efc017ca19b" target="_blank" rel="external">Android小说阅读器部分计划及流程</a></li>
+<li><a href="https://www.processon.com/view/562847b4e4b04931dccccbfe" target="_blank" rel="external">View绘制流程</a></li>
+<li><a href="https://www.processon.com/view/550cf083e4b0b74dae7c2c7d" target="_blank" rel="external">Android Drawable分类汇总</a></li>
+</ul>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/25/推荐processon-让流程图也可以共享/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
-    
+
+    <div>
+      
+    </div>
+
     <div>
       
     </div>
@@ -1497,6 +3245,8 @@ Android Service
     </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1544,23 +3294,30 @@ Android Service
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
                alt="gdky005" />
           <p class="site-author-name" itemprop="name">gdky005</p>
-          <p class="site-description motion-element" itemprop="description">创建这个博客的目的是为了提炼技术能力。虽说写过一些博客，但是基本都是杂乱的，偶尔才能出一两篇精华。因此该博客就是了存储一些有价值的东西而存在!</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">8</span>
@@ -1570,6 +3327,8 @@ Android Service
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">21</span>
@@ -1595,7 +3354,7 @@ Android Service
               <span class="links-of-author-item">
                 <a href="https://github.com/gdky005" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
                 </a>
@@ -1604,7 +3363,7 @@ Android Service
               <span class="links-of-author-item">
                 <a href="http://blog.csdn.net/gdky005" target="_blank" title="CSDN博客">
                   
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   CSDN博客
                 </a>
@@ -1613,7 +3372,7 @@ Android Service
               <span class="links-of-author-item">
                 <a href="http://weibo.com/gdky005" target="_blank" title="Weibo">
                   
-                    <i class="fa fa-weibo"></i>
+                    <i class="fa fa-fw fa-weibo"></i>
                   
                   Weibo
                 </a>
@@ -1628,8 +3387,18 @@ Android Service
         
         
 
+        
+
+
       </section>
 
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -1644,7 +3413,7 @@ Android Service
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1652,8 +3421,9 @@ Android Service
   <span class="author" itemprop="copyrightHolder">gdky005</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
@@ -1663,27 +3433,23 @@ Android Service
   </a>
 </div>
 
+
         
-
 <div class="busuanzi-count">
-
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
 
   
-  
 </div>
-
 
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
   </div>
 
   
@@ -1706,219 +3472,145 @@ Android Service
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
-  
-  
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gdky005"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt42YTPf"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
-    });}
+      });
+    </script>
 
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-  
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
 
+
+  
 
 </body>
 </html>
