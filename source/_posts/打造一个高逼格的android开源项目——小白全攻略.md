@@ -6,6 +6,7 @@ tags: 徽章
 ---
 
 
+
 ### 小引子
 
 在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，并且时不时能看到页面汇中有好多的彩色标签，看起来很酷，很专业，很有逼格，能提升很多的好感度。
@@ -23,23 +24,33 @@ tags: 徽章
 *精简版就看的清爽哈，以备自己玩的时候，快速查找相关资料和步骤。*
 
 这里优先汇总下：
+
+
+
+
+
+
+### 相关链接：
+
 完整版：
-[打造一个高逼格的android开源项目——小白全攻略](#)
+[打造一个高逼格的android开源项目——小白全攻略](http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/)
 
 精简集合版：
-[徽章系列1： Top 30 android 开源项目徽章](#)
-[徽章系列2：JitPack 的使用](#)
-[徽章系列3： Travis CI 的使用](#)
-[徽章系列4： Circle CI 的使用](#)
-[徽章系列5： Codecov 的使用](#)
-[徽章系列6： Api\_Level 的使用](#)
-[徽章系列7： codacy 的使用](#)
-[徽章系列8：生成个性徽章](#)
+[徽章系列1： Top 30 android 开源项目徽章](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/)
+[徽章系列2：JitPack 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列3： Travis CI 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列4： Circle CI 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列5： Codecov 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列6： Api\_Level 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列7： codacy 的使用](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/)
+[徽章系列8：生成个性徽章](http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/)
+
 总分类：
-[徽章（shields ）系列文章总分类](#)
+[徽章（shields ）系列文章总分类](http://www.gdky005.com/categories/shields/)
+
 github 地址：
-[徽章项目 Demo github 地址：](#)
- [https://github.com/gdky005/AndroidBadge](#)
+[徽章项目 Demo github 地址：](https://github.com/gdky005/AndroidBadge)
+ [https://github.com/gdky005/AndroidBadge](https://github.com/gdky005/AndroidBadge)
 
 **下面正文，正式开始。**
 
@@ -586,6 +597,10 @@ A 表示的页面中需要显示的内容， B 表示的是图片的地址，D �
 
 ### 最后真想说一句
 咱们不玩虚的，玩点有技术含量的东西。
+
+
+
+
 
 
 
