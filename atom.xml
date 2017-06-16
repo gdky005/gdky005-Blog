@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-06-15T11:46:00.000Z</updated>
+  <updated>2017-06-16T02:31:04.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/"/>
     <id>http://gdky005.com/2017/06/15/打造一个高逼格的android开源项目——小白全攻略/</id>
     <published>2017-06-15T10:34:29.000Z</published>
-    <updated>2017-06-15T11:46:00.000Z</updated>
+    <updated>2017-06-16T02:31:04.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且时不时能在解决的最上面看到好多的彩色标签，看起来很酷，很专业，有逼格。一下子就能提升很多的好感度。&lt;/p&gt;
-&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;本文又是一篇很长的文章，如之前写的谋篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知道不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。&lt;/p&gt;
-&lt;p&gt;考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。如有疑问，请 get 全文中提到的沟通交流方式。&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，并且时不时能看到页面汇中有好多的彩色标签，看起来很酷，很专业，很有逼格，能提升很多的好感度。&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;本文又是一篇很长的文章，如之前写的某篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。&lt;/p&gt;
+&lt;p&gt;考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;这里需要提醒的是：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;看了完整版就不用看精简集合了，内容都一样。完整版具有一定的连贯性。&lt;/em&gt;&lt;br&gt;&lt;em&gt;精简版就看的清爽哈，以备自己玩的时候，快速查找相关资料和步骤。&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;这里优先汇总下：&lt;br&gt;完整版：&lt;br&gt;&lt;a href=&quot;#&quot;&gt;打造一个高逼格的android开源项目——小白全攻略&lt;/a&gt;&lt;/p&gt;
@@ -117,7 +117,7 @@
 &lt;li&gt;登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;li&gt;点击 大绿色 按钮，并填写信息：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png&quot; alt=&quot;&quot;&gt;。 那个协议，你们随意，这里只是演示。&lt;/li&gt;
 &lt;li&gt;创建成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png&quot; alt=&quot;&quot;&gt;，拷贝当前项目地址。&lt;/li&gt;
-&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
+&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后，直接 选择 ok。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
 &lt;li&gt;现在我们给 library 的 badge 项目添加一个工具类：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png&quot; alt=&quot;&quot;&gt;， 并提交到 github。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5 id=&quot;Github-打-release-or-tag&quot;&gt;&lt;a href=&quot;#Github-打-release-or-tag&quot; class=&quot;headerlink&quot; title=&quot;Github 打 release or tag&quot;&gt;&lt;/a&gt;Github 打 release or tag&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建第一个 release 分支：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;发布成功以后就能看到: &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -267,7 +267,7 @@ test:
 &lt;p&gt;我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-98.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;回项目主页刷新后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-99.png&quot; alt=&quot;&quot;&gt; 非常 happy, 已经添加成功了。&lt;/p&gt;
 &lt;h3 id=&quot;接下来添加什么呢？&quot;&gt;&lt;a href=&quot;#接下来添加什么呢？&quot; class=&quot;headerlink&quot; title=&quot;接下来添加什么呢？&quot;&gt;&lt;/a&gt;接下来添加什么呢？&lt;/h3&gt;&lt;p&gt;Github上许多开源项目都使用了Codecov来展示单元测试结果， 就它了。&lt;/p&gt;
-&lt;h3 id=&quot;Codecov-的使用&quot;&gt;&lt;a href=&quot;#Codecov-的使用&quot; class=&quot;headerlink&quot; title=&quot;Codecov 的使用&quot;&gt;&lt;/a&gt;Codecov 的使用&lt;/h3&gt;&lt;p&gt;根据文中的指示：我们能看到一个开源的 github 项目 &lt;a href=&quot;https://github.com/codecov/example-android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/codecov/example-android&lt;/a&gt;， 不过看起来点晕晕的，但是还是看下了。&lt;/p&gt;
+&lt;h3 id=&quot;Codecov-的使用&quot;&gt;&lt;a href=&quot;#Codecov-的使用&quot; class=&quot;headerlink&quot; title=&quot;Codecov 的使用&quot;&gt;&lt;/a&gt;Codecov 的使用&lt;/h3&gt;&lt;p&gt;根据文中的指示：我们能看到一个开源的 github 项目 &lt;a href=&quot;https://github.com/codecov/example-android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/codecov/example-android&lt;/a&gt;， 不过看起来点晕晕的，于是摸索了一段时间。&lt;/p&gt;
 &lt;p&gt;我们之后都直接使用 Trivas CI 构建了。&lt;/p&gt;
 &lt;p&gt;添加项目就不说了，进入后，点击 project changes, 找到自己的项目：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png&quot; alt=&quot;&quot;&gt;，等生产报告后，进入该网站就能看见结果。&lt;/p&gt;
 &lt;h5 id=&quot;利用-Jacoco-生成报告&quot;&gt;&lt;a href=&quot;#利用-Jacoco-生成报告&quot; class=&quot;headerlink&quot; title=&quot;利用 Jacoco 生成报告&quot;&gt;&lt;/a&gt;利用 Jacoco 生成报告&lt;/h5&gt;&lt;p&gt;Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化&lt;/p&gt;
@@ -386,12 +386,12 @@ after_success:
 &lt;p&gt;相信小伙伴们肯定能做出更有意思的东西，到时候记得与我和大家分享，比较有特色的，我会将你们的链接挂载到 github 项目里面。&lt;/p&gt;
 &lt;p&gt;因为该文真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有需要帮助或许分享新技能的小伙伴请进入。&lt;/p&gt;
 &lt;p&gt;本文完整地址请在 &lt;a href=&quot;http://www.gdky005.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的博客&lt;/a&gt; 里面查看，会修复 文章存在的问题，并补充一些相关细节。针对 小伙伴们提出的问题，将在博客中修改和增加。如果大家觉得不错，并且很喜欢的话，麻烦 GitHub 中 start 下，不胜感激。&lt;/p&gt;
-&lt;h1 id=&quot;最后真想说一句&quot;&gt;&lt;a href=&quot;#最后真想说一句&quot; class=&quot;headerlink&quot; title=&quot;最后真想说一句&quot;&gt;&lt;/a&gt;最后真想说一句&lt;/h1&gt;&lt;p&gt;咱们不玩虚的，玩点有技术含量的东西。&lt;/p&gt;
+&lt;h3 id=&quot;最后真想说一句&quot;&gt;&lt;a href=&quot;#最后真想说一句&quot; class=&quot;headerlink&quot; title=&quot;最后真想说一句&quot;&gt;&lt;/a&gt;最后真想说一句&lt;/h3&gt;&lt;p&gt;咱们不玩虚的，玩点有技术含量的东西。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且
+      &lt;h3 id=&quot;小引子&quot;&gt;&lt;a href=&quot;#小引子&quot; class=&quot;headerlink&quot; title=&quot;小引子&quot;&gt;&lt;/a&gt;小引子&lt;/h3&gt;&lt;p&gt;在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，
     
     </summary>
     
@@ -480,7 +480,7 @@ after_success:
     <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://gdky005.com/2017/06/15/徽章系列2：JitPack-的使用/</id>
     <published>2017-06-15T10:05:15.000Z</published>
-    <updated>2017-06-15T11:08:19.000Z</updated>
+    <updated>2017-06-16T02:29:26.000Z</updated>
     
     <content type="html">&lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Android-Library&quot; class=&quot;headerlink&quot; title=&quot;创建 Android Library&quot;&gt;&lt;/a&gt;创建 Android Library&lt;/h3&gt;&lt;ol&gt;
@@ -498,7 +498,7 @@ after_success:
 &lt;li&gt;登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;li&gt;点击 大绿色 按钮，并填写信息：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png&quot; alt=&quot;&quot;&gt;。 那个协议，你们随意，这里只是演示。&lt;/li&gt;
 &lt;li&gt;创建成功后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png&quot; alt=&quot;&quot;&gt;，拷贝当前项目地址。&lt;/li&gt;
-&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
+&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后，直接 选择 ok。将项目添加到 git 管理&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
 &lt;li&gt;现在我们给 library 的 badge 项目添加一个工具类：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png&quot; alt=&quot;&quot;&gt;， 并提交到 github。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&quot;Github-打-release-or-tag&quot;&gt;&lt;a href=&quot;#Github-打-release-or-tag&quot; class=&quot;headerlink&quot; title=&quot;Github 打 release or tag&quot;&gt;&lt;/a&gt;Github 打 release or tag&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建第一个 release 分支：&lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;发布成功以后就能看到: &lt;img src=&quot;http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;

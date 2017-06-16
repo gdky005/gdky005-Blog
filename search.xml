@@ -6,9 +6,9 @@
     <entry>
       <title><![CDATA[打造一个高逼格的android开源项目——小白全攻略]]></title>
       <url>http://gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/</url>
-      <content type="html"><![CDATA[<h3 id="小引子"><a href="#小引子" class="headerlink" title="小引子"></a>小引子</h3><p>在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且时不时能在解决的最上面看到好多的彩色标签，看起来很酷，很专业，有逼格。一下子就能提升很多的好感度。</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文又是一篇很长的文章，如之前写的谋篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知道不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。</p>
-<p>考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。如有疑问，请 get 全文中提到的沟通交流方式。</p>
+      <content type="html"><![CDATA[<h3 id="小引子"><a href="#小引子" class="headerlink" title="小引子"></a>小引子</h3><p>在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，并且时不时能看到页面汇中有好多的彩色标签，看起来很酷，很专业，很有逼格，能提升很多的好感度。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文又是一篇很长的文章，如之前写的某篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。</p>
+<p>考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。</p>
 <p><strong>这里需要提醒的是：</strong></p>
 <p><em>看了完整版就不用看精简集合了，内容都一样。完整版具有一定的连贯性。</em><br><em>精简版就看的清爽哈，以备自己玩的时候，快速查找相关资料和步骤。</em></p>
 <p>这里优先汇总下：<br>完整版：<br><a href="#">打造一个高逼格的android开源项目——小白全攻略</a></p>
@@ -101,7 +101,7 @@
 <li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png" alt=""></li>
 <li>点击 大绿色 按钮，并填写信息：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png" alt="">。 那个协议，你们随意，这里只是演示。</li>
 <li>创建成功后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png" alt="">，拷贝当前项目地址。</li>
-<li>在 AS 的项目中创建 git 仓库：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png" alt="">， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
+<li>在 AS 的项目中创建 git 仓库：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png" alt="">， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
 <li>现在我们给 library 的 badge 项目添加一个工具类：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png" alt="">， 并提交到 github。</li>
 </ol>
 <h5 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h5><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png" alt=""> <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png" alt=""><br>创建第一个 release 分支：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png" alt=""><br>发布成功以后就能看到: <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png" alt=""></p>
@@ -251,7 +251,7 @@ test:
 <p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-98.png" alt=""></p>
 <p>回项目主页刷新后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-99.png" alt=""> 非常 happy, 已经添加成功了。</p>
 <h3 id="接下来添加什么呢？"><a href="#接下来添加什么呢？" class="headerlink" title="接下来添加什么呢？"></a>接下来添加什么呢？</h3><p>Github上许多开源项目都使用了Codecov来展示单元测试结果， 就它了。</p>
-<h3 id="Codecov-的使用"><a href="#Codecov-的使用" class="headerlink" title="Codecov 的使用"></a>Codecov 的使用</h3><p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，但是还是看下了。</p>
+<h3 id="Codecov-的使用"><a href="#Codecov-的使用" class="headerlink" title="Codecov 的使用"></a>Codecov 的使用</h3><p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，于是摸索了一段时间。</p>
 <p>我们之后都直接使用 Trivas CI 构建了。</p>
 <p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
 <h5 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h5><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
@@ -370,7 +370,7 @@ after_success:
 <p>相信小伙伴们肯定能做出更有意思的东西，到时候记得与我和大家分享，比较有特色的，我会将你们的链接挂载到 github 项目里面。</p>
 <p>因为该文真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有需要帮助或许分享新技能的小伙伴请进入。</p>
 <p>本文完整地址请在 <a href="http://www.gdky005.com/" target="_blank" rel="external">我的博客</a> 里面查看，会修复 文章存在的问题，并补充一些相关细节。针对 小伙伴们提出的问题，将在博客中修改和增加。如果大家觉得不错，并且很喜欢的话，麻烦 GitHub 中 start 下，不胜感激。</p>
-<h1 id="最后真想说一句"><a href="#最后真想说一句" class="headerlink" title="最后真想说一句"></a>最后真想说一句</h1><p>咱们不玩虚的，玩点有技术含量的东西。</p>
+<h3 id="最后真想说一句"><a href="#最后真想说一句" class="headerlink" title="最后真想说一句"></a>最后真想说一句</h3><p>咱们不玩虚的，玩点有技术含量的东西。</p>
 ]]></content>
     </entry>
     
@@ -450,7 +450,7 @@ after_success:
 <li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png" alt=""></li>
 <li>点击 大绿色 按钮，并填写信息：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png" alt="">。 那个协议，你们随意，这里只是演示。</li>
 <li>创建成功后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png" alt="">，拷贝当前项目地址。</li>
-<li>在 AS 的项目中创建 git 仓库：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png" alt="">， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
+<li>在 AS 的项目中创建 git 仓库：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png" alt="">， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
 <li>现在我们给 library 的 badge 项目添加一个工具类：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png" alt="">， 并提交到 github。</li>
 </ol>
 <h3 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png" alt=""> <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png" alt=""><br>创建第一个 release 分支：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-38.png" alt=""><br>发布成功以后就能看到: <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-39.png" alt=""></p>
@@ -629,7 +629,7 @@ test:
     <entry>
       <title><![CDATA[徽章系列5： Codecov 的使用]]></title>
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，但是还是看下了。</p>
+      <content type="html"><![CDATA[<p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，于是摸索了一段时间。</p>
 <p>我们之后都直接使用 Trivas CI 构建了。</p>
 <p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
 <h3 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h3><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
