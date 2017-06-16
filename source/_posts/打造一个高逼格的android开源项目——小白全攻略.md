@@ -8,14 +8,14 @@ tags: 徽章
 
 ### 小引子
 
-在平时的开发过程中，我们经常会查阅很多的资料，最长使用的是 github 的开源项目。通常在项目的主页面能看到当前的项目的简介，并且时不时能在解决的最上面看到好多的彩色标签，看起来很酷，很专业，有逼格。一下子就能提升很多的好感度。
+在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，并且时不时能看到页面汇中有好多的彩色标签，看起来很酷，很专业，很有逼格，能提升很多的好感度。
 
 
 ### 前言
 
-本文又是一篇很长的文章，如之前写的谋篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知道不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。
+本文又是一篇很长的文章，如之前写的某篇文章一样，基本是一口气连续两三天的写。写啊写啊写，不知不觉就写了好多，其实有很多是素材图片，务必做到每个细节我都实践一遍。
 
-考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。如有疑问，请 get 全文中提到的沟通交流方式。
+考虑到同学们的时间有限，各取所需，所以按照我的惯例，首先有一篇完整版，其次，有一篇缩略版。可是这次缩略版不好做，所以综合考虑，把每个单独的知识点拆分出来，抓住重点，尽量让大家看的开心。
 
 **这里需要提醒的是：**
 
@@ -161,7 +161,7 @@ AndroidBadge 里面的 badge (library) :
 1. 登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png)
 2. 点击 大绿色 按钮，并填写信息：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png)。 那个协议，你们随意，这里只是演示。
 3. 创建成功后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png)，拷贝当前项目地址。
-4. 在 AS 的项目中创建 git 仓库：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png)， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png)。 项目中的文件都变成绿色后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png)，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。
+4. 在 AS 的项目中创建 git 仓库：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png)， 点击后，直接 选择 ok。将项目添加到 git 管理![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png)。 项目中的文件都变成绿色后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png)，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。
 5. 现在我们给 library 的 badge 项目添加一个工具类：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png)， 并提交到 github。
 
 ##### Github 打 release or tag
@@ -382,7 +382,7 @@ Github上许多开源项目都使用了Codecov来展示单元测试结果， 就
 
 ### Codecov 的使用
 
-根据文中的指示：我们能看到一个开源的 github 项目 [https://github.com/codecov/example-android](https://github.com/codecov/example-android)， 不过看起来点晕晕的，但是还是看下了。
+根据文中的指示：我们能看到一个开源的 github 项目 [https://github.com/codecov/example-android](https://github.com/codecov/example-android)， 不过看起来点晕晕的，于是摸索了一段时间。
 
 我们之后都直接使用 Trivas CI 构建了。
 
@@ -584,12 +584,8 @@ A 表示的页面中需要显示的内容， B 表示的是图片的地址，D �
 
 本文完整地址请在 [我的博客](http://www.gdky005.com/) 里面查看，会修复 文章存在的问题，并补充一些相关细节。针对 小伙伴们提出的问题，将在博客中修改和增加。如果大家觉得不错，并且很喜欢的话，麻烦 GitHub 中 start 下，不胜感激。
 
-# 最后真想说一句
+### 最后真想说一句
 咱们不玩虚的，玩点有技术含量的东西。
-
-
-
-
 
 
 

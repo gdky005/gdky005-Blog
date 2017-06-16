@@ -5,6 +5,7 @@ keywords: 徽章
 tags: 徽章
 ---
 
+
 官网： [https://jitpack.io](https://jitpack.io)
 
 ### 创建 Android Library
@@ -29,8 +30,9 @@ AndroidBadge 里面的 badge (library) :
 1. 登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-29.png)
 2. 点击 大绿色 按钮，并填写信息：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-30.png)。 那个协议，你们随意，这里只是演示。
 3. 创建成功后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-31.png)，拷贝当前项目地址。
-4. 在 AS 的项目中创建 git 仓库：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png)， 点击后会让选择，直接 选择 ok 就行。将项目添加到 git 管理![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png)。 项目中的文件都变成绿色后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png)，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。
+4. 在 AS 的项目中创建 git 仓库：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-32.png)， 点击后，直接 选择 ok。将项目添加到 git 管理![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-33.png)。 项目中的文件都变成绿色后：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-34.png)，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。
 5. 现在我们给 library 的 badge 项目添加一个工具类：![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-35.png)， 并提交到 github。
+
 
 ### Github 打 release or tag
 ![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-36.png) ![](http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-37.png)

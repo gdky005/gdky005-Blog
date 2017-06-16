@@ -7,7 +7,7 @@ tags: 徽章
 
 
 
-根据文中的指示：我们能看到一个开源的 github 项目 [https://github.com/codecov/example-android](https://github.com/codecov/example-android)， 不过看起来点晕晕的，但是还是看下了。
+根据文中的指示：我们能看到一个开源的 github 项目 [https://github.com/codecov/example-android](https://github.com/codecov/example-android)， 不过看起来点晕晕的，于是摸索了一段时间。
 
 我们之后都直接使用 Trivas CI 构建了。
 
