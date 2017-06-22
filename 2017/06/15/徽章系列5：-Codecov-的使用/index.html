@@ -111,19 +111,19 @@
 我们之后都直接使用 Trivas CI 构建了。
 添加项目就不说了，进入后，点击 project changes, 找到自己的项目：，等生产报告后，进入该网站就能看见结果。
 利用 Jacoco 生成报告Codec">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-101.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-102.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-103.png">
-<meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-104.png">
-<meta property="og:updated_time" content="2017-06-16T03:17:49.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png">
+<meta property="og:updated_time" content="2017-06-22T03:13:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="徽章系列5： Codecov 的使用">
 <meta name="twitter:description" content="根据文中的指示：我们能看到一个开源的 github 项目 https://github.com/codecov/example-android， 不过看起来点晕晕的，于是摸索了一段时间。
 我们之后都直接使用 Trivas CI 构建了。
 添加项目就不说了，进入后，点击 project changes, 找到自己的项目：，等生产报告后，进入该网站就能看见结果。
 利用 Jacoco 生成报告Codec">
-<meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png">
 
 
 
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-16T11:17:49+08:00">
-                2017-06-16
+              <time title="更新于" itemprop="dateModified" datetime="2017-06-22T11:13:05+08:00">
+                2017-06-22
               </time>
             
           </span>
@@ -453,7 +453,7 @@
       
         <p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="external">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，于是摸索了一段时间。</p>
 <p>我们之后都直接使用 Trivas CI 构建了。</p>
-<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
+<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
 <h3 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h3><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
 <p>1） 在 app 的 build.gradle 文件中 添加依赖</p>
 <pre><code>    //Jacoco 生成报告的依赖
@@ -475,7 +475,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-contrib:2.2.
 androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&apos;, {
     exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
 })
-</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-101.png" alt=""></p>
+</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png" alt=""></p>
 <pre><code>debug{
         testCoverageEnabled true
 }
@@ -489,7 +489,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&a
 <pre><code>- bash &lt;(curl -s https://codecov.io/bash)
 </code></pre></li>
 </ol>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-102.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png" alt=""></p>
 <h3 id="Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器"><a href="#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器" class="headerlink" title="Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器"></a>Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器</h3><p>因为之前修改过很多次，过程很繁琐，直接给配置文件了，相信大家一眼就能看出来。</p>
 <p>完整的配置文件是：</p>
 <pre><code>language: android
@@ -536,9 +536,9 @@ script:
 after_success:
   - bash &lt;(curl -s https://codecov.io/bash)
 </code></pre><h3 id="codecov-总结"><a href="#codecov-总结" class="headerlink" title="codecov 总结"></a>codecov 总结</h3><p>Travis-CI 对 android 的单元测试支持不是很好，因为需要开启虚拟机，开启这个过程就得10分钟（我的测试时间），很耗费时间。有时候也连接不上，一次跑下来估计得个 20分钟左右吧。所以，稳定性确实不是很高。如果不做单元测试，而只是做发布之类的，稳定性还是高的。 </p>
-<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-103.png" alt=""></p>
+<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png" alt=""></p>
 <p><strong>所以 要不要使用单元测试 还是根据项目决定吧。 </strong></p>
-<h3 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gbg/kaiyuan/md/gbg-kaiyuan-md-104.png" alt=""></p>
+<h3 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png" alt=""></p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="external">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="external">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="external">徽章系列8：生成个性徽章</a></p>
 <p>总分类：<br><a href="http://www.gdky005.com/categories/shields/" target="_blank" rel="external">徽章（shields ）系列文章总分类</a></p>
@@ -714,7 +714,7 @@ after_success:
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
