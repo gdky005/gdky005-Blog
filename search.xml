@@ -4,6 +4,22 @@
   
     
     <entry>
+      <title><![CDATA[Django 删除表遇到的一些错误]]></title>
+      <url>http://gdky005.com/2017/10/18/Django-%E5%88%A0%E9%99%A4%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF/</url>
+      <content type="html"><![CDATA[<p>python manage.py sqlmigrate DouYin 0001  </p>
+<p>逗比的 Django, 从数据库删除以后，就无法再次创建数据库成功。折腾了好久，终于摸索出一条路。 删除你不需要的代码和 服务器端的 数据库，然后本地依旧执行一次</p>
+<pre><code>python manage.py makemigrations         
+
+python manage.py migrate      
+</code></pre><p>，然后使用这个命令：<br>    python manage.py sqlmigrate 【你的 Modle 名称】 0001 </p>
+<p>就能看到一个 Sql 语句，把这个语句在服务器端执行一下就可以了，等同于在服务器端创建了新的数据表，然后使用 Django 的表中的数据就正常了，可以正常删除添加操作。<br>如果遇到  新加了字段总是报错，可以给新加的这个字段添加 默认值，然后执行就 Ok 了。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-1.png" alt=""></p>
+<h3 id="自动增长和主键只有一个生效了"><a href="#自动增长和主键只有一个生效了" class="headerlink" title="自动增长和主键只有一个生效了"></a>自动增长和主键只有一个生效了</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-2.png" alt=""><br>上面的这种方法不行的哦！<br>具体的解决办法是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-3.png" alt=""></p>
+<h3 id="删除以后就无法再次创建成功，what"><a href="#删除以后就无法再次创建成功，what" class="headerlink" title="删除以后就无法再次创建成功，what?"></a>删除以后就无法再次创建成功，what?</h3><pre><code>python manage.py makemigrations app
+</code></pre><p>app 表示你的 Module  </p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[打造一个高逼格的android开源项目——小白全攻略]]></title>
       <url>http://gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/</url>
       <content type="html"><![CDATA[<h3 id="小引子"><a href="#小引子" class="headerlink" title="小引子"></a>小引子</h3><p>在平时的开发过程中，我们经常会查阅很多的资料，最常参考的是 github 的开源项目。通常在项目的主页面能看到项目的简介和基本使用，并且时不时能看到页面汇中有好多的彩色标签，看起来很酷，很专业，很有逼格，能提升很多的好感度。</p>

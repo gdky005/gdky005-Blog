@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2017-06-22T03:13:20.000Z</updated>
+  <updated>2017-10-18T03:37:10.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django 删除表遇到的一些错误</title>
+    <link href="http://gdky005.com/2017/10/18/Django-%E5%88%A0%E9%99%A4%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF/"/>
+    <id>http://gdky005.com/2017/10/18/Django-删除表遇到的一些错误/</id>
+    <published>2017-10-18T03:36:13.000Z</published>
+    <updated>2017-10-18T03:37:10.000Z</updated>
+    
+    <content type="html">&lt;p&gt;python manage.py sqlmigrate DouYin 0001  &lt;/p&gt;
+&lt;p&gt;逗比的 Django, 从数据库删除以后，就无法再次创建数据库成功。折腾了好久，终于摸索出一条路。 删除你不需要的代码和 服务器端的 数据库，然后本地依旧执行一次&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python manage.py makemigrations         
+
+python manage.py migrate      
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;，然后使用这个命令：&lt;br&gt;    python manage.py sqlmigrate 【你的 Modle 名称】 0001 &lt;/p&gt;
+&lt;p&gt;就能看到一个 Sql 语句，把这个语句在服务器端执行一下就可以了，等同于在服务器端创建了新的数据表，然后使用 Django 的表中的数据就正常了，可以正常删除添加操作。&lt;br&gt;如果遇到  新加了字段总是报错，可以给新加的这个字段添加 默认值，然后执行就 Ok 了。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;自动增长和主键只有一个生效了&quot;&gt;&lt;a href=&quot;#自动增长和主键只有一个生效了&quot; class=&quot;headerlink&quot; title=&quot;自动增长和主键只有一个生效了&quot;&gt;&lt;/a&gt;自动增长和主键只有一个生效了&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-2.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;上面的这种方法不行的哦！&lt;br&gt;具体的解决办法是：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;删除以后就无法再次创建成功，what&quot;&gt;&lt;a href=&quot;#删除以后就无法再次创建成功，what&quot; class=&quot;headerlink&quot; title=&quot;删除以后就无法再次创建成功，what?&quot;&gt;&lt;/a&gt;删除以后就无法再次创建成功，what?&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;python manage.py makemigrations app
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;app 表示你的 Module  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;python manage.py sqlmigrate DouYin 0001  &lt;/p&gt;
+&lt;p&gt;逗比的 Django, 从数据库删除以后，就无法再次创建数据库成功。折腾了好久，终于摸索出一条路。 删除你不需要的代码和 服务器端的 数据库，然后本地依旧执行一次&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+    
+      <category term="django, 删除表" scheme="http://gdky005.com/tags/django-%E5%88%A0%E9%99%A4%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>打造一个高逼格的android开源项目——小白全攻略</title>
@@ -638,81 +670,6 @@ dependencies:
     <summary type="html">
     
       &lt;p&gt;官网： &lt;a href=&quot;http://travis-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://travis-ci.org/&lt;/a&gt;&lt;br&gt;ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。&lt;br&gt;需要提醒
-    
-    </summary>
-    
-      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
-    
-    
-      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>徽章系列4： Circle CI 的使用</title>
-    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/</id>
-    <published>2017-06-15T10:03:52.000Z</published>
-    <updated>2017-06-22T03:13:07.000Z</updated>
-    
-    <content type="html">&lt;p&gt; 官网: &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot;&gt;&lt;a href=&quot;#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？&quot; class=&quot;headerlink&quot; title=&quot;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&quot;&gt;&lt;/a&gt;Circle CI 和 Travis CI 有什么区别？需要一起使用吗？&lt;/h3&gt;&lt;p&gt;Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。&lt;/p&gt;
-&lt;p&gt;Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。&lt;/p&gt;
-&lt;p&gt;说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。&lt;/p&gt;
-&lt;h3 id=&quot;添加项目到-Circle-CI&quot;&gt;&lt;a href=&quot;#添加项目到-Circle-CI&quot; class=&quot;headerlink&quot; title=&quot;添加项目到 Circle CI&quot;&gt;&lt;/a&gt;添加项目到 Circle CI&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;登录主页面：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png&quot; alt=&quot;&quot;&gt;， 在 project 里面自己的账号下搜索刚创建的项目。&lt;/li&gt;
-&lt;li&gt;一般直接选择 Ubuntu 即可:&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png&quot; alt=&quot;&quot;&gt;,点击绿色  Build project.&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;能看到：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png&quot; alt=&quot;&quot;&gt;， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot;&gt;&lt;a href=&quot;#在-项目中添加-Circle-CI-需要的-circle-yml-文件&quot; class=&quot;headerlink&quot; title=&quot;在 项目中添加 Circle CI 需要的 circle.yml 文件&quot;&gt;&lt;/a&gt;在 项目中添加 Circle CI 需要的 circle.yml 文件&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;在项目的根目录下 添加 circle.yml 文件；&lt;/li&gt;
-&lt;li&gt;添加 circle 的代码到文件中：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;circle.yml 源代码：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;machine:
-  java:
-      version: oraclejdk8
-  environment:
-      ANDROID_HOME: /usr/local/android-sdk-linux
-
-dependencies:
-  pre:
-    - mkdir -p &amp;quot;$ANDROID_HOME/licenses&amp;quot;
-    - echo -e &amp;quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-license&amp;quot;
-    - echo -e &amp;quot;\n84831b9409646a918e30573bab4c9c91346d8abd&amp;quot; &amp;gt; &amp;quot;$ANDROID_HOME/licenses/android-sdk-preview-license&amp;quot;
-
-
-  override:
-    - echo y | android update sdk --no-ui --filter &amp;quot;android-25&amp;quot;
-    - echo y | android update sdk --no-ui --filter &amp;quot;build-tools-25.0.2&amp;quot;
-    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-m2repository&amp;quot;
-    - echo y | android update sdk --no-ui --filter &amp;quot;extra-android-support&amp;quot;
-    - echo y | android update sdk --no-ui --filter &amp;quot;extra-google-m2repositor&amp;quot;
-    - ./gradlew dependencies || true
-
-test:
-  override:
-    - ./gradlew build
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;push-项目到-github-Circle-CI-自动监测构建&quot;&gt;&lt;a href=&quot;#push-项目到-github-Circle-CI-自动监测构建&quot; class=&quot;headerlink&quot; title=&quot;push 项目到 github, Circle CI 自动监测构建&quot;&gt;&lt;/a&gt;push 项目到 github, Circle CI 自动监测构建&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;提交代码后，发布到 github，Circle CI 会自动执行。&lt;/li&gt;
-&lt;li&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png&quot; alt=&quot;&quot;&gt; 点击进来后，会看到：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png&quot; alt=&quot;&quot;&gt;， 说明已经开始 构建了， 下载需要的东西：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
-&lt;li&gt;构建中的一些步骤：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png&quot; alt=&quot;&quot;&gt;， 相对 Travis 来说展示更直观。&lt;/li&gt;
-&lt;li&gt;看到 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png&quot; alt=&quot;&quot;&gt; 说明构建成功。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;添加-Circle-CI-徽章到-github&quot;&gt;&lt;a href=&quot;#添加-Circle-CI-徽章到-github&quot; class=&quot;headerlink&quot; title=&quot;添加 Circle CI 徽章到 github&quot;&gt;&lt;/a&gt;添加 Circle CI 徽章到 github&lt;/h3&gt;&lt;p&gt;我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;回项目主页刷新后：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png&quot; alt=&quot;&quot;&gt; 非常 happy, 已经添加成功了。&lt;/p&gt;
-&lt;h3 id=&quot;相关链接：&quot;&gt;&lt;a href=&quot;#相关链接：&quot; class=&quot;headerlink&quot; title=&quot;相关链接：&quot;&gt;&lt;/a&gt;相关链接：&lt;/h3&gt;&lt;p&gt;完整版：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;打造一个高逼格的android开源项目——小白全攻略&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;精简集合版：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列1： Top 30 android 开源项目徽章&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列2：JitPack 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列3： Travis CI 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列4： Circle CI 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列5： Codecov 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列6： Api_Level 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列7： codacy 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列8：生成个性徽章&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;总分类：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/categories/shields/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章（shields ）系列文章总分类&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github 地址：&lt;br&gt;&lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章项目 Demo github 地址：&lt;/a&gt;&lt;br&gt; &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; 官网: &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Circle-CI-和-Travis-CI-有什么区别？需要一
     
     </summary>
     
