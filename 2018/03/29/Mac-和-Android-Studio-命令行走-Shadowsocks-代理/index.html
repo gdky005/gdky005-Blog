@@ -123,7 +123,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg">
-<meta property="og:updated_time" content="2018-03-29T03:58:57.000Z">
+<meta property="og:updated_time" content="2018-03-29T04:32:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 和 Android Studio 命令行走 Shadowsocks 代理">
 <meta name="twitter:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。 使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089 在 Android Studio 中如下设置，未成功。 尝试以下，也没有成功。  经过">
@@ -355,7 +355,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T11:58:57+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T12:32:13+08:00">
                 2018-03-29
               </time>
             
@@ -476,7 +476,6 @@
 <p>不开代理，默认提示失败：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg" alt=""></p>
 <p>开代理，下载成功：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_12.jpg" alt=""></p>
 <p>到这里，命令行已经可用了。</p>
-<p>总结下：先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。</p>
 <h2 id="Android-Studio-设置代理"><a href="#Android-Studio-设置代理" class="headerlink" title="Android Studio 设置代理"></a>Android Studio 设置代理</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg" alt=""></p>
 <h2 id="更新-Android-SDK"><a href="#更新-Android-SDK" class="headerlink" title="更新 Android SDK"></a>更新 Android SDK</h2><h3 id="尝试使用-android-sdk-工具更新最新组件"><a href="#尝试使用-android-sdk-工具更新最新组件" class="headerlink" title="尝试使用 android sdk 工具更新最新组件"></a>尝试使用 android sdk 工具更新最新组件</h3><p>新版本的 Android SDK 不允许直接通过命令行更新 SDK 了，需要配合 Android Studio 一起才能更新，让人有些不爽。</p>
 <p>可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 <code>android</code> 命令打开 Android SDK 的 UI 更新界面。<br><a href="https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog" target="_blank" rel="noopener">https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog</a></p>
@@ -487,6 +486,7 @@
 <p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="noopener">http://sdk.gdgshanghai.com</a> 端口：8000</p>
 <p>参考地址：<a href="https://www.cnblogs.com/maxinliang/p/5083495.html" target="_blank" rel="noopener">https://www.cnblogs.com/maxinliang/p/5083495.html</a></p>
 <p>具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。</p>
 
       
     </div>
@@ -747,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Shadowsocks-的-PAC-自动模式始终失败"><span class="nav-number">1.</span> <span class="nav-text">使用 Shadowsocks 的 PAC 自动模式始终失败</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启正确的全局代理模式"><span class="nav-number">2.</span> <span class="nav-text">开启正确的全局代理模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-clone-测试代理"><span class="nav-number">3.</span> <span class="nav-text">git clone 测试代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Studio-设置代理"><span class="nav-number">4.</span> <span class="nav-text">Android Studio 设置代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-Android-SDK"><span class="nav-number">5.</span> <span class="nav-text">更新 Android SDK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试使用-android-sdk-工具更新最新组件"><span class="nav-number">5.1.</span> <span class="nav-text">尝试使用 android sdk 工具更新最新组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Android-Studio-中更新-SDK"><span class="nav-number">5.2.</span> <span class="nav-text">在 Android Studio 中更新 SDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用公开的代理服务器"><span class="nav-number">6.</span> <span class="nav-text">常用公开的代理服务器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Shadowsocks-的-PAC-自动模式始终失败"><span class="nav-number">1.</span> <span class="nav-text">使用 Shadowsocks 的 PAC 自动模式始终失败</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启正确的全局代理模式"><span class="nav-number">2.</span> <span class="nav-text">开启正确的全局代理模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-clone-测试代理"><span class="nav-number">3.</span> <span class="nav-text">git clone 测试代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Studio-设置代理"><span class="nav-number">4.</span> <span class="nav-text">Android Studio 设置代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-Android-SDK"><span class="nav-number">5.</span> <span class="nav-text">更新 Android SDK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试使用-android-sdk-工具更新最新组件"><span class="nav-number">5.1.</span> <span class="nav-text">尝试使用 android sdk 工具更新最新组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Android-Studio-中更新-SDK"><span class="nav-number">5.2.</span> <span class="nav-text">在 Android Studio 中更新 SDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用公开的代理服务器"><span class="nav-number">6.</span> <span class="nav-text">常用公开的代理服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
