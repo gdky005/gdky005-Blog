@@ -99,39 +99,20 @@
 
 
 
-<meta name="description" content="本文目录
-线程池基础
-反向代理模块
-OkHttp 的任务调度
-
-OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
-线程池基础
-线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
+<meta name="description" content="本文目录 线程池基础 反向代理模块 OkHttp 的任务调度  OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。 线程池基础 线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
+<meta name="keywords" content="okhttp3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OkHttp3源码分析【任务队列】">
 <meta property="og:url" content="http://gdky005.com/2016/06/20/OkHttp3源码分析【任务队列】/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="本文目录
-线程池基础
-反向代理模块
-OkHttp 的任务调度
-
-OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
-线程池基础
-线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
+<meta property="og:description" content="本文目录 线程池基础 反向代理模块 OkHttp 的任务调度  OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。 线程池基础 线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png">
 <meta property="og:updated_time" content="2016-06-20T09:05:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OkHttp3源码分析【任务队列】">
-<meta name="twitter:description" content="本文目录
-线程池基础
-反向代理模块
-OkHttp 的任务调度
-
-OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。
-线程池基础
-线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
+<meta name="twitter:description" content="本文目录 线程池基础 反向代理模块 OkHttp 的任务调度  OkHttp拥有两种运行方式，一种是同步阻塞调用并直接返回的形式，另一种是通过内部线程池分发调度实现非阻塞的一步回调。本文主要分析第二种，即 OkHttp 在多并发网络下的分发调度过程。本文主要分析的是 Dispatcher 对象。 线程池基础 线程池好处有哪些线程池的关键在于线程复用以减少非核心任务的损耗。以下参考自 IBM 知识库">
 <meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png">
 
 
@@ -483,7 +464,7 @@ T3 线程销毁的时间
 </li>
 </ul>
 <p>在 Java 中，我们可以通过 线程池工厂 或者 自定义参数 来创建 线程池。这里就不说了</p>
-<ol>
+<ol start="2">
 <li>OkHttp 配置的线程池</li>
 </ol>
 <p>在 OkHttp 中，使用如下构造了单例线程池<br>    public synchronized ExecutorService executorService() {<br>      if (executorService == null) {<br>        executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,<br>            new SynchronousQueue<runnable>(), Util.threadFactory(“OkHttp Dispatcher”, false));<br>      }<br>      return executorService;<br>    }</runnable></p>
@@ -493,7 +474,7 @@ T3 线程销毁的时间
 <li>int maximumPoolSize: 最大线程数，当任务进来时可以扩充的线程最大值，当大于了这个值就会根据丢弃<em>处理机制</em>来处理</li>
 <li>long keepAliveTime: 当线程数大于corePoolSize时，多余的空闲线程的最大存活时间，类似于HTTP中的Keep-alive</li>
 <li>TimeUnit unit: 时间单位，一般用秒</li>
-<li>BlockingQueue\<runnable\> workQueue:  工作队列</runnable\></li>
+<li>BlockingQueue\&lt;Runnable> workQueue:  工作队列</li>
 <li>ThreadFactory threadFactory: 单个线程的工厂，可以打Log，设置Daemon(即当JVM退出时，线程自动结束)等</li>
 </ul>
 <p>可以看出，在 OkHttp 中，构建了一个阈值为【0， Integer.Max_value】的线程池，她不好留任何最先线程数，随时创建更多的线程数，当线程空闲时只能活 60秒，它使用另一个不存储元素的阻塞工作队列， 一个叫做 “OkHttp Dispatcher” 的线程工厂。</p>
@@ -503,7 +484,7 @@ T3 线程销毁的时间
 </blockquote>
 <h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
 <p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
-<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\<readyasynccalls\>对应 Nginx 的内部缓存</readyasynccalls\></p>
+<p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\&lt;readyAsyncCalls>对应 Nginx 的内部缓存</p>
 <p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
 <p>具体成员如下：</p>
 <ul>
@@ -512,11 +493,11 @@ T3 线程销毁的时间
 <li>Dispatcher：分发者，也就是生产者（默认在主线程）</li>
 <li>AsyncCall：队列中需要处理的Runnable（包装了异步回调接口）</li>
 <li>ExecutorService：消费者池（也就是线程池）</li>
-<li>Deque\<readyasynccalls\>：缓存（用数组实现，可自动扩容，无大小限制）</readyasynccalls\></li>
-<li>Deque\<runningasynccalls\>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</runningasynccalls\></li>
+<li>Deque\&lt;readyAsyncCalls>：缓存（用数组实现，可自动扩容，无大小限制）</li>
+<li>Deque\&lt;runningAsyncCalls>：正在运行的任务，仅仅是用来引用正在运行的任务以判断并发量，注意它并不是消费者缓存</li>
 </ul>
 <p>通过将请求任务分发给多个线程，可以显著减少 I/O 等待时间</p>
-<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build(" target="_blank" rel="external">http://qq.com&quot;).get().build(</a>);<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
+<h3 id="OkHttp-的任务调度"><a href="#OkHttp-的任务调度" class="headerlink" title="OkHttp 的任务调度"></a>OkHttp 的任务调度</h3><p>当我们使用 OkHttp 的异步请求时，一般进行如下构造：<br>    OkHttpClient client = new OkHttpClient.Builder().build();<br>    Request request = new Request.Builder()<br>        .url(“<a href="http://qq.com&quot;).get().build()" target="_blank" rel="noopener">http://qq.com&quot;).get().build()</a>;<br>    client.newCall(request).enqueue(new Callback() {<br>      @Override public void onFailure(Call call, IOException e) {</p>
 <pre><code>  }
 
   @Override public void onResponse(Call call, Response response) throws IOException {
@@ -559,7 +540,7 @@ T3 线程销毁的时间
 <li>OkHttp 采用 Deque 作为缓存，按照入队的顺序先进先出</li>
 <li>OkHttp 最出彩的地方就是在 try/finally 中调用了 finished 函数，可以主动控制等待队列的移动，而不是采用锁，极大减少了编码复杂度</li>
 </ol>
-<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="external">http://www.jianshu.com/p/6637369d02e7</a></p>
+<p>摘自：<a href="http://www.jianshu.com/p/6637369d02e7" target="_blank" rel="noopener">http://www.jianshu.com/p/6637369d02e7</a></p>
 
       
     </div>

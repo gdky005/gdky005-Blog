@@ -100,11 +100,13 @@
 
 
 <meta name="description" content="关于Fragment（XXFragment） not attached to Activity 异常出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：http://stackoverflow.com/questions/109">
+<meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fragment not attached to Activity 异常">
 <meta property="og:url" content="http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-异常/index.html">
 <meta property="og:site_name" content="孤独狂饮">
 <meta property="og:description" content="关于Fragment（XXFragment） not attached to Activity 异常出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：http://stackoverflow.com/questions/109">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragment not attached to Activity 异常">
@@ -414,9 +416,9 @@
       
 
       
-        <h3 id="关于Fragment（XXFragment）-not-attached-to-Activity-异常"><a href="#关于Fragment（XXFragment）-not-attached-to-Activity-异常" class="headerlink" title="关于Fragment（XXFragment） not attached to Activity 异常"></a>关于Fragment（XXFragment） not attached to Activity 异常</h3><p>出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：<a href="http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity%C2%A0" target="_blank" rel="external">http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity </a> 回答的主要是在调用</p>
+        <h3 id="关于Fragment（XXFragment）-not-attached-to-Activity-异常"><a href="#关于Fragment（XXFragment）-not-attached-to-Activity-异常" class="headerlink" title="关于Fragment（XXFragment） not attached to Activity 异常"></a>关于Fragment（XXFragment） not attached to Activity 异常</h3><p>出现该异常，是因为Fragment的还没有Attach到Activity时，调用了如getResource()等，需要上下文Content的函数。解决方法，就是等将调用的代码写在OnStart（）中。网上还有几处这样的参考：<a href="http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity%C2%A0" target="_blank" rel="noopener">http://stackoverflow.com/questions/10919240/fragment-myfragment-not-attached-to-activity </a> 回答的主要是在调用</p>
 <pre><code>getResources().getString(R.string.app_name); 
-</code></pre><p>之前增加一个判断isAdded(),两外说这个异常解决办法的有<br><a href="http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity" target="_blank" rel="external">http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity</a></p>
+</code></pre><p>之前增加一个判断isAdded(),两外说这个异常解决办法的有<br><a href="http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity" target="_blank" rel="noopener">http://stackoverflow.com/questions/6870325/android-compatibility-package-fragment-not-attached-to-activity</a></p>
 <p>这个是针对另外一种情况下的解决方式。</p>
 <h3 id="在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常"><a href="#在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常" class="headerlink" title="在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常"></a>在使用Fragment保存参数的时候，可能是因为需要保存的参数比较大或者比较多，这种情况下页会引起异常</h3><pre><code>Bundle b = new Bundle(); 
 b.putParcelable(&quot;bitmap&quot;, bitmap2); 

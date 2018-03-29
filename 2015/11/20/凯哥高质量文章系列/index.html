@@ -99,23 +99,22 @@
 
 
 
-<meta name="description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
-看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta name="description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念 看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凯哥高质量文章系列">
 <meta property="og:url" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
-看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
-<meta property="og:image" content="http://gdky005.com/DraggedImage.png">
-<meta property="og:image" content="http://gdky005.com/DraggedImage-1.png">
-<meta property="og:image" content="http://gdky005.com/Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png">
+<meta property="og:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念 看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/DraggedImage.png">
+<meta property="og:image" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/DraggedImage-1.png">
+<meta property="og:image" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png">
 <meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凯哥高质量文章系列">
-<meta name="twitter:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念
-看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
-<meta name="twitter:image" content="http://gdky005.com/DraggedImage.png">
+<meta name="twitter:description" content="凯哥系列：1. Activity启动过程全解析2. framework-Activity界面显示全解析注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念 看文章的记录：1.App启动2.App入口3.Launcher?4.AMS??5.Binder是神马？怎么进行IPC通信？6.Activity生命周期是被谁 什么时候">
+<meta name="twitter:image" content="http://gdky005.com/2015/11/20/凯哥高质量文章系列/DraggedImage.png">
 
 
 
@@ -422,7 +421,7 @@
 
       
         <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h1 id="凯哥系列："><a href="#凯哥系列：" class="headerlink" title="凯哥系列："></a>凯哥系列：</h1><h2 id="1-Activity启动过程全解析"><a href="#1-Activity启动过程全解析" class="headerlink" title="1. Activity启动过程全解析"></a>1. <a href="http://www.devtf.cn/?p=1101" target="_blank" rel="external">Activity启动过程全解析</a></h2><h2 id="2-framework-Activity界面显示全解析"><a href="#2-framework-Activity界面显示全解析" class="headerlink" title="2. framework-Activity界面显示全解析"></a>2. <a href="http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287" target="_blank" rel="external">framework-Activity界面显示全解析</a></h2><p>注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念</p>
+<h1 id="凯哥系列："><a href="#凯哥系列：" class="headerlink" title="凯哥系列："></a>凯哥系列：</h1><h2 id="1-Activity启动过程全解析"><a href="#1-Activity启动过程全解析" class="headerlink" title="1. Activity启动过程全解析"></a>1. <a href="http://www.devtf.cn/?p=1101" target="_blank" rel="noopener">Activity启动过程全解析</a></h2><h2 id="2-framework-Activity界面显示全解析"><a href="#2-framework-Activity界面显示全解析" class="headerlink" title="2. framework-Activity界面显示全解析"></a>2. <a href="http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287" target="_blank" rel="noopener">framework-Activity界面显示全解析</a></h2><p>注：该文是我看着凯哥的文章手打的，可能有很多错误的地方，可以直接看凯哥的博客。手打的目的是为了让自己更加准确的理解里面的一些概念</p>
 <h3 id="看文章的记录："><a href="#看文章的记录：" class="headerlink" title="看文章的记录："></a>看文章的记录：</h3><p>1.App启动<br>2.App入口<br>3.Launcher?<br>4.AMS??<br>5.Binder是神马？怎么进行IPC通信？<br>6.Activity生命周期是被谁 什么时候调用的？</p>
 <h3 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h3><p>1.开机第一个zygote（受精卵的意思） 进程创建 —》点击桌面图标 —》进入App的流程，从源码的角度<br>2.ActivityManagerServices(即：AMS)， ActivityStack, ActivityThread, Instrumentation等 framework 基础类的作用和相互关系</p>
 <p>3.AMS和ActivityThread 利用Binder 进行IPC通信， AMS和ActivityThread控制Activity生命周期的作用于配合</p>
@@ -968,7 +967,7 @@ class ApplicationThreadProxy implements IApplicationThread {}
 
 
             }
-</code></pre><p>thread 就是 IApplicationThread ，实际上就是 ApplicationThead 在服务器的代理类，ApplicationThreadProxy,然后又通过IPC 就会调用到ApplicationThread的对应方法<br>    public final void bindApplication(String processName, ApplicationInfo appInfo,<br>                    List<providerinfo> providers, ComponentName instrumentationName,<br>                    ProfilerInfo profilerInfo, Bundle instrumentationArgs,<br>                    IInstrumentationWatcher instrumentationWatcher,<br>                    IUiAutomationConnection instrumentationUiConnection, int debugMode,<br>                    boolean enableOpenGlTrace, boolean isRestrictedBackupMode, boolean persistent,<br>                    Configuration config, CompatibilityInfo compatInfo, Map<string, ibinder=""> services,<br>                    Bundle coreSettings) {</string,></providerinfo></p>
+</code></pre><p>thread 就是 IApplicationThread ，实际上就是 ApplicationThead 在服务器的代理类，ApplicationThreadProxy,然后又通过IPC 就会调用到ApplicationThread的对应方法<br>    public final void bindApplication(String processName, ApplicationInfo appInfo,<br>                    List<providerinfo> providers, ComponentName instrumentationName,<br>                    ProfilerInfo profilerInfo, Bundle instrumentationArgs,<br>                    IInstrumentationWatcher instrumentationWatcher,<br>                    IUiAutomationConnection instrumentationUiConnection, int debugMode,<br>                    boolean enableOpenGlTrace, boolean isRestrictedBackupMode, boolean persistent,<br>                    Configuration config, CompatibilityInfo compatInfo, Map&lt;String, IBinder&gt; services,<br>                    Bundle coreSettings) {</providerinfo></p>
 <pre><code>                 ...ignore some code...    
 
              AppBindData data = new AppBindData();
@@ -1089,9 +1088,9 @@ class ApplicationThreadProxy implements IApplicationThread {}
 <p>下面的文章都是这方面的精品，希望你抽出实际研究下，这可能需要花费很长的时间，但是如果你想晋级成为中高级开发者，这一步是必须的。</p>
 <p>Binder:</p>
 <ul>
-<li><a href="http://blog.csdn.net/universus/article/details/6211589" target="_blank" rel="external">Android Bander设计与实现 - 设计篇</a></li>
+<li><a href="http://blog.csdn.net/universus/article/details/6211589" target="_blank" rel="noopener">Android Bander设计与实现 - 设计篇</a></li>
 </ul>
-<p>zygote<br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6768304" target="_blank" rel="external">Android系统进程Zygote启动过程的源代码分析</a><br>•    <a href="http://blog.csdn.net/xieqibao/article/details/6581975" target="_blank" rel="external">Android 之 zygote 与进程创建</a><br>•    <a href="http://www.th7.cn/Program/Android/201404/187670.shtml" target="_blank" rel="external">Zygote浅谈</a><br>ActivityThread、Instrumentation、AMS<br>•    <a href="http://blog.csdn.net/myarrow/article/details/14224273" target="_blank" rel="external">Android Activity.startActivity流程简介</a><br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6747696#comments" target="_blank" rel="external">Android应用程序进程启动过程的源代码分析</a><br>•    <a href="http://laokaddk.blog.51cto.com/368606/1206840" target="_blank" rel="external">框架层理解Activity生命周期(APP启动过程)</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="external">Android应用程序窗口设计框架介绍</a><br>•    <a href="http://www.xuebuyuan.com/2172927.html" target="_blank" rel="external">ActivityManagerService分析一：AMS的启动</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="external">Android应用程序窗口设计框架介绍</a><br>Launcher<br>•    <a href="http://mobile.51cto.com/hot-312129.htm" target="_blank" rel="external">Android 4.0 Launcher源码分析系列(一)</a><br>•    <a href="http://www.cnblogs.com/mythou/p/3187881.html" target="_blank" rel="external">Android Launcher分析和修改9——Launcher启动APP流程</a></p>
+<p>zygote<br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6768304" target="_blank" rel="noopener">Android系统进程Zygote启动过程的源代码分析</a><br>•    <a href="http://blog.csdn.net/xieqibao/article/details/6581975" target="_blank" rel="noopener">Android 之 zygote 与进程创建</a><br>•    <a href="http://www.th7.cn/Program/Android/201404/187670.shtml" target="_blank" rel="noopener">Zygote浅谈</a><br>ActivityThread、Instrumentation、AMS<br>•    <a href="http://blog.csdn.net/myarrow/article/details/14224273" target="_blank" rel="noopener">Android Activity.startActivity流程简介</a><br>•    <a href="http://blog.csdn.net/luoshengyang/article/details/6747696#comments" target="_blank" rel="noopener">Android应用程序进程启动过程的源代码分析</a><br>•    <a href="http://laokaddk.blog.51cto.com/368606/1206840" target="_blank" rel="noopener">框架层理解Activity生命周期(APP启动过程)</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="noopener">Android应用程序窗口设计框架介绍</a><br>•    <a href="http://www.xuebuyuan.com/2172927.html" target="_blank" rel="noopener">ActivityManagerService分析一：AMS的启动</a><br>•    <a href="http://blog.csdn.net/yangwen123/article/details/35987609" target="_blank" rel="noopener">Android应用程序窗口设计框架介绍</a><br>Launcher<br>•    <a href="http://mobile.51cto.com/hot-312129.htm" target="_blank" rel="noopener">Android 4.0 Launcher源码分析系列(一)</a><br>•    <a href="http://www.cnblogs.com/mythou/p/3187881.html" target="_blank" rel="noopener">Android Launcher分析和修改9——Launcher启动APP流程</a></p>
 <p>结束语：<br>到了这里，我们回来看下开头的几个问题：</p>
 <ul>
 <li>ActivityManagerService：简称AMS，服务端对象，负责系统中所有Activity的生命周期</li>

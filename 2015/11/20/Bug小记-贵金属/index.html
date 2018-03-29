@@ -99,34 +99,18 @@
 
 
 
-<meta name="description" content="Bug 小记（**贵金属）作者：球儿
-最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下：
-####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击
-使用 GCD 写的倒计时，源代码：
-_isCountDown = YES;
-__block int timeout=kCountdownTime; //倒计时时间
-dispatch_queue_t queue">
+<meta name="description" content="Bug 小记（**贵金属）作者：球儿 最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下： ####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击 使用 GCD 写的倒计时，源代码： _isCountDown = YES; __block int timeout=kCountdownTime; //倒计时时间 dispatch_queue_t queue">
+<meta name="keywords" content="ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bug小记(**贵金属)">
 <meta property="og:url" content="http://gdky005.com/2015/11/20/Bug小记-贵金属/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="Bug 小记（**贵金属）作者：球儿
-最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下：
-####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击
-使用 GCD 写的倒计时，源代码：
-_isCountDown = YES;
-__block int timeout=kCountdownTime; //倒计时时间
-dispatch_queue_t queue">
+<meta property="og:description" content="Bug 小记（**贵金属）作者：球儿 最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下： ####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击 使用 GCD 写的倒计时，源代码： _isCountDown = YES; __block int timeout=kCountdownTime; //倒计时时间 dispatch_queue_t queue">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bug小记(**贵金属)">
-<meta name="twitter:description" content="Bug 小记（**贵金属）作者：球儿
-最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下：
-####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击
-使用 GCD 写的倒计时，源代码：
-_isCountDown = YES;
-__block int timeout=kCountdownTime; //倒计时时间
-dispatch_queue_t queue">
+<meta name="twitter:description" content="Bug 小记（**贵金属）作者：球儿 最近在修复 APP 的 Bug，遇到了几个因对 SDK 不熟 造成的 Bug。如下： ####Bug1：点击获取验证码后，没有进行倒计时，且不能再次点击 使用 GCD 写的倒计时，源代码： _isCountDown = YES; __block int timeout=kCountdownTime; //倒计时时间 dispatch_queue_t queue">
 
 
 
@@ -466,7 +450,7 @@ dispatch_source_set_event_handler(_timer, ^{
     }
 });
 dispatch_resume(_timer);
-</code></pre><p>如上所示的源码，在 iOS7 上倒计时按钮上的文字不会变化，在 iOS 8,iOS9 上都是没问题的，我也郁闷了很久。各种百度未果后转向 Google,也有人遇到这样的问题，但是只搜索到一篇真正能解决这个问题的文章 <a href="http://blog.csdn.net/zhangyanshen/article/details/46910515" title="http://blog.csdn.net/zhangyanshen/article/details/46910515" target="_blank" rel="external">http://blog.csdn.net/zhangyanshen/article/details/46910515</a></p>
+</code></pre><p>如上所示的源码，在 iOS7 上倒计时按钮上的文字不会变化，在 iOS 8,iOS9 上都是没问题的，我也郁闷了很久。各种百度未果后转向 Google,也有人遇到这样的问题，但是只搜索到一篇真正能解决这个问题的文章 <a href="http://blog.csdn.net/zhangyanshen/article/details/46910515" title="http://blog.csdn.net/zhangyanshen/article/details/46910515" target="_blank" rel="noopener">http://blog.csdn.net/zhangyanshen/article/details/46910515</a></p>
 <font color="green"><strong>解决方案：</strong></font>
 
 <p><code>[sendAuthCodeBtn setTitle:@&quot;发送验证码&quot; forState:UIControlStateDisabled];</code> </p>

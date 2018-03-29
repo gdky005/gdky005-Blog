@@ -99,22 +99,18 @@
 
 
 
-<meta name="description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta name="description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。 之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp. 代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta name="keywords" content="okhttp3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从 volley 切换到 OkHttp 遇到的坑">
 <meta property="og:url" content="http://gdky005.com/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta property="og:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。 之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp. 代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-06-24T07:55:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从 volley 切换到 OkHttp 遇到的坑">
-<meta name="twitter:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。
-之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp.
-代理异常？切换成功后，遇到的第一个问题就是：代">
+<meta name="twitter:description" content="这几天打算把项目的 volley 切换到 okhttp,遇到了一些小问题，现在予以整理。 之前考虑直接将 volley 切换到 okhttp, 底层肯定使用 okhttp, 请求队列也使用 okhttp。但是考虑到代价可能比较大，所以我是基于网上给的解决方案： 上层队列依然使用 volley,但是对于底层发送请求的地方，可以直接切换到 okhttp. 代理异常？切换成功后，遇到的第一个问题就是：代">
 
 
 
@@ -562,7 +558,7 @@
 <p>之前尝试过使用 使用<br>    builder.hostnameVerifier(new AllowAllHostnameVerifier());</p>
 <p>这样可以忽略证书，默认都允许，也能正常使用，但是 存在安全隐患。</p>
 <h3 id="post-参数不能为空？"><a href="#post-参数不能为空？" class="headerlink" title="post 参数不能为空？"></a>post 参数不能为空？</h3><p>这个问题遇到的比较奇葩，原因是，我们的 https  的接口使用了 post 请求，但是 post 里面没有参数，通用参数都放在 url 后面追加了，这就造成 这个 request 没有 body( body 就是对 post 请求的参数 处理下).</p>
-<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="external">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
+<p>但是 okhttp 对于参数为空的请求，直接返回 null, 所以对于这种不规范的 接口定义就报错了。在 <a href="https://github.com/square/okhttp/issues/751" target="_blank" rel="noopener">okhttp issue</a> 里面也有关于这个的讨论，说明这个不符合 http 的标准，所以不能发出请求。解决办法是添加一个空的 参数就可以，但是绝不能 “”:””, 里面必须有值，因此我这边和服务器约定了一下，用 temp 代替，服务器也肯定不会用这个字段取数据。</p>
 <p>具体参考这个：</p>
 <pre><code>public void addRequest(int method, final Map&lt;String, String&gt; params, final String baseUrl,
                            final TypeReference&lt;? extends BaseResponse&gt; type, final JsonResultCallback callback) {

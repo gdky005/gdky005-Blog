@@ -99,20 +99,19 @@
 
 
 
-<meta name="description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
-05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta name="description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现：  05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)">
 <meta property="og:url" content="http://gdky005.com/2017/05/03/android-6-0-权限崩溃分析：android-system-ErrnoException-statvfs-failed-ENOENT-No-such-file-or-directory/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
-05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta property="og:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现：  05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png">
 <meta property="og:updated_time" content="2017-05-03T03:37:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 6.0 权限崩溃分析：android.system.ErrnoException: statvfs failed: ENOENT (No such file or directory)">
-<meta name="twitter:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现： 
-05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
+<meta name="twitter:description" content="问题复现在某些 6.0 设备的设备上 程序因为使用了 app 的外置 SD 卡的私有目录，在没有 存储权限的情况下，会崩溃，出现：  05-03 09:53:02.337 W/System.err: java.lang.IllegalArgumentException: Invalid path: /storage/emulated/0/Android/data/gdky005.testexcep">
 <meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png">
 
 
@@ -486,7 +485,7 @@
 <p>处理措施：</p>
 <ol>
 <li>try catch</li>
-<li>targetSdkVersion >= 23 参考：<a href="http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</a></li>
+<li>targetSdkVersion >= 23 参考：<a href="http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="noopener">http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</a></li>
 <li>尝试 自动创建文件 检测是否成功，并验证，如果失败，立即使用 app 的内置私有目录</li>
 </ol>
 

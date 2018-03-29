@@ -99,18 +99,14 @@
 
 
 
-<meta name="description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
-我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
-
-误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta name="description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。 我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。  误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta name="keywords" content="https, 缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTPS的七个误解">
 <meta property="og:url" content="http://gdky005.com/2016/07/25/HTTPS的七个误解/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
-我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
-
-误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta property="og:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。 我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。  误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021311.jpg">
 <meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021301.png">
 <meta property="og:image" content="http://image.beekka.com/blog/201102/bg2011021302.png">
@@ -125,10 +121,7 @@
 <meta property="og:updated_time" content="2016-07-25T03:25:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTPS的七个误解">
-<meta name="twitter:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。
-我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。
-
-误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
+<meta name="twitter:description" content="这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。 我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。  误解七：HTTPS无法缓存许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命">
 <meta name="twitter:image" content="http://image.beekka.com/blog/201102/bg2011021311.jpg">
 
 
@@ -446,7 +439,7 @@
 <p>Firefox默认只在内存中缓存HTTPS。但是，只要头命令中有Cache-Control: Public，缓存就会被写到硬盘上。下面的图片显示，Firefox的硬盘缓存中有HTTPS内容，头命令正是Cache-Control:Public。</p>
 <p><img src="http://image.beekka.com/blog/201102/bg2011021301.png" alt=""></p>
 <h3 id="误解六：SSL证书很贵"><a href="#误解六：SSL证书很贵" class="headerlink" title="误解六：SSL证书很贵"></a>误解六：SSL证书很贵</h3><p>如果你在网上搜一下，就会发现很多便宜的SSL证书，大概10美元一年，这和一个.com域名的年费差不多。而且事实上，还能找到免费的SSL证书。<br>在效力上，便宜的证书当然会比大机构颁发的证书差一点，但是几乎所有的主流浏览器都接受这些证书。</p>
-<h3 id="误解五：HTTPS站点必须有独享的IP地址"><a href="#误解五：HTTPS站点必须有独享的IP地址" class="headerlink" title="误解五：HTTPS站点必须有独享的IP地址"></a>误解五：HTTPS站点必须有独享的IP地址</h3><p>由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，<a href="https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。" target="_blank" rel="external">https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。</a><br><img src="http://image.beekka.com/blog/201102/bg2011021302.png" alt=""></p>
+<h3 id="误解五：HTTPS站点必须有独享的IP地址"><a href="#误解五：HTTPS站点必须有独享的IP地址" class="headerlink" title="误解五：HTTPS站点必须有独享的IP地址"></a>误解五：HTTPS站点必须有独享的IP地址</h3><p>由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，<a href="https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。" target="_blank" rel="noopener">https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。</a><br><img src="http://image.beekka.com/blog/201102/bg2011021302.png" alt=""></p>
 <p>另外，UCC（统一通信证书，Unified Communications Certificate）支持一张证书同时匹配多个站点，可以是完全不同的域名。SNI（服务器名称指示，Server Name Indication）允许一个IP地址上多个域名安装多张证书。服务器端，Apache和Nginx支持该技术，IIS不支持；客户端，IE 7+、Firefox 2.0+、Chrome 6+、Safari 2.1+和Opera 8.0+支持。</p>
 <h3 id="误解四：转移服务器时要购买新证书"><a href="#误解四：转移服务器时要购买新证书" class="headerlink" title="误解四：转移服务器时要购买新证书"></a>误解四：转移服务器时要购买新证书</h3><p>部署SSL证书，需要这样几步：</p>
 <blockquote>
@@ -481,8 +474,8 @@
 <p><img src="http://image.beekka.com/blog/201102/bg2011021310.png" alt=""></p>
 <p>也就是说，这些cookie是在HTTPS环境下建立的，但是却在HTTP环境下传输。如果有人劫持到这些cookie，那他就能以你的身份在Twitter上发言了。</p>
 <h3 id="引用地址："><a href="#引用地址：" class="headerlink" title="引用地址："></a>引用地址：</h3><ol>
-<li><a href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html</a></li>
-<li><a href="http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/" target="_blank" rel="external">http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html</a></li>
+<li><a href="http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/" target="_blank" rel="noopener">http://blog.httpwatch.com/2011/01/28/top-7-myths-about-https/</a></li>
 </ol>
 
       

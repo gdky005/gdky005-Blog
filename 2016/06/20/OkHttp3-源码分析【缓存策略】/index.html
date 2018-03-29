@@ -99,22 +99,14 @@
 
 
 
-<meta name="description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
-
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
+<meta name="description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义  Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT  Cache-Con">
+<meta name="keywords" content="okhttp3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OkHttp3 源码分析【缓存策略】">
 <meta property="og:url" content="http://gdky005.com/2016/06/20/OkHttp3-源码分析【缓存策略】/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
-
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
+<meta property="og:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义  Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT  Cache-Con">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png">
 <meta property="og:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png">
@@ -122,12 +114,7 @@ Cache-Con">
 <meta property="og:updated_time" content="2016-06-20T09:06:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OkHttp3 源码分析【缓存策略】">
-<meta name="twitter:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇
-Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义
-
-Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT
-
-Cache-Con">
+<meta name="twitter:description" content="本文专门分析 OkHttp 的缓存策略，是 OkHttp 中最简单的一篇 Http 缓存基础知识分析源目前，我们先回顾一下 Http 的缓存 Header 的含义  Expires表示到期时间，一般用在 response 报文中，当超过此事件后相应将被认为是无效的而需要网络连接，反之而是直接使用缓存 Expires: Thu, 12 Jan 2017 11:01:33 GMT  Cache-Con">
 <meta name="twitter:image" content="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png">
 
 
@@ -495,7 +482,7 @@ Cache-Con">
 </li>
 </ul>
 <blockquote>
-<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="external">这里看</a></p>
+<p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">这里看</a></p>
 </blockquote>
 <p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
 <p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
@@ -514,7 +501,7 @@ Cache-Con">
 <blockquote>
 <p>关于此部分的分析，读者可以在HttpEngine对象中通过对userResponse进行findUsage分析得出，源码都是一大堆的if判断</p>
 </blockquote>
-<ol>
+<ol start="2">
 <li>CacheStrategy 的加工过程</li>
 </ol>
 <p>CacheStrategy 使用 Factory模式进行构造，参数如下</p>
@@ -616,11 +603,11 @@ cacheResponse = cacheStrategy.cacheResponse;
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
 <ol>
 <li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
-<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="external">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
+<li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="noopener">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
 <li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
 <li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
 </ol>
-<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="external">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
+<p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="noopener">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
 
       
     </div>

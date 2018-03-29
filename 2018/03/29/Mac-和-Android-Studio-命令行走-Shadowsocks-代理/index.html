@@ -99,20 +99,14 @@
 
 
 
-<meta name="description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。
-使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089
-在 Android Studio 中如下设置，未成功。
-尝试以下，也没有成功。 
-经过">
+<meta name="description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。 使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089 在 Android Studio 中如下设置，未成功。 尝试以下，也没有成功。  经过">
+<meta name="keywords" content="代理，Shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac 和 Android Studio 命令行走 Shadowsocks 代理">
 <meta property="og:url" content="http://gdky005.com/2018/03/29/Mac-和-Android-Studio-命令行走-Shadowsocks-代理/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。
-使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089
-在 Android Studio 中如下设置，未成功。
-尝试以下，也没有成功。 
-经过">
+<meta property="og:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。 使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089 在 Android Studio 中如下设置，未成功。 尝试以下，也没有成功。  经过">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_1.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_2.jpg">
@@ -132,11 +126,7 @@
 <meta property="og:updated_time" content="2018-03-29T03:58:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 和 Android Studio 命令行走 Shadowsocks 代理">
-<meta name="twitter:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。
-使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089
-在 Android Studio 中如下设置，未成功。
-尝试以下，也没有成功。 
-经过">
+<meta name="twitter:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。 使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089 在 Android Studio 中如下设置，未成功。 尝试以下，也没有成功。  经过">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg">
 
 
@@ -480,7 +470,7 @@
 <p>以下是我的测试结果：<br>未使用代理<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_8.jpg" alt=""></p>
 <p>使用代理：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_9.jpg" alt=""></p>
 <p>虽然使用了代理，但是 <code>ping</code> 命令还是不通的。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_10.jpg" alt=""><br>当时总以为失败了，但是经过大姑爷的提醒，用国外的 git clone 命令测试下，就知道了。</p>
-<h2 id="git-clone-测试代理"><a href="#git-clone-测试代理" class="headerlink" title="git clone 测试代理"></a>git clone 测试代理</h2><p>googlesource.com 是 google 的代码开源地址，但是现在几乎停用了，都转到 github。 但是还有部分代码还是 这里，例如: <a href="https://android.googlesource.com/device/asus/deb/" target="_blank" rel="external">https://android.googlesource.com/device/asus/deb/</a></p>
+<h2 id="git-clone-测试代理"><a href="#git-clone-测试代理" class="headerlink" title="git clone 测试代理"></a>git clone 测试代理</h2><p>googlesource.com 是 google 的代码开源地址，但是现在几乎停用了，都转到 github。 但是还有部分代码还是 这里，例如: <a href="https://android.googlesource.com/device/asus/deb/" target="_blank" rel="noopener">https://android.googlesource.com/device/asus/deb/</a></p>
 <p>google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以使用这个测试代理是否可用。</p>
 <p>所以选定这个命令：<code>git clone https://android.googlesource.com/device/asus/deb</code></p>
 <p>不开代理，默认提示失败：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg" alt=""></p>
@@ -489,13 +479,13 @@
 <p>总结下：先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。</p>
 <h2 id="Android-Studio-设置代理"><a href="#Android-Studio-设置代理" class="headerlink" title="Android Studio 设置代理"></a>Android Studio 设置代理</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg" alt=""></p>
 <h2 id="更新-Android-SDK"><a href="#更新-Android-SDK" class="headerlink" title="更新 Android SDK"></a>更新 Android SDK</h2><h3 id="尝试使用-android-sdk-工具更新最新组件"><a href="#尝试使用-android-sdk-工具更新最新组件" class="headerlink" title="尝试使用 android sdk 工具更新最新组件"></a>尝试使用 android sdk 工具更新最新组件</h3><p>新版本的 Android SDK 不允许直接通过命令行更新 SDK 了，需要配合 Android Studio 一起才能更新，让人有些不爽。</p>
-<p>可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 <code>android</code> 命令打开 Android SDK 的 UI 更新界面。<br><a href="https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog" target="_blank" rel="external">https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog</a></p>
+<p>可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 <code>android</code> 命令打开 Android SDK 的 UI 更新界面。<br><a href="https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog" target="_blank" rel="noopener">https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog</a></p>
 <h3 id="在-Android-Studio-中更新-SDK"><a href="#在-Android-Studio-中更新-SDK" class="headerlink" title="在 Android Studio 中更新 SDK"></a>在 Android Studio 中更新 SDK</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg" alt=""></p>
-<h2 id="常用公开的代理服务器"><a href="#常用公开的代理服务器" class="headerlink" title="常用公开的代理服务器"></a>常用公开的代理服务器</h2><p>大连东软信息学院镜像服务器地址:<br>    <a href="http://mirrors.neusoft.edu.cn" target="_blank" rel="external">http://mirrors.neusoft.edu.cn</a> 端口：80</p>
-<p>北京化工大学镜像服务器地址:<br>    IPv4: <a href="http://ubuntu.buct.edu.cn/" target="_blank" rel="external">http://ubuntu.buct.edu.cn/</a> 端口：80<br>    IPv4: <a href="http://ubuntu.buct.cn/" target="_blank" rel="external">http://ubuntu.buct.cn/</a> 端口：80<br>    IPv6: <a href="http://ubuntu.buct6.edu.cn/" target="_blank" rel="external">http://ubuntu.buct6.edu.cn/</a> 端口：80</p>
-<p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="external">http://sdk.gdgshanghai.com</a> 端口：8000</p>
-<p>参考地址：<a href="https://www.cnblogs.com/maxinliang/p/5083495.html" target="_blank" rel="external">https://www.cnblogs.com/maxinliang/p/5083495.html</a></p>
+<h2 id="常用公开的代理服务器"><a href="#常用公开的代理服务器" class="headerlink" title="常用公开的代理服务器"></a>常用公开的代理服务器</h2><p>大连东软信息学院镜像服务器地址:<br>    <a href="http://mirrors.neusoft.edu.cn" target="_blank" rel="noopener">http://mirrors.neusoft.edu.cn</a> 端口：80</p>
+<p>北京化工大学镜像服务器地址:<br>    IPv4: <a href="http://ubuntu.buct.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct.edu.cn/</a> 端口：80<br>    IPv4: <a href="http://ubuntu.buct.cn/" target="_blank" rel="noopener">http://ubuntu.buct.cn/</a> 端口：80<br>    IPv6: <a href="http://ubuntu.buct6.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct6.edu.cn/</a> 端口：80</p>
+<p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="noopener">http://sdk.gdgshanghai.com</a> 端口：8000</p>
+<p>参考地址：<a href="https://www.cnblogs.com/maxinliang/p/5083495.html" target="_blank" rel="noopener">https://www.cnblogs.com/maxinliang/p/5083495.html</a></p>
 <p>具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn</p>
 
       

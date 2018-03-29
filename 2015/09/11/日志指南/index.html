@@ -99,40 +99,18 @@
 
 
 
-<meta name="description" content="参考：最佳日志实践
-
-前言
-几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
-
-日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
-
-日志作用：
-- 好的日志记">
+<meta name="description" content="参考：最佳日志实践  前言 几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。  日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。  日志作用： - 好的日志记">
+<meta name="keywords" content="Android日志规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日志指南">
 <meta property="og:url" content="http://gdky005.com/2015/09/11/日志指南/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="参考：最佳日志实践
-
-前言
-几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
-
-日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
-
-日志作用：
-- 好的日志记">
+<meta property="og:description" content="参考：最佳日志实践  前言 几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。  日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。  日志作用： - 好的日志记">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-04-19T13:17:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日志指南">
-<meta name="twitter:description" content="参考：最佳日志实践
-
-前言
-几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
-
-日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。
-
-日志作用：
-- 好的日志记">
+<meta name="twitter:description" content="参考：最佳日志实践  前言 几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。  日志用来记录用户操作、系统运行状态等，是一个系统的重要组成部分。然而由于日志并非系统核心功能，通常情况下并不受团队的重视。在出现问题需要通过日志来定位时，才发现日志还存在很多问题。  日志作用： - 好的日志记">
 
 
 
@@ -438,7 +416,7 @@
       
 
       
-        <p>参考：<a href="http://www.bitstech.net/2014/01/07/log-best-practice/" target="_blank" rel="external">最佳日志实践</a></p>
+        <p>参考：<a href="http://www.bitstech.net/2014/01/07/log-best-practice/" target="_blank" rel="noopener">最佳日志实践</a></p>
 <p><br></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><br></p>
 <pre><code>几乎所有的应用开发者都知道“用户体验”的重要性，要提升用户体验就离不开一个完备的监控和上报系统，这其中日志（包括Crash上报）是最基本的问题跟踪和解决手段。
@@ -507,7 +485,7 @@
 <p><br></p>
 <h2 id="五、5-日志记录信息要完整"><a href="#五、5-日志记录信息要完整" class="headerlink" title="五、5. 日志记录信息要完整"></a>五、5. 日志记录信息要完整</h2><p><br></p>
 <p>问题描述：</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> InitMultiUpload（生成一个UploadID）</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby">  ……</span><br><span class="line"></span>-<span class="ruby"> UploadPart</span><br><span class="line"></span>-<span class="ruby"> CompleteMultiUpload（AbortMultiUpload）</span><br><span class="line"></span></span><br><span class="line">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span><br><span class="line"></span><br><span class="line">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span><br><span class="line"></span><br><span class="line">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span><br><span class="line"></span><br><span class="line">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> 在系统启动或初始化时记录重要的系统初始化参数</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的错误</span><br><span class="line"></span>-<span class="ruby"> 记录系统运行过程中的所有的警告</span><br><span class="line"></span>-<span class="ruby"> 在持久化数据修改时记录修改前和修改后的值</span><br><span class="line"></span>-<span class="ruby"> 记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span><br><span class="line"></span>-<span class="ruby"> 重要的状态变化（如NOS中对系统白名单的修改等）</span><br><span class="line"></span>-<span class="ruby"> 系统中一些长期执行的任务的执行进度</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> InitMultiUpload（生成一个UploadID）</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">-  ……</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">- CompleteMultiUpload（AbortMultiUpload）</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">- 在系统启动或初始化时记录重要的系统初始化参数</span></span><br><span class="line"><span class="ruby">- 记录系统运行过程中的所有的错误</span></span><br><span class="line"><span class="ruby">- 记录系统运行过程中的所有的警告</span></span><br><span class="line"><span class="ruby">- 在持久化数据修改时记录修改前和修改后的值</span></span><br><span class="line"><span class="ruby">- 记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span></span><br><span class="line"><span class="ruby">- 重要的状态变化（如NOS中对系统白名单的修改等）</span></span><br><span class="line"><span class="ruby">- 系统中一些长期执行的任务的执行进度</span></span><br></pre></td></tr></table></figure>
 <p><strong>不推荐记录日志的内容有：</strong></p>
 <ul>
 <li>函数入口信息 —— 除非该函数入口表示了一个重要事件的开始，或者将该信息记入DEBUG级别日志</li>
@@ -547,7 +525,7 @@
 <p><br></p>
 <h2 id="九、关于日志格式"><a href="#九、关于日志格式" class="headerlink" title="九、关于日志格式"></a>九、关于日志格式</h2><p><br></p>
 <p>日志格式一定要统一，不能任由开发人员的喜好来。举例来说，对于NOS视频截图超时的ERROR日志，有以下几种方式打印：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“Gearman timeout exception for request ” + getRequestID() + ” <span class="attribute">value</span>: ” + value, e);</span><br><span class="line"></span><br><span class="line">第二种：</span><br><span class="line">logger<span class="selector-class">.error</span>(“<span class="attribute">RequestID</span>: ” + getRequestID() + “, Error <span class="attribute">Message</span>: Gearman timeout <span class="attribute">exception</span>: ” + e);</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">logger<span class="selector-class">.error</span>(getErrorMessage(getRequestID(), getErrorMessage(), e));</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">logger.<span class="builtin-name">error</span>(“Gearman timeout exception <span class="keyword">for</span> request ” + getRequestID() + ” value: ” + value, e);</span><br><span class="line"></span><br><span class="line">第二种：</span><br><span class="line">logger.<span class="builtin-name">error</span>(“RequestID: ” + getRequestID() + “, <span class="builtin-name">Error</span> Message: Gearman timeout exception: ” + e);</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">logger.<span class="builtin-name">error</span>(getErrorMessage(getRequestID(), getErrorMessage(), e));</span><br></pre></td></tr></table></figure>
 <p>第一种方式打印日志即是开发人员按照自己的喜好来的，这种方法带来的问题是：</p>
 <ul>
 <li>系统中日志格式不统一，不利于自动化处理</li>
