@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2018-02-27T03:31:37.000Z</updated>
+  <updated>2018-03-29T03:58:57.000Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac 和 Android Studio 命令行走 Shadowsocks 代理</title>
+    <link href="http://gdky005.com/2018/03/29/Mac-%E5%92%8C-Android-Studio-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B5%B0-Shadowsocks-%E4%BB%A3%E7%90%86/"/>
+    <id>http://gdky005.com/2018/03/29/Mac-和-Android-Studio-命令行走-Shadowsocks-代理/</id>
+    <published>2018-03-29T03:58:01.000Z</published>
+    <updated>2018-03-29T03:58:57.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;使用-Shadowsocks-的-PAC-自动模式始终失败&quot;&gt;&lt;a href=&quot;#使用-Shadowsocks-的-PAC-自动模式始终失败&quot; class=&quot;headerlink&quot; title=&quot;使用 Shadowsocks 的 PAC 自动模式始终失败&quot;&gt;&lt;/a&gt;使用 Shadowsocks 的 PAC 自动模式始终失败&lt;/h2&gt;&lt;p&gt;本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：&lt;code&gt;172.0.0.1 ，端口：1089&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在 Android Studio 中如下设置，未成功。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;尝试以下，也没有成功。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_2.jpg&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_3.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;经过 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_4.jpg&quot; alt=&quot;&quot;&gt; 的测试，发现，这种设置方法是错误的。不会成功，至少对于 mac 来说是这样的。&lt;/p&gt;
+&lt;h2 id=&quot;开启正确的全局代理模式&quot;&gt;&lt;a href=&quot;#开启正确的全局代理模式&quot; class=&quot;headerlink&quot; title=&quot;开启正确的全局代理模式&quot;&gt;&lt;/a&gt;开启正确的全局代理模式&lt;/h2&gt;&lt;p&gt;首先将 Shadowsocks 设置为全局代理模式，通过 mac 的网络 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_5.jpg&quot; alt=&quot;&quot;&gt;，&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;得到代理地址是：&lt;br&gt;&lt;code&gt;127.0.0.1, 端口：1086&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在 AS 中配置：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_7.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以点击图中的 &lt;code&gt;Check connecction&lt;/code&gt; 按钮，输入&lt;code&gt;http://www.youtube.com&lt;/code&gt; 来检验是否可以走代理。&lt;/p&gt;
+&lt;p&gt;正常来说，应该会成功的。如果不行，可能是端口占用，或者一些其他原因，建议重启电脑试试。&lt;/p&gt;
+&lt;p&gt;使用 Android Studio 构建项目的时候，默认就可以走代理直接访问下载不了的资源了。但是这个期间是看不到具体过程，如果卡在哪一步，我们很难察觉，只能默默的等待。非常的尴尬，我们可能会想如果使用命令该多好。&lt;/p&gt;
+&lt;p&gt;经过一些测试，发现设置命令的时候，还是有一些技巧的。&lt;br&gt;简单点的就是直接使用 &lt;code&gt;export ALL_PROXY=socks5://127.0.0.1:1086&lt;/code&gt; 设置当前的窗口生效。 &lt;/p&gt;
+&lt;p&gt;然后使用 &lt;code&gt;curl -i http://ip.cn&lt;/code&gt; 进行测试，看是否走了代理。&lt;/p&gt;
+&lt;p&gt;以下是我的测试结果：&lt;br&gt;未使用代理&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_8.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;使用代理：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;虽然使用了代理，但是 &lt;code&gt;ping&lt;/code&gt; 命令还是不通的。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_10.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;当时总以为失败了，但是经过大姑爷的提醒，用国外的 git clone 命令测试下，就知道了。&lt;/p&gt;
+&lt;h2 id=&quot;git-clone-测试代理&quot;&gt;&lt;a href=&quot;#git-clone-测试代理&quot; class=&quot;headerlink&quot; title=&quot;git clone 测试代理&quot;&gt;&lt;/a&gt;git clone 测试代理&lt;/h2&gt;&lt;p&gt;googlesource.com 是 google 的代码开源地址，但是现在几乎停用了，都转到 github。 但是还有部分代码还是 这里，例如: &lt;a href=&quot;https://android.googlesource.com/device/asus/deb/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://android.googlesource.com/device/asus/deb/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以使用这个测试代理是否可用。&lt;/p&gt;
+&lt;p&gt;所以选定这个命令：&lt;code&gt;git clone https://android.googlesource.com/device/asus/deb&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;不开代理，默认提示失败：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;开代理，下载成功：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_12.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;到这里，命令行已经可用了。&lt;/p&gt;
+&lt;p&gt;总结下：先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 &lt;code&gt;export ALL_PROXY=socks5://127.0.0.1:1086&lt;/code&gt;, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。&lt;/p&gt;
+&lt;h2 id=&quot;Android-Studio-设置代理&quot;&gt;&lt;a href=&quot;#Android-Studio-设置代理&quot; class=&quot;headerlink&quot; title=&quot;Android Studio 设置代理&quot;&gt;&lt;/a&gt;Android Studio 设置代理&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;更新-Android-SDK&quot;&gt;&lt;a href=&quot;#更新-Android-SDK&quot; class=&quot;headerlink&quot; title=&quot;更新 Android SDK&quot;&gt;&lt;/a&gt;更新 Android SDK&lt;/h2&gt;&lt;h3 id=&quot;尝试使用-android-sdk-工具更新最新组件&quot;&gt;&lt;a href=&quot;#尝试使用-android-sdk-工具更新最新组件&quot; class=&quot;headerlink&quot; title=&quot;尝试使用 android sdk 工具更新最新组件&quot;&gt;&lt;/a&gt;尝试使用 android sdk 工具更新最新组件&lt;/h3&gt;&lt;p&gt;新版本的 Android SDK 不允许直接通过命令行更新 SDK 了，需要配合 Android Studio 一起才能更新，让人有些不爽。&lt;/p&gt;
+&lt;p&gt;可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 &lt;code&gt;android&lt;/code&gt; 命令打开 Android SDK 的 UI 更新界面。&lt;br&gt;&lt;a href=&quot;https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;在-Android-Studio-中更新-SDK&quot;&gt;&lt;a href=&quot;#在-Android-Studio-中更新-SDK&quot; class=&quot;headerlink&quot; title=&quot;在 Android Studio 中更新 SDK&quot;&gt;&lt;/a&gt;在 Android Studio 中更新 SDK&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;常用公开的代理服务器&quot;&gt;&lt;a href=&quot;#常用公开的代理服务器&quot; class=&quot;headerlink&quot; title=&quot;常用公开的代理服务器&quot;&gt;&lt;/a&gt;常用公开的代理服务器&lt;/h2&gt;&lt;p&gt;大连东软信息学院镜像服务器地址:&lt;br&gt;    &lt;a href=&quot;http://mirrors.neusoft.edu.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mirrors.neusoft.edu.cn&lt;/a&gt; 端口：80&lt;/p&gt;
+&lt;p&gt;北京化工大学镜像服务器地址:&lt;br&gt;    IPv4: &lt;a href=&quot;http://ubuntu.buct.edu.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ubuntu.buct.edu.cn/&lt;/a&gt; 端口：80&lt;br&gt;    IPv4: &lt;a href=&quot;http://ubuntu.buct.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ubuntu.buct.cn/&lt;/a&gt; 端口：80&lt;br&gt;    IPv6: &lt;a href=&quot;http://ubuntu.buct6.edu.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ubuntu.buct6.edu.cn/&lt;/a&gt; 端口：80&lt;/p&gt;
+&lt;p&gt;上海GDG镜像服务器地址:&lt;br&gt;    &lt;a href=&quot;http://sdk.gdgshanghai.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sdk.gdgshanghai.com&lt;/a&gt; 端口：8000&lt;/p&gt;
+&lt;p&gt;参考地址：&lt;a href=&quot;https://www.cnblogs.com/maxinliang/p/5083495.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.cnblogs.com/maxinliang/p/5083495.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResourc
+    
+    </summary>
+    
+      <category term="Shadowsocks" scheme="http://gdky005.com/categories/Shadowsocks/"/>
+    
+    
+      <category term="Shadowsocks，代理" scheme="http://gdky005.com/tags/Shadowsocks%EF%BC%8C%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Android开发需要关注的几个地址</title>
@@ -525,88 +579,6 @@ after_success:
     <summary type="html">
     
       &lt;p&gt;我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kai
-    
-    </summary>
-    
-      <category term="shields" scheme="http://gdky005.com/categories/shields/"/>
-    
-    
-      <category term="徽章" scheme="http://gdky005.com/tags/%E5%BE%BD%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>徽章系列2：JitPack 的使用</title>
-    <link href="http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://gdky005.com/2017/06/15/徽章系列2：JitPack-的使用/</id>
-    <published>2017-06-15T10:05:15.000Z</published>
-    <updated>2017-06-22T03:13:11.000Z</updated>
-    
-    <content type="html">&lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Android-Library&quot; class=&quot;headerlink&quot; title=&quot;创建 Android Library&quot;&gt;&lt;/a&gt;创建 Android Library&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;在 AS 中创建标准的 android 项目：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-22.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;创建 Library：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-23.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-24.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-25.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;创建 badge library 成功。&lt;h3 id=&quot;配置相关文件&quot;&gt;&lt;a href=&quot;#配置相关文件&quot; class=&quot;headerlink&quot; title=&quot;配置相关文件&quot;&gt;&lt;/a&gt;配置相关文件&lt;/h3&gt;进入 &lt;a href=&quot;https://jitpack.io/docs/ANDROID/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jitpack android&lt;/a&gt; 可以看到 jitpack 为我们提供的文档帮助。  &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-26.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;在项目的根目录下的 build.gradle 文件中添加：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-27.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;在 library 下的 build.gradle 中添加：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-28.png&quot; alt=&quot;&quot;&gt; ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;classpath &amp;apos;com.github.dcendents:android-maven-gradle-plugin:1.5&amp;apos; // Add this line
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 badge (library) :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apply plugin: &amp;apos;com.github.dcendents.android-maven&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;a href=&quot;#发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）&quot; class=&quot;headerlink&quot; title=&quot;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&quot;&gt;&lt;/a&gt;发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-29.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;点击 大绿色 按钮，并填写信息：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-30.png&quot; alt=&quot;&quot;&gt;。 那个协议，你们随意，这里只是演示。&lt;/li&gt;
-&lt;li&gt;创建成功后：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-31.png&quot; alt=&quot;&quot;&gt;，拷贝当前项目地址。&lt;/li&gt;
-&lt;li&gt;在 AS 的项目中创建 git 仓库：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-32.png&quot; alt=&quot;&quot;&gt;， 点击后，直接 选择 ok。将项目添加到 git 管理&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-33.png&quot; alt=&quot;&quot;&gt;。 项目中的文件都变成绿色后：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-34.png&quot; alt=&quot;&quot;&gt;，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。&lt;/li&gt;
-&lt;li&gt;现在我们给 library 的 badge 项目添加一个工具类：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-35.png&quot; alt=&quot;&quot;&gt;， 并提交到 github。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;Github-打-release-or-tag&quot;&gt;&lt;a href=&quot;#Github-打-release-or-tag&quot; class=&quot;headerlink&quot; title=&quot;Github 打 release or tag&quot;&gt;&lt;/a&gt;Github 打 release or tag&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-36.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-37.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建第一个 release 分支：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-38.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;发布成功以后就能看到: &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;一般用 release 就可以了， 在适当的时候 用  tag。&lt;/p&gt;
-&lt;h3 id=&quot;在-JitPack-上生成-aar&quot;&gt;&lt;a href=&quot;#在-JitPack-上生成-aar&quot; class=&quot;headerlink&quot; title=&quot;在 JitPack 上生成 aar&quot;&gt;&lt;/a&gt;在 JitPack 上生成 aar&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;进入 &lt;a href=&quot;https://jitpack.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io/&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;将 github 的项目地址： &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;， 直接拷贝 到 jitpack 网页中的文本框中。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-40.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;点击 Look Up 后：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-41.png&quot; alt=&quot;&quot;&gt;， 等里面的那个圈圈 转完 以后，出现 绿色的这个：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-42.png&quot; alt=&quot;&quot;&gt; 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-43.png&quot; alt=&quot;&quot;&gt; &lt;/li&gt;
-&lt;li&gt;如果是红色的，说明有错误，点开查看，修改后重新构建。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;在-app-Demo-中测试是否生效&quot;&gt;&lt;a href=&quot;#在-app-Demo-中测试是否生效&quot; class=&quot;headerlink&quot; title=&quot;在 app Demo 中测试是否生效&quot;&gt;&lt;/a&gt;在 app Demo 中测试是否生效&lt;/h3&gt;&lt;p&gt;点击 get 后，能看到： &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-44.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;给项目根目录下的 build.gradle 添加：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-45.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;给app 项目里面的 build.gradle 添加：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-46.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;AndroidBadge 中 的 build.gradle :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;maven { url &amp;apos;https://jitpack.io&amp;apos; }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AndroidBadge 里面的 app 的 build.gradle :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;compile &amp;apos;com.github.gdky005:AndroidBadge:v1.0.0&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-47.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;在项目的最底下也能看到： &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-48.png&quot; alt=&quot;&quot;&gt;。 运行 app 项目：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-49.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;问题来了，我们修改library-后也能调用到吗？&quot;&gt;&lt;a href=&quot;#问题来了，我们修改library-后也能调用到吗？&quot; class=&quot;headerlink&quot; title=&quot;问题来了，我们修改library 后也能调用到吗？&quot;&gt;&lt;/a&gt;问题来了，我们修改library 后也能调用到吗？&lt;/h3&gt;&lt;p&gt;让咱们一起试试吧：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;修改 badge 项目中的 1.0.0 为  1.0.1 ： &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-50.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
-&lt;li&gt;提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-51.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-52.png&quot; alt=&quot;&quot;&gt;, &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-53.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;然后再去 jitpack 上看看：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-54.png&quot; alt=&quot;&quot;&gt; 多了一个 v1.0.1, 点击 get 吧。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-55.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-56.png&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-57.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;发布成功后，我们去 app 里面试试。 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-58.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;同步后，直接运行 app。非常好，我们的修改的东西已经变了：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-59.png&quot; alt=&quot;&quot;&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;至此， jitpack 基本也差不多了，但是貌似缺少了最重要的一点吧。&lt;/p&gt;
-&lt;h3 id=&quot;jitpack-的徽章怎么弄&quot;&gt;&lt;a href=&quot;#jitpack-的徽章怎么弄&quot; class=&quot;headerlink&quot; title=&quot;jitpack 的徽章怎么弄&quot;&gt;&lt;/a&gt;jitpack 的徽章怎么弄&lt;/h3&gt;&lt;p&gt;还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-60.png&quot; alt=&quot;&quot;&gt; 点击后：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-61.png&quot; alt=&quot;&quot;&gt; 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;拷贝内容：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-62.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;打开 github 的 AndroidBridge 项目：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-63.png&quot; alt=&quot;&quot;&gt;，点击该文件。&lt;/li&gt;
-&lt;li&gt;让我们在线编辑下： &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-64.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;给 github 中的 这个 readme.md 文件添加点东西吧。&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-65.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;让我们 保存下。 &lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-66.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;然后回到项目&lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;首页&lt;/a&gt;看看：&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-67.png&quot; alt=&quot;&quot;&gt; 棒棒的，添加成功。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;相关链接：&quot;&gt;&lt;a href=&quot;#相关链接：&quot; class=&quot;headerlink&quot; title=&quot;相关链接：&quot;&gt;&lt;/a&gt;相关链接：&lt;/h3&gt;&lt;p&gt;完整版：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;打造一个高逼格的android开源项目——小白全攻略&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;精简集合版：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列1： Top 30 android 开源项目徽章&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列2：JitPack 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列3： Travis CI 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列4： Circle CI 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列5： Codecov 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列6： Api_Level 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列7： codacy 的使用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章系列8：生成个性徽章&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;总分类：&lt;br&gt;&lt;a href=&quot;http://www.gdky005.com/categories/shields/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章（shields ）系列文章总分类&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github 地址：&lt;br&gt;&lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;徽章项目 Demo github 地址：&lt;/a&gt;&lt;br&gt; &lt;a href=&quot;https://github.com/gdky005/AndroidBadge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/gdky005/AndroidBadge&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;官网： &lt;a href=&quot;https://jitpack.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://jitpack.io&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;创建-Android-Library&quot;&gt;&lt;a href=&quot;#创建-Andro
     
     </summary>
     
