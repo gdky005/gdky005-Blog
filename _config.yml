@@ -73,8 +73,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-#theme: next #主题设置
-theme: yilia
+theme: next #主题设置
+#theme: yilia
 stylus:
   compress: true
 
