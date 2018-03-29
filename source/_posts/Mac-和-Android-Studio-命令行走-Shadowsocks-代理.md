@@ -67,10 +67,6 @@ google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以�
 到这里，命令行已经可用了。
 
 
-总结下：先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 `export ALL_PROXY=socks5://127.0.0.1:1086 `, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。
-
-
-
 ## Android Studio 设置代理
 ![](https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg)
 
@@ -107,5 +103,8 @@ google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以�
 具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn
 
 
+
+## 总结
+先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 `export ALL_PROXY=socks5://127.0.0.1:1086 `, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。
 
 
