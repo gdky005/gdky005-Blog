@@ -73,7 +73,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: next #主题设置
+#theme: next #主题设置
+theme: yilia
 stylus:
   compress: true
 
@@ -112,7 +113,7 @@ deploy:
   type: git
   repo:
     github: git@github.com:gdky005/gdky005-Blog.git,gh-pages
-    coding: git@git.coding.net:gdky005/gdky005-Bolg.git,coding-pages
+#    coding: git@git.coding.net:gdky005/gdky005-Bolg.git,coding-pages
 
 # type: git
 #   repo:
