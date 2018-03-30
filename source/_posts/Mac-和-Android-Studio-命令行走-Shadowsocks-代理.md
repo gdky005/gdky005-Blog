@@ -103,8 +103,21 @@ google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以�
 具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn
 
 
-
 ## 总结
-先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 `export ALL_PROXY=socks5://127.0.0.1:1086 `, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。
+先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 `export ALL_PROXY=socks5://127.0.0.1:1086 `, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来的原因是：
+SS 不会代理到 ICMP 包 同理也无法测试路由跟踪。
+因为ping用的icmp， 代理没代理icmp。
+
+	nc -X 5 -x 127.0.0.1:1086 youtube.com 443 -v
+	-x 是当前代理的端口和地址
+	
+	-X 5 表示 socks5
+	-X 4 表示 socks4
+	-X connect 表示 https
+
+![](https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg)
+
+测试结果是：
+![](https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg)
 
 
