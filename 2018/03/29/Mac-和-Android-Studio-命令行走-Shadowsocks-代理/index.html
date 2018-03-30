@@ -123,7 +123,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg">
-<meta property="og:updated_time" content="2018-03-29T04:32:13.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg">
+<meta property="og:updated_time" content="2018-03-30T03:40:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 和 Android Studio 命令行走 Shadowsocks 代理">
 <meta name="twitter:description" content="今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。 使用 Shadowsocks 的 PAC 自动模式始终失败本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：172.0.0.1 ，端口：1089 在 Android Studio 中如下设置，未成功。 尝试以下，也没有成功。  经过">
@@ -355,8 +357,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T12:32:13+08:00">
-                2018-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T11:40:00+08:00">
+                2018-03-30
               </time>
             
           </span>
@@ -486,7 +488,15 @@
 <p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="noopener">http://sdk.gdgshanghai.com</a> 端口：8000</p>
 <p>参考地址：<a href="https://www.cnblogs.com/maxinliang/p/5083495.html" target="_blank" rel="noopener">https://www.cnblogs.com/maxinliang/p/5083495.html</a></p>
 <p>具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来，有可能是一些 ZF 的限制吧。能保证我们使用就可以了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来的原因是：<br>SS 不会代理到 ICMP 包 同理也无法测试路由跟踪。<br>因为ping用的icmp， 代理没代理icmp。</p>
+<pre><code>nc -X 5 -x 127.0.0.1:1086 youtube.com 443 -v
+-x 是当前代理的端口和地址
+
+-X 5 表示 socks5
+-X 4 表示 socks4
+-X connect 表示 https
+</code></pre><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg" alt=""></p>
+<p>测试结果是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg" alt=""></p>
 
       
     </div>
