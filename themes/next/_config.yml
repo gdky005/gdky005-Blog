@@ -47,6 +47,7 @@ menu:
   home: /
   zhuoketeam: /categories/ZhuoKeTeam
   # categories: /categories
+  qpm: /categories/qpm
   shields: /categories/shields
   archives: /archives
   about: /about
@@ -64,6 +65,7 @@ menu_icons:
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
   zhuoketeam: android
+  qpm: pied-piper
   about: user
   categories: th
   tags: tags
