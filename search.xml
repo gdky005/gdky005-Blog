@@ -4,6 +4,61 @@
   
     
     <entry>
+      <title><![CDATA[QPM 之悬浮窗设置信息]]></title>
+      <url>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E6%82%AC%E6%B5%AE%E7%AA%97%E8%AE%BE%E7%BD%AE%E4%BF%A1%E6%81%AF/</url>
+      <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>更多实用信息：</p>
+<ol>
+<li>手机的基本信息</li>
+<li>AndroidManifest.xml 信息</li>
+<li>App 中所有的 SharePreference 信息</li>
+<li>可配置的开关</li>
+<li>网络接口</li>
+</ol>
+<h2 id="手机基础信息"><a href="#手机基础信息" class="headerlink" title="手机基础信息"></a>手机基础信息</h2><ol>
+<li>再也不用 去手机的复杂界面查看各种数据；</li>
+<li>再也不用 下载 辅助性 apk 获取信息；</li>
+<li>再也不用 因为某些信息没有，查询半天。</li>
+</ol>
+<p>是否 Root, SDK 版本，手机型号，网络，名称，IP，Mac 地址，屏幕分辨率，CPU 架构等等信息。遇到关键的数据，还能复制。</p>
+<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt=""></p>
+<h2 id="AndroidManifest-xml-信息"><a href="#AndroidManifest-xml-信息" class="headerlink" title="AndroidManifest.xml 信息"></a>AndroidManifest.xml 信息</h2><p>包名，版本号，App 的所有权限，构建 SDK 的版本信息，还有最最重要的注册的四大组件（Activity，Service，Receiver，Provider）。里面的 Activity 可以直接点击后跳转，Service可以查看有多少本地服务，Receiver 可以很明确的知道当前注册了多少广播，Provider 可以查看本地的内容提供者。</p>
+<h2 id="应用的所有-SP-信息"><a href="#应用的所有-SP-信息" class="headerlink" title="应用的所有 SP 信息"></a>应用的所有 SP 信息</h2><p>Root 手机我们直接通过 文件管理器 可以直接查看 SP 文件。</p>
+<p>如果没有 Root 呢？ 笨办法，通过调试代码或者 log 打印输出。</p>
+<p>包含整个 App 的所有 SP 信息，可以查看单个 SP 里面的信息，最最好的是还能直接修改 对应的 Value。</p>
+<p>极大提升程序员们的开发效率。 </p>
+<h2 id="其他开关"><a href="#其他开关" class="headerlink" title="其他开关"></a>其他开关</h2><p>我们提供的了这些基础功能，打开开关后，可以直接在悬浮窗展示相关数据信息。</p>
+<p>自我控制聚焦点，只关注需要的信息。</p>
+<p>所有的开关，可以打开，关闭，对于某些影响性能的操作，可以关闭其他所有的东西，保留关注的指标。</p>
+<p>每一个开关都可以长按开关名称的这一条，上下移动位置，调整开关的顺序。</p>
+<h2 id="网络接口"><a href="#网络接口" class="headerlink" title="网络接口"></a>网络接口</h2><p>获取最近50条网络请求数据，可以查看更多信息：</p>
+<ol>
+<li>请求方式；</li>
+<li>返回状态码；</li>
+<li>请求时长；</li>
+<li>请求大小；</li>
+<li>返回数据大小 </li>
+</ol>
+<p>需要 OkHttp，然后可以获取网络请求的所有数据，包括请求 Request Header，Request Response，Response等数据。</p>
+<h2 id="精简模式"><a href="#精简模式" class="headerlink" title="精简模式"></a>精简模式</h2><p>关注的数据太多会占满屏幕，可以开启精简模式，默认显示开关列表最顶部的两个选项。开关列表可以通过拖动把选项位置移动到想要的前两项。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> QPM </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> QPM, 性能优化, 组件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[QPM 之悬浮窗助力性能优化]]></title>
       <url>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E6%82%AC%E6%B5%AE%E7%AA%97%E5%8A%A9%E5%8A%9B%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
       <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
