@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://gdky005.com/2019/01/03/QPM-%E5%87%86%E5%A4%87%E4%BC%98%E5%8C%96%E5%89%8D%E7%9A%84%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2019-01-03T07:20:39.043Z</lastmod>
+    <data>
+        <display>
+        <title>QPM 准备优化前的思考</title>
+        <pubTime>2019-01-03T07:20:13.000Z</pubTime>
+        
+        <tag>QPM, 性能优化, 组件</tag>
+         
+         
+           
+             
+              <breadCrumb title="QPM" url="http://gdky005.com/categories/QPM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E7%BC%98%E8%B5%B7/</loc>
     <lastmod>2019-01-03T07:19:26.154Z</lastmod>
     <data>
@@ -660,15 +680,64 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/11/20/Bug%E5%B0%8F%E8%AE%B0-%E8%B4%B5%E9%87%91%E5%B1%9E/</loc>
+    <loc>http://gdky005.com/2015/10/08/Android%E5%BD%95%E9%9F%B3%E4%BD%BF%E7%94%A8-byte-%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96%E5%88%86%E8%B4%9D%E6%88%96%E5%A3%B0%E9%9F%B3%E6%8C%AF%E5%B9%85/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Bug小记(**贵金属)</title>
-        <pubTime>2015-11-20T10:24:09.000Z</pubTime>
+        <title>Android录音使用 byte 类型获取分贝或声音振幅</title>
+        <pubTime>2015-10-08T10:10:20.000Z</pubTime>
         
-        <tag>ios</tag>
+        <tag>android录音</tag>
          
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/11/20/%E5%87%AF%E5%93%A5%E9%AB%98%E8%B4%A8%E9%87%8F%E6%96%87%E7%AB%A0%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>凯哥高质量文章系列</title>
+        <pubTime>2015-11-20T04:17:18.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/11/17/RecyclerView%E7%9A%84%E5%9F%BA%E7%B1%BB%E5%86%99%E6%B3%95/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>RecyclerView的基类写法</title>
+        <pubTime>2015-11-17T03:01:47.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gdky005.com/2015/10/10/%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>圆角图片处理</title>
+        <pubTime>2015-10-10T07:17:43.000Z</pubTime>
+        
          
            
         </display>
@@ -697,55 +766,6 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/10/10/%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>圆角图片处理</title>
-        <pubTime>2015-10-10T07:17:43.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/11/17/RecyclerView%E7%9A%84%E5%9F%BA%E7%B1%BB%E5%86%99%E6%B3%95/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>RecyclerView的基类写法</title>
-        <pubTime>2015-11-17T03:01:47.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gdky005.com/2015/11/20/%E5%87%AF%E5%93%A5%E9%AB%98%E8%B4%A8%E9%87%8F%E6%96%87%E7%AB%A0%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2016-04-19T13:17:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>凯哥高质量文章系列</title>
-        <pubTime>2015-11-20T04:17:18.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://gdky005.com/2015/11/27/Fragment-not-attached-to-Activity-%E5%BC%82%E5%B8%B8/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
@@ -763,14 +783,14 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/10/08/Android%E5%BD%95%E9%9F%B3%E4%BD%BF%E7%94%A8-byte-%E7%B1%BB%E5%9E%8B%E8%8E%B7%E5%8F%96%E5%88%86%E8%B4%9D%E6%88%96%E5%A3%B0%E9%9F%B3%E6%8C%AF%E5%B9%85/</loc>
+    <loc>http://gdky005.com/2015/11/20/Bug%E5%B0%8F%E8%AE%B0-%E8%B4%B5%E9%87%91%E5%B1%9E/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android录音使用 byte 类型获取分贝或声音振幅</title>
-        <pubTime>2015-10-08T10:10:20.000Z</pubTime>
+        <title>Bug小记(**贵金属)</title>
+        <pubTime>2015-11-20T10:24:09.000Z</pubTime>
         
-        <tag>android录音</tag>
+        <tag>ios</tag>
          
          
            
@@ -831,13 +851,15 @@
 
     
   <url>
-    <loc>http://gdky005.com/2016/02/25/%E6%8E%A8%E8%8D%90processon-%E8%AE%A9%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%85%B1%E4%BA%AB/</loc>
+    <loc>http://gdky005.com/2015/09/26/Android-%E5%92%8C-IOS-%E5%BA%94%E7%94%A8%E6%9F%A5%E6%89%BEbug-%E5%88%A9%E5%99%A8/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>推荐processon 让流程图也可以共享</title>
-        <pubTime>2016-02-25T02:32:02.000Z</pubTime>
+        <title>Android 和 IOS 应用查找bug 利器</title>
+        <pubTime>2015-09-26T07:12:50.000Z</pubTime>
         
+        <tag>android</tag>
+         
          
            
         </display>
@@ -846,15 +868,13 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/10/09/Android%E5%9C%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2UI%E6%96%B9%E9%9D%A2%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://gdky005.com/2016/02/25/%E6%8E%A8%E8%8D%90processon-%E8%AE%A9%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%85%B1%E4%BA%AB/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android在图形界面UI方面的工具</title>
-        <pubTime>2015-10-09T07:03:19.000Z</pubTime>
+        <title>推荐processon 让流程图也可以共享</title>
+        <pubTime>2016-02-25T02:32:02.000Z</pubTime>
         
-        <tag>android</tag>
-         
          
            
         </display>
@@ -897,12 +917,12 @@
 
     
   <url>
-    <loc>http://gdky005.com/2015/09/26/Android-%E5%92%8C-IOS-%E5%BA%94%E7%94%A8%E6%9F%A5%E6%89%BEbug-%E5%88%A9%E5%99%A8/</loc>
+    <loc>http://gdky005.com/2015/10/09/Android%E5%9C%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2UI%E6%96%B9%E9%9D%A2%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2016-04-19T13:17:13.000Z</lastmod>
     <data>
         <display>
-        <title>Android 和 IOS 应用查找bug 利器</title>
-        <pubTime>2015-09-26T07:12:50.000Z</pubTime>
+        <title>Android在图形界面UI方面的工具</title>
+        <pubTime>2015-10-09T07:03:19.000Z</pubTime>
         
         <tag>android</tag>
          

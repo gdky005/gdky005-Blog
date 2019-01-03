@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="徽章" />
+  <meta name="keywords" content="QPM, 性能优化, 组件" />
 
 
 
@@ -99,34 +99,18 @@
 
 
 
-<meta name="description" content="官网: https://circleci.com/ Circle CI 和 Travis CI 有什么区别？需要一起使用吗？Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如： Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。 Travis CI 的使">
-<meta name="keywords" content="徽章">
+<meta name="description" content="QPM 开源地址：https://github.com/ZhuoKeTeam/QPM 重复的工作能否减少？必须可以！ 每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。 Android 如何进行性能优化？ 抓包： Charles，Fiddler， Wireshark; Android Studio: DDMS, Logcat">
+<meta name="keywords" content="QPM, 性能优化, 组件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="徽章系列4： Circle CI 的使用">
-<meta property="og:url" content="http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/index.html">
+<meta property="og:title" content="QPM 准备优化前的思考">
+<meta property="og:url" content="http://gdky005.com/2019/01/03/QPM-准备优化前的思考/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="官网: https://circleci.com/ Circle CI 和 Travis CI 有什么区别？需要一起使用吗？Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如： Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。 Travis CI 的使">
+<meta property="og:description" content="QPM 开源地址：https://github.com/ZhuoKeTeam/QPM 重复的工作能否减少？必须可以！ 每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。 Android 如何进行性能优化？ 抓包： Charles，Fiddler， Wireshark; Android Studio: DDMS, Logcat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png">
-<meta property="og:updated_time" content="2017-06-22T03:13:07.000Z">
+<meta property="og:updated_time" content="2019-01-03T07:20:39.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="徽章系列4： Circle CI 的使用">
-<meta name="twitter:description" content="官网: https://circleci.com/ Circle CI 和 Travis CI 有什么区别？需要一起使用吗？Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如： Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。 Travis CI 的使">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png">
+<meta name="twitter:title" content="QPM 准备优化前的思考">
+<meta name="twitter:description" content="QPM 开源地址：https://github.com/ZhuoKeTeam/QPM 重复的工作能否减少？必须可以！ 每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。 Android 如何进行性能优化？ 抓包： Charles，Fiddler， Wireshark; Android Studio: DDMS, Logcat">
 
 
 
@@ -154,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/"/>
+  <link rel="canonical" href="http://gdky005.com/2019/01/03/QPM-准备优化前的思考/"/>
 
 
 
 
 
-  <title>徽章系列4： Circle CI 的使用 | 孤独狂饮</title>
+  <title>QPM 准备优化前的思考 | 孤独狂饮</title>
   
 
 
@@ -309,7 +293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2019/01/03/QPM-准备优化前的思考/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gdky005">
@@ -326,7 +310,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">徽章系列4： Circle CI 的使用</h2>
+          <h2 class="post-title" itemprop="name headline">QPM 准备优化前的思考</h2>
         
 
         <div class="post-meta">
@@ -338,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T18:03:52+08:00">
-                2017-06-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T15:20:13+08:00">
+                2019-01-03
               </time>
             
 
@@ -354,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-22T11:13:07+08:00">
-                2017-06-22
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-03T15:20:39+08:00">
+                2019-01-03
               </time>
             
           </span>
@@ -373,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/shields/" itemprop="url" rel="index">
-                    <span itemprop="name">shields</span>
+                  <a href="/categories/QPM/" itemprop="url" rel="index">
+                    <span itemprop="name">QPM</span>
                   </a>
                 </span>
 
@@ -392,8 +376,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/06/15/徽章系列4：-Circle-CI-的使用/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/06/15/徽章系列4：-Circle-CI-的使用/" itemprop="commentsCount"></span>
+                <a href="/2019/01/03/QPM-准备优化前的思考/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/03/QPM-准备优化前的思考/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -454,58 +438,18 @@
       
 
       
-        <p> 官网: <a href="https://circleci.com/" target="_blank" rel="noopener">https://circleci.com/</a></p>
-<h3 id="Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><a href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？" class="headerlink" title="Circle CI 和 Travis CI 有什么区别？需要一起使用吗？"></a>Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</h3><p>Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png" alt=""></p>
-<p>Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。</p>
-<p>Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。</p>
-<p>说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。</p>
-<h3 id="添加项目到-Circle-CI"><a href="#添加项目到-Circle-CI" class="headerlink" title="添加项目到 Circle CI"></a>添加项目到 Circle CI</h3><ol>
-<li>登录主页面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png" alt="">， 在 project 里面自己的账号下搜索刚创建的项目。</li>
-<li>一般直接选择 Ubuntu 即可:<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png" alt="">,点击绿色  Build project.<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png" alt=""></li>
-<li>能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png" alt="">， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。</li>
+        <p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<h2 id="重复的工作能否减少？"><a href="#重复的工作能否减少？" class="headerlink" title="重复的工作能否减少？"></a>重复的工作能否减少？</h2><p>必须可以！</p>
+<p>每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。</p>
+<h2 id="Android-如何进行性能优化？"><a href="#Android-如何进行性能优化？" class="headerlink" title="Android 如何进行性能优化？"></a>Android 如何进行性能优化？</h2><ol>
+<li>抓包： Charles，Fiddler， Wireshark;</li>
+<li>Android Studio: DDMS, Logcat；</li>
+<li>Android Studio 中 Profiler 的 内存，流量，CPU；</li>
+<li>Android 手机中开发者选项里面有很多辅助性工具。</li>
 </ol>
-<h3 id="在-项目中添加-Circle-CI-需要的-circle-yml-文件"><a href="#在-项目中添加-Circle-CI-需要的-circle-yml-文件" class="headerlink" title="在 项目中添加 Circle CI 需要的 circle.yml 文件"></a>在 项目中添加 Circle CI 需要的 circle.yml 文件</h3><ol>
-<li>在项目的根目录下 添加 circle.yml 文件；</li>
-<li>添加 circle 的代码到文件中：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png" alt=""></li>
-</ol>
-<p><strong>circle.yml 源代码：</strong></p>
-<pre><code>machine:
-  java:
-      version: oraclejdk8
-  environment:
-      ANDROID_HOME: /usr/local/android-sdk-linux
-
-dependencies:
-  pre:
-    - mkdir -p &quot;$ANDROID_HOME/licenses&quot;
-    - echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;
-    - echo -e &quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-preview-license&quot;
-
-
-  override:
-    - echo y | android update sdk --no-ui --filter &quot;android-25&quot;
-    - echo y | android update sdk --no-ui --filter &quot;build-tools-25.0.2&quot;
-    - echo y | android update sdk --no-ui --filter &quot;extra-android-m2repository&quot;
-    - echo y | android update sdk --no-ui --filter &quot;extra-android-support&quot;
-    - echo y | android update sdk --no-ui --filter &quot;extra-google-m2repositor&quot;
-    - ./gradlew dependencies || true
-
-test:
-  override:
-    - ./gradlew build
-</code></pre><h3 id="push-项目到-github-Circle-CI-自动监测构建"><a href="#push-项目到-github-Circle-CI-自动监测构建" class="headerlink" title="push 项目到 github, Circle CI 自动监测构建"></a>push 项目到 github, Circle CI 自动监测构建</h3><ol>
-<li>提交代码后，发布到 github，Circle CI 会自动执行。</li>
-<li><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png" alt=""> 点击进来后，会看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png" alt="">， 说明已经开始 构建了， 下载需要的东西：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png" alt="">。</li>
-<li>构建中的一些步骤：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png" alt="">， 相对 Travis 来说展示更直观。</li>
-<li>看到 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png" alt=""> 说明构建成功。</li>
-</ol>
-<h3 id="添加-Circle-CI-徽章到-github"><a href="#添加-Circle-CI-徽章到-github" class="headerlink" title="添加 Circle CI 徽章到 github"></a>添加 Circle CI 徽章到 github</h3><p>我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png" alt=""><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png" alt=""></p>
-<p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png" alt=""></p>
-<p>回项目主页刷新后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png" alt=""> 非常 happy, 已经添加成功了。</p>
-<h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
-<p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
-<p>总分类：<br><a href="http://www.gdky005.com/categories/shields/" target="_blank" rel="noopener">徽章（shields ）系列文章总分类</a></p>
-<p>github 地址：<br><a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">徽章项目 Demo github 地址：</a><br> <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a></p>
+<p>这些工具都有一个前提，很多都需要手机连接数据线，再打开工具才能使用，如果客户手机有问题，也如此的话，比较费心费力。对于未 root 的手机要拿到一些信息，着实不易。</p>
+<h2 id="测试同学可以进行性能优化监控吗？"><a href="#测试同学可以进行性能优化监控吗？" class="headerlink" title="测试同学可以进行性能优化监控吗？"></a>测试同学可以进行性能优化监控吗？</h2><p>可以，但是业务测试和需求每天都很多， 测试同学没空，没精力去测试这方面的性能。除非有专业的性能测试团队，每天负责检测。手机发热，界面卡顿都需要监控起来。</p>
+<h2 id="运行-App-即可查看性能"><a href="#运行-App-即可查看性能" class="headerlink" title="运行 App 即可查看性能"></a>运行 App 即可查看性能</h2><p>大家加班，加点，忙需求，没有那么多的时间去看性能问题，最多在几个关键时间点集中处理下。如果我们的 App 运行后，就内置了一个这样的功能，只要打开开关，就可以悬浮窗到主界面上，根据 FPS，内存，CPU，去看一个检测页面卡顿情况就再好不过了。</p>
 
       
     </div>
@@ -539,7 +483,7 @@ test:
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/" title="徽章系列4： Circle CI 的使用">http://gdky005.com/2017/06/15/徽章系列4：-Circle-CI-的使用/</a>
+      <a href="http://gdky005.com/2019/01/03/QPM-准备优化前的思考/" title="QPM 准备优化前的思考">http://gdky005.com/2019/01/03/QPM-准备优化前的思考/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -555,7 +499,7 @@ test:
       
         <div class="post-tags">
           
-            <a href="/tags/徽章/" rel="tag"># 徽章</a>
+            <a href="/tags/QPM-性能优化-组件/" rel="tag"># QPM, 性能优化, 组件</a>
           
         </div>
       
@@ -568,8 +512,8 @@ test:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/15/徽章系列5：-Codecov-的使用/" rel="next" title="徽章系列5： Codecov 的使用">
-                <i class="fa fa-chevron-left"></i> 徽章系列5： Codecov 的使用
+              <a href="/2019/01/03/QPM-之缘起/" rel="next" title="QPM 之缘起">
+                <i class="fa fa-chevron-left"></i> QPM 之缘起
               </a>
             
           </div>
@@ -577,10 +521,6 @@ test:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/15/徽章系列3：-Travis-CI-的使用/" rel="prev" title="徽章系列3： Travis CI 的使用">
-                徽章系列3： Travis CI 的使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -770,7 +710,7 @@ test:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><span class="nav-number">1.</span> <span class="nav-text">Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加项目到-Circle-CI"><span class="nav-number">2.</span> <span class="nav-text">添加项目到 Circle CI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-项目中添加-Circle-CI-需要的-circle-yml-文件"><span class="nav-number">3.</span> <span class="nav-text">在 项目中添加 Circle CI 需要的 circle.yml 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-项目到-github-Circle-CI-自动监测构建"><span class="nav-number">4.</span> <span class="nav-text">push 项目到 github, Circle CI 自动监测构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-Circle-CI-徽章到-github"><span class="nav-number">5.</span> <span class="nav-text">添加 Circle CI 徽章到 github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关链接："><span class="nav-number">6.</span> <span class="nav-text">相关链接：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重复的工作能否减少？"><span class="nav-number">1.</span> <span class="nav-text">重复的工作能否减少？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-如何进行性能优化？"><span class="nav-number">2.</span> <span class="nav-text">Android 如何进行性能优化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试同学可以进行性能优化监控吗？"><span class="nav-number">3.</span> <span class="nav-text">测试同学可以进行性能优化监控吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-App-即可查看性能"><span class="nav-number">4.</span> <span class="nav-text">运行 App 即可查看性能</span></a></li></ol></div>
             
 
           </div>
