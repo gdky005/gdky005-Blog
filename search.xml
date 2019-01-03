@@ -4,6 +4,145 @@
   
     
     <entry>
+      <title><![CDATA[QPM 性能监控组件<总>]]></title>
+      <url>http://gdky005.com/2019/01/03/QPM-%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E7%BB%84%E4%BB%B6-%E6%80%BB/</url>
+      <content type="html"><![CDATA[<p>QPM （Quality Performance Monitor） 是一个质量性能监控组件，可以很方便的查看当前 App 的性能和常用数据。目前主要运行在 Android 平台上，通过集成 QPM 组件，可以在 App 中通过悬浮窗可视化相关实时数据。意在帮助广大开发者和测试同学快速了解 App 中存在的性能问题，并展示了很多常用的数据，减少重重复杂的操作。</p>
+<p>经过了好几个月的方案调研，不断的优化，以及内部版本迭代与测试，目前已经趋于稳定。在北京2018年 GDG 活动中分享了该性能优化组件，并且内部做过深一层次的分享与探讨，将大家需要的功能，外加整理，只为更方便的服务于广大 Android 开发者。现在 QPM 官宣开源啦：<br><a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>欢迎各位 Star, 不管你是有什么样光怪陆离想法或者创意，都非常期待。尽情的 Issue 和 PR，虽然不能完全的满足，但是我们会尽力。</p>
+<h2 id="QPM-目前拥有的功能："><a href="#QPM-目前拥有的功能：" class="headerlink" title="QPM 目前拥有的功能："></a>QPM 目前拥有的功能：</h2><ol>
+<li>获取手机常用的基本信息 （是否 root, 版本号，wifi, 硬件信息等等）。</li>
+<li>实时获取当前 App 的 CPU 和内存信息，可判断手机是否占用更多资源。</li>
+<li>UI界面卡不卡，就看 FPS（绿色表示正常，红色表示卡顿）。</li>
+<li>轻松获取当前运行的 Activity 名字，快速在代码中定位当前界面。</li>
+<li>App 当前开启多少线程，可用于判断是否占用过多资源。</li>
+<li>查看 App 运行后在3G，4G 的流量消耗情况。</li>
+<li>监控 H5 页面，可以判断出<strong>白屏时间</strong>和<strong>资源请求时间</strong>。</li>
+<li>不方便抓包的时候可以用组件的<strong>显示 API 接口</strong>，会记录请求地址，服务器相关状态码，Cookie, 返回数据。</li>
+<li>直接获取当前 App 的 AndroidManifest.xml 信息，可查看常用的四大组件，和注册权限，并且可直接跳转到对应的 Activity 页面中。</li>
+<li>免 Root 即可获取到 App 中所有的 SharedPreferences 存储信息，并且<strong>可修改</strong>。方便开发和测试快速定位问题。</li>
+<li>屏幕录制，解决某些场景下无法复现问题的流程。</li>
+</ol>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>曾经我和你们一样，成天疲于业务开发，一天天除了加班，还是加班。可是呢，bug 还是不断，看着人家的 app 那么流畅，为啥我做的这么挫？What’s fuck! 慢慢的，掌握到一些性能优化的技巧后，熟练的搞起优化，app 就不再那么卡了，看着得意之作，心里满满的喜悦。</p>
+<h3 id="缘起——GT"><a href="#缘起——GT" class="headerlink" title="缘起——GT"></a>缘起——GT</h3><p>当时看到腾讯 GT 的悬浮窗，眼前一亮，这个东西好使，不错不错。但是时间就了以后，发现每个手机要看数据必须先安装一个 GT，而且有些功能需要 root 以后才能查看。我想我们 app 中的某些常变的数据要是能展示到 GT 的悬浮窗就方便很多啦，于是尝试把 GT 放到我们 App 里面去，此过程超级麻烦，好不容易加进去了，结果我们的 App 直接增大了 3MB， 虽说我们的 App 已经 70MB 了，增加 3MB 也没事，但是我怎么能忍受得了，一个组件就要增加 3MB 呢？ 于是我想结合我们 App 的特性，自己搞一个 QPM，功能很简单，把一些 GT 里面的数据展示到 QPM 中，于是参考 GT，开始实施。</p>
+<p>轮子已经有了，干嘛还要再造一个轮子呢？ 其实不然，虽然有了轮子，但是这个轮子和我的车型号不匹配嘛，无法发挥到极致。于是参考轮子的大体框架，改造成属于我们自己的轮子。贴个花边，换个螺丝钉，弄个小号的。哈哈哈，最后终于弄出了一个简易版本，但是太粗糙了，我们自己都不想用。</p>
+<h3 id="缘起——FPS"><a href="#缘起——FPS" class="headerlink" title="缘起——FPS"></a>缘起——FPS</h3><p>突然接手一个老项目，啥都不太了解，虽然 UI 界面卡卡的，但是不能轻易优化，万一优化后，背锅咋弄？就先这样吧，直到某一天老大说卡的不行啦，必须优化。好吧，那就慢慢优化吧。可是心里总没谱，怎么样算优化好呢？ 没个啥指标的，还真不好弄。假如有一个工具可以告诉我哪些界面卡？ 卡到什么程度，优化之后可以达到什么样的效果，该多好呀。在某些手机上有系统自带的 FPS 指标，可是其他手机没有嘛，总不能用该手机作为评判标准吧。</p>
+<h3 id="缘起——栈顶-Activity-名字"><a href="#缘起——栈顶-Activity-名字" class="headerlink" title="缘起——栈顶 Activity 名字"></a>缘起——栈顶 Activity 名字</h3><p>想起之前看同事的手机，每打开一个 App, 就能显示当前 App 的包名和当前的 Activity 的名字，感觉很不错，但是没啥用吧。他说：『我刚来，老大分配了一些任务，但是我不太熟悉代码，具体页面怎么查，不是很方便，有这个就可以轻松搞定啦！』 很有道理嘛，可以加一个。某天我在修复 bug 的时候，真找不到页面，想问问业务同学，这是哪个页面，他直接让我用命令行获取栈顶 Activity 名字，而之前同事说的那个插件应用，需要翻墙下载。从此，我坚定了必须要把这个功能加到我的 QPM 中，我想让跟我遇到过同样问题的人，省去这些麻烦。每次小小的进步，之后回头看那就是一大步。</p>
+<h3 id="缘起——屏幕录制"><a href="#缘起——屏幕录制" class="headerlink" title="缘起——屏幕录制"></a>缘起——屏幕录制</h3><p>功能都差不多了，突然有天，一个测试同学，给群里扔了一个小视频，是出现某个 bug的视频, 用另外一个手机录屏的。我在想要是能把这个加到 QPM 里面就好了。过来几天，我手机上出现了一个问题，我用小米自带的录屏工具，轻松就录制了，发给大佬们。但是大佬问我，怎么录制呢？ 我说用系统自带的工具，他说他录制不了，随后让他下载软件进行录制。这个过程感觉挺麻烦的，更加坚定了我的决心。经过查询原来 Android 5.0 以上系统就提供了方法哈，那我就直接放到我们的 QPM 中，之后遇到这类需要截屏，但是手头没工具的情况，就可以直接开启 QPM 录屏了，又是一个棒棒哒的功能。</p>
+<h2 id="准备优化前的思考"><a href="#准备优化前的思考" class="headerlink" title="准备优化前的思考"></a>准备优化前的思考</h2><h3 id="重复的工作能否减少？"><a href="#重复的工作能否减少？" class="headerlink" title="重复的工作能否减少？"></a>重复的工作能否减少？</h3><p>必须可以！</p>
+<p>每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。</p>
+<h3 id="Android-如何进行性能优化？"><a href="#Android-如何进行性能优化？" class="headerlink" title="Android 如何进行性能优化？"></a>Android 如何进行性能优化？</h3><ol>
+<li>抓包： Charles，Fiddler， Wireshark;</li>
+<li>Android Studio: DDMS, Logcat；</li>
+<li>Android Studio 中 Profiler 的 内存，流量，CPU；</li>
+<li>Android 手机中开发者选项里面有很多辅助性工具。</li>
+</ol>
+<p>这些工具都有一个前提，很多都需要手机连接数据线，再打开工具才能使用，如果客户手机有问题，也如此的话，比较费心费力。对于未 root 的手机要拿到一些信息，着实不易。</p>
+<h3 id="测试同学可以进行性能优化监控吗？"><a href="#测试同学可以进行性能优化监控吗？" class="headerlink" title="测试同学可以进行性能优化监控吗？"></a>测试同学可以进行性能优化监控吗？</h3><p>可以，但是业务测试和需求每天都很多， 测试同学没空，没精力去测试这方面的性能。除非有专业的性能测试团队，每天负责检测。手机发热，界面卡顿都需要监控起来。</p>
+<h3 id="运行-App-即可查看性能"><a href="#运行-App-即可查看性能" class="headerlink" title="运行 App 即可查看性能"></a>运行 App 即可查看性能</h3><p>大家加班，加点，忙需求，没有那么多的时间去看性能问题，最多在几个关键时间点集中处理下。如果我们的 App 运行后，就内置了一个这样的功能，只要打开开关，就可以悬浮窗到主界面上，根据 FPS，内存，CPU，去看一个检测页面卡顿情况就再好不过了。</p>
+<h2 id="悬浮窗助力性能优化"><a href="#悬浮窗助力性能优化" class="headerlink" title="悬浮窗助力性能优化"></a>悬浮窗助力性能优化</h2><p>让我们来尝试做一些可以可视化的悬浮窗功能吧，里面可以展示一些基础的性能指标数据。</p>
+<p>启动 App 后便可以看到一些数据，解决未 root 手机无法获取数据的疑难杂症。</p>
+<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt=""></p>
+<h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p>一个 apk 会有一个固定的包名，但是在某些特殊场景下，却会展示多个包名，例如：测试包，正式包，变种包，推送测试包等等，给 QPM 展示当前应用的包名，在某些时候可以方便我们定位问题。举个例子：我们之前一直在测试推送包，有时候需要切换到正式包，在两个包中切换各种RD，ST环境，最后我都不记得我用的什么包，只能卸载了，重新安装。QPM 的悬浮窗可以直接展示当前应用的包名，看一眼就知道了，其实也可以把当前进程+线程号打印出来，方便开发同学分析问题。</p>
+<h3 id="当前-Activity-的名字"><a href="#当前-Activity-的名字" class="headerlink" title="当前 Activity 的名字"></a>当前 Activity 的名字</h3><p>试想，做了5年的项目，交给新来你接手？或者同事离职，丢下一堆坑，需要你来填坑。根据代码梳理流程后，也不一定能立刻接手，如果根据页面找Activity，一个字————累！</p>
+<p>如果能直接展示当前界面的 Activity 名字，是不是更容易一些呢？ </p>
+<h3 id="CPU-和-内存"><a href="#CPU-和-内存" class="headerlink" title="CPU 和 内存"></a>CPU 和 内存</h3><p>界面怎么这么卡啊，快优化下。懵逼的你可能会想这要从哪里入手？先从界面渲染，还是从业务角度? 关键是我们需要知道在页面的什么场景下会出现问题，有一个直观指标就容易判断了。当 CPU 到达 200% 的时候，内存剧增，那肯定有问题，可以用性能工具对该页面详细的分析。 一般先看看在该界面的 CPU 和 内存是否异常，再结合业务逻辑把相关的数据提前或者延迟获取，减少同一时刻并发获取，从而减少主界面卡顿。</p>
+<h3 id="线程数"><a href="#线程数" class="headerlink" title="线程数"></a>线程数</h3><p>这是什么鬼？还记得曾经的老大说要复用线程，别单独搞么。如果你发现 200 多个线程，那你就得考虑下是否需要线程池了。这里可以依据现有逻辑来处理，并非绝对性的。</p>
+<h3 id="Activity-堆栈"><a href="#Activity-堆栈" class="headerlink" title="Activity 堆栈"></a>Activity 堆栈</h3><p>还记得刚学 Activity 那会儿么，Activity的 四种 LaunchMode，这里可以记录一个栈里面的 Activity 的顺序。方便你直观了解栈中的情况。</p>
+<h3 id="流量"><a href="#流量" class="headerlink" title="流量"></a>流量</h3><p>我们 App 的请求用了多少流量？ 可能在 3G/4G 关注点比较多，虽然现在绝多数都是 WIFI，但是我们的用户在一定环境下会使用 3G/4G, 所以还是又必须关注下。</p>
+<p>网络情况如何？ 比方说我用的是 Wifi, 在某些角落网速很差，甚至没流量数据，我们都希望可以了解。</p>
+<p>在某个时刻，页面是空白的？为什么没有数据呢，可以看看尝试看看下载速度。</p>
+<p>尤其对现在约来越多的某些小视频，大家可能会关心大约用了多少流量。</p>
+<h3 id="屏幕录制"><a href="#屏幕录制" class="headerlink" title="屏幕录制"></a>屏幕录制</h3><p>基于 Android 5.0 的 API，录制整个屏幕，方便大家复现某些关于操作记录的问题。</p>
+<h3 id="监控-H5-页面"><a href="#监控-H5-页面" class="headerlink" title="监控 H5 页面"></a>监控 H5 页面</h3><p>需要配合相应的设置，我们就可以在 WebView 中对任何一个网页进行异步检测，例如获取当前页面地址，首页白屏加载时间，以及每个资源的请求时间，和请求资源地址。非常容易。</p>
+<h3 id="自定义的五种对外样式"><a href="#自定义的五种对外样式" class="headerlink" title="自定义的五种对外样式"></a>自定义的五种对外样式</h3><p>以下的一个唯一标识，表示一个 item, 如果要添加多个，可以把唯一标示设置为不同的。</p>
+<ul>
+<li>大文件框样式</li>
+</ul>
+<p>QPMManager.getInstance().showBigText(flag, bigText);<br>第一个参数 flag 是唯一标示, 第二个 bigText 是自定义悬浮窗中显示的所有文本数据。</p>
+<ul>
+<li>键值对文本样式</li>
+</ul>
+<p>QPMManager.getInstance().showKeyValue(flag, key, value);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 value 值。</p>
+<ul>
+<li>键图样式</li>
+</ul>
+<p>QPMManager.getInstance().showKeyPic(flag, key, picRes);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 pic Res 中的资源值。</p>
+<ul>
+<li>图值样式</li>
+</ul>
+<p>QPMManager.getInstance().showPicValue(flag, picId, value);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 pic Res 中的资源值 (可以放到你们的主 App 中)。</p>
+<ul>
+<li>自定义样式</li>
+</ul>
+<p>QPMManager.getInstance().showCustom(flag,QPMTemplateCustomRenderer);<br>第一个参数 flag 是唯一标示, 第二个 QPMTemplateCustomRenderer 是自定义悬浮窗中你们要自己添加的布局，可以写一个类，继承自QPMTemplateCustomRenderer，实现里面的方法，悬浮窗上就可以显示对应的内容。</p>
+<h2 id="悬浮窗-设置信息"><a href="#悬浮窗-设置信息" class="headerlink" title="悬浮窗 设置信息"></a>悬浮窗 设置信息</h2><p>更多实用信息：</p>
+<ol>
+<li>手机的基本信息</li>
+<li>AndroidManifest.xml 信息</li>
+<li>App 中所有的 SharePreference 信息</li>
+<li>可配置的开关</li>
+<li>网络接口</li>
+</ol>
+<h3 id="手机基础信息"><a href="#手机基础信息" class="headerlink" title="手机基础信息"></a>手机基础信息</h3><ol>
+<li>再也不用 去手机的复杂界面查看各种数据；</li>
+<li>再也不用 下载 辅助性 apk 获取信息；</li>
+<li>再也不用 因为某些信息没有，查询半天。</li>
+</ol>
+<p>是否 Root, SDK 版本，手机型号，网络，名称，IP，Mac 地址，屏幕分辨率，CPU 架构等等信息。遇到关键的数据，还能复制。</p>
+<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt=""></p>
+<h3 id="AndroidManifest-xml-信息"><a href="#AndroidManifest-xml-信息" class="headerlink" title="AndroidManifest.xml 信息"></a>AndroidManifest.xml 信息</h3><p>包名，版本号，App 的所有权限，构建 SDK 的版本信息，还有最最重要的注册的四大组件（Activity，Service，Receiver，Provider）。里面的 Activity 可以直接点击后跳转，Service可以查看有多少本地服务，Receiver 可以很明确的知道当前注册了多少广播，Provider 可以查看本地的内容提供者。</p>
+<h3 id="应用的所有-SP-信息"><a href="#应用的所有-SP-信息" class="headerlink" title="应用的所有 SP 信息"></a>应用的所有 SP 信息</h3><p>Root 手机我们直接通过 文件管理器 可以直接查看 SP 文件。</p>
+<p>如果没有 Root 呢？ 笨办法，通过调试代码或者 log 打印输出。</p>
+<p>包含整个 App 的所有 SP 信息，可以查看单个 SP 里面的信息，最最好的是还能直接修改 对应的 Value。</p>
+<p>极大提升程序员们的开发效率。 </p>
+<h3 id="其他开关"><a href="#其他开关" class="headerlink" title="其他开关"></a>其他开关</h3><p>我们提供的了这些基础功能，打开开关后，可以直接在悬浮窗展示相关数据信息。</p>
+<p>自我控制聚焦点，只关注需要的信息。</p>
+<p>所有的开关，可以打开，关闭，对于某些影响性能的操作，可以关闭其他所有的东西，保留关注的指标。</p>
+<p>每一个开关都可以长按开关名称的这一条，上下移动位置，调整开关的顺序。</p>
+<h3 id="网络接口"><a href="#网络接口" class="headerlink" title="网络接口"></a>网络接口</h3><p>获取最近50条网络请求数据，可以查看更多信息：</p>
+<ol>
+<li>请求方式；</li>
+<li>返回状态码；</li>
+<li>请求时长；</li>
+<li>请求大小；</li>
+<li>返回数据大小 </li>
+</ol>
+<p>需要 OkHttp，然后可以获取网络请求的所有数据，包括请求 Request Header，Request Response，Response等数据。</p>
+<h3 id="精简模式"><a href="#精简模式" class="headerlink" title="精简模式"></a>精简模式</h3><p>关注的数据太多会占满屏幕，可以开启精简模式，默认显示开关列表最顶部的两个选项。开关列表可以通过拖动把选项位置移动到想要的前两项。</p>
+<h2 id="QPM-注意事项"><a href="#QPM-注意事项" class="headerlink" title="QPM 注意事项"></a>QPM 注意事项</h2><p>QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。</p>
+<h2 id="QPM-与其他同类-PM-的区别"><a href="#QPM-与其他同类-PM-的区别" class="headerlink" title="QPM 与其他同类 PM 的区别"></a>QPM 与其他同类 PM 的区别</h2><p>与其他同类 QPM 工具相比，有以下优势：</p>
+<ol>
+<li>任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据；</li>
+<li>内置多个参数指标开关，想用哪个就开哪个；</li>
+<li>精简模式，只显示关注的数据指标；</li>
+<li>自定义了五种模板，可以通过简单的API，直接将 app 的变化数据动态展示；</li>
+<li>屏幕录制；</li>
+<li>H5页面性能监控；</li>
+<li>四大组件的展示，并可以直接跳转到对应的 Activity 中；</li>
+<li>SharedPreferences 文件直接浏览和修改相应的 key 值；</li>
+<li>通过 OkHttp 展示相关的网络请求信息；</li>
+<li>当前 App 的流量使用情况。</li>
+</ol>
+<h3 id="开源地址"><a href="#开源地址" class="headerlink" title="开源地址"></a>开源地址</h3><p>QPM:  <a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>请给 QPM  一个 Star 吧! </p>
+]]></content>
+      
+        <categories>
+            
+            <category> QPM </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> QPM, 性能优化, 组件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Mac 和 Android Studio 命令行走 Shadowsocks 代理]]></title>
       <url>http://gdky005.com/2018/03/29/Mac-%E5%92%8C-Android-Studio-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B5%B0-Shadowsocks-%E4%BB%A3%E7%90%86/</url>
       <content type="html"><![CDATA[<p>今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg" alt=""></p>
