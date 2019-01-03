@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title><![CDATA[QPM 之同类 PM 对比]]></title>
+      <url>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E5%90%8C%E7%B1%BB-PM-%E5%AF%B9%E6%AF%94/</url>
+      <content type="html"><![CDATA[<p>QPM 的注意事项以及和其他同类 PM 类软件的对比。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。</p>
+<h2 id="QPM-与其他同类-PM-的区别"><a href="#QPM-与其他同类-PM-的区别" class="headerlink" title="QPM 与其他同类 PM 的区别"></a>QPM 与其他同类 PM 的区别</h2><p>与其他同类 QPM 工具相比，有以下优势：</p>
+<ol>
+<li>任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据；</li>
+<li>内置多个参数指标开关，想用哪个就开哪个；</li>
+<li>精简模式，只显示关注的数据指标；</li>
+<li>自定义了五种模板，可以通过简单的API，直接将 app 的变化数据动态展示；</li>
+<li>屏幕录制；</li>
+<li>H5页面性能监控；</li>
+<li>四大组件的展示，并可以直接跳转到对应的 Activity 中；</li>
+<li>SharedPreferences 文件直接浏览和修改相应的 key 值；</li>
+<li>通过 OkHttp 展示相关的网络请求信息；</li>
+<li>当前 App 的流量使用情况。</li>
+</ol>
+<h2 id="开源地址"><a href="#开源地址" class="headerlink" title="开源地址"></a>开源地址</h2><p>QPM:  <a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>请给 QPM  一个 Star 吧! </p>
+]]></content>
+      
+        <categories>
+            
+            <category> QPM </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> QPM, 性能优化, 组件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[QPM 之悬浮窗设置信息]]></title>
       <url>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E6%82%AC%E6%B5%AE%E7%AA%97%E8%AE%BE%E7%BD%AE%E4%BF%A1%E6%81%AF/</url>
       <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>

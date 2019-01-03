@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="okhttp3" />
+  <meta name="keywords" content="QPM, 性能优化, 组件" />
 
 
 
@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）： appName + versionName + versonCode + 渠道号 + 设备基本信息 这里写一些大体的代码，其他可">
-<meta name="keywords" content="okhttp3">
+<meta name="description" content="QPM 的注意事项以及和其他同类 PM 类软件的对比。 注意事项QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。 QPM 与其他同类 PM 的区别与其他同类 QPM 工具相比，有以下优势：  任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据； 内置多个参数指标开关，想用哪个就开哪个； 精简模式，只显示关注的数据指标；">
+<meta name="keywords" content="QPM, 性能优化, 组件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络请求的 UA">
-<meta property="og:url" content="http://gdky005.com/2016/06/20/网络请求的-UA/index.html">
+<meta property="og:title" content="QPM 之同类 PM 对比">
+<meta property="og:url" content="http://gdky005.com/2019/01/03/QPM-之同类-PM-对比/index.html">
 <meta property="og:site_name" content="孤独狂饮">
-<meta property="og:description" content="一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）： appName + versionName + versonCode + 渠道号 + 设备基本信息 这里写一些大体的代码，其他可">
+<meta property="og:description" content="QPM 的注意事项以及和其他同类 PM 类软件的对比。 注意事项QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。 QPM 与其他同类 PM 的区别与其他同类 QPM 工具相比，有以下优势：  任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据； 内置多个参数指标开关，想用哪个就开哪个； 精简模式，只显示关注的数据指标；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-06-20T10:29:18.000Z">
+<meta property="og:updated_time" content="2019-01-03T07:23:46.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络请求的 UA">
-<meta name="twitter:description" content="一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）： appName + versionName + versonCode + 渠道号 + 设备基本信息 这里写一些大体的代码，其他可">
+<meta name="twitter:title" content="QPM 之同类 PM 对比">
+<meta name="twitter:description" content="QPM 的注意事项以及和其他同类 PM 类软件的对比。 注意事项QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。 QPM 与其他同类 PM 的区别与其他同类 QPM 工具相比，有以下优势：  任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据； 内置多个参数指标开关，想用哪个就开哪个； 精简模式，只显示关注的数据指标；">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://gdky005.com/2016/06/20/网络请求的-UA/"/>
+  <link rel="canonical" href="http://gdky005.com/2019/01/03/QPM-之同类-PM-对比/"/>
 
 
 
 
 
-  <title>网络请求的 UA | 孤独狂饮</title>
+  <title>QPM 之同类 PM 对比 | 孤独狂饮</title>
   
 
 
@@ -293,7 +293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2016/06/20/网络请求的-UA/">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2019/01/03/QPM-之同类-PM-对比/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gdky005">
@@ -310,7 +310,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">网络请求的 UA</h2>
+          <h2 class="post-title" itemprop="name headline">QPM 之同类 PM 对比</h2>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:27:54+08:00">
-                2016-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T15:23:22+08:00">
+                2019-01-03
               </time>
             
 
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2016-06-20T18:29:18+08:00">
-                2016-06-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-03T15:23:46+08:00">
+                2019-01-03
               </time>
             
           </span>
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/okhttp3/" itemprop="url" rel="index">
-                    <span itemprop="name">okhttp3</span>
+                  <a href="/categories/QPM/" itemprop="url" rel="index">
+                    <span itemprop="name">QPM</span>
                   </a>
                 </span>
 
@@ -376,8 +376,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2016/06/20/网络请求的-UA/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2016/06/20/网络请求的-UA/" itemprop="commentsCount"></span>
+                <a href="/2019/01/03/QPM-之同类-PM-对比/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/03/QPM-之同类-PM-对比/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -438,20 +438,23 @@
       
 
       
-        <p>一般我们的客户端请求头里面都会有一个 User Agent 的参数，默认请求下 会直接获取系统里面的一些参数信息，然后发送到服务器。服务器就知道这个设备 大体情况，也可以根据这个来处理，或者禁用某些设备。<br>一般定义的 UA 应该包含下面这些东西（当前也可以删减或去掉的）：</p>
-<p><code>appName + versionName + versonCode + 渠道号 + 设备基本信息</code></p>
-<p>这里写一些大体的代码，其他可以自行封装：</p>
-<p>拼接数据：</p>
-<p><code>appName: mContext.getString(R.string.appname)</code></p>
-<p><code>versionName:  DeviceUtil.getVersionName(mContext)</code></p>
-<p><code>versonCode: DeviceUtil.getVersionCode(mContext)</code></p>
-<p><code>渠道号：DeviceUtil.getChannelTag(mContext)</code></p>
-<p>设备基本信息:<br><code>build.MODEL         Nexus 6</code></p>
-<p><code>build.MANUFACTURER  motorola</code></p>
-<p><code>build.BRAND            google</code></p>
-<p><code>build.FINGERPRINT    google/shamu/shamu:6.0.1/MMB29S/2489379:user/release-keys</code></p>
-<p><code>Build.VERSION.RELEASE 6.0.1</code></p>
-<p><code>Build.VERSION.SDKINT 23</code></p>
+        <p>QPM 的注意事项以及和其他同类 PM 类软件的对比。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推荐：需要什么功能，就开启什么开关，这样把影响降低到最低。</p>
+<h2 id="QPM-与其他同类-PM-的区别"><a href="#QPM-与其他同类-PM-的区别" class="headerlink" title="QPM 与其他同类 PM 的区别"></a>QPM 与其他同类 PM 的区别</h2><p>与其他同类 QPM 工具相比，有以下优势：</p>
+<ol>
+<li>任何一个内置的 QPM 的 App, 可以直接可视化相关性能和数据；</li>
+<li>内置多个参数指标开关，想用哪个就开哪个；</li>
+<li>精简模式，只显示关注的数据指标；</li>
+<li>自定义了五种模板，可以通过简单的API，直接将 app 的变化数据动态展示；</li>
+<li>屏幕录制；</li>
+<li>H5页面性能监控；</li>
+<li>四大组件的展示，并可以直接跳转到对应的 Activity 中；</li>
+<li>SharedPreferences 文件直接浏览和修改相应的 key 值；</li>
+<li>通过 OkHttp 展示相关的网络请求信息；</li>
+<li>当前 App 的流量使用情况。</li>
+</ol>
+<h2 id="开源地址"><a href="#开源地址" class="headerlink" title="开源地址"></a>开源地址</h2><p>QPM:  <a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>请给 QPM  一个 Star 吧! </p>
 
       
     </div>
@@ -485,7 +488,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://gdky005.com/2016/06/20/网络请求的-UA/" title="网络请求的 UA">http://gdky005.com/2016/06/20/网络请求的-UA/</a>
+      <a href="http://gdky005.com/2019/01/03/QPM-之同类-PM-对比/" title="QPM 之同类 PM 对比">http://gdky005.com/2019/01/03/QPM-之同类-PM-对比/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -501,7 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/okhttp3/" rel="tag"># okhttp3</a>
+            <a href="/tags/QPM-性能优化-组件/" rel="tag"># QPM, 性能优化, 组件</a>
           
         </div>
       
@@ -514,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/20/从-volley-切换到-OkHttp-遇到的坑/" rel="next" title="从 volley 切换到 OkHttp 遇到的坑">
-                <i class="fa fa-chevron-left"></i> 从 volley 切换到 OkHttp 遇到的坑
+              <a href="/2019/01/03/QPM-之悬浮窗设置信息/" rel="next" title="QPM 之悬浮窗设置信息">
+                <i class="fa fa-chevron-left"></i> QPM 之悬浮窗设置信息
               </a>
             
           </div>
@@ -523,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/20/使用-Android-Studio-内存分析工具/" rel="prev" title="使用 Android Studio 内存分析工具">
-                使用 Android Studio 内存分析工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -598,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -697,6 +705,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QPM-与其他同类-PM-的区别"><span class="nav-number">2.</span> <span class="nav-text">QPM 与其他同类 PM 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源地址"><span class="nav-number">3.</span> <span class="nav-text">开源地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
