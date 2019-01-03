@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[QPM 之简介]]></title>
+      <url>http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E7%AE%80%E4%BB%8B/</url>
+      <content type="html"><![CDATA[<p>QPM （Quality Performance Monitor） 是一个质量性能监控组件，可以很方便的查看当前 App 的性能和常用数据。目前主要运行在 Android 平台上，通过集成 QPM 组件，可以在 App 中通过悬浮窗可视化相关实时数据。意在帮助广大开发者和测试同学快速了解 App 中存在的性能问题，并展示了很多常用的数据，减少重重复杂的操作。</p>
+<p>经过了好几个月的方案调研，不断的优化，以及内部版本迭代与测试，目前已经趋于稳定。在北京2018年 GDG 活动中分享了该性能优化组件，并且内部做过深一层次的分享与探讨，将大家需要的功能，外加整理，只为更方便的服务于广大 Android 开发者。现在 QPM 官宣开源啦：<br><a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
+<p>欢迎各位 Star, 不管你是有什么样光怪陆离想法或者创意，都非常期待。尽情的 Issue 和 PR，虽然不能完全的满足，但是我们会尽力。</p>
+<h2 id="QPM-目前拥有的功能："><a href="#QPM-目前拥有的功能：" class="headerlink" title="QPM 目前拥有的功能："></a>QPM 目前拥有的功能：</h2><ol>
+<li>获取手机常用的基本信息 （是否 root, 版本号，wifi, 硬件信息等等）。</li>
+<li>实时获取当前 App 的 CPU 和内存信息，可判断手机是否占用更多资源。</li>
+<li>UI界面卡不卡，就看 FPS（绿色表示正常，红色表示卡顿）。</li>
+<li>轻松获取当前运行的 Activity 名字，快速在代码中定位当前界面。</li>
+<li>App 当前开启多少线程，可用于判断是否占用过多资源。</li>
+<li>查看 App 运行后在3G，4G 的流量消耗情况。</li>
+<li>监控 H5 页面，可以判断出<strong>白屏时间</strong>和<strong>资源请求时间</strong>。</li>
+<li>不方便抓包的时候可以用组件的<strong>显示 API 接口</strong>，会记录请求地址，服务器相关状态码，Cookie, 返回数据。</li>
+<li>直接获取当前 App 的 AndroidManifest.xml 信息，可查看常用的四大组件，和注册权限，并且可直接跳转到对应的 Activity 页面中。</li>
+<li>免 Root 即可获取到 App 中所有的 SharedPreferences 存储信息，并且<strong>可修改</strong>。方便开发和测试快速定位问题。</li>
+<li>屏幕录制，解决某些场景下无法复现问题的流程。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> QPM </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> QPM, 性能优化, 组件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[QPM 性能监控组件<总>]]></title>
       <url>http://gdky005.com/2019/01/03/QPM-%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E7%BB%84%E4%BB%B6-%E6%80%BB/</url>
       <content type="html"><![CDATA[<p>QPM （Quality Performance Monitor） 是一个质量性能监控组件，可以很方便的查看当前 App 的性能和常用数据。目前主要运行在 Android 平台上，通过集成 QPM 组件，可以在 App 中通过悬浮窗可视化相关实时数据。意在帮助广大开发者和测试同学快速了解 App 中存在的性能问题，并展示了很多常用的数据，减少重重复杂的操作。</p>
