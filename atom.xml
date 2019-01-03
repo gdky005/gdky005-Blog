@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2019-01-03T07:20:39.043Z</updated>
+  <updated>2019-01-03T07:21:43.812Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QPM 之悬浮窗助力性能优化</title>
+    <link href="http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E6%82%AC%E6%B5%AE%E7%AA%97%E5%8A%A9%E5%8A%9B%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://gdky005.com/2019/01/03/QPM-之悬浮窗助力性能优化/</id>
+    <published>2019-01-03T07:21:18.000Z</published>
+    <updated>2019-01-03T07:21:43.812Z</updated>
+    
+    <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p><p>让我们来尝试做一些可以可视化的悬浮窗功能吧，里面可以展示一些基础的性能指标数据。</p><p>启动 App 后便可以看到一些数据，解决未 root 手机无法获取数据的疑难杂症。</p><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt=""></p><h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p>一个 apk 会有一个固定的包名，但是在某些特殊场景下，却会展示多个包名，例如：测试包，正式包，变种包，推送测试包等等，给 QPM 展示当前应用的包名，在某些时候可以方便我们定位问题。举个例子：我们之前一直在测试推送包，有时候需要切换到正式包，在两个包中切换各种RD，ST环境，最后我都不记得我用的什么包，只能卸载了，重新安装。QPM 的悬浮窗可以直接展示当前应用的包名，看一眼就知道了，其实也可以把当前进程+线程号打印出来，方便开发同学分析问题。</p><h3 id="当前-Activity-的名字"><a href="#当前-Activity-的名字" class="headerlink" title="当前 Activity 的名字"></a>当前 Activity 的名字</h3><p>试想，做了5年的项目，交给新来你接手？或者同事离职，丢下一堆坑，需要你来填坑。根据代码梳理流程后，也不一定能立刻接手，如果根据页面找Activity，一个字————累！</p><p>如果能直接展示当前界面的 Activity 名字，是不是更容易一些呢？ </p><h3 id="CPU-和-内存"><a href="#CPU-和-内存" class="headerlink" title="CPU 和 内存"></a>CPU 和 内存</h3><p>界面怎么这么卡啊，快优化下。懵逼的你可能会想这要从哪里入手？先从界面渲染，还是从业务角度? 关键是我们需要知道在页面的什么场景下会出现问题，有一个直观指标就容易判断了。当 CPU 到达 200% 的时候，内存剧增，那肯定有问题，可以用性能工具对该页面详细的分析。 一般先看看在该界面的 CPU 和 内存是否异常，再结合业务逻辑把相关的数据提前或者延迟获取，减少同一时刻并发获取，从而减少主界面卡顿。</p><h3 id="线程数"><a href="#线程数" class="headerlink" title="线程数"></a>线程数</h3><p>这是什么鬼？还记得曾经的老大说要复用线程，别单独搞么。如果你发现 200 多个线程，那你就得考虑下是否需要线程池了。这里可以依据现有逻辑来处理，并非绝对性的。</p><h3 id="Activity-堆栈"><a href="#Activity-堆栈" class="headerlink" title="Activity 堆栈"></a>Activity 堆栈</h3><p>还记得刚学 Activity 那会儿么，Activity的 四种 LaunchMode，这里可以记录一个栈里面的 Activity 的顺序。方便你直观了解栈中的情况。</p><h3 id="流量"><a href="#流量" class="headerlink" title="流量"></a>流量</h3><p>我们 App 的请求用了多少流量？ 可能在 3G/4G 关注点比较多，虽然现在绝多数都是 WIFI，但是我们的用户在一定环境下会使用 3G/4G, 所以还是又必须关注下。</p><p>网络情况如何？ 比方说我用的是 Wifi, 在某些角落网速很差，甚至没流量数据，我们都希望可以了解。</p><p>在某个时刻，页面是空白的？为什么没有数据呢，可以看看尝试看看下载速度。</p><p>尤其对现在约来越多的某些小视频，大家可能会关心大约用了多少流量。</p><h3 id="屏幕录制"><a href="#屏幕录制" class="headerlink" title="屏幕录制"></a>屏幕录制</h3><p>基于 Android 5.0 的 API，录制整个屏幕，方便大家复现某些关于操作记录的问题。</p><h3 id="监控-H5-页面"><a href="#监控-H5-页面" class="headerlink" title="监控 H5 页面"></a>监控 H5 页面</h3><p>需要配合相应的设置，我们就可以在 WebView 中对任何一个网页进行异步检测，例如获取当前页面地址，首页白屏加载时间，以及每个资源的请求时间，和请求资源地址。非常容易。</p><h3 id="自定义的五种对外样式"><a href="#自定义的五种对外样式" class="headerlink" title="自定义的五种对外样式"></a>自定义的五种对外样式</h3><p>以下的一个唯一标识，表示一个 item, 如果要添加多个，可以把唯一标示设置为不同的。</p><ul><li>大文件框样式</li></ul><p>QPMManager.getInstance().showBigText(flag, bigText);<br>第一个参数 flag 是唯一标示, 第二个 bigText 是自定义悬浮窗中显示的所有文本数据。</p><ul><li>键值对文本样式</li></ul><p>QPMManager.getInstance().showKeyValue(flag, key, value);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 value 值。</p><ul><li>键图样式</li></ul><p>QPMManager.getInstance().showKeyPic(flag, key, picRes);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 pic Res 中的资源值。</p><ul><li>图值样式</li></ul><p>QPMManager.getInstance().showPicValue(flag, picId, value);<br>第一个参数 flag 是唯一标示, 第二个 key 是自定义悬浮窗中显示的 key 值，第三个是 悬浮窗中的 pic Res 中的资源值 (可以放到你们的主 App 中)。</p><ul><li>自定义样式</li></ul><p>QPMManager.getInstance().showCustom(flag,QPMTemplateCustomRenderer);<br>第一个参数 flag 是唯一标示, 第二个 QPMTemplateCustomRenderer 是自定义悬浮窗中你们要自己添加的布局，可以写一个类，继承自QPMTemplateCustomRenderer，实现里面的方法，悬浮窗上就可以显示对应的内容。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;让我们来尝试做一
+      
+    
+    </summary>
+    
+      <category term="QPM" scheme="http://gdky005.com/categories/QPM/"/>
+    
+    
+      <category term="QPM, 性能优化, 组件" scheme="http://gdky005.com/tags/QPM-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>QPM 准备优化前的思考</title>
@@ -115,31 +141,6 @@
     
     
       <category term="QPM, 性能优化, 组件" scheme="http://gdky005.com/tags/QPM-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 和 Android Studio 命令行走 Shadowsocks 代理</title>
-    <link href="http://gdky005.com/2018/03/29/Mac-%E5%92%8C-Android-Studio-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B5%B0-Shadowsocks-%E4%BB%A3%E7%90%86/"/>
-    <id>http://gdky005.com/2018/03/29/Mac-和-Android-Studio-命令行走-Shadowsocks-代理/</id>
-    <published>2018-03-29T03:58:01.000Z</published>
-    <updated>2018-03-30T03:54:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg" alt=""></p><h2 id="使用-Shadowsocks-的-PAC-自动模式始终失败"><a href="#使用-Shadowsocks-的-PAC-自动模式始终失败" class="headerlink" title="使用 Shadowsocks 的 PAC 自动模式始终失败"></a>使用 Shadowsocks 的 PAC 自动模式始终失败</h2><p>本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：<code>172.0.0.1 ，端口：1089</code></p><p>在 Android Studio 中如下设置，未成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_1.jpg" alt=""></p><p>尝试以下，也没有成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_2.jpg" alt=""> <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_3.jpg" alt=""></p><p>经过 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_4.jpg" alt=""> 的测试，发现，这种设置方法是错误的。不会成功，至少对于 mac 来说是这样的。</p><h2 id="开启正确的全局代理模式"><a href="#开启正确的全局代理模式" class="headerlink" title="开启正确的全局代理模式"></a>开启正确的全局代理模式</h2><p>首先将 Shadowsocks 设置为全局代理模式，通过 mac 的网络 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_5.jpg" alt="">，<img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_6.jpg" alt=""><br>得到代理地址是：<br><code>127.0.0.1, 端口：1086</code></p><p>在 AS 中配置：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_7.jpg" alt=""></p><p>可以点击图中的 <code>Check connecction</code> 按钮，输入<code>http://www.youtube.com</code> 来检验是否可以走代理。</p><p>正常来说，应该会成功的。如果不行，可能是端口占用，或者一些其他原因，建议重启电脑试试。</p><p>使用 Android Studio 构建项目的时候，默认就可以走代理直接访问下载不了的资源了。但是这个期间是看不到具体过程，如果卡在哪一步，我们很难察觉，只能默默的等待。非常的尴尬，我们可能会想如果使用命令该多好。</p><p>经过一些测试，发现设置命令的时候，还是有一些技巧的。<br>简单点的就是直接使用 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code> 设置当前的窗口生效。 </p><p>然后使用 <code>curl -i http://ip.cn</code> 进行测试，看是否走了代理。</p><p>以下是我的测试结果：<br>未使用代理<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_8.jpg" alt=""></p><p>使用代理：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_9.jpg" alt=""></p><p>虽然使用了代理，但是 <code>ping</code> 命令还是不通的。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_10.jpg" alt=""><br>当时总以为失败了，但是经过大姑爷的提醒，用国外的 git clone 命令测试下，就知道了。</p><h2 id="git-clone-测试代理"><a href="#git-clone-测试代理" class="headerlink" title="git clone 测试代理"></a>git clone 测试代理</h2><p>googlesource.com 是 google 的代码开源地址，但是现在几乎停用了，都转到 github。 但是还有部分代码还是 这里，例如: <a href="https://android.googlesource.com/device/asus/deb/" target="_blank" rel="noopener">https://android.googlesource.com/device/asus/deb/</a></p><p>google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以使用这个测试代理是否可用。</p><p>所以选定这个命令：<code>git clone https://android.googlesource.com/device/asus/deb</code></p><p>不开代理，默认提示失败：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg" alt=""></p><p>开代理，下载成功：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_12.jpg" alt=""></p><p>到这里，命令行已经可用了。</p><h2 id="Android-Studio-设置代理"><a href="#Android-Studio-设置代理" class="headerlink" title="Android Studio 设置代理"></a>Android Studio 设置代理</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg" alt=""></p><h2 id="更新-Android-SDK"><a href="#更新-Android-SDK" class="headerlink" title="更新 Android SDK"></a>更新 Android SDK</h2><h3 id="尝试使用-android-sdk-工具更新最新组件"><a href="#尝试使用-android-sdk-工具更新最新组件" class="headerlink" title="尝试使用 android sdk 工具更新最新组件"></a>尝试使用 android sdk 工具更新最新组件</h3><p>新版本的 Android SDK 不允许直接通过命令行更新 SDK 了，需要配合 Android Studio 一起才能更新，让人有些不爽。</p><p>可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 <code>android</code> 命令打开 Android SDK 的 UI 更新界面。<br><a href="https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog" target="_blank" rel="noopener">https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog</a></p><h3 id="在-Android-Studio-中更新-SDK"><a href="#在-Android-Studio-中更新-SDK" class="headerlink" title="在 Android Studio 中更新 SDK"></a>在 Android Studio 中更新 SDK</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg" alt=""></p><h2 id="常用公开的代理服务器"><a href="#常用公开的代理服务器" class="headerlink" title="常用公开的代理服务器"></a>常用公开的代理服务器</h2><p>大连东软信息学院镜像服务器地址:<br>    <a href="http://mirrors.neusoft.edu.cn" target="_blank" rel="noopener">http://mirrors.neusoft.edu.cn</a> 端口：80</p><p>北京化工大学镜像服务器地址:<br>    IPv4: <a href="http://ubuntu.buct.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct.edu.cn/</a> 端口：80<br>    IPv4: <a href="http://ubuntu.buct.cn/" target="_blank" rel="noopener">http://ubuntu.buct.cn/</a> 端口：80<br>    IPv6: <a href="http://ubuntu.buct6.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct6.edu.cn/</a> 端口：80</p><p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="noopener">http://sdk.gdgshanghai.com</a> 端口：8000</p><p>参考地址：<a href="https://www.cnblogs.com/maxinliang/p/5083495.html" target="_blank" rel="noopener">https://www.cnblogs.com/maxinliang/p/5083495.html</a></p><p>具体的使用的时候，不需要 http, 直接 域名，即：mirrors.neusoft.edu.cn</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先开启 SS 的全局模式，查看到代理的 ip 和 port, 然后命令行每次需要设置下 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code>, 只对当前窗口有效。至于 ping 命令不行，而代码库能拉下来的原因是：<br>SS 不会代理到 ICMP 包 同理也无法测试路由跟踪。<br>因为ping用的icmp， 代理没代理icmp。</p><pre><code>nc -X 5 -x 127.0.0.1:1086 youtube.com 443 -v-x 是当前代理的端口和地址-X 5 表示 socks5-X 4 表示 socks4-X connect 表示 https</code></pre><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg" alt=""></p><p>测试结果是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gdky005/PictureResourc
-      
-    
-    </summary>
-    
-      <category term="Shadowsocks" scheme="http://gdky005.com/categories/Shadowsocks/"/>
-    
-    
-      <category term="Shadowsocks，代理" scheme="http://gdky005.com/tags/Shadowsocks%EF%BC%8C%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
