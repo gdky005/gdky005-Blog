@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2019-01-03T07:23:46.334Z</updated>
+  <updated>2019-04-14T03:38:51.894Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>业务开发中自定义 EditText 光标不显示？</title>
+    <link href="http://gdky005.com/2019/04/14/%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89-EditText-%E5%85%89%E6%A0%87%E4%B8%8D%E6%98%BE%E7%A4%BA%EF%BC%9F/"/>
+    <id>http://gdky005.com/2019/04/14/业务开发中自定义-EditText-光标不显示？/</id>
+    <published>2019-04-14T03:28:03.000Z</published>
+    <updated>2019-04-14T03:38:51.894Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录一个业务开发遇到的问题。最近996赶项目，UI 妹子说你这个输入框的光标颜色是红色的，不好看，我要换成橘黄的。好吧，那就修改下。<br>直接使用这个代码：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">            android:<span class="attribute">id</span>=<span class="string">"@+id/et_forget_password_verify_code"</span></span><br><span class="line">            <span class="attribute">style</span>=<span class="string">"@style/EditTextNoPaddingStyle"</span></span><br><span class="line">            android:<span class="attribute">inputType</span>=<span class="string">"textVisiblePassword"</span></span><br><span class="line">            android:<span class="attribute">hint</span>=<span class="string">"@string/register_verify_code_hint"</span></span><br><span class="line">            android:<span class="attribute">maxLength</span>=<span class="string">"6"</span>/&gt;</span><br></pre></td></tr></table></figure><p>style.xml</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@color/color_edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p>结果在三星手机显示正常，但是测试同学说在 小米和华为手机，不显示光标，只有输入一个后，才会显示，但是光标也不闪动。</p><p>最后排查了下，具体原因是：textCursorDrawable 后面一定要跟 drawable ，否则某些手机厂商定制系统兼容不好，就显示不出来，或者不闪动。</p><p>解决办法是：<br>添加 edit_text_cursor.xml</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:width</span>=<span class="string">"@dimen/dp_05"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"font-family: Arial, Helvetica, sans-serif;"</span>&gt;</span><span class="comment">&lt;!-- 光标宽度可以自己定义 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@color/color_edit_text_cursor"</span>/&gt;</span><span class="comment">&lt;!-- 光标颜色可以自己定义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure><p>style.xml</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@drawable/edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p>这样就显示正常了。</p><p>同此的理，很多我们在自己的手机或者测试机显示正常，但是不代表在所有手机显示正常，所有要多兼容，选择最安全的方式。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这里记录一个业务开发遇到的问题。最近996赶项目，UI 妹子说你这个输入框的光标颜色是红色的，不好看，我要换成橘黄的。好吧，那就修改下。&lt;br&gt;直接使用这个代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td c
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>QPM 之同类 PM 对比</title>
@@ -109,32 +131,6 @@
       
         &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;重复的
-      
-    
-    </summary>
-    
-      <category term="QPM" scheme="http://gdky005.com/categories/QPM/"/>
-    
-    
-      <category term="QPM, 性能优化, 组件" scheme="http://gdky005.com/tags/QPM-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QPM 之缘起</title>
-    <link href="http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E7%BC%98%E8%B5%B7/"/>
-    <id>http://gdky005.com/2019/01/03/QPM-之缘起/</id>
-    <published>2019-01-03T07:18:53.000Z</published>
-    <updated>2019-01-03T07:19:26.154Z</updated>
-    
-    <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p><p>曾经我和你们一样，成天疲于业务开发，一天天除了加班，还是加班。可是呢，bug 还是不断，看着人家的 app 那么流畅，为啥我做的这么挫？What’s fuck! 慢慢的，掌握到一些性能优化的技巧后，熟练的搞起优化，app 就不再那么卡了，看着得意之作，心里满满的喜悦。</p><h3 id="缘起——GT"><a href="#缘起——GT" class="headerlink" title="缘起——GT"></a>缘起——GT</h3><p>当时看到腾讯 GT 的悬浮窗，眼前一亮，这个东西好使，不错不错。但是时间就了以后，发现每个手机要看数据必须先安装一个 GT，而且有些功能需要 root 以后才能查看。我想我们 app 中的某些常变的数据要是能展示到 GT 的悬浮窗就方便很多啦，于是尝试把 GT 放到我们 App 里面去，此过程超级麻烦，好不容易加进去了，结果我们的 App 直接增大了 3MB， 虽说我们的 App 已经 70MB 了，增加 3MB 也没事，但是我怎么能忍受得了，一个组件就要增加 3MB 呢？ 于是我想结合我们 App 的特性，自己搞一个 QPM，功能很简单，把一些 GT 里面的数据展示到 QPM 中，于是参考 GT，开始实施。</p><p>轮子已经有了，干嘛还要再造一个轮子呢？ 其实不然，虽然有了轮子，但是这个轮子和我的车型号不匹配嘛，无法发挥到极致。于是参考轮子的大体框架，改造成属于我们自己的轮子。贴个花边，换个螺丝钉，弄个小号的。哈哈哈，最后终于弄出了一个简易版本，但是太粗糙了，我们自己都不想用。</p><h3 id="缘起——FPS"><a href="#缘起——FPS" class="headerlink" title="缘起——FPS"></a>缘起——FPS</h3><p>突然接手一个老项目，啥都不太了解，虽然 UI 界面卡卡的，但是不能轻易优化，万一优化后，背锅咋弄？就先这样吧，直到某一天老大说卡的不行啦，必须优化。好吧，那就慢慢优化吧。可是心里总没谱，怎么样算优化好呢？ 没个啥指标的，还真不好弄。假如有一个工具可以告诉我哪些界面卡？ 卡到什么程度，优化之后可以达到什么样的效果，该多好呀。在某些手机上有系统自带的 FPS 指标，可是其他手机没有嘛，总不能用该手机作为评判标准吧。</p><h3 id="缘起——栈顶-Activity-名字"><a href="#缘起——栈顶-Activity-名字" class="headerlink" title="缘起——栈顶 Activity 名字"></a>缘起——栈顶 Activity 名字</h3><p>想起之前看同事的手机，每打开一个 App, 就能显示当前 App 的包名和当前的 Activity 的名字，感觉很不错，但是没啥用吧。他说：『我刚来，老大分配了一些任务，但是我不太熟悉代码，具体页面怎么查，不是很方便，有这个就可以轻松搞定啦！』 很有道理嘛，可以加一个。某天我在修复 bug 的时候，真找不到页面，想问问业务同学，这是哪个页面，他直接让我用命令行获取栈顶 Activity 名字，而之前同事说的那个插件应用，需要翻墙下载。从此，我坚定了必须要把这个功能加到我的 QPM 中，我想让跟我遇到过同样问题的人，省去这些麻烦。每次小小的进步，之后回头看那就是一大步。</p><h3 id="缘起——屏幕录制"><a href="#缘起——屏幕录制" class="headerlink" title="缘起——屏幕录制"></a>缘起——屏幕录制</h3><p>功能都差不多了，突然有天，一个测试同学，给群里扔了一个小视频，是出现某个 bug的视频, 用另外一个手机录屏的。我在想要是能把这个加到 QPM 里面就好了。过来几天，我手机上出现了一个问题，我用小米自带的录屏工具，轻松就录制了，发给大佬们。但是大佬问我，怎么录制呢？ 我说用系统自带的工具，他说他录制不了，随后让他下载软件进行录制。这个过程感觉挺麻烦的，更加坚定了我的决心。经过查询原来 Android 5.0 以上系统就提供了方法哈，那我就直接放到我们的 QPM 中，之后遇到这类需要截屏，但是手头没工具的情况，就可以直接开启 QPM 录屏了，又是一个棒棒哒的功能。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;曾经我和你们一样
       
     
     </summary>
