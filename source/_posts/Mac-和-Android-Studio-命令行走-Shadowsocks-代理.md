@@ -120,4 +120,9 @@ SS 不会代理到 ICMP 包 同理也无法测试路由跟踪。
 测试结果是：
 ![](https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg)
 
+### 2019年07月25日附加
+有时候可能设置还不行，可以按照这个文章的链接试试：
+
+
+[https://cloud.tencent.com/developer/article/1127071](https://cloud.tencent.com/developer/article/1127071)
 
