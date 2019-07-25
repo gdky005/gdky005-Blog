@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -23,8 +23,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -42,7 +42,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -76,23 +76,23 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="okhttp3" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="孤独狂饮" type="application/atom+xml" />
+  <meta name="keywords" content="okhttp3">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="alternate" href="/atom.xml" title="孤独狂饮" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/"/>
+  <link rel="canonical" href="http://gdky005.com/2016/06/20/Okhttp3源码分析【DiskLruCache】/">
 
 
 
@@ -191,7 +191,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">孤独狂饮</span>
         <span class="logo-line-after"><i></i></span>
@@ -221,7 +221,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -231,7 +231,7 @@
         <li class="menu-item menu-item-zhuoketeam">
           <a href="/categories/ZhuoKeTeam" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-android"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-android"></i> <br>
             
             卓客Team
           </a>
@@ -241,7 +241,7 @@
         <li class="menu-item menu-item-qpm">
           <a href="/categories/QPM" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-pied-piper"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-pied-piper"></i> <br>
             
             QPM_性能优化组件
           </a>
@@ -251,7 +251,7 @@
         <li class="menu-item menu-item-shields">
           <a href="/categories/shields" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-shield"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-shield"></i> <br>
             
             shields_徽章系列文章
           </a>
@@ -261,7 +261,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -271,7 +271,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -310,7 +310,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gdky005">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -358,7 +358,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -389,8 +389,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/06/20/Okhttp3源码分析【DiskLruCache】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/20/Okhttp3源码分析【DiskLruCache】/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -402,7 +401,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
             </span>
           
 
@@ -499,12 +498,12 @@
 <p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
 <p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
 <ul>
-<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
-<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
+<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt></li>
+<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt></li>
 </ul>
 <ol start="3">
 <li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
-<p>Resonse(java对象) \<--- cache.entry="" ---\=""> source/sink(文件io)</---></p>
+<p>Resonse(java对象) \<--- cache.entry ---\> source/sink(文件io)</---></p>
 </blockquote>
 </li>
 </ol>
@@ -551,7 +550,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;">
     <div>加微信好友,一起交流</div>
 </div>
 
@@ -646,7 +645,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -695,7 +694,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -706,9 +705,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="gdky005" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="gdky005">
           <p class="site-author-name" itemprop="name">gdky005</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -837,7 +834,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

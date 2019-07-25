@@ -9,13 +9,13 @@
       <content type="html"><![CDATA[<p>这里记录一个业务开发遇到的问题。最近996赶项目，UI 妹子说你这个输入框的光标颜色是红色的，不好看，我要换成橘黄的。好吧，那就修改下。<br>直接使用这个代码：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">            android:<span class="attribute">id</span>=<span class="string">"@+id/et_forget_password_verify_code"</span></span><br><span class="line">            <span class="attribute">style</span>=<span class="string">"@style/EditTextNoPaddingStyle"</span></span><br><span class="line">            android:<span class="attribute">inputType</span>=<span class="string">"textVisiblePassword"</span></span><br><span class="line">            android:<span class="attribute">hint</span>=<span class="string">"@string/register_verify_code_hint"</span></span><br><span class="line">            android:<span class="attribute">maxLength</span>=<span class="string">"6"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <p>style.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@color/color_edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@color/color_edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>结果在三星手机显示正常，但是测试同学说在 小米和华为手机，不显示光标，只有输入一个后，才会显示，但是光标也不闪动。</p>
 <p>最后排查了下，具体原因是：textCursorDrawable 后面一定要跟 drawable ，否则某些手机厂商定制系统兼容不好，就显示不出来，或者不闪动。</p>
 <p>解决办法是：<br>添加 edit_text_cursor.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:width</span>=<span class="string">"@dimen/dp_05"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"font-family: Arial, Helvetica, sans-serif;"</span>&gt;</span><span class="comment">&lt;!-- 光标宽度可以自己定义 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@color/color_edit_text_cursor"</span>/&gt;</span><span class="comment">&lt;!-- 光标颜色可以自己定义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:width</span>=<span class="string">"@dimen/dp_05"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"font-family: Arial, Helvetica, sans-serif;"</span>&gt;</span><span class="comment">&lt;!-- 光标宽度可以自己定义 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@color/color_edit_text_cursor"</span>/&gt;</span><span class="comment">&lt;!-- 光标颜色可以自己定义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>style.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@drawable/edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    ...</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"EditTextNoPaddingStyle"</span> <span class="attr">parent</span>=<span class="string">"LayoutMW"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textCursorDrawable"</span>&gt;</span>@drawable/edit_text_cursor<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这样就显示正常了。</p>
 <p>同此的理，很多我们在自己的手机或者测试机显示正常，但是不代表在所有手机显示正常，所有要多兼容，选择最安全的方式。</p>
 ]]></content>
@@ -78,7 +78,7 @@
 <li>再也不用 因为某些信息没有，查询半天。</li>
 </ol>
 <p>是否 Root, SDK 版本，手机型号，网络，名称，IP，Mac 地址，屏幕分辨率，CPU 架构等等信息。遇到关键的数据，还能复制。</p>
-<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt=""></p>
+<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt></p>
 <h2 id="AndroidManifest-xml-信息"><a href="#AndroidManifest-xml-信息" class="headerlink" title="AndroidManifest.xml 信息"></a>AndroidManifest.xml 信息</h2><p>包名，版本号，App 的所有权限，构建 SDK 的版本信息，还有最最重要的注册的四大组件（Activity，Service，Receiver，Provider）。里面的 Activity 可以直接点击后跳转，Service可以查看有多少本地服务，Receiver 可以很明确的知道当前注册了多少广播，Provider 可以查看本地的内容提供者。</p>
 <h2 id="应用的所有-SP-信息"><a href="#应用的所有-SP-信息" class="headerlink" title="应用的所有 SP 信息"></a>应用的所有 SP 信息</h2><p>Root 手机我们直接通过 文件管理器 可以直接查看 SP 文件。</p>
 <p>如果没有 Root 呢？ 笨办法，通过调试代码或者 log 打印输出。</p>
@@ -121,7 +121,7 @@
       <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p>
 <p>让我们来尝试做一些可以可视化的悬浮窗功能吧，里面可以展示一些基础的性能指标数据。</p>
 <p>启动 App 后便可以看到一些数据，解决未 root 手机无法获取数据的疑难杂症。</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt></p>
 <h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p>一个 apk 会有一个固定的包名，但是在某些特殊场景下，却会展示多个包名，例如：测试包，正式包，变种包，推送测试包等等，给 QPM 展示当前应用的包名，在某些时候可以方便我们定位问题。举个例子：我们之前一直在测试推送包，有时候需要切换到正式包，在两个包中切换各种RD，ST环境，最后我都不记得我用的什么包，只能卸载了，重新安装。QPM 的悬浮窗可以直接展示当前应用的包名，看一眼就知道了，其实也可以把当前进程+线程号打印出来，方便开发同学分析问题。</p>
 <h3 id="当前-Activity-的名字"><a href="#当前-Activity-的名字" class="headerlink" title="当前 Activity 的名字"></a>当前 Activity 的名字</h3><p>试想，做了5年的项目，交给新来你接手？或者同事离职，丢下一堆坑，需要你来填坑。根据代码梳理流程后，也不一定能立刻接手，如果根据页面找Activity，一个字————累！</p>
 <p>如果能直接展示当前界面的 Activity 名字，是不是更容易一些呢？ </p>
@@ -305,7 +305,7 @@
 <h3 id="运行-App-即可查看性能"><a href="#运行-App-即可查看性能" class="headerlink" title="运行 App 即可查看性能"></a>运行 App 即可查看性能</h3><p>大家加班，加点，忙需求，没有那么多的时间去看性能问题，最多在几个关键时间点集中处理下。如果我们的 App 运行后，就内置了一个这样的功能，只要打开开关，就可以悬浮窗到主界面上，根据 FPS，内存，CPU，去看一个检测页面卡顿情况就再好不过了。</p>
 <h2 id="悬浮窗助力性能优化"><a href="#悬浮窗助力性能优化" class="headerlink" title="悬浮窗助力性能优化"></a>悬浮窗助力性能优化</h2><p>让我们来尝试做一些可以可视化的悬浮窗功能吧，里面可以展示一些基础的性能指标数据。</p>
 <p>启动 App 后便可以看到一些数据，解决未 root 手机无法获取数据的疑难杂症。</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_1.jpg" alt></p>
 <h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p>一个 apk 会有一个固定的包名，但是在某些特殊场景下，却会展示多个包名，例如：测试包，正式包，变种包，推送测试包等等，给 QPM 展示当前应用的包名，在某些时候可以方便我们定位问题。举个例子：我们之前一直在测试推送包，有时候需要切换到正式包，在两个包中切换各种RD，ST环境，最后我都不记得我用的什么包，只能卸载了，重新安装。QPM 的悬浮窗可以直接展示当前应用的包名，看一眼就知道了，其实也可以把当前进程+线程号打印出来，方便开发同学分析问题。</p>
 <h3 id="当前-Activity-的名字"><a href="#当前-Activity-的名字" class="headerlink" title="当前 Activity 的名字"></a>当前 Activity 的名字</h3><p>试想，做了5年的项目，交给新来你接手？或者同事离职，丢下一堆坑，需要你来填坑。根据代码梳理流程后，也不一定能立刻接手，如果根据页面找Activity，一个字————累！</p>
 <p>如果能直接展示当前界面的 Activity 名字，是不是更容易一些呢？ </p>
@@ -353,7 +353,7 @@
 <li>再也不用 因为某些信息没有，查询半天。</li>
 </ol>
 <p>是否 Root, SDK 版本，手机型号，网络，名称，IP，Mac 地址，屏幕分辨率，CPU 架构等等信息。遇到关键的数据，还能复制。</p>
-<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt=""></p>
+<p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt></p>
 <h3 id="AndroidManifest-xml-信息"><a href="#AndroidManifest-xml-信息" class="headerlink" title="AndroidManifest.xml 信息"></a>AndroidManifest.xml 信息</h3><p>包名，版本号，App 的所有权限，构建 SDK 的版本信息，还有最最重要的注册的四大组件（Activity，Service，Receiver，Provider）。里面的 Activity 可以直接点击后跳转，Service可以查看有多少本地服务，Receiver 可以很明确的知道当前注册了多少广播，Provider 可以查看本地的内容提供者。</p>
 <h3 id="应用的所有-SP-信息"><a href="#应用的所有-SP-信息" class="headerlink" title="应用的所有 SP 信息"></a>应用的所有 SP 信息</h3><p>Root 手机我们直接通过 文件管理器 可以直接查看 SP 文件。</p>
 <p>如果没有 Root 呢？ 笨办法，通过调试代码或者 log 打印输出。</p>
@@ -409,32 +409,32 @@
     <entry>
       <title><![CDATA[Mac 和 Android Studio 命令行走 Shadowsocks 代理]]></title>
       <url>http://gdky005.com/2018/03/29/Mac-%E5%92%8C-Android-Studio-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B5%B0-Shadowsocks-%E4%BB%A3%E7%90%86/</url>
-      <content type="html"><![CDATA[<p>今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p>今天同事说拉了一份 Android 代码，但是在他的电脑上总是构建失败，说下载不下来一些组件。经常查看 log, 发现确实是需要翻墙。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_0.jpg" alt></p>
 <h2 id="使用-Shadowsocks-的-PAC-自动模式始终失败"><a href="#使用-Shadowsocks-的-PAC-自动模式始终失败" class="headerlink" title="使用 Shadowsocks 的 PAC 自动模式始终失败"></a>使用 Shadowsocks 的 PAC 自动模式始终失败</h2><p>本地开启自己搭建的 Shadowsocks，使用 PAC 自动模式。代理地址是：<code>172.0.0.1 ，端口：1089</code></p>
-<p>在 Android Studio 中如下设置，未成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_1.jpg" alt=""></p>
-<p>尝试以下，也没有成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_2.jpg" alt=""> <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_3.jpg" alt=""></p>
-<p>经过 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_4.jpg" alt=""> 的测试，发现，这种设置方法是错误的。不会成功，至少对于 mac 来说是这样的。</p>
-<h2 id="开启正确的全局代理模式"><a href="#开启正确的全局代理模式" class="headerlink" title="开启正确的全局代理模式"></a>开启正确的全局代理模式</h2><p>首先将 Shadowsocks 设置为全局代理模式，通过 mac 的网络 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_5.jpg" alt="">，<img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_6.jpg" alt=""><br>得到代理地址是：<br><code>127.0.0.1, 端口：1086</code></p>
-<p>在 AS 中配置：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_7.jpg" alt=""></p>
+<p>在 Android Studio 中如下设置，未成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_1.jpg" alt></p>
+<p>尝试以下，也没有成功。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_2.jpg" alt> <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_3.jpg" alt></p>
+<p>经过 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_4.jpg" alt> 的测试，发现，这种设置方法是错误的。不会成功，至少对于 mac 来说是这样的。</p>
+<h2 id="开启正确的全局代理模式"><a href="#开启正确的全局代理模式" class="headerlink" title="开启正确的全局代理模式"></a>开启正确的全局代理模式</h2><p>首先将 Shadowsocks 设置为全局代理模式，通过 mac 的网络 <img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_5.jpg" alt>，<img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_6.jpg" alt><br>得到代理地址是：<br><code>127.0.0.1, 端口：1086</code></p>
+<p>在 AS 中配置：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_7.jpg" alt></p>
 <p>可以点击图中的 <code>Check connecction</code> 按钮，输入<code>http://www.youtube.com</code> 来检验是否可以走代理。</p>
 <p>正常来说，应该会成功的。如果不行，可能是端口占用，或者一些其他原因，建议重启电脑试试。</p>
 <p>使用 Android Studio 构建项目的时候，默认就可以走代理直接访问下载不了的资源了。但是这个期间是看不到具体过程，如果卡在哪一步，我们很难察觉，只能默默的等待。非常的尴尬，我们可能会想如果使用命令该多好。</p>
 <p>经过一些测试，发现设置命令的时候，还是有一些技巧的。<br>简单点的就是直接使用 <code>export ALL_PROXY=socks5://127.0.0.1:1086</code> 设置当前的窗口生效。 </p>
 <p>然后使用 <code>curl -i http://ip.cn</code> 进行测试，看是否走了代理。</p>
-<p>以下是我的测试结果：<br>未使用代理<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_8.jpg" alt=""></p>
-<p>使用代理：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_9.jpg" alt=""></p>
-<p>虽然使用了代理，但是 <code>ping</code> 命令还是不通的。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_10.jpg" alt=""><br>当时总以为失败了，但是经过大姑爷的提醒，用国外的 git clone 命令测试下，就知道了。</p>
+<p>以下是我的测试结果：<br>未使用代理<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_8.jpg" alt></p>
+<p>使用代理：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_9.jpg" alt></p>
+<p>虽然使用了代理，但是 <code>ping</code> 命令还是不通的。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_10.jpg" alt><br>当时总以为失败了，但是经过大姑爷的提醒，用国外的 git clone 命令测试下，就知道了。</p>
 <h2 id="git-clone-测试代理"><a href="#git-clone-测试代理" class="headerlink" title="git clone 测试代理"></a>git clone 测试代理</h2><p>googlesource.com 是 google 的代码开源地址，但是现在几乎停用了，都转到 github。 但是还有部分代码还是 这里，例如: <a href="https://android.googlesource.com/device/asus/deb/" target="_blank" rel="noopener">https://android.googlesource.com/device/asus/deb/</a></p>
 <p>google 和 googlesource.com 默认在国内都是 ping 不通的。所以可以使用这个测试代理是否可用。</p>
 <p>所以选定这个命令：<code>git clone https://android.googlesource.com/device/asus/deb</code></p>
-<p>不开代理，默认提示失败：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg" alt=""></p>
-<p>开代理，下载成功：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_12.jpg" alt=""></p>
+<p>不开代理，默认提示失败：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_11.jpg" alt></p>
+<p>开代理，下载成功：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_12.jpg" alt></p>
 <p>到这里，命令行已经可用了。</p>
-<h2 id="Android-Studio-设置代理"><a href="#Android-Studio-设置代理" class="headerlink" title="Android Studio 设置代理"></a>Android Studio 设置代理</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg" alt=""></p>
+<h2 id="Android-Studio-设置代理"><a href="#Android-Studio-设置代理" class="headerlink" title="Android Studio 设置代理"></a>Android Studio 设置代理</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_13.jpg" alt></p>
 <h2 id="更新-Android-SDK"><a href="#更新-Android-SDK" class="headerlink" title="更新 Android SDK"></a>更新 Android SDK</h2><h3 id="尝试使用-android-sdk-工具更新最新组件"><a href="#尝试使用-android-sdk-工具更新最新组件" class="headerlink" title="尝试使用 android sdk 工具更新最新组件"></a>尝试使用 android sdk 工具更新最新组件</h3><p>新版本的 Android SDK 不允许直接通过命令行更新 SDK 了，需要配合 Android Studio 一起才能更新，让人有些不爽。</p>
 <p>可以在这里下载对应平台的 zip, 解压后直接替换自带的 tools 等目录，就可以和以前一样使用 <code>android</code> 命令打开 Android SDK 的 UI 更新界面。<br><a href="https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog" target="_blank" rel="noopener">https://pan.baidu.com/s/1xAOFWhI_nVNByHyuYJQQog</a></p>
-<h3 id="在-Android-Studio-中更新-SDK"><a href="#在-Android-Studio-中更新-SDK" class="headerlink" title="在 Android Studio 中更新 SDK"></a>在 Android Studio 中更新 SDK</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg" alt=""></p>
+<h3 id="在-Android-Studio-中更新-SDK"><a href="#在-Android-Studio-中更新-SDK" class="headerlink" title="在 Android Studio 中更新 SDK"></a>在 Android Studio 中更新 SDK</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_14.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_15.jpg" alt></p>
 <h2 id="常用公开的代理服务器"><a href="#常用公开的代理服务器" class="headerlink" title="常用公开的代理服务器"></a>常用公开的代理服务器</h2><p>大连东软信息学院镜像服务器地址:<br>    <a href="http://mirrors.neusoft.edu.cn" target="_blank" rel="noopener">http://mirrors.neusoft.edu.cn</a> 端口：80</p>
 <p>北京化工大学镜像服务器地址:<br>    IPv4: <a href="http://ubuntu.buct.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct.edu.cn/</a> 端口：80<br>    IPv4: <a href="http://ubuntu.buct.cn/" target="_blank" rel="noopener">http://ubuntu.buct.cn/</a> 端口：80<br>    IPv6: <a href="http://ubuntu.buct6.edu.cn/" target="_blank" rel="noopener">http://ubuntu.buct6.edu.cn/</a> 端口：80</p>
 <p>上海GDG镜像服务器地址:<br>    <a href="http://sdk.gdgshanghai.com" target="_blank" rel="noopener">http://sdk.gdgshanghai.com</a> 端口：8000</p>
@@ -447,8 +447,10 @@
 -X 5 表示 socks5
 -X 4 表示 socks4
 -X connect 表示 https
-</code></pre><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg" alt=""></p>
-<p>测试结果是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg" alt=""></p>
+</code></pre><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_16.jpg" alt></p>
+<p>测试结果是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/mac_doc_shadowsocks/mac_doc_shadowsocks_17.jpg" alt></p>
+<h3 id="2019年07月25日附加"><a href="#2019年07月25日附加" class="headerlink" title="2019年07月25日附加"></a>2019年07月25日附加</h3><p>有时候可能设置还不行，可以按照这个文章的链接试试：</p>
+<p><a href="https://cloud.tencent.com/developer/article/1127071" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1127071</a></p>
 ]]></content>
       
         <categories>
@@ -490,8 +492,8 @@
 
 python manage.py migrate      
 </code></pre><p>，然后使用这个命令：<br>    python manage.py sqlmigrate 【你的 Modle 名称】 0001 </p>
-<p>就能看到一个 Sql 语句，把这个语句在服务器端执行一下就可以了，等同于在服务器端创建了新的数据表，然后使用 Django 的表中的数据就正常了，可以正常删除添加操作。<br>如果遇到  新加了字段总是报错，可以给新加的这个字段添加 默认值，然后执行就 Ok 了。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-1.png" alt=""></p>
-<h3 id="自动增长和主键只有一个生效了"><a href="#自动增长和主键只有一个生效了" class="headerlink" title="自动增长和主键只有一个生效了"></a>自动增长和主键只有一个生效了</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-2.png" alt=""><br>上面的这种方法不行的哦！<br>具体的解决办法是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-3.png" alt=""></p>
+<p>就能看到一个 Sql 语句，把这个语句在服务器端执行一下就可以了，等同于在服务器端创建了新的数据表，然后使用 Django 的表中的数据就正常了，可以正常删除添加操作。<br>如果遇到  新加了字段总是报错，可以给新加的这个字段添加 默认值，然后执行就 Ok 了。<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-1.png" alt></p>
+<h3 id="自动增长和主键只有一个生效了"><a href="#自动增长和主键只有一个生效了" class="headerlink" title="自动增长和主键只有一个生效了"></a>自动增长和主键只有一个生效了</h3><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-2.png" alt><br>上面的这种方法不行的哦！<br>具体的解决办法是：<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/django-error/django-delete_error-3.png" alt></p>
 <h3 id="删除以后就无法再次创建成功，what"><a href="#删除以后就无法再次创建成功，what" class="headerlink" title="删除以后就无法再次创建成功，what?"></a>删除以后就无法再次创建成功，what?</h3><pre><code>python manage.py makemigrations app
 </code></pre><p>app 表示你的 Module  </p>
 ]]></content>
@@ -520,7 +522,7 @@ python manage.py migrate
 <p>github 地址：<br><a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">徽章项目 Demo github 地址：</a><br> <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a></p>
 <p><strong>下面正文，正式开始。</strong></p>
 <h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3><p>我们以最流行的 android 开源项目 <a href="https://github.com/PhilJay/MPAndroidChart" title="MPAndroidChart" target="_blank" rel="noopener">MPAndroidChart</a> 为例来看看。</p>
-<p><a href="#"><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-0.png" alt=""></a></p>
+<p><a href="#"><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-0.png" alt></a></p>
 <ol>
 <li>前两个蓝色的标签：开始两个蓝色的标签是开源项目主要贡献者 Twitter 的联系方式，点击后可以跳入到 Twitter 的主页，查看该大神的 动态。</li>
 <li>橘色的标签：是国外比较有名的 开源项目网站 <a href="https://android-arsenal.com" target="_blank" rel="noopener">android-arsenal</a>， 很多开源项目都会在这里找到，有该项目的详细介绍。包含组员，版本号，github 项目基础信息等等。点击后会进入 MPAndroidChart 项目的首页，能看到有好多想知道的，不想知道的各种信息。</li>
@@ -528,44 +530,44 @@ python manage.py migrate
 <li>绿色的标签： 这个比较有意思，是 当前想支持的最低版本，MPAndroidChart的最低版本是 api-8。 点击后会进入到Android 2.2–2.2.3 Froyo (API level 8) 的详细介绍。这个功能是 android-arsenal 专门提供 开发者使用的。 下面也会有所介绍。</li>
 </ol>
 <p>下面我们将 这些标签称之为 徽章 （<a href="https://shields.io/" target="_blank" rel="noopener">shields</a>）。</p>
-<h3 id="Top-30-android-开源项目徽章"><a href="#Top-30-android-开源项目徽章" class="headerlink" title="Top 30 android 开源项目徽章"></a>Top 30 android 开源项目徽章</h3><p>我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-1.png" alt=""><br>统计情况如下：</p>
+<h3 id="Top-30-android-开源项目徽章"><a href="#Top-30-android-开源项目徽章" class="headerlink" title="Top 30 android 开源项目徽章"></a>Top 30 android 开源项目徽章</h3><p>我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-1.png" alt><br>统计情况如下：</p>
 <ol>
 <li>Retrofit 0</li>
 <li>okhttp 0</li>
 <li>Butter Knife 0</li>
-<li>MPAndroidChart 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-2.png" alt=""></li>
-<li>Android-Universal-Image-Loader 2 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-3.png" alt=""></li>
-<li>glide 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-4.png" alt=""></li>
+<li>MPAndroidChart 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-2.png" alt></li>
+<li>Android-Universal-Image-Loader 2 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-3.png" alt></li>
+<li>glide 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-4.png" alt></li>
 <li>leakcanary 0 </li>
-<li>EventBus 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-5.png" alt=""></li>
+<li>EventBus 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-5.png" alt></li>
 <li>picasso 0 </li>
-<li>zxing 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-6.png" alt=""></li>
+<li>zxing 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-6.png" alt></li>
 <li>iosched 0</li>
-<li>Fresco 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-7.png" alt=""></li>
+<li>Fresco 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-7.png" alt></li>
 <li>lottie-android 0</li>
-<li>RxAndroid 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-8.png" alt=""></li>
-<li>libgdx 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-9.png" alt=""></li>
+<li>RxAndroid 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-8.png" alt></li>
+<li>libgdx 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-9.png" alt></li>
 <li>SlidingMenu 0</li>
-<li>PhotoView 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-10.png" alt=""></li>
-<li>android-async-http 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-11.png" alt=""></li>
-<li>material-dialogs 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-12.png" alt=""></li>
+<li>PhotoView 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-10.png" alt></li>
+<li>android-async-http 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-11.png" alt></li>
+<li>material-dialogs 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-12.png" alt></li>
 <li>AndroidUtilCode 0</li>
-<li>androidannotations 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-13.png" alt=""></li>
-<li>Material-Animations 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-14.png" alt=""></li>
-<li>fastjson 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-15.png" alt=""></li>
+<li>androidannotations 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-13.png" alt></li>
+<li>Material-Animations 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-14.png" alt></li>
+<li>fastjson 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-15.png" alt></li>
 <li>ViewPagerIndicator 0 </li>
 <li>plaid 0 </li>
-<li>PocketHub 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-16.png" alt=""></li>
-<li>tinker 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-17.png" alt=""></li>
-<li>Android-CleanArchitecture 2  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-18.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-19.png" alt=""></li>
+<li>PocketHub 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-16.png" alt></li>
+<li>tinker 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-17.png" alt></li>
+<li>Android-CleanArchitecture 2  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-18.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-19.png" alt></li>
 <li>Android-PullToRefresh 0 </li>
-<li>MaterialDesignLibrary 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-20.png" alt=""></li>
+<li>MaterialDesignLibrary 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-20.png" alt></li>
 </ol>
 <p>我们是筛选容器就是 30个，统计日期：2017年04月27日（随着时间推移，可能略微有变动）。使用标签的有 18个，未使用的有12个。 使用概率大约是：60%。如果筛选容器的范围再大一点可能更多，没有使用徽章的12个项目，可能由于历史原因，或者个人原因未使用，但是不管怎么说，使用徽章的人会越来越多。</p>
 <h3 id="为什么要使用徽章？"><a href="#为什么要使用徽章？" class="headerlink" title="为什么要使用徽章？"></a>为什么要使用徽章？</h3><p>徽章 <a href="https://github.com/badges/shields" target="_blank" rel="noopener">shields</a></p>
 <p>徽章的使用不仅仅是为了装 B，而是为了让开源想更高效。进入项目主页一眼能看出需要的东西，例如该项目能否编译通过，当前最新的版本是什么等。</p>
 <p>徽章能突出视野，github 默认给我们展示的是黑白世界，但是通过 徽章，将会得到改变。重要的信息可以一目了然。</p>
-<h3 id="最常用徽章有哪些？"><a href="#最常用徽章有哪些？" class="headerlink" title="最常用徽章有哪些？"></a>最常用徽章有哪些？</h3><p>一份不太靠谱的标准，不过你应该掌握:<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-21.png" alt=""><br>（PS: 上图中的图标顺序对应下面的顺序）</p>
+<h3 id="最常用徽章有哪些？"><a href="#最常用徽章有哪些？" class="headerlink" title="最常用徽章有哪些？"></a>最常用徽章有哪些？</h3><p>一份不太靠谱的标准，不过你应该掌握:<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-21.png" alt><br>（PS: 上图中的图标顺序对应下面的顺序）</p>
 <ol>
 <li>jitpack 徽章：<a href="https://jitpack.io" target="_blank" rel="noopener">JitPack</a> 是一个仓库，类似 maven，binary, 主要是帮我们生产 android 项目的 aar or jar 的平台。基于 GitHub，可以很方便将 library 发布到远程，然后可以用 gradle 依赖到任何一个项目中。</li>
 <li>travis-ci 徽章：<a href="https://travis-ci.org" target="_blank" rel="noopener">Travis-CI</a> 是一个线托管的CI服务，不需要自己搭服务器，在网页上点几下就好，用起来更方便。最重要的是，它对开源项目是免费的。</li>
@@ -592,70 +594,70 @@ python manage.py migrate
 <p>用其他版本或者环境也是可以的, 这里只是说明。 如果任何遇到问题，可以在我的博客里面留言，联系详情为：<a href="http://www.gdky005.com/about/" target="_blank" rel="noopener">http://www.gdky005.com/about/</a> 因为该文的完整版真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有疑问或非常感兴趣的同学，可以来次探讨，也许一些新功能就是你们发觉的呢。 （PS：本应该在文末尾添加联系方式的，但是无奈，很多网站都有爬虫系统，好不容易写的文章就被爬走了，导致很多小伙伴遇到问题后，各种留言，但是我就是看不到，所以这次采取特殊方式，见谅哈）</p>
 <h3 id="JitPack-的使用"><a href="#JitPack-的使用" class="headerlink" title="JitPack 的使用"></a>JitPack 的使用</h3><p>官网： <a href="https://jitpack.io" target="_blank" rel="noopener">https://jitpack.io</a></p>
 <h5 id="创建-Android-Library"><a href="#创建-Android-Library" class="headerlink" title="创建 Android Library"></a>创建 Android Library</h5><ol>
-<li>在 AS 中创建标准的 android 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-22.png" alt=""></li>
-<li>创建 Library：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-23.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-24.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-25.png" alt=""></li>
-<li>创建 badge library 成功。<h5 id="配置相关文件"><a href="#配置相关文件" class="headerlink" title="配置相关文件"></a>配置相关文件</h5>进入 <a href="https://jitpack.io/docs/ANDROID/" target="_blank" rel="noopener">jitpack android</a> 可以看到 jitpack 为我们提供的文档帮助。  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-26.png" alt=""></li>
-<li>在项目的根目录下的 build.gradle 文件中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-27.png" alt=""></li>
-<li>在 library 下的 build.gradle 中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-28.png" alt=""> ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。</li>
+<li>在 AS 中创建标准的 android 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-22.png" alt></li>
+<li>创建 Library：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-23.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-24.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-25.png" alt></li>
+<li>创建 badge library 成功。<h5 id="配置相关文件"><a href="#配置相关文件" class="headerlink" title="配置相关文件"></a>配置相关文件</h5>进入 <a href="https://jitpack.io/docs/ANDROID/" target="_blank" rel="noopener">jitpack android</a> 可以看到 jitpack 为我们提供的文档帮助。  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-26.png" alt></li>
+<li>在项目的根目录下的 build.gradle 文件中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-27.png" alt></li>
+<li>在 library 下的 build.gradle 中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-28.png" alt> ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。</li>
 </ol>
 <p>AndroidBadge 中 的 build.gradle :</p>
 <pre><code>classpath &apos;com.github.dcendents:android-maven-gradle-plugin:1.5&apos; // Add this line
 </code></pre><p>AndroidBadge 里面的 badge (library) :</p>
 <pre><code>apply plugin: &apos;com.github.dcendents.android-maven&apos;
 </code></pre><h5 id="发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）"><a href="#发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）" class="headerlink" title="发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）"></a>发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）</h5><ol>
-<li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-29.png" alt=""></li>
-<li>点击 大绿色 按钮，并填写信息：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-30.png" alt="">。 那个协议，你们随意，这里只是演示。</li>
-<li>创建成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-31.png" alt="">，拷贝当前项目地址。</li>
-<li>在 AS 的项目中创建 git 仓库：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-32.png" alt="">， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
-<li>现在我们给 library 的 badge 项目添加一个工具类：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-35.png" alt="">， 并提交到 github。</li>
+<li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-29.png" alt></li>
+<li>点击 大绿色 按钮，并填写信息：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-30.png" alt>。 那个协议，你们随意，这里只是演示。</li>
+<li>创建成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-31.png" alt>，拷贝当前项目地址。</li>
+<li>在 AS 的项目中创建 git 仓库：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-32.png" alt>， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-33.png" alt>。 项目中的文件都变成绿色后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-34.png" alt>，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
+<li>现在我们给 library 的 badge 项目添加一个工具类：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-35.png" alt>， 并提交到 github。</li>
 </ol>
-<h5 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-36.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-37.png" alt=""><br>创建第一个 release 分支：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-38.png" alt=""><br>发布成功以后就能看到: <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-39.png" alt=""></p>
+<h5 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-36.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-37.png" alt><br>创建第一个 release 分支：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-38.png" alt><br>发布成功以后就能看到: <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-39.png" alt></p>
 <p>一般用 release 就可以了， 在适当的时候 用  tag。</p>
 <h5 id="在-JitPack-上生成-aar"><a href="#在-JitPack-上生成-aar" class="headerlink" title="在 JitPack 上生成 aar"></a>在 JitPack 上生成 aar</h5><ol>
 <li>进入 <a href="https://jitpack.io/" target="_blank" rel="noopener">https://jitpack.io/</a>。</li>
-<li>将 github 的项目地址： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a>， 直接拷贝 到 jitpack 网页中的文本框中。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-40.png" alt=""></li>
-<li>点击 Look Up 后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-41.png" alt="">， 等里面的那个圈圈 转完 以后，出现 绿色的这个：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-42.png" alt=""> 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-43.png" alt=""> </li>
+<li>将 github 的项目地址： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a>， 直接拷贝 到 jitpack 网页中的文本框中。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-40.png" alt></li>
+<li>点击 Look Up 后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-41.png" alt>， 等里面的那个圈圈 转完 以后，出现 绿色的这个：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-42.png" alt> 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-43.png" alt> </li>
 <li>如果是红色的，说明有错误，点开查看，修改后重新构建。</li>
 </ol>
-<h5 id="在-app-Demo-中测试是否生效"><a href="#在-app-Demo-中测试是否生效" class="headerlink" title="在 app Demo 中测试是否生效"></a>在 app Demo 中测试是否生效</h5><p>点击 get 后，能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-44.png" alt=""></p>
+<h5 id="在-app-Demo-中测试是否生效"><a href="#在-app-Demo-中测试是否生效" class="headerlink" title="在 app Demo 中测试是否生效"></a>在 app Demo 中测试是否生效</h5><p>点击 get 后，能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-44.png" alt></p>
 <ol>
-<li>给项目根目录下的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-45.png" alt=""></li>
-<li>给app 项目里面的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-46.png" alt=""></li>
+<li>给项目根目录下的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-45.png" alt></li>
+<li>给app 项目里面的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-46.png" alt></li>
 </ol>
 <p>AndroidBadge 中 的 build.gradle :</p>
 <pre><code>maven { url &apos;https://jitpack.io&apos; }
 </code></pre><p>AndroidBadge 里面的 app 的 build.gradle :</p>
 <pre><code>compile &apos;com.github.gdky005:AndroidBadge:v1.0.0&apos;
-</code></pre><p>好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-47.png" alt=""><br>在项目的最底下也能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-48.png" alt="">。 运行 app 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-49.png" alt=""></p>
+</code></pre><p>好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-47.png" alt><br>在项目的最底下也能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-48.png" alt>。 运行 app 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-49.png" alt></p>
 <h5 id="问题来了，我们修改library-后也能调用到吗？"><a href="#问题来了，我们修改library-后也能调用到吗？" class="headerlink" title="问题来了，我们修改library 后也能调用到吗？"></a>问题来了，我们修改library 后也能调用到吗？</h5><p>让咱们一起试试吧：</p>
 <ol>
-<li>修改 badge 项目中的 1.0.0 为  1.0.1 ： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-50.png" alt="">。</li>
-<li>提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-51.png" alt="">, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-52.png" alt="">, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-53.png" alt=""></li>
-<li>然后再去 jitpack 上看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-54.png" alt=""> 多了一个 v1.0.1, 点击 get 吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-55.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-56.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-57.png" alt=""></li>
-<li>发布成功后，我们去 app 里面试试。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-58.png" alt=""></li>
-<li>同步后，直接运行 app。非常好，我们的修改的东西已经变了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-59.png" alt="">。</li>
+<li>修改 badge 项目中的 1.0.0 为  1.0.1 ： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-50.png" alt>。</li>
+<li>提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-51.png" alt>, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-52.png" alt>, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-53.png" alt></li>
+<li>然后再去 jitpack 上看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-54.png" alt> 多了一个 v1.0.1, 点击 get 吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-55.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-56.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-57.png" alt></li>
+<li>发布成功后，我们去 app 里面试试。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-58.png" alt></li>
+<li>同步后，直接运行 app。非常好，我们的修改的东西已经变了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-59.png" alt>。</li>
 </ol>
 <p>至此， jitpack 基本也差不多了，但是貌似缺少了最重要的一点吧。</p>
-<h5 id="jitpack-的徽章怎么弄"><a href="#jitpack-的徽章怎么弄" class="headerlink" title="jitpack 的徽章怎么弄"></a>jitpack 的徽章怎么弄</h5><p>还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-60.png" alt=""> 点击后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-61.png" alt=""> 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。</p>
+<h5 id="jitpack-的徽章怎么弄"><a href="#jitpack-的徽章怎么弄" class="headerlink" title="jitpack 的徽章怎么弄"></a>jitpack 的徽章怎么弄</h5><p>还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-60.png" alt> 点击后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-61.png" alt> 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。</p>
 <ol>
-<li>拷贝内容：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-62.png" alt=""></li>
-<li>打开 github 的 AndroidBridge 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-63.png" alt="">，点击该文件。</li>
-<li>让我们在线编辑下： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-64.png" alt=""></li>
-<li>给 github 中的 这个 readme.md 文件添加点东西吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-65.png" alt=""></li>
-<li>让我们 保存下。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-66.png" alt=""></li>
-<li>然后回到项目<a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">首页</a>看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-67.png" alt=""> 棒棒的，添加成功。</li>
+<li>拷贝内容：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-62.png" alt></li>
+<li>打开 github 的 AndroidBridge 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-63.png" alt>，点击该文件。</li>
+<li>让我们在线编辑下： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-64.png" alt></li>
+<li>给 github 中的 这个 readme.md 文件添加点东西吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-65.png" alt></li>
+<li>让我们 保存下。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-66.png" alt></li>
+<li>然后回到项目<a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">首页</a>看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-67.png" alt> 棒棒的，添加成功。</li>
 </ol>
 <h3 id="Travis-CI-的使用"><a href="#Travis-CI-的使用" class="headerlink" title="Travis CI 的使用"></a>Travis CI 的使用</h3><p>官网： <a href="http://travis-ci.org/" target="_blank" rel="noopener">http://travis-ci.org/</a><br>ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。<br>需要提醒的是：每次提交代码后都会重新下载需要的资源文件哦，所以时间很长，耐心等待吧。</p>
 <h5 id="TravisCI-有什么用？"><a href="#TravisCI-有什么用？" class="headerlink" title="TravisCI 有什么用？"></a>TravisCI 有什么用？</h5><p>travis-ci 就是 自动化 CI 工具，类似于大公司经常使用的 Jenkins，但是 travis-ci 是在云端的，而是支持 github, 还免费，我们可以 用 travis-ci 做很多的事情，不仅仅是 编译看 项目有没有问题。例如在项目构建结束以后，我们可以打包，并发布 apk 到都 蒲公英， fir，也可以用邮件通知给相关的开发人员和业务任务。 做一些简单处理，轻轻松松。这部分内容到后面尽快整理，在写一篇。</p>
 <h5 id="添加-github-项目到-travis-ci"><a href="#添加-github-项目到-travis-ci" class="headerlink" title="添加 github 项目到 travis-ci"></a>添加 github 项目到 travis-ci</h5><ol>
-<li>进入 Travis 官网后，使用 GitHub 账号 登录，成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-68.png" alt="">。</li>
-<li>点击 加号 ，能看到你 GitHub 里面的所有：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-69.png" alt="">， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。</li>
-<li>点击这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-70.png" alt="">，开启 Travis 构建。点击这个可以配置该项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-71.png" alt=""></li>
-<li>默认是空的：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-72.png" alt=""></li>
+<li>进入 Travis 官网后，使用 GitHub 账号 登录，成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-68.png" alt>。</li>
+<li>点击 加号 ，能看到你 GitHub 里面的所有：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-69.png" alt>， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。</li>
+<li>点击这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-70.png" alt>，开启 Travis 构建。点击这个可以配置该项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-71.png" alt></li>
+<li>默认是空的：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-72.png" alt></li>
 </ol>
 <h5 id="在-项目中添加-travis-ci-需要的-travis-yml-文件"><a href="#在-项目中添加-travis-ci-需要的-travis-yml-文件" class="headerlink" title="在 项目中添加 travis-ci 需要的 .travis.yml 文件"></a>在 项目中添加 travis-ci 需要的 .travis.yml 文件</h5><ol>
-<li>在项目根目录下直接创建 一个 .travis.yml 的文件。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-73.png" alt=""></li>
-<li>直接在文件里面添加代码：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-74.png" alt=""></li>
+<li>在项目根目录下直接创建 一个 .travis.yml 的文件。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-73.png" alt></li>
+<li>直接在文件里面添加代码：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-74.png" alt></li>
 </ol>
 <p><strong>.travis.yml 文件 源代码</strong></p>
 <pre><code>language: android
@@ -683,11 +685,11 @@ script:
   - ./gradlew assembleRelease
 </code></pre><p>因为该文很长很长，所以暂时就不解释具体含义了，可以看看官方文档。</p>
 <h5 id="push-项目到-github-travis-ci-自动监测构建"><a href="#push-项目到-github-travis-ci-自动监测构建" class="headerlink" title="push 项目到 github, travis-ci 自动监测构建"></a>push 项目到 github, travis-ci 自动监测构建</h5><ol>
-<li>提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-75.png" alt=""></li>
-<li>下面黑色部分是构建的过程：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-76.png" alt="">，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-77.png" alt=""></li>
+<li>提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-75.png" alt></li>
+<li>下面黑色部分是构建的过程：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-76.png" alt>，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-77.png" alt></li>
 </ol>
-<p>喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-78.png" alt=""></p>
-<p>回到首页刷新后，能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-79.png" alt=""> 说明我们已经构建成功了。</p>
+<p>喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-78.png" alt></p>
+<p>回到首页刷新后，能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-79.png" alt> 说明我们已经构建成功了。</p>
 <h5 id="travis-yml-需要注意的地方"><a href="#travis-yml-需要注意的地方" class="headerlink" title=".travis.yml 需要注意的地方"></a>.travis.yml 需要注意的地方</h5><p>初次使用  Travis 的试试，总遇到 说 android 的一些协议未接受而构建失败，导致耗费了一两天，曾经一度想放弃，但是最终坚持了下来，通过各种搜索，摸索，猜测，终于搞定。其实最初的项目是这个：<a href="https://github.com/gdky005/TestJitpack" target="_blank" rel="noopener">https://github.com/gdky005/TestJitpack</a> ，里面有很多辛酸史记录，从提交记录能看得出来，有兴趣的可以研究研究，也许能解决你现在的问题。</p>
 <p>Travis CI 协议问题解决方法：<a href="http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout" target="_blank" rel="noopener">http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout</a></p>
 <p>最重要部分在这里：</p>
@@ -700,26 +702,26 @@ dependencies:
     - mkdir -p &quot;$ANDROID_HOME/licenses&quot;
     - echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;
     - echo -e &quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-preview-license&quot;
-</code></pre><h5 id="添加-travis-ci-徽章到-github"><a href="#添加-travis-ci-徽章到-github" class="headerlink" title="添加 travis-ci 徽章到 github"></a>添加 travis-ci 徽章到 github</h5><p>激动的时刻再次到来，让我们找找徽章在哪里呢？<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-80.png" alt=""></p>
-<p>让我们来选择 markdonw 格式：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-81.png" alt=""> 并复制上。</p>
-<p>同样如上修改 readme.md。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-82.png" alt=""></p>
-<p>加空格后，直接贴上去：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-83.png" alt="">，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。</p>
-<p>回到项目首页以后就能发现：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-84.png" alt=""></p>
+</code></pre><h5 id="添加-travis-ci-徽章到-github"><a href="#添加-travis-ci-徽章到-github" class="headerlink" title="添加 travis-ci 徽章到 github"></a>添加 travis-ci 徽章到 github</h5><p>激动的时刻再次到来，让我们找找徽章在哪里呢？<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-80.png" alt></p>
+<p>让我们来选择 markdonw 格式：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-81.png" alt> 并复制上。</p>
+<p>同样如上修改 readme.md。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-82.png" alt></p>
+<p>加空格后，直接贴上去：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-83.png" alt>，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。</p>
+<p>回到项目首页以后就能发现：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-84.png" alt></p>
 <p>添加 Travis 徽章成功。</p>
 <p>Bye the way! 上面是最初级的构建过程，如果遇到单元测试就不行了，还得参考 我的开源项目 <a href="https://github.com/gdky005/TestJitpack" target="_blank" rel="noopener">TestJitpack</a>。 不过有点乱，后面整理下。</p>
 <h3 id="Circle-CI-的使用"><a href="#Circle-CI-的使用" class="headerlink" title="Circle CI 的使用"></a>Circle CI 的使用</h3><p> 官网: <a href="https://circleci.com/" target="_blank" rel="noopener">https://circleci.com/</a></p>
-<h5 id="Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><a href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？" class="headerlink" title="Circle CI 和 Travis CI 有什么区别？需要一起使用吗？"></a>Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</h5><p>Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png" alt=""></p>
+<h5 id="Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><a href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？" class="headerlink" title="Circle CI 和 Travis CI 有什么区别？需要一起使用吗？"></a>Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</h5><p>Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png" alt></p>
 <p>Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。</p>
 <p>Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。</p>
 <p>说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。</p>
 <h5 id="添加项目到-Circle-CI"><a href="#添加项目到-Circle-CI" class="headerlink" title="添加项目到 Circle CI"></a>添加项目到 Circle CI</h5><ol>
-<li>登录主页面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png" alt="">， 在 project 里面自己的账号下搜索刚创建的项目。</li>
-<li>一般直接选择 Ubuntu 即可:<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png" alt="">,点击绿色  Build project.<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png" alt=""></li>
-<li>能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png" alt="">， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。</li>
+<li>登录主页面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png" alt>， 在 project 里面自己的账号下搜索刚创建的项目。</li>
+<li>一般直接选择 Ubuntu 即可:<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png" alt>,点击绿色  Build project.<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png" alt></li>
+<li>能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png" alt>， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。</li>
 </ol>
 <h5 id="在-项目中添加-Circle-CI-需要的-circle-yml-文件"><a href="#在-项目中添加-Circle-CI-需要的-circle-yml-文件" class="headerlink" title="在 项目中添加 Circle CI 需要的 circle.yml 文件"></a>在 项目中添加 Circle CI 需要的 circle.yml 文件</h5><ol>
 <li>在项目的根目录下 添加 circle.yml 文件；</li>
-<li>添加 circle 的代码到文件中：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png" alt=""></li>
+<li>添加 circle 的代码到文件中：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png" alt></li>
 </ol>
 <p><strong>circle.yml 源代码：</strong></p>
 <pre><code>machine:
@@ -748,17 +750,17 @@ test:
     - ./gradlew build
 </code></pre><h5 id="push-项目到-github-Circle-CI-自动监测构建"><a href="#push-项目到-github-Circle-CI-自动监测构建" class="headerlink" title="push 项目到 github, Circle CI 自动监测构建"></a>push 项目到 github, Circle CI 自动监测构建</h5><ol>
 <li>提交代码后，发布到 github，Circle CI 会自动执行。</li>
-<li><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png" alt=""> 点击进来后，会看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png" alt="">， 说明已经开始 构建了， 下载需要的东西：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png" alt="">。</li>
-<li>构建中的一些步骤：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png" alt="">， 相对 Travis 来说展示更直观。</li>
-<li>看到 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png" alt=""> 说明构建成功。</li>
+<li><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png" alt> 点击进来后，会看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png" alt>， 说明已经开始 构建了， 下载需要的东西：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png" alt>。</li>
+<li>构建中的一些步骤：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png" alt>， 相对 Travis 来说展示更直观。</li>
+<li>看到 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png" alt> 说明构建成功。</li>
 </ol>
-<h5 id="添加-Circle-CI-徽章到-github"><a href="#添加-Circle-CI-徽章到-github" class="headerlink" title="添加 Circle CI 徽章到 github"></a>添加 Circle CI 徽章到 github</h5><p>我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png" alt=""><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png" alt=""></p>
-<p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png" alt=""></p>
-<p>回项目主页刷新后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png" alt=""> 非常 happy, 已经添加成功了。</p>
+<h5 id="添加-Circle-CI-徽章到-github"><a href="#添加-Circle-CI-徽章到-github" class="headerlink" title="添加 Circle CI 徽章到 github"></a>添加 Circle CI 徽章到 github</h5><p>我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png" alt><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png" alt></p>
+<p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png" alt></p>
+<p>回项目主页刷新后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png" alt> 非常 happy, 已经添加成功了。</p>
 <h3 id="接下来添加什么呢？"><a href="#接下来添加什么呢？" class="headerlink" title="接下来添加什么呢？"></a>接下来添加什么呢？</h3><p>Github上许多开源项目都使用了Codecov来展示单元测试结果， 就它了。</p>
 <h3 id="Codecov-的使用"><a href="#Codecov-的使用" class="headerlink" title="Codecov 的使用"></a>Codecov 的使用</h3><p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="noopener">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，于是摸索了一段时间。</p>
 <p>我们之后都直接使用 Trivas CI 构建了。</p>
-<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
+<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png" alt>，等生产报告后，进入该网站就能看见结果。</p>
 <h5 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h5><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
 <p>1） 在 app 的 build.gradle 文件中 添加依赖</p>
 <pre><code>    //Jacoco 生成报告的依赖
@@ -780,7 +782,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-contrib:2.2.
 androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&apos;, {
     exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
 })
-</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png" alt=""></p>
+</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png" alt></p>
 <pre><code>debug{
         testCoverageEnabled true
 }
@@ -794,7 +796,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&a
 <pre><code>- bash &lt;(curl -s https://codecov.io/bash)
 </code></pre></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png" alt></p>
 <h5 id="Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器"><a href="#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器" class="headerlink" title="Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器"></a>Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器</h5><p>因为之前修改过很多次，过程很繁琐，直接给配置文件了，相信大家一眼就能看出来。</p>
 <p>完整的配置文件是：</p>
 <pre><code>language: android
@@ -841,37 +843,37 @@ script:
 after_success:
   - bash &lt;(curl -s https://codecov.io/bash)
 </code></pre><h5 id="codecov-总结"><a href="#codecov-总结" class="headerlink" title="codecov 总结"></a>codecov 总结</h5><p>Travis-CI 对 android 的单元测试支持不是很好，因为需要开启虚拟机，开启这个过程就得10分钟（我的测试时间），很耗费时间。有时候也连接不上，一次跑下来估计得个 20分钟左右吧。所以，稳定性确实不是很高。如果不做单元测试，而只是做发布之类的，稳定性还是高的。 </p>
-<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png" alt=""></p>
+<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png" alt></p>
 <p><strong>所以 要不要使用单元测试 还是根据项目决定吧。 </strong></p>
-<h5 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png" alt=""></p>
+<h5 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png" alt></p>
 <h3 id="Api-Level-的使用"><a href="#Api-Level-的使用" class="headerlink" title="Api_Level 的使用"></a>Api_Level 的使用</h3><p>让 codecov 慢慢构建吧，我们先继续。</p>
 <p>官网：<a href="https://android-arsenal.com/api" target="_blank" rel="noopener">https://android-arsenal.com/api</a></p>
 <h5 id="Api-Level-有什么用？"><a href="#Api-Level-有什么用？" class="headerlink" title="Api_Level 有什么用？"></a>Api_Level 有什么用？</h5><p>Api_Level 是 arsenal 网站给各位开发者的一个福利，我们的 android 开源项目一般都有一个最低的构建版本。平时我们都是在 md 文件中写上 支持版本是 14+等很多样式，但是 不够醒目，有了 Api_Level 后，打开开源项目主页就知道，最低版本是多少。 不用看文档也能明白，轻松不少。 对应的 api 的一些特性和修改也能在这里展现。</p>
-<h5 id="Api-Level-怎么玩？"><a href="#Api-Level-怎么玩？" class="headerlink" title="Api_Level 怎么玩？"></a>Api_Level 怎么玩？</h5><p>如果你的开源项目最低支持版本是：14，那么就选择这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-105.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-106.png" alt=""></p>
-<p>把这个拷贝下来，放入我们的 md 文档中吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-107.png" alt=""></p>
+<h5 id="Api-Level-怎么玩？"><a href="#Api-Level-怎么玩？" class="headerlink" title="Api_Level 怎么玩？"></a>Api_Level 怎么玩？</h5><p>如果你的开源项目最低支持版本是：14，那么就选择这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-105.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-106.png" alt></p>
+<p>把这个拷贝下来，放入我们的 md 文档中吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-107.png" alt></p>
 <h3 id="codacy-的使用"><a href="#codacy-的使用" class="headerlink" title="codacy 的使用"></a>codacy 的使用</h3><p>官网： <a href="https://www.codacy.com" target="_blank" rel="noopener">https://www.codacy.com</a></p>
 <h5 id="codacy-是什么？"><a href="#codacy-是什么？" class="headerlink" title="codacy 是什么？"></a>codacy 是什么？</h5><p>codacy 编程代码自动审查服务平台，可以帮我们分析存在的问题 或者说是 bug,主要包括代码质量、语法规范、功能可用性方面的检查。</p>
-<h5 id="codacy-怎么使用？"><a href="#codacy-怎么使用？" class="headerlink" title="codacy 怎么使用？"></a>codacy 怎么使用？</h5><p>进入官网，添加自己的需要的 project。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-108.png" alt=""></p>
+<h5 id="codacy-怎么使用？"><a href="#codacy-怎么使用？" class="headerlink" title="codacy 怎么使用？"></a>codacy 怎么使用？</h5><p>进入官网，添加自己的需要的 project。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-108.png" alt></p>
 <p>完成后，等待一段时间就好了，会给你发邮件通知，已经完成。</p>
-<p>完成后的效果是：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-109.png" alt="">，咱们的这个项目评级是 B。</p>
-<h5 id="codacy-徽章呢？"><a href="#codacy-徽章呢？" class="headerlink" title="codacy 徽章呢？"></a>codacy 徽章呢？</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-110.png" alt=""></p>
+<p>完成后的效果是：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-109.png" alt>，咱们的这个项目评级是 B。</p>
+<h5 id="codacy-徽章呢？"><a href="#codacy-徽章呢？" class="headerlink" title="codacy 徽章呢？"></a>codacy 徽章呢？</h5><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-110.png" alt></p>
 <p>拷贝下来，手动放到 咱们的项目的 md 文档中把。比较放心一些，如果点击后面的 add badge ,会自动加到项目中，需要我们 pull request 里面处理下。</p>
 <p>搞定。</p>
 <h3 id="生成个性徽章"><a href="#生成个性徽章" class="headerlink" title="生成个性徽章"></a>生成个性徽章</h3><p>官网： <a href="https://shields.io/" target="_blank" rel="noopener">https://shields.io/</a></p>
 <h5 id="有什么用？"><a href="#有什么用？" class="headerlink" title="有什么用？"></a>有什么用？</h5><p>彰显个人魅力，体现某种功能。例如咱们做一个跳转到我的博客的 个人徽章。</p>
-<h5 id="怎么玩？"><a href="#怎么玩？" class="headerlink" title="怎么玩？"></a>怎么玩？</h5><p>滚动网页到最下面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-111.png" alt=""></p>
+<h5 id="怎么玩？"><a href="#怎么玩？" class="headerlink" title="怎么玩？"></a>怎么玩？</h5><p>滚动网页到最下面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-111.png" alt></p>
 <p>在对应的地方填写相应的东西（也支持中文哦）， 完成后点击后面的 Make Badge 按钮试试看。</p>
-<p>我想我的个人图标是这种浅蓝色： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-112.png" alt=""> ，那么我就在 color 中直接写：7AD6FD</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-113.png" alt=""> 点击生成 一个地址， 先保存下面。</p>
+<p>我想我的个人图标是这种浅蓝色： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-112.png" alt> ，那么我就在 color 中直接写：7AD6FD</p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-113.png" alt> 点击生成 一个地址， 先保存下面。</p>
 <h5 id="这个原理是什么呢？-（回答最开始的问题）"><a href="#这个原理是什么呢？-（回答最开始的问题）" class="headerlink" title="这个原理是什么呢？ （回答最开始的问题）"></a>这个原理是什么呢？ （回答最开始的问题）</h5><p>徽章的格式即是 markdown 的格式: </p>
 <pre><code>[![A\](B)\](D)
 </code></pre><p>A 表示的页面中需要显示的内容， B 表示的是图片的地址，D 表示的是点击后需要跳转的链接的地址。</p>
 <h5 id="合成我的个人专属图标吧"><a href="#合成我的个人专属图标吧" class="headerlink" title="合成我的个人专属图标吧"></a>合成我的个人专属图标吧</h5><p>图片地址是上面存下来的。 前面显示内容：作者。按照上面的规范出来的结果就是：</p>
 <pre><code>[![作者\](https:\//img.shields.io\/badge\/%E4%BD%9C%E8%80%85-gdky005-7AD6FD.svg)\](http:\//www.gdky005.com)
 </code></pre><p>把这段代码 粘贴到 我们的 md 文档中，个性专属徽章就出来了，而且点击后能到我们想去的地方。</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-114.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-114.png" alt></p>
 <p>很酷吧，其实还可以做很多这样的事情。</p>
-<p>本文的 中的 项目地址是： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a><br>需要逐步了解项目的过程或者 根据步骤出现问题的话，可以check 对应的节点，看看代码是否不同，然后自行修改，我特意保存了该进度。如果下图中 git提交的记录：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-115.png" alt="">  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-116.png" alt=""> </p>
+<p>本文的 中的 项目地址是： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a><br>需要逐步了解项目的过程或者 根据步骤出现问题的话，可以check 对应的节点，看看代码是否不同，然后自行修改，我特意保存了该进度。如果下图中 git提交的记录：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-115.png" alt>  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-116.png" alt> </p>
 <p>相信小伙伴们肯定能做出更有意思的东西，到时候记得与我和大家分享，比较有特色的，我会将你们的链接挂载到 github 项目里面。</p>
 <p>因为该文真的很长，涉及到很多的技术，所以专门设立了 QQ群：621094999， 有需要帮助或许分享新技能的小伙伴请进入。</p>
 <p>本文完整地址请在 <a href="http://www.gdky005.com/" target="_blank" rel="noopener">我的博客</a> 里面查看，会修复 文章存在的问题，并补充一些相关细节。针对 小伙伴们提出的问题，将在博客中修改和增加。如果大家觉得不错，并且很喜欢的话，麻烦 GitHub 中 start 下，不胜感激。</p>
@@ -896,44 +898,44 @@ after_success:
     <entry>
       <title><![CDATA[徽章系列1： Top 30 android 开源项目徽章]]></title>
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/</url>
-      <content type="html"><![CDATA[<p>我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-1.png" alt=""><br>统计情况如下：</p>
+      <content type="html"><![CDATA[<p>我们尝试在 github 里面搜索 以 android  关键字 开发语言为 java 的开源项目。<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-1.png" alt><br>统计情况如下：</p>
 <ol>
 <li>Retrofit 0</li>
 <li>okhttp 0</li>
 <li>Butter Knife 0</li>
-<li>MPAndroidChart 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-2.png" alt=""></li>
-<li>Android-Universal-Image-Loader 2 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-3.png" alt=""></li>
-<li>glide 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-4.png" alt=""></li>
+<li>MPAndroidChart 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-2.png" alt></li>
+<li>Android-Universal-Image-Loader 2 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-3.png" alt></li>
+<li>glide 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-4.png" alt></li>
 <li>leakcanary 0 </li>
-<li>EventBus 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-5.png" alt=""></li>
+<li>EventBus 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-5.png" alt></li>
 <li>picasso 0 </li>
-<li>zxing 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-6.png" alt=""></li>
+<li>zxing 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-6.png" alt></li>
 <li>iosched 0</li>
-<li>Fresco 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-7.png" alt=""></li>
+<li>Fresco 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-7.png" alt></li>
 <li>lottie-android 0</li>
-<li>RxAndroid 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-8.png" alt=""></li>
-<li>libgdx 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-9.png" alt=""></li>
+<li>RxAndroid 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-8.png" alt></li>
+<li>libgdx 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-9.png" alt></li>
 <li>SlidingMenu 0</li>
-<li>PhotoView 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-10.png" alt=""></li>
-<li>android-async-http 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-11.png" alt=""></li>
-<li>material-dialogs 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-12.png" alt=""></li>
+<li>PhotoView 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-10.png" alt></li>
+<li>android-async-http 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-11.png" alt></li>
+<li>material-dialogs 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-12.png" alt></li>
 <li>AndroidUtilCode 0</li>
-<li>androidannotations 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-13.png" alt=""></li>
-<li>Material-Animations 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-14.png" alt=""></li>
-<li>fastjson 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-15.png" alt=""></li>
+<li>androidannotations 3 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-13.png" alt></li>
+<li>Material-Animations 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-14.png" alt></li>
+<li>fastjson 5 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-15.png" alt></li>
 <li>ViewPagerIndicator 0 </li>
 <li>plaid 0 </li>
-<li>PocketHub 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-16.png" alt=""></li>
-<li>tinker 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-17.png" alt=""></li>
-<li>Android-CleanArchitecture 2  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-18.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-19.png" alt=""></li>
+<li>PocketHub 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-16.png" alt></li>
+<li>tinker 4 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-17.png" alt></li>
+<li>Android-CleanArchitecture 2  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-18.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-19.png" alt></li>
 <li>Android-PullToRefresh 0 </li>
-<li>MaterialDesignLibrary 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-20.png" alt=""></li>
+<li>MaterialDesignLibrary 1 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-20.png" alt></li>
 </ol>
 <p>我们是筛选容器就是 30个，统计日期：2017年04月27日（随着时间推移，可能略微有变动）。使用标签的有 18个，未使用的有12个。 使用概率大约是：60%。如果筛选容器的范围再大一点可能更多，没有使用徽章的12个项目，可能由于历史原因，或者个人原因未使用，但是不管怎么说，使用徽章的人会越来越多。</p>
 <h3 id="为什么要使用徽章？"><a href="#为什么要使用徽章？" class="headerlink" title="为什么要使用徽章？"></a>为什么要使用徽章？</h3><p>徽章 <a href="https://github.com/badges/shields" target="_blank" rel="noopener">shields</a></p>
 <p>徽章的使用不仅仅是为了装 B，而是为了让开源想更高效。进入项目主页一眼能看出需要的东西，例如该项目能否编译通过，当前最新的版本是什么等。</p>
 <p>徽章能突出视野，github 默认给我们展示的是黑白世界，但是通过 徽章，将会得到改变。重要的信息可以一目了然。</p>
-<h3 id="最常用徽章有哪些？"><a href="#最常用徽章有哪些？" class="headerlink" title="最常用徽章有哪些？"></a>最常用徽章有哪些？</h3><p>一份不太靠谱的标准，不过你应该掌握:<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-21.png" alt=""><br>（PS: 上图中的图标顺序对应下面的顺序）</p>
+<h3 id="最常用徽章有哪些？"><a href="#最常用徽章有哪些？" class="headerlink" title="最常用徽章有哪些？"></a>最常用徽章有哪些？</h3><p>一份不太靠谱的标准，不过你应该掌握:<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-21.png" alt><br>（PS: 上图中的图标顺序对应下面的顺序）</p>
 <ol>
 <li>jitpack 徽章：<a href="https://jitpack.io" target="_blank" rel="noopener">JitPack</a> 是一个仓库，类似 maven，binary, 主要是帮我们生产 android 项目的 aar or jar 的平台。基于 GitHub，可以很方便将 library 发布到远程，然后可以用 gradle 依赖到任何一个项目中。</li>
 <li>travis-ci 徽章：<a href="https://travis-ci.org" target="_blank" rel="noopener">Travis-CI</a> 是一个线托管的CI服务，不需要自己搭服务器，在网页上点几下就好，用起来更方便。最重要的是，它对开源项目是免费的。</li>
@@ -969,58 +971,58 @@ after_success:
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>官网： <a href="https://jitpack.io" target="_blank" rel="noopener">https://jitpack.io</a></p>
 <h3 id="创建-Android-Library"><a href="#创建-Android-Library" class="headerlink" title="创建 Android Library"></a>创建 Android Library</h3><ol>
-<li>在 AS 中创建标准的 android 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-22.png" alt=""></li>
-<li>创建 Library：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-23.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-24.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-25.png" alt=""></li>
-<li>创建 badge library 成功。<h3 id="配置相关文件"><a href="#配置相关文件" class="headerlink" title="配置相关文件"></a>配置相关文件</h3>进入 <a href="https://jitpack.io/docs/ANDROID/" target="_blank" rel="noopener">jitpack android</a> 可以看到 jitpack 为我们提供的文档帮助。  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-26.png" alt=""></li>
-<li>在项目的根目录下的 build.gradle 文件中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-27.png" alt=""></li>
-<li>在 library 下的 build.gradle 中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-28.png" alt=""> ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。</li>
+<li>在 AS 中创建标准的 android 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-22.png" alt></li>
+<li>创建 Library：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-23.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-24.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-25.png" alt></li>
+<li>创建 badge library 成功。<h3 id="配置相关文件"><a href="#配置相关文件" class="headerlink" title="配置相关文件"></a>配置相关文件</h3>进入 <a href="https://jitpack.io/docs/ANDROID/" target="_blank" rel="noopener">jitpack android</a> 可以看到 jitpack 为我们提供的文档帮助。  <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-26.png" alt></li>
+<li>在项目的根目录下的 build.gradle 文件中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-27.png" alt></li>
+<li>在 library 下的 build.gradle 中添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-28.png" alt> ， 对应官网中说的 『group=’com.github.YourUsername’』， 其实可以不写，写不写都会自动生成。 即使你写成了别的，最终还是以这样的格式输出。</li>
 </ol>
 <p>AndroidBadge 中 的 build.gradle :</p>
 <pre><code>classpath &apos;com.github.dcendents:android-maven-gradle-plugin:1.5&apos; // Add this line
 </code></pre><p>AndroidBadge 里面的 badge (library) :</p>
 <pre><code>apply plugin: &apos;com.github.dcendents.android-maven&apos;
 </code></pre><h3 id="发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）"><a href="#发布到-Github-（这里直接展示-AS-中的界面图形操作，会命令行的同学随意）" class="headerlink" title="发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）"></a>发布到 Github （这里直接展示 AS 中的界面图形操作，会命令行的同学随意）</h3><ol>
-<li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-29.png" alt=""></li>
-<li>点击 大绿色 按钮，并填写信息：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-30.png" alt="">。 那个协议，你们随意，这里只是演示。</li>
-<li>创建成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-31.png" alt="">，拷贝当前项目地址。</li>
-<li>在 AS 的项目中创建 git 仓库：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-32.png" alt="">， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-33.png" alt="">。 项目中的文件都变成绿色后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-34.png" alt="">，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
-<li>现在我们给 library 的 badge 项目添加一个工具类：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-35.png" alt="">， 并提交到 github。</li>
+<li>登录自己的 github 账号，然后创建一个 项目，在首页右边能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-29.png" alt></li>
+<li>点击 大绿色 按钮，并填写信息：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-30.png" alt>。 那个协议，你们随意，这里只是演示。</li>
+<li>创建成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-31.png" alt>，拷贝当前项目地址。</li>
+<li>在 AS 的项目中创建 git 仓库：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-32.png" alt>， 点击后，直接 选择 ok。将项目添加到 git 管理<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-33.png" alt>。 项目中的文件都变成绿色后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-34.png" alt>，耐心等待完成后， 本地项目已经被 git 管理起来了，然后把代码提交到 github 即可。可能会有冲突，自行解决即可。</li>
+<li>现在我们给 library 的 badge 项目添加一个工具类：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-35.png" alt>， 并提交到 github。</li>
 </ol>
-<h3 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-36.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-37.png" alt=""><br>创建第一个 release 分支：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-38.png" alt=""><br>发布成功以后就能看到: <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-39.png" alt=""></p>
+<h3 id="Github-打-release-or-tag"><a href="#Github-打-release-or-tag" class="headerlink" title="Github 打 release or tag"></a>Github 打 release or tag</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-36.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-37.png" alt><br>创建第一个 release 分支：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-38.png" alt><br>发布成功以后就能看到: <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-39.png" alt></p>
 <p>一般用 release 就可以了， 在适当的时候 用  tag。</p>
 <h3 id="在-JitPack-上生成-aar"><a href="#在-JitPack-上生成-aar" class="headerlink" title="在 JitPack 上生成 aar"></a>在 JitPack 上生成 aar</h3><ol>
 <li>进入 <a href="https://jitpack.io/" target="_blank" rel="noopener">https://jitpack.io/</a>。</li>
-<li>将 github 的项目地址： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a>， 直接拷贝 到 jitpack 网页中的文本框中。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-40.png" alt=""></li>
-<li>点击 Look Up 后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-41.png" alt="">， 等里面的那个圈圈 转完 以后，出现 绿色的这个：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-42.png" alt=""> 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-43.png" alt=""> </li>
+<li>将 github 的项目地址： <a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">https://github.com/gdky005/AndroidBadge</a>， 直接拷贝 到 jitpack 网页中的文本框中。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-40.png" alt></li>
+<li>点击 Look Up 后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-41.png" alt>， 等里面的那个圈圈 转完 以后，出现 绿色的这个：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-42.png" alt> 说明已经发布 aar 成功，那么我们 可以直接使用了。 如果点开这个东西，会看到编译的和发布的过程。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-43.png" alt> </li>
 <li>如果是红色的，说明有错误，点开查看，修改后重新构建。</li>
 </ol>
-<h3 id="在-app-Demo-中测试是否生效"><a href="#在-app-Demo-中测试是否生效" class="headerlink" title="在 app Demo 中测试是否生效"></a>在 app Demo 中测试是否生效</h3><p>点击 get 后，能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-44.png" alt=""></p>
+<h3 id="在-app-Demo-中测试是否生效"><a href="#在-app-Demo-中测试是否生效" class="headerlink" title="在 app Demo 中测试是否生效"></a>在 app Demo 中测试是否生效</h3><p>点击 get 后，能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-44.png" alt></p>
 <ol>
-<li>给项目根目录下的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-45.png" alt=""></li>
-<li>给app 项目里面的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-46.png" alt=""></li>
+<li>给项目根目录下的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-45.png" alt></li>
+<li>给app 项目里面的 build.gradle 添加：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-46.png" alt></li>
 </ol>
 <p>AndroidBadge 中 的 build.gradle :</p>
 <pre><code>maven { url &apos;https://jitpack.io&apos; }
 </code></pre><p>AndroidBadge 里面的 app 的 build.gradle :</p>
 <pre><code>compile &apos;com.github.gdky005:AndroidBadge:v1.0.0&apos;
-</code></pre><p>好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-47.png" alt=""><br>在项目的最底下也能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-48.png" alt="">。 运行 app 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-49.png" alt=""></p>
+</code></pre><p>好的，现在我们已经添加成功了，在 MainActivity 里面是是吧，看能否调到之前在 library 里面的写的 Utils.getVersion()。很高兴的是我们调出来了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-47.png" alt><br>在项目的最底下也能看到： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-48.png" alt>。 运行 app 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-49.png" alt></p>
 <h3 id="问题来了，我们修改library-后也能调用到吗？"><a href="#问题来了，我们修改library-后也能调用到吗？" class="headerlink" title="问题来了，我们修改library 后也能调用到吗？"></a>问题来了，我们修改library 后也能调用到吗？</h3><p>让咱们一起试试吧：</p>
 <ol>
-<li>修改 badge 项目中的 1.0.0 为  1.0.1 ： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-50.png" alt="">。</li>
-<li>提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-51.png" alt="">, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-52.png" alt="">, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-53.png" alt=""></li>
-<li>然后再去 jitpack 上看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-54.png" alt=""> 多了一个 v1.0.1, 点击 get 吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-55.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-56.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-57.png" alt=""></li>
-<li>发布成功后，我们去 app 里面试试。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-58.png" alt=""></li>
-<li>同步后，直接运行 app。非常好，我们的修改的东西已经变了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-59.png" alt="">。</li>
+<li>修改 badge 项目中的 1.0.0 为  1.0.1 ： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-50.png" alt>。</li>
+<li>提交代码后，push 到 github。 提交成功以后，我们重复上面的打 release 步骤 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-51.png" alt>, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-52.png" alt>, <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-53.png" alt></li>
+<li>然后再去 jitpack 上看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-54.png" alt> 多了一个 v1.0.1, 点击 get 吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-55.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-56.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-57.png" alt></li>
+<li>发布成功后，我们去 app 里面试试。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-58.png" alt></li>
+<li>同步后，直接运行 app。非常好，我们的修改的东西已经变了：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-59.png" alt>。</li>
 </ol>
 <p>至此， jitpack 基本也差不多了，但是貌似缺少了最重要的一点吧。</p>
-<h3 id="jitpack-的徽章怎么弄"><a href="#jitpack-的徽章怎么弄" class="headerlink" title="jitpack 的徽章怎么弄"></a>jitpack 的徽章怎么弄</h3><p>还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-60.png" alt=""> 点击后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-61.png" alt=""> 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。</p>
+<h3 id="jitpack-的徽章怎么弄"><a href="#jitpack-的徽章怎么弄" class="headerlink" title="jitpack 的徽章怎么弄"></a>jitpack 的徽章怎么弄</h3><p>还是在刚刚的 jitpack 界面，只是我们把 页面拉倒底部。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-60.png" alt> 点击后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-61.png" alt> 是不是看到了熟悉的 md 文档的格式呢？ 看不懂也没关系，下面会专门讲解。</p>
 <ol>
-<li>拷贝内容：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-62.png" alt=""></li>
-<li>打开 github 的 AndroidBridge 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-63.png" alt="">，点击该文件。</li>
-<li>让我们在线编辑下： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-64.png" alt=""></li>
-<li>给 github 中的 这个 readme.md 文件添加点东西吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-65.png" alt=""></li>
-<li>让我们 保存下。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-66.png" alt=""></li>
-<li>然后回到项目<a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">首页</a>看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-67.png" alt=""> 棒棒的，添加成功。</li>
+<li>拷贝内容：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-62.png" alt></li>
+<li>打开 github 的 AndroidBridge 项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-63.png" alt>，点击该文件。</li>
+<li>让我们在线编辑下： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-64.png" alt></li>
+<li>给 github 中的 这个 readme.md 文件添加点东西吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-65.png" alt></li>
+<li>让我们 保存下。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-66.png" alt></li>
+<li>然后回到项目<a href="https://github.com/gdky005/AndroidBadge" target="_blank" rel="noopener">首页</a>看看：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-67.png" alt> 棒棒的，添加成功。</li>
 </ol>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
@@ -1049,14 +1051,14 @@ after_success:
       <content type="html"><![CDATA[<p>官网： <a href="http://travis-ci.org/" target="_blank" rel="noopener">http://travis-ci.org/</a><br>ps: 这个是公开的，如果需要使用私有的，请使用 .com 域名。<br>需要提醒的是：每次提交代码后都会重新下载需要的资源文件哦，所以时间很长，耐心等待吧。</p>
 <h3 id="TravisCI-有什么用？"><a href="#TravisCI-有什么用？" class="headerlink" title="TravisCI 有什么用？"></a>TravisCI 有什么用？</h3><p>travis-ci 就是 自动化 CI 工具，类似于大公司经常使用的 Jenkins，但是 travis-ci 是在云端的，而是支持 github, 还免费，我们可以 用 travis-ci 做很多的事情，不仅仅是 编译看 项目有没有问题。例如在项目构建结束以后，我们可以打包，并发布 apk 到都 蒲公英， fir，也可以用邮件通知给相关的开发人员和业务任务。 做一些简单处理，轻轻松松。这部分内容到后面尽快整理，在写一篇。</p>
 <h3 id="添加-github-项目到-travis-ci"><a href="#添加-github-项目到-travis-ci" class="headerlink" title="添加 github 项目到 travis-ci"></a>添加 github 项目到 travis-ci</h3><ol>
-<li>进入 Travis 官网后，使用 GitHub 账号 登录，成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-68.png" alt="">。</li>
-<li>点击 加号 ，能看到你 GitHub 里面的所有：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-69.png" alt="">， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。</li>
-<li>点击这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-70.png" alt="">，开启 Travis 构建。点击这个可以配置该项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-71.png" alt=""></li>
-<li>默认是空的：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-72.png" alt=""></li>
+<li>进入 Travis 官网后，使用 GitHub 账号 登录，成功后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-68.png" alt>。</li>
+<li>点击 加号 ，能看到你 GitHub 里面的所有：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-69.png" alt>， 如果没有项目或者没有你新建的项目，请点击右上方的   Sync account  按钮。</li>
+<li>点击这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-70.png" alt>，开启 Travis 构建。点击这个可以配置该项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-71.png" alt></li>
+<li>默认是空的：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-72.png" alt></li>
 </ol>
 <h3 id="在-项目中添加-travis-ci-需要的-travis-yml-文件"><a href="#在-项目中添加-travis-ci-需要的-travis-yml-文件" class="headerlink" title="在 项目中添加 travis-ci 需要的 .travis.yml 文件"></a>在 项目中添加 travis-ci 需要的 .travis.yml 文件</h3><ol>
-<li>在项目根目录下直接创建 一个 .travis.yml 的文件。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-73.png" alt=""></li>
-<li>直接在文件里面添加代码：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-74.png" alt=""></li>
+<li>在项目根目录下直接创建 一个 .travis.yml 的文件。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-73.png" alt></li>
+<li>直接在文件里面添加代码：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-74.png" alt></li>
 </ol>
 <p><strong>.travis.yml 文件 源代码</strong></p>
 <pre><code>language: android
@@ -1084,11 +1086,11 @@ script:
   - ./gradlew assembleRelease
 </code></pre><p>因为该文很长很长，所以暂时就不解释具体含义了，可以看看官方文档。</p>
 <h3 id="push-项目到-github-travis-ci-自动监测构建"><a href="#push-项目到-github-travis-ci-自动监测构建" class="headerlink" title="push 项目到 github, travis-ci 自动监测构建"></a>push 项目到 github, travis-ci 自动监测构建</h3><ol>
-<li>提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-75.png" alt=""></li>
-<li>下面黑色部分是构建的过程：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-76.png" alt="">，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-77.png" alt=""></li>
+<li>提交到代码，并 push 到 github。会自动触发 Travis 的自动构建。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-75.png" alt></li>
+<li>下面黑色部分是构建的过程：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-76.png" alt>，  黑框上的白色点点点击后会变成绿色，会自动滚动到最下面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-77.png" alt></li>
 </ol>
-<p>喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-78.png" alt=""></p>
-<p>回到首页刷新后，能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-79.png" alt=""> 说明我们已经构建成功了。</p>
+<p>喝一杯咖啡，慢慢等待吧，最难熬的时候已经过去，此刻是享受的时候了。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-78.png" alt></p>
+<p>回到首页刷新后，能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-79.png" alt> 说明我们已经构建成功了。</p>
 <h3 id="travis-yml-需要注意的地方"><a href="#travis-yml-需要注意的地方" class="headerlink" title=".travis.yml 需要注意的地方"></a>.travis.yml 需要注意的地方</h3><p>初次使用  Travis 的试试，总遇到 说 android 的一些协议未接受而构建失败，导致耗费了一两天，曾经一度想放弃，但是最终坚持了下来，通过各种搜索，摸索，猜测，终于搞定。其实最初的项目是这个：<a href="https://github.com/gdky005/TestJitpack" target="_blank" rel="noopener">https://github.com/gdky005/TestJitpack</a> ，里面有很多辛酸史记录，从提交记录能看得出来，有兴趣的可以研究研究，也许能解决你现在的问题。</p>
 <p>Travis CI 协议问题解决方法：<a href="http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout" target="_blank" rel="noopener">http://stackoverflow.com/questions/37615379/travis-ci-build-doesnt-work-with-android-constraint-layout</a></p>
 <p>最重要部分在这里：</p>
@@ -1101,11 +1103,11 @@ dependencies:
     - mkdir -p &quot;$ANDROID_HOME/licenses&quot;
     - echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;
     - echo -e &quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-preview-license&quot;
-</code></pre><h3 id="添加-travis-ci-徽章到-github"><a href="#添加-travis-ci-徽章到-github" class="headerlink" title="添加 travis-ci 徽章到 github"></a>添加 travis-ci 徽章到 github</h3><p>激动的时刻再次到来，让我们找找徽章在哪里呢？<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-80.png" alt=""></p>
-<p>让我们来选择 markdonw 格式：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-81.png" alt=""> 并复制上。</p>
-<p>同样如上修改 readme.md。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-82.png" alt=""></p>
-<p>加空格后，直接贴上去：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-83.png" alt="">，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。</p>
-<p>回到项目首页以后就能发现：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-84.png" alt=""></p>
+</code></pre><h3 id="添加-travis-ci-徽章到-github"><a href="#添加-travis-ci-徽章到-github" class="headerlink" title="添加 travis-ci 徽章到 github"></a>添加 travis-ci 徽章到 github</h3><p>激动的时刻再次到来，让我们找找徽章在哪里呢？<br><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-80.png" alt></p>
+<p>让我们来选择 markdonw 格式：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-81.png" alt> 并复制上。</p>
+<p>同样如上修改 readme.md。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-82.png" alt></p>
+<p>加空格后，直接贴上去：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-83.png" alt>，这里需要说明的是，如果换成，图标也会换行哦。这样写就能保证所有的图标在一行了。</p>
+<p>回到项目首页以后就能发现：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-84.png" alt></p>
 <p>添加 Travis 徽章成功。</p>
 <p>Bye the way! 上面是最初级的构建过程，如果遇到单元测试就不行了，还得参考 我的开源项目 <a href="https://github.com/gdky005/TestJitpack" target="_blank" rel="noopener">TestJitpack</a>。 不过有点乱，后面整理下。</p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
@@ -1133,18 +1135,18 @@ dependencies:
       <title><![CDATA[徽章系列4： Circle CI 的使用]]></title>
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p> 官网: <a href="https://circleci.com/" target="_blank" rel="noopener">https://circleci.com/</a></p>
-<h3 id="Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><a href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？" class="headerlink" title="Circle CI 和 Travis CI 有什么区别？需要一起使用吗？"></a>Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</h3><p>Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png" alt=""></p>
+<h3 id="Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？"><a href="#Circle-CI-和-Travis-CI-有什么区别？需要一起使用吗？" class="headerlink" title="Circle CI 和 Travis CI 有什么区别？需要一起使用吗？"></a>Circle CI 和 Travis CI 有什么区别？需要一起使用吗？</h3><p>Circle CI 相对来说比 Travis CI 好一些，至少界面上来说哈。还提供 ssh 的连接，构建过程相对来说 比较透明直观。例如：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-85.png" alt></p>
 <p>Travis CI 的文档资料相对 Circle CI 来说 比较多， Circle CI 资料少之又少。</p>
 <p>Travis CI 的使用率还是很高的， 不过 Circle CI 相对来说比较 年轻化，符合主流的科技感，更智能。</p>
 <p>说到是否需要一起使用，其实都行，不过我在观察 github 主流项目的时候 有不少项目都是同时使用的，多一个技能总没有坏处吧。其实会了 Travis CI，在加 Circle CI 真是简单不少呢，只是基本语法不太一样。</p>
 <h3 id="添加项目到-Circle-CI"><a href="#添加项目到-Circle-CI" class="headerlink" title="添加项目到 Circle CI"></a>添加项目到 Circle CI</h3><ol>
-<li>登录主页面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png" alt="">， 在 project 里面自己的账号下搜索刚创建的项目。</li>
-<li>一般直接选择 Ubuntu 即可:<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png" alt="">,点击绿色  Build project.<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png" alt=""></li>
-<li>能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png" alt="">， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。</li>
+<li>登录主页面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-86.png" alt>， 在 project 里面自己的账号下搜索刚创建的项目。</li>
+<li>一般直接选择 Ubuntu 即可:<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-87.png" alt>,点击绿色  Build project.<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-88.png" alt></li>
+<li>能看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-89.png" alt>， 但是这次肯定会失败，因为我们还没有添加 Circle 需要的文件呢。</li>
 </ol>
 <h3 id="在-项目中添加-Circle-CI-需要的-circle-yml-文件"><a href="#在-项目中添加-Circle-CI-需要的-circle-yml-文件" class="headerlink" title="在 项目中添加 Circle CI 需要的 circle.yml 文件"></a>在 项目中添加 Circle CI 需要的 circle.yml 文件</h3><ol>
 <li>在项目的根目录下 添加 circle.yml 文件；</li>
-<li>添加 circle 的代码到文件中：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png" alt=""></li>
+<li>添加 circle 的代码到文件中：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-90.png" alt></li>
 </ol>
 <p><strong>circle.yml 源代码：</strong></p>
 <pre><code>machine:
@@ -1173,13 +1175,13 @@ test:
     - ./gradlew build
 </code></pre><h3 id="push-项目到-github-Circle-CI-自动监测构建"><a href="#push-项目到-github-Circle-CI-自动监测构建" class="headerlink" title="push 项目到 github, Circle CI 自动监测构建"></a>push 项目到 github, Circle CI 自动监测构建</h3><ol>
 <li>提交代码后，发布到 github，Circle CI 会自动执行。</li>
-<li><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png" alt=""> 点击进来后，会看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png" alt="">， 说明已经开始 构建了， 下载需要的东西：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png" alt="">。</li>
-<li>构建中的一些步骤：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png" alt="">， 相对 Travis 来说展示更直观。</li>
-<li>看到 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png" alt=""> 说明构建成功。</li>
+<li><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-91.png" alt> 点击进来后，会看到：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-92.png" alt>， 说明已经开始 构建了， 下载需要的东西：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-93.png" alt>。</li>
+<li>构建中的一些步骤：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-94.png" alt>， 相对 Travis 来说展示更直观。</li>
+<li>看到 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-95.png" alt> 说明构建成功。</li>
 </ol>
-<h3 id="添加-Circle-CI-徽章到-github"><a href="#添加-Circle-CI-徽章到-github" class="headerlink" title="添加 Circle CI 徽章到 github"></a>添加 Circle CI 徽章到 github</h3><p>我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png" alt=""><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png" alt=""></p>
-<p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png" alt=""></p>
-<p>回项目主页刷新后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png" alt=""> 非常 happy, 已经添加成功了。</p>
+<h3 id="添加-Circle-CI-徽章到-github"><a href="#添加-Circle-CI-徽章到-github" class="headerlink" title="添加 Circle CI 徽章到 github"></a>添加 Circle CI 徽章到 github</h3><p>我们再来把 Circle CI 的徽章找到，并添加到我们的 github 上去吧。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-96.png" alt><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-97.png" alt></p>
+<p>我们把 徽章的 markdown 链接拷贝下来放入到我们的 主项目页面的里面。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-98.png" alt></p>
+<p>回项目主页刷新后：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-99.png" alt> 非常 happy, 已经添加成功了。</p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
 <p>总分类：<br><a href="http://www.gdky005.com/categories/shields/" target="_blank" rel="noopener">徽章（shields ）系列文章总分类</a></p>
@@ -1206,7 +1208,7 @@ test:
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>根据文中的指示：我们能看到一个开源的 github 项目 <a href="https://github.com/codecov/example-android" target="_blank" rel="noopener">https://github.com/codecov/example-android</a>， 不过看起来点晕晕的，于是摸索了一段时间。</p>
 <p>我们之后都直接使用 Trivas CI 构建了。</p>
-<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png" alt="">，等生产报告后，进入该网站就能看见结果。</p>
+<p>添加项目就不说了，进入后，点击 project changes, 找到自己的项目：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-100.png" alt>，等生产报告后，进入该网站就能看见结果。</p>
 <h3 id="利用-Jacoco-生成报告"><a href="#利用-Jacoco-生成报告" class="headerlink" title="利用 Jacoco 生成报告"></a>利用 Jacoco 生成报告</h3><p>Codecov不支持自己生成Android的测试覆盖率报告，它能做的是接收Jacoco生成的报告并进行可视化</p>
 <p>1） 在 app 的 build.gradle 文件中 添加依赖</p>
 <pre><code>    //Jacoco 生成报告的依赖
@@ -1228,7 +1230,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-contrib:2.2.
 androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&apos;, {
     exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;
 })
-</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png" alt=""></p>
+</code></pre><p>2) 在 需要构建测试覆盖率报告的Module  （AndroidBadge 项目中的 app）  的gradle文件中设置。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-101.png" alt></p>
 <pre><code>debug{
         testCoverageEnabled true
 }
@@ -1242,7 +1244,7 @@ androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&a
 <pre><code>- bash &lt;(curl -s https://codecov.io/bash)
 </code></pre></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-102.png" alt></p>
 <h3 id="Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器"><a href="#Codecov-需要用到-单元测试，所以必须要在-配置文件中添加模拟器" class="headerlink" title="Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器"></a>Codecov 需要用到 单元测试，所以必须要在 配置文件中添加模拟器</h3><p>因为之前修改过很多次，过程很繁琐，直接给配置文件了，相信大家一眼就能看出来。</p>
 <p>完整的配置文件是：</p>
 <pre><code>language: android
@@ -1289,9 +1291,9 @@ script:
 after_success:
   - bash &lt;(curl -s https://codecov.io/bash)
 </code></pre><h3 id="codecov-总结"><a href="#codecov-总结" class="headerlink" title="codecov 总结"></a>codecov 总结</h3><p>Travis-CI 对 android 的单元测试支持不是很好，因为需要开启虚拟机，开启这个过程就得10分钟（我的测试时间），很耗费时间。有时候也连接不上，一次跑下来估计得个 20分钟左右吧。所以，稳定性确实不是很高。如果不做单元测试，而只是做发布之类的，稳定性还是高的。 </p>
-<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png" alt=""></p>
+<p>单元测试应都会吧， 这里检测的标准就是说 每个类和方法都必须检测到，否则就算没有覆盖。我这里也就简单在项目中写过例子，剩下的你们自己玩吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-103.png" alt></p>
 <p><strong>所以 要不要使用单元测试 还是根据项目决定吧。 </strong></p>
-<h3 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png" alt=""></p>
+<h3 id="获取-codecov-的徽章"><a href="#获取-codecov-的徽章" class="headerlink" title="获取 codecov 的徽章"></a>获取 codecov 的徽章</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-104.png" alt></p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
 <p>总分类：<br><a href="http://www.gdky005.com/categories/shields/" target="_blank" rel="noopener">徽章（shields ）系列文章总分类</a></p>
@@ -1319,8 +1321,8 @@ after_success:
       <content type="html"><![CDATA[<p>让 codecov 慢慢构建吧，我们先继续。</p>
 <p>官网：<a href="https://android-arsenal.com/api" target="_blank" rel="noopener">https://android-arsenal.com/api</a></p>
 <h3 id="Api-Level-有什么用？"><a href="#Api-Level-有什么用？" class="headerlink" title="Api_Level 有什么用？"></a>Api_Level 有什么用？</h3><p>Api_Level 是 arsenal 网站给各位开发者的一个福利，我们的 android 开源项目一般都有一个最低的构建版本。平时我们都是在 md 文件中写上 支持版本是 14+等很多样式，但是 不够醒目，有了 Api_Level 后，打开开源项目主页就知道，最低版本是多少。 不用看文档也能明白，轻松不少。 对应的 api 的一些特性和修改也能在这里展现。</p>
-<h3 id="Api-Level-怎么玩？"><a href="#Api-Level-怎么玩？" class="headerlink" title="Api_Level 怎么玩？"></a>Api_Level 怎么玩？</h3><p>如果你的开源项目最低支持版本是：14，那么就选择这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-105.png" alt=""> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-106.png" alt=""></p>
-<p>把这个拷贝下来，放入我们的 md 文档中吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-107.png" alt=""></p>
+<h3 id="Api-Level-怎么玩？"><a href="#Api-Level-怎么玩？" class="headerlink" title="Api_Level 怎么玩？"></a>Api_Level 怎么玩？</h3><p>如果你的开源项目最低支持版本是：14，那么就选择这里：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-105.png" alt> <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-106.png" alt></p>
+<p>把这个拷贝下来，放入我们的 md 文档中吧。 <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-107.png" alt></p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
 <p>总分类：<br><a href="http://www.gdky005.com/categories/shields/" target="_blank" rel="noopener">徽章（shields ）系列文章总分类</a></p>
@@ -1347,10 +1349,10 @@ after_success:
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>官网： <a href="https://www.codacy.com" target="_blank" rel="noopener">https://www.codacy.com</a></p>
 <h3 id="codacy-是什么？"><a href="#codacy-是什么？" class="headerlink" title="codacy 是什么？"></a>codacy 是什么？</h3><p>codacy 编程代码自动审查服务平台，可以帮我们分析存在的问题 或者说是 bug,主要包括代码质量、语法规范、功能可用性方面的检查。</p>
-<h3 id="codacy-怎么使用？"><a href="#codacy-怎么使用？" class="headerlink" title="codacy 怎么使用？"></a>codacy 怎么使用？</h3><p>进入官网，添加自己的需要的 project。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-108.png" alt=""></p>
+<h3 id="codacy-怎么使用？"><a href="#codacy-怎么使用？" class="headerlink" title="codacy 怎么使用？"></a>codacy 怎么使用？</h3><p>进入官网，添加自己的需要的 project。<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-108.png" alt></p>
 <p>完成后，等待一段时间就好了，会给你发邮件通知，已经完成。</p>
-<p>完成后的效果是：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-109.png" alt="">，咱们的这个项目评级是 B。</p>
-<h3 id="codacy-徽章呢？"><a href="#codacy-徽章呢？" class="headerlink" title="codacy 徽章呢？"></a>codacy 徽章呢？</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-110.png" alt=""></p>
+<p>完成后的效果是：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-109.png" alt>，咱们的这个项目评级是 B。</p>
+<h3 id="codacy-徽章呢？"><a href="#codacy-徽章呢？" class="headerlink" title="codacy 徽章呢？"></a>codacy 徽章呢？</h3><p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-110.png" alt></p>
 <p>拷贝下来，手动放到 咱们的项目的 md 文档中把。比较放心一些，如果点击后面的 add badge ,会自动加到项目中，需要我们 pull request 里面处理下。</p>
 <p>搞定。</p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
@@ -1379,17 +1381,17 @@ after_success:
       <url>http://gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/</url>
       <content type="html"><![CDATA[<p>官网： <a href="https://shields.io/" target="_blank" rel="noopener">https://shields.io/</a></p>
 <h3 id="有什么用？"><a href="#有什么用？" class="headerlink" title="有什么用？"></a>有什么用？</h3><p>彰显个人魅力，体现某种功能。例如咱们做一个跳转到我的博客的 个人徽章。</p>
-<h3 id="怎么玩？"><a href="#怎么玩？" class="headerlink" title="怎么玩？"></a>怎么玩？</h3><p>滚动网页到最下面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-111.png" alt=""></p>
+<h3 id="怎么玩？"><a href="#怎么玩？" class="headerlink" title="怎么玩？"></a>怎么玩？</h3><p>滚动网页到最下面：<img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-111.png" alt></p>
 <p>在对应的地方填写相应的东西（也支持中文哦）， 完成后点击后面的 Make Badge 按钮试试看。</p>
-<p>我想我的个人图标是这种浅蓝色： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-112.png" alt=""> ，那么我就在 color 中直接写：7AD6FD</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-113.png" alt=""> 点击生成 一个地址， 先保存下面。</p>
+<p>我想我的个人图标是这种浅蓝色： <img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-112.png" alt> ，那么我就在 color 中直接写：7AD6FD</p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-113.png" alt> 点击生成 一个地址， 先保存下面。</p>
 <h3 id="这个原理是什么呢？-（回答最开始的问题）"><a href="#这个原理是什么呢？-（回答最开始的问题）" class="headerlink" title="这个原理是什么呢？ （回答最开始的问题）"></a>这个原理是什么呢？ （回答最开始的问题）</h3><p>徽章的格式即是 markdown 的格式: </p>
 <pre><code>[![A\](B)\](D)
 </code></pre><p>A 表示的页面中需要显示的内容， B 表示的是图片的地址，D 表示的是点击后需要跳转的链接的地址。</p>
 <h3 id="合成我的个人专属图标吧"><a href="#合成我的个人专属图标吧" class="headerlink" title="合成我的个人专属图标吧"></a>合成我的个人专属图标吧</h3><p>图片地址是上面存下来的。 前面显示内容：作者。按照上面的规范出来的结果就是：</p>
 <pre><code>[![作者\](https:\//img.shields.io\/badge\/%E4%BD%9C%E8%80%85-gdky005-7AD6FD.svg)\](http:\//www.gdky005.com)
 </code></pre><p>把这段代码 粘贴到 我们的 md 文档中，个性专属徽章就出来了，而且点击后能到我们想去的地方。</p>
-<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-114.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/AndroidBadge/master/pic/gbg-kaiyuan-md-114.png" alt></p>
 <p>很酷吧，其实还可以做很多这样的事情。</p>
 <h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p>完整版：<br><a href="http://www.gdky005.com/2017/06/15/%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E9%AB%98%E9%80%BC%E6%A0%BC%E7%9A%84android%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E5%B0%8F%E7%99%BD%E5%85%A8%E6%94%BB%E7%95%A5/" target="_blank" rel="noopener">打造一个高逼格的android开源项目——小白全攻略</a></p>
 <p>精简集合版：<br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%971%EF%BC%9A-Top-30-android-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列1： Top 30 android 开源项目徽章</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%972%EF%BC%9AJitPack-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列2：JitPack 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%973%EF%BC%9A-Travis-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列3： Travis CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%974%EF%BC%9A-Circle-CI-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列4： Circle CI 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%975%EF%BC%9A-Codecov-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列5： Codecov 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%976%EF%BC%9A-Api-Level-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列6： Api_Level 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%977%EF%BC%9A-codacy-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">徽章系列7： codacy 的使用</a><br><a href="http://www.gdky005.com/2017/06/15/%E5%BE%BD%E7%AB%A0%E7%B3%BB%E5%88%978%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E5%BE%BD%E7%AB%A0/" target="_blank" rel="noopener">徽章系列8：生成个性徽章</a></p>
@@ -1416,9 +1418,9 @@ after_success:
       <title><![CDATA[在 Idea 中用 GUI 图形，生成 可执行的jar]]></title>
       <url>http://gdky005.com/2017/05/03/%E5%9C%A8-Idea-%E4%B8%AD%E7%94%A8-GUI-%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%94%9F%E6%88%90-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84jar/</url>
       <content type="html"><![CDATA[<p>参考地址： <a href="http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse" target="_blank" rel="noopener">http://stackoverflow.com/questions/13744779/exporting-intellij-idea-ui-form-to-eclipse</a></p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer.png" alt></p>
 <p>选中这个东西：</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/blog_idea_answer_show.png" alt></p>
 ]]></content>
       
         
@@ -1465,7 +1467,7 @@ after_success:
 </code></pre><p>这个目录其实就等同于 Linux 里面的一个 app 的私有账户目录，只有当前 app 能访问，其他 app 直接访问不了，所以也被称之为 app 的外置私有目录。 app 的 tartgetSdkVersion \&lt; 23， 因为系统没有给 它创建 私有目录，而且他没有 SD 卡的读写权限，所以 也不可以自行创建 app 的私有目录。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>由于 app 的 targetSdkVersion \&lt; 23，默认 app 拥有所有的权限，但是当 用户手动禁用 SD 卡的存储权限，或者 Rom, 第三方服务 禁用，那么就会造成很严重的问题。无法使用外置app的私有目录，就会报错。</p>
 <ol>
-<li>不过在 原生的 android 系统里面会提示用户： <img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png" alt=""></li>
+<li>不过在 原生的 android 系统里面会提示用户： <img src="http://7xlcno.com1.z0.glb.clouddn.com/blog/sd_%20competence.png" alt></li>
 <li>如果第三方服务或者 rom 自动禁用的话，也许看不到警告。 </li>
 <li>例如三星等系统，在 app 安装好以后，会自动弹出权限框，让用户选择权限。</li>
 </ol>
@@ -1495,7 +1497,7 @@ after_success:
     <entry>
       <title><![CDATA[如何选择 compileSdkVersion, minSdkVersion 和 targetSdkVersion]]></title>
       <url>http://gdky005.com/2017/05/03/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9-compileSdkVersion-minSdkVersion-%E5%92%8C-targetSdkVersion/</url>
-      <content type="html"><![CDATA[<p><img src="https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androidversion.png" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androidversion.png" alt></p>
 <p>英文原文：<a href="https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.tz5zzucma" target="_blank" rel="noopener">Picking your compileSdkVersion, minSdkVersion, and targetSdkVersion</a></p>
 <p>当你发布一个应用之后，(取决于具体的发布时间)可能没过几个月 Android 系统就发布了一个新版本。这对你的应用意味着什么，所有东西都不能用了？</p>
 <p>别担心，<strong>向前兼容</strong>是 Android 非常关注的事情。用户在升级到新版 Android 的时候，用以前版本的 SDK 构建的现有应用应该不会出问题。这就是 <strong>compileSdkVersion</strong>, <strong>minSdkVersion</strong> 和 <strong>targetSdkVersion</strong> 的作用：他们分别控制可以使用哪些 API ，要求的 API 级别是什么，以及应用的兼容模式。</p>
@@ -1537,7 +1539,7 @@ after_success:
             targetSdkVersion == compileSdkVersion (latest SDK)
 </code></pre><p>用较低的 minSdkVersion 来覆盖最大的人群，用最新的 SDK 设置 target 和 compile 来获得最好的外观和行为。#BuildBetterApps</p>
 <h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>译者注： Android Development Patterns 系列视频见 YouTube 或 优酷 。<br>来自： <a href="http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="noopener">http://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</a></p>
-<p><img src="https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androiddeveloperpatterns-1024x317.png" alt=""></p>
+<p><img src="https://o0dsxp5zq.qnssl.com/wp-content/uploads/2016/01/androiddeveloperpatterns-1024x317.png" alt></p>
 ]]></content>
       
         <categories>
@@ -1649,11 +1651,11 @@ after_success:
     <entry>
       <title><![CDATA[标准的Android git和HG的忽略文件是什么样的呢？]]></title>
       <url>http://gdky005.com/2016/08/25/%E6%A0%87%E5%87%86%E7%9A%84Android-git%E5%92%8CHG%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit_hg_small.jpg" alt></p>
 <h3 id="什么是忽略文件？"><a href="#什么是忽略文件？" class="headerlink" title="什么是忽略文件？"></a>什么是忽略文件？</h3><p>当我们在使用 git 和 HG 管理项目文件的时候，会生成很多的文件，但是这些临时文件并不需要我们提交到我们的服务器去，因此就会使用到忽略文件。</p>
 <h3 id="忽略文件的作用？"><a href="#忽略文件的作用？" class="headerlink" title="忽略文件的作用？"></a>忽略文件的作用？</h3><p>当我们用的不好的时候，就会在提交的时候，有很多凌乱的信息，导致我们提交错误或者冲突。最极端的情况就是把一些需要频繁改动的文件提交到服务器，会造成经常冲突，因此我们需要一份标准的忽略文件。</p>
 <h3 id="通用的忽略文件"><a href="#通用的忽略文件" class="headerlink" title="通用的忽略文件"></a>通用的忽略文件</h3><p>以下提供两种忽略文件的模板，满足大部分需求。</p>
-<h5 id="1-git-的忽略文件模板："><a href="#1-git-的忽略文件模板：" class="headerlink" title="1. git 的忽略文件模板："></a>1. git 的忽略文件模板：</h5><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit.jpg" alt=""><br>请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果我们有其他文件也不用提交的画，可以参考下面的样式添加进去即可：</p>
+<h5 id="1-git-的忽略文件模板："><a href="#1-git-的忽略文件模板：" class="headerlink" title="1. git 的忽略文件模板："></a>1. git 的忽略文件模板：</h5><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitgit.jpg" alt><br>请在项目的根目录下创建或者修改这个文件： .gitignore 即可。git相关管理工具会 自动识别该文件，帮我们自动忽略掉不需要的文件。如果我们有其他文件也不用提交的画，可以参考下面的样式添加进去即可：</p>
 <pre><code>*~
 .DS_Store
 
@@ -1777,7 +1779,7 @@ hs_err_pid*
 .idea
 out
 gen
-</code></pre><h5 id="2-HG-Mercurial-的忽略文件模板："><a href="#2-HG-Mercurial-的忽略文件模板：" class="headerlink" title="2. HG/Mercurial 的忽略文件模板："></a>2. HG/Mercurial 的忽略文件模板：</h5><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitmercurial.png" alt=""><br>HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工具，但是随着git 的用户群体庞大，git越来越灵活，简单易用，因此 HG也就慢慢退出了我们的视线。最有名的 github 里面也大量使用到git。但是作为一种管理工具，在不同的环境场景下，也可能需要使用HG，尤其是公司的备份管理等，都十分的安全。使用方式很简单，在主项目的根目录下 创建或者修改： .hgignore 文件即可。 这个文件也可以直接放到mode 里面去。 这里提供忽略文件如下：</p>
+</code></pre><h5 id="2-HG-Mercurial-的忽略文件模板："><a href="#2-HG-Mercurial-的忽略文件模板：" class="headerlink" title="2. HG/Mercurial 的忽略文件模板："></a>2. HG/Mercurial 的忽略文件模板：</h5><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/gitmercurial.png" alt><br>HG (Mercurial) 的标准忽略文件。这是早期比较好的项目管理工具，但是随着git 的用户群体庞大，git越来越灵活，简单易用，因此 HG也就慢慢退出了我们的视线。最有名的 github 里面也大量使用到git。但是作为一种管理工具，在不同的环境场景下，也可能需要使用HG，尤其是公司的备份管理等，都十分的安全。使用方式很简单，在主项目的根目录下 创建或者修改： .hgignore 文件即可。 这个文件也可以直接放到mode 里面去。 这里提供忽略文件如下：</p>
 <pre><code># Created by .ignore support plugin (hsz.mobi)
 syntax: glob
 
@@ -2030,16 +2032,16 @@ public class Main {
       <url>http://gdky005.com/2016/07/25/HTTPS%E7%9A%84%E4%B8%83%E4%B8%AA%E8%AF%AF%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>这段时间在研究 webview 缓存，为了加快用户进入页面的时间，找了一些资料，突然发现 对 Https 理解的不是很深刻，这里整理一下。</p>
 <p>我认为不管是 IOS 同学还是 Android 同学，都应该对此有一定的了解。这篇文章的年底略有久远，但是却可以扫盲，还是值得一看。</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021311.jpg" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021311.jpg" alt></p>
 <h3 id="误解七：HTTPS无法缓存"><a href="#误解七：HTTPS无法缓存" class="headerlink" title="误解七：HTTPS无法缓存"></a>误解七：HTTPS无法缓存</h3><p>许多人以为，出于安全考虑，浏览器不会在本地保存HTTPS缓存。实际上，只要在HTTP头中使用特定命令，HTTPS是可以缓存的。</p>
 <p>微软的IE项目经理Eric Lawrence写道：</p>
 <blockquote>
 <p>“说来也许令人震惊，只要HTTP头允许这样做，所有版本的IE都缓存HTTPS内容。比如，如果头命令是Cache-Control: max-age=600，那么这个网页就将被IE缓存10分钟。IE的缓存策略，与是否使用HTTPS协议无关。（其他浏览器在这方面的行为不一致，取决于你使用的版本，所以这里不加以讨论。）”</p>
 </blockquote>
 <p>Firefox默认只在内存中缓存HTTPS。但是，只要头命令中有Cache-Control: Public，缓存就会被写到硬盘上。下面的图片显示，Firefox的硬盘缓存中有HTTPS内容，头命令正是Cache-Control:Public。</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021301.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021301.png" alt></p>
 <h3 id="误解六：SSL证书很贵"><a href="#误解六：SSL证书很贵" class="headerlink" title="误解六：SSL证书很贵"></a>误解六：SSL证书很贵</h3><p>如果你在网上搜一下，就会发现很多便宜的SSL证书，大概10美元一年，这和一个.com域名的年费差不多。而且事实上，还能找到免费的SSL证书。<br>在效力上，便宜的证书当然会比大机构颁发的证书差一点，但是几乎所有的主流浏览器都接受这些证书。</p>
-<h3 id="误解五：HTTPS站点必须有独享的IP地址"><a href="#误解五：HTTPS站点必须有独享的IP地址" class="headerlink" title="误解五：HTTPS站点必须有独享的IP地址"></a>误解五：HTTPS站点必须有独享的IP地址</h3><p>由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，<a href="https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。" target="_blank" rel="noopener">https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。</a><br><img src="http://image.beekka.com/blog/201102/bg2011021302.png" alt=""></p>
+<h3 id="误解五：HTTPS站点必须有独享的IP地址"><a href="#误解五：HTTPS站点必须有独享的IP地址" class="headerlink" title="误解五：HTTPS站点必须有独享的IP地址"></a>误解五：HTTPS站点必须有独享的IP地址</h3><p>由于IPv4将要分配完毕，所以很多人关心这个问题。每个IP地址只能安装一张SSL证书，这是毫无疑问的。但是，如果你使用子域名通配符SSL证书（wildcard SSL certificate，价格大约是每年125美元），就能在一个IP地址上部署多个HTTPS子域名。比如，<a href="https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。" target="_blank" rel="noopener">https://www.httpwatch.com和https://store.httpwatch.com，就共享同一个IP地址。</a><br><img src="http://image.beekka.com/blog/201102/bg2011021302.png" alt></p>
 <p>另外，UCC（统一通信证书，Unified Communications Certificate）支持一张证书同时匹配多个站点，可以是完全不同的域名。SNI（服务器名称指示，Server Name Indication）允许一个IP地址上多个域名安装多张证书。服务器端，Apache和Nginx支持该技术，IIS不支持；客户端，IE 7+、Firefox 2.0+、Chrome 6+、Safari 2.1+和Opera 8.0+支持。</p>
 <h3 id="误解四：转移服务器时要购买新证书"><a href="#误解四：转移服务器时要购买新证书" class="headerlink" title="误解四：转移服务器时要购买新证书"></a>误解四：转移服务器时要购买新证书</h3><p>部署SSL证书，需要这样几步：</p>
 <blockquote>
@@ -2049,19 +2051,19 @@ public class Main {
 <li>安装SSL证书。</li>
 </ol>
 </blockquote>
-<p>这些步骤都经过精心设计，保证传输的安全，防止有人截取或非法获得证书。结果就是，你在第二步得到的证书不能用在另一台服务器上。如果你需要这样做，就必须以其他格式输出证书。<br>比如，IIS的做法是生成一个可以转移的.pfx文件，并加以密码保护。<br><img src="http://image.beekka.com/blog/201102/bg2011021303.png" alt=""></p>
+<p>这些步骤都经过精心设计，保证传输的安全，防止有人截取或非法获得证书。结果就是，你在第二步得到的证书不能用在另一台服务器上。如果你需要这样做，就必须以其他格式输出证书。<br>比如，IIS的做法是生成一个可以转移的.pfx文件，并加以密码保护。<br><img src="http://image.beekka.com/blog/201102/bg2011021303.png" alt></p>
 <p>将这个文件传入其他服务器，将可以继续使用原来的SSL证书了。</p>
-<h3 id="误解三：HTTPS太慢"><a href="#误解三：HTTPS太慢" class="headerlink" title="误解三：HTTPS太慢"></a>误解三：HTTPS太慢</h3><p>使用HTTPS不会使你的网站变得更快（实际上有可能，请看下文），但是有一些技巧可以大大减少额外开销。<br>首先，只要压缩文本内容，就会降低解码耗用的CPU资源。不过，对于当代CPU来说，这点开销不值一提。<br>其次，建立HTTPS连接，要求额外的TCP往返，因此会新增一些发送和接收的字节。但是，从下图可以看到，新增的字节是很少的。<br><img src="http://image.beekka.com/blog/201102/bg2011021304.png" alt=""></p>
+<h3 id="误解三：HTTPS太慢"><a href="#误解三：HTTPS太慢" class="headerlink" title="误解三：HTTPS太慢"></a>误解三：HTTPS太慢</h3><p>使用HTTPS不会使你的网站变得更快（实际上有可能，请看下文），但是有一些技巧可以大大减少额外开销。<br>首先，只要压缩文本内容，就会降低解码耗用的CPU资源。不过，对于当代CPU来说，这点开销不值一提。<br>其次，建立HTTPS连接，要求额外的TCP往返，因此会新增一些发送和接收的字节。但是，从下图可以看到，新增的字节是很少的。<br><img src="http://image.beekka.com/blog/201102/bg2011021304.png" alt></p>
 <p>第一次打开网页的时候，HTTPS协议会比HTTP协议慢一点，这是因为读取和验证SSL证书的时间。下面是一张HTTP网页打开时间的瀑布图。</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021305.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021305.png" alt></p>
 <p>同一张网页使用HTTPS协议之后，打开时间变长了。</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021306.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021306.png" alt></p>
 <p>建立连接的部分，大约慢了10%。但是，一旦有效的HTTPS连接建立起来，再刷新网页，两种协议几乎没有区别。先是HTTP协议的刷新表现：</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021307.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021307.png" alt></p>
 <p>然后是HTTPS协议：</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021308.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021308.png" alt></p>
 <p>某些用户可能发现，HTTPS比HTTP更快一点。这会发生在一些大公司的内部局域网，因为通常情况下，公司的网关会截取并分析所有的网络通信。但是，当它遇到HTTPS连接时，它就只能直接放行，因为HTTPS无法被解读。正是因为少了这个解读的过程，所以HTTPS变得比较快。</p>
-<h3 id="误解二：有了HTTPS，Cookie和查询字符串就安全了"><a href="#误解二：有了HTTPS，Cookie和查询字符串就安全了" class="headerlink" title="误解二：有了HTTPS，Cookie和查询字符串就安全了"></a>误解二：有了HTTPS，Cookie和查询字符串就安全了</h3><p>虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。<br>比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:<br><img src="http://image.beekka.com/blog/201102/bg2011021309.png" alt=""></p>
+<h3 id="误解二：有了HTTPS，Cookie和查询字符串就安全了"><a href="#误解二：有了HTTPS，Cookie和查询字符串就安全了" class="headerlink" title="误解二：有了HTTPS，Cookie和查询字符串就安全了"></a>误解二：有了HTTPS，Cookie和查询字符串就安全了</h3><p>虽然无法直接从HTTPS数据中读取Cookie和查询字符串，但是你仍然需要使它们的值变得难以预测。<br>比如，曾经有一家英国银行，直接使用顺序排列的数值表示session id:<br><img src="http://image.beekka.com/blog/201102/bg2011021309.png" alt></p>
 <p>黑客可以先注册一个账户，找到这个cookie，看到这个值的表示方法。然后，改动cookie，从而劫持其他人的session id。至于查询字符串，也可以通过类似方式泄漏。</p>
 <h3 id="误解一：只有注册登录页，才需要HTTPS"><a href="#误解一：只有注册登录页，才需要HTTPS" class="headerlink" title="误解一：只有注册登录页，才需要HTTPS"></a>误解一：只有注册登录页，才需要HTTPS</h3><p>这种想法很普遍。人们觉得，HTTPS可以保护用户的密码，此外就不需要了。Firefox浏览器新插件Firesheep，证明了这种想法是错的。我们可以看到，在Twitter和Facebook上，劫持其他人的session是非常容易的。<br>咖啡馆的免费WiFi，就是一个很理想的劫持环境，因为两个原因：</p>
 <blockquote>
@@ -2071,7 +2073,7 @@ public class Main {
 </ol>
 </blockquote>
 <p>以Twitter为例，它的登录页使用了HTTPS，但是登录以后，其他页面就变成了HTTP。这时，它的cookie里的session值就暴露了。</p>
-<p><img src="http://image.beekka.com/blog/201102/bg2011021310.png" alt=""></p>
+<p><img src="http://image.beekka.com/blog/201102/bg2011021310.png" alt></p>
 <p>也就是说，这些cookie是在HTTPS环境下建立的，但是却在HTTP环境下传输。如果有人劫持到这些cookie，那他就能以你的身份在Twitter上发言了。</p>
 <h3 id="引用地址："><a href="#引用地址：" class="headerlink" title="引用地址："></a>引用地址：</h3><ol>
 <li><a href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html</a></li>
@@ -2250,7 +2252,7 @@ public class Main {
 </li>
 </ol>
 <p>如果你有面试的疑问或者困惑，可以加我的微信公众账号:<a href="http://7xlcno.com1.z0.glb.clouddn.com/weixingdky005_mianshishuo.jpg" title="面试说" target="_blank" rel="noopener">mianshishuo</a>, 可以扫描下方二维码，一起来吐槽面试中的感受。我将不定期分享最新的 Android 面试题与面试经验。也可以将你们的面试经验与问题发给我一同讨论，非常感谢。</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/weixingdky005_mianshishuo.jpg" alt="" title="微信公众账号：面试说"></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/weixingdky005_mianshishuo.jpg" alt title="微信公众账号：面试说"></p>
 ]]></content>
       
         <categories>
@@ -2281,7 +2283,7 @@ public class Main {
 <li>运行 Heap Viewer可以确认出 object 类型是不是 不必要的，或者分配的内存超出我们的预期估计，可能是持续增长，我们预期是在不需要的时候，可以回收内存。</li>
 <li>使用 Allocation Tracker 可以确定出你的代码中存在的问题。</li>
 </ol>
-<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt=""></p>
+<h3 id="Memory-Monitor"><a href="#Memory-Monitor" class="headerlink" title="Memory Monitor"></a>Memory Monitor</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_01.png" alt></p>
 <ul>
 <li>显示你的 App 当前某一时刻的内存状态（包括可用内存，和占用内存）的曲线图，用电压跌落 的方式展示 Garbage Collection (GC) 的现象。</li>
 <li>可以方便的看出 app 的卡顿是否是由于频繁 GC（内存 频繁回收，一个 app 在手机上分配的内存是一定的，但手机厂商决定手机内存的大小，因此当我们的 app 的内存达到一定的峰值的时候，系统就会回收内存，保证 App的正常运行） 导致。</li>
@@ -2297,7 +2299,7 @@ public class Main {
 <li>根据类型 分配许多对象 的快照图。</li>
 <li>每一次的样本数据 是自动采集或者你手动触发。</li>
 <li>帮助确定哪些对象类型可能是内存泄漏。</li>
-<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt=""></a></li>
+<li>然而，你 <strong>必须自己寻找</strong> 在一段时间内曲线图的变化发送了什么。 （重点，需要<strong>采集两次以上</strong>的数据进行<strong>对比</strong>，才能明确，出问题的地方在哪里）<h3 id="Allocation-Tracker"><a href="#Allocation-Tracker" class="headerlink" title="Allocation Tracker"></a>Allocation Tracker</h3><a href="#" title="Allocation Tracker"><img src="http://7xlcno.com1.z0.glb.clouddn.com/AS_memory_03.png" alt></a></li>
 <li>显示你的代码在在一定的时间内分配的 object 类型，Object 的大小，分配的线程和堆栈的大小</li>
 <li>帮助识别 内存的改变是通过 循环分配或重新分配。</li>
 <li>可以结合使用 Heap Viewer 来跟踪内存泄露，例如，如果你看到了一个 bitmap 对象 在 heap 上分配的大小。你可以使用 Allocation Tracker 找到它分配的位置。</li>
@@ -2533,10 +2535,10 @@ public class Main {
       <url>http://gdky005.com/2016/06/20/Okio-%E7%AE%80%E5%8D%95%E5%A4%84%E7%90%86I-O%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<p>Android 善用Okio简化处理I/O操作<br>Okio库是一个由square公司开发的，它补充了java.io和java.nio的不足，以便能够更加方便，快速的访问、存储和处理你的数据。而OkHttp的底层也使用该库作为支持。而在开发中，使用该库可以大大给你带来方便。</p>
 <pre><code>compile &apos;com.squareup.okio:okio:1.6.0&apos;
-</code></pre><p>Ohio 有两个关键接口， Sink 和 Source, 这两个接口都继承了 Colseable 接口；而 Sink 可以简单的看成 OutputStream, Source 可以简单的看做 InputStream. 而这两个接口凑是支持读写超时设置的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_01.png" alt=""></p>
-<p>它们各自有一个支持缓冲区的子类接口，BufferedSink 和 BufferedSource,而 BufferedSink有一个实现类 RealBufferedSink， BufferedSource有一个实现类 RealBufferedSource；此外 Sink 和 Source 有一个支持 gzip 的实现类 GzipSink和GzipSource；一个具有委托功能的抽象类ForwardingSink 和 ForwardingSource; 还有一个实现类便是 InflaterSource 和 DeflaterSink, 这两个类主要用于压缩，为 GzipSink 和 GzipSource 服务；<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_02.png" alt=""></p>
+</code></pre><p>Ohio 有两个关键接口， Sink 和 Source, 这两个接口都继承了 Colseable 接口；而 Sink 可以简单的看成 OutputStream, Source 可以简单的看做 InputStream. 而这两个接口凑是支持读写超时设置的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_01.png" alt></p>
+<p>它们各自有一个支持缓冲区的子类接口，BufferedSink 和 BufferedSource,而 BufferedSink有一个实现类 RealBufferedSink， BufferedSource有一个实现类 RealBufferedSource；此外 Sink 和 Source 有一个支持 gzip 的实现类 GzipSink和GzipSource；一个具有委托功能的抽象类ForwardingSink 和 ForwardingSource; 还有一个实现类便是 InflaterSource 和 DeflaterSink, 这两个类主要用于压缩，为 GzipSink 和 GzipSource 服务；<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_02.png" alt></p>
 <p>BufferedSink中定义了一系列写入缓存区的方法，比如write方法写byte数组，writeUtf8写字符串，还有一些列的writeByte，writeString，writeShort，writeInt，writeLong，writeDecimalLong等等方法；BufferedSource定义的方法和BufferedSink极为相似，只不过一个是写一个是读，基本上都是一一对应的，如readUtf8，readByte，readString，readShort，readInt等等等等。这两个接口中的方法有兴趣的点源码进去看就可以了。</p>
-<p>而这两个支持缓冲区的接口的实现类 RealBufferedSink 和 RealBufferedSource 都是通过包装一个 Sink + Buffer 或者 Source + Buffer 进行实现的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_03.png" alt=""></p>
+<p>而这两个支持缓冲区的接口的实现类 RealBufferedSink 和 RealBufferedSource 都是通过包装一个 Sink + Buffer 或者 Source + Buffer 进行实现的。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okio_03.png" alt></p>
 <p>用 RealBufferedSink 来说，实际调用的 write 的一系列方法，都是直接对成员变量 buffer 进行的操作，当写入 buffer 成功后，最后调用一个方法将 buffer 中的内容写入到 sink 中，举例：</p>
 <pre><code>public BufferedSink writeLong(long v) throws IOException {
     if (this.closed) {
@@ -2847,7 +2849,7 @@ Okio.source(new Socket(&quot;****&quot;,8888));
 <p>“only-if-cached”标签非常具有诱导性，它只在请求中使用，表示无论是否有网完全只使用缓存（如果命中还好说，否则返回503错误/网络错误），这个标签比较危险。<br>全部的标签，可以到<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">这里看</a></p>
 </blockquote>
 <p>以上内容是作为一个服务器开发或者客户端的常识。下图是网上找的总结，注意图中的 ETag 和 Last-Modified 可能有优先级的歧义，你只需要记住它们是没有优先级的。</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_01.png" alt></p>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>OkHttp 中使用了 CacheStrategy 实现了上午的流程图，他根据之前的缓存结果与当前将要发送 Request 的 header 进行策略分析，并得出是否要请求的结论。</p>
 <ol>
 <li>总体请求流程分析<br>CacheStrategy 类似一个 mapping 操作，将两个值输入，再将两值输出<br>Input（request, cacheCandidate） —-》 CacheStrategy(处理，判断 Header 信息) —-》Output(networkRequest, cacheResponse)</li>
@@ -2855,7 +2857,7 @@ Okio.source(new Socket(&quot;****&quot;,8888));
 <p>Request:<br>开发者手动编写并在 Interceptor 中递归加工而成的对象（需要调试分析的话，可以使用 logging-interceptor进行log操作），我们只需要知道母亲传入的 Request 没有任何关于 缓存的 Header。</p>
 <p>cacheCandildate:<br>也就是上次与服务器交互缓存的 Response,可能为 null。 这里的缓存全部是基于文件 系统的 map ,key 是请求中url 的 md5, value 是在文件中查询到的缓存，页面置换基于 LRU 算法，我们现在只需要知道他是一个可以读取 缓存 Header 的 Response.</p>
 <p>当 CacheStrategy 加工输出后，输出 networkRequest 与 cacheResponse， 根据是否为空执行不同的请求</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_02.png" alt></p>
 <blockquote>
 <p>以上是对 networkRequest / cacheResponse进行 find usage 查询获得出的结论</p>
 </blockquote>
@@ -2960,14 +2962,14 @@ cacheResponse = cacheStrategy.cacheResponse;
 </code></pre><p>太长不看的话，大多数常见的情况可以用这个估算</p>
 <pre><code>now - sent + age &lt; max-age
 </code></pre><blockquote>
-<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt=""></p>
+<p>这里有个技巧，对构造函数进行findUsage查询，就可以看出各个输出是否为空的结果，然后各个击破分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_03.png" alt></p>
 </blockquote>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据上面的分析，我们可以发现，okhttp 实现的缓存策略实质上就是大量的 if 判断集合，这些事根据 RFC 标准文件写死的，并没有相当难的技巧。</p>
 <ol>
 <li>通过上面的分析，我们可以发现，okhttp实现的缓存策略实质上就是大量的if判断集合，这些是根据RFC标准文档写死的，并没有相当难的技巧。</li>
 <li>OkHttp 的缓存是自动完成的，玩去由服务器 Header 决定，自己 <strong>没有必要</strong> 进行控制。网上热传的文件中在 Interceptor 中手动天阿基缓存代码控制，它固然有用，但是属于 Hack 式的利用，违反了 RFC 的文档标准，不建议使用，OkHttp 的官方缓存控制在 <a href="https://github.com/square/okhttp/blob/d662c1a82851800c46ad8ede2d9d10d10427fdad/okhttp/src/main/java/okhttp3/Cache.java#L79" target="_blank" rel="noopener">注释中</a>。 如果读者的需求是对象持久化，建议使用文件存储或者 数据库即可（比如 realm）.</li>
 <li>充分利用 idea 的 findUsage 的功能，源码的各个跳转条件都能很快分析完成</li>
-<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt=""></li>
+<li>可以使用 alt + space  快速预览某个函数<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_cache_04.png" alt></li>
 </ol>
 <p>摘自：<a href="http://www.jianshu.com/p/9cebbbd0eeab" target="_blank" rel="noopener">http://www.jianshu.com/p/9cebbbd0eeab</a></p>
 ]]></content>
@@ -3032,9 +3034,9 @@ T3 线程销毁的时间
 <p>在RxJava的Schedulers.io()中，也有类似的设计，最小的线程数量控制，不设上限的最大线程，以保证I/O任务中高阻塞低占用的过程中，不会长时间卡在阻塞上，有兴趣的可以分析RxJava中4种不同场景的Schedulers</p>
 </blockquote>
 <h3 id="反向代理模型"><a href="#反向代理模型" class="headerlink" title="反向代理模型"></a>反向代理模型</h3><p>在 OkHttp 中，使用了与 Nginx 类似的反向代理与分发技术，这是典型的 单生产者多消费者的问题。</p>
-<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt=""></p>
+<p>我们知道在Nginx中，用户通过HTTP(Socket)访问前置的服务器，服务器会自动转发请求给后端，并返回后端数据给用户。通过将工作分配给多个后台服务器，可以提高服务的负载均衡能力，实现<strong>非阻塞、高并发连接</strong>，避免资源全部放到一台服务器而带来的负载，速度，在线率等影响。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_01.png" alt></p>
 <p>而在 OkHttp 中，非常类似上面的场景，它使用 Dispatcher 作为任务的转发器，线程池对应多台后置服务器，用 AsyncCall 对应 Socket 请求，用 Deque\&lt;readyAsyncCalls>对应 Nginx 的内部缓存</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/okhttp_task_queue_02.png" alt></p>
 <p>具体成员如下：</p>
 <ul>
 <li>maxRequests = 64：最大并发请求数为64</li>
@@ -3158,12 +3160,12 @@ T3 线程销毁的时间
 <p>比如在缓存的路径下执行 ls,结果如下：<br>    $ ls<br>    5716ab0f06c49bc7cf602397c51d5677.0<br>    5716ab0f06c49bc7cf602397c51d5677.1<br>    5b2f52377611dc6201a1871bdb997466.0<br>    5b2f52377611dc6201a1871bdb997466.1<br>    journal<br>    …..</p>
 <p>DiskLruCache.Editor 对工具类 FileSystem 进行进一步的封装， 它以 DiskLruCache.Entry 作为构造参数，通过操控 Entry 中 维护的数组，对外暴露 source/sink ,为上层 的 java对象与文件的转换提供基于 okio 的流操作，我们可以通过对它 的两个方法进行 FindUsage 查询获得 OkHttp 关于文件读写的全部场景</p>
 <ul>
-<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt=""></li>
-<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt=""></li>
+<li>写入场景：第一个位置是写入元信息，也就是写入末尾是0的文件中，是序列化的过程；第二个位置是写入 body,也就是写入末位是1的文件中，是存二进制的过程。<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_02.png" alt></li>
+<li>读取场景：读取时，需要获取快照，通过调用链分析<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/0khttp_01.png" alt></li>
 </ul>
 <ol start="3">
 <li>序列化与反序列化（Cache.Entry）<br>文本的存储本质上也是序列化与反序列化的过程。本部分提供了下图的转变<blockquote>
-<p>Resonse(java对象) \<--- cache.entry="" ---\=""> source/sink(文件io)</---></p>
+<p>Resonse(java对象) \<--- cache.entry ---\> source/sink(文件io)</---></p>
 </blockquote>
 </li>
 </ol>
@@ -3376,7 +3378,7 @@ String.valueOf()/integer to string
 <li>平衡二叉树</li>
 </ul>
 <h3 id="4-Graph"><a href="#4-Graph" class="headerlink" title="4. Graph"></a>4. Graph</h3><p>与Graph相关的问题主要集中在深度优先搜索和宽度优先搜索。深度优先搜索非常简单，你可以从根节点开始循环整个邻居节点。下面是一个非常简单的宽度优先搜索例子，核心是用队列去存储节点。</p>
-<p><img src="http://cms.csdnimg.cn/article/201404/10/534655cfcf7a0.jpg" alt=""></p>
+<p><img src="http://cms.csdnimg.cn/article/201404/10/534655cfcf7a0.jpg" alt></p>
 <h4 id="第一步，定义一个GraphNode"><a href="#第一步，定义一个GraphNode" class="headerlink" title="第一步，定义一个GraphNode"></a>第一步，定义一个GraphNode</h4><pre><code>class GraphNode{ 
     int val;
     GraphNode next;
@@ -3467,7 +3469,7 @@ value: 4
 <li>克隆Graph</li>
 </ul>
 <h3 id="5-排序"><a href="#5-排序" class="headerlink" title="5. 排序"></a>5. 排序</h3><p>不同排序算法的时间复杂度，大家可以到wiki上查看它们的基本思想。</p>
-<p><img src="http://cms.csdnimg.cn/article/201404/10/53465710a87e6.jpg" alt=""></p>
+<p><img src="http://cms.csdnimg.cn/article/201404/10/53465710a87e6.jpg" alt></p>
 <p>BinSort、Radix Sort和CountSort使用了不同的假设，所有，它们不是一般的排序方法。   </p>
 <p>下面是这些算法的具体实例，另外，你还可以阅读： <a href="http://www.programcreek.com/2014/03/how-developers-sort-in-java/" target="_blank" rel="noopener">Java开发者在实际操作中是如何排序的</a>。</p>
 <ul>
@@ -3529,7 +3531,7 @@ return A[n];
 <li>单词分割</li>
 <li>最大的子数组</li>
 </ul>
-<h3 id="8-位操作"><a href="#8-位操作" class="headerlink" title="8. 位操作"></a>8. 位操作</h3><p>位操作符：<br><img src="http://cms.csdnimg.cn/article/201404/10/53465e7bc51e0.jpg" alt=""></p>
+<h3 id="8-位操作"><a href="#8-位操作" class="headerlink" title="8. 位操作"></a>8. 位操作</h3><p>位操作符：<br><img src="http://cms.csdnimg.cn/article/201404/10/53465e7bc51e0.jpg" alt></p>
 <p>从一个给定的数n中找位i（i从0开始，然后向右开始）</p>
 <pre><code>public static boolean getBit(int num, int i){
     int result = num &amp; (1&lt;&lt;i);
@@ -3618,7 +3620,7 @@ return A[n];
 <p>一个Android反编译神器,不同于常见的 dex2jar,这个反编译器生成代码的 try/catch 次数更少, View也不再是数字id了,可读性更高</p>
 </blockquote>
 <p>Command line and GUI tools for produce Java source code from Android Dex and Apk files</p>
-<p><img src="https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67" alt=""></p>
+<p><img src="https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67" alt></p>
 <p>Downloads</p>
 <ul>
 <li><a href="https://drone.io/github.com/skylot/jadx/files" target="_blank" rel="noopener">unstable</a></li>
@@ -3651,7 +3653,7 @@ return A[n];
 <p>这是一个伟大的事情。Android开发入门与实战（第2版）就是由eoe社区数十名版主和会员共同编著而成。</p>
 <h3 id="看视频教程，听播客，看在线研讨会："><a href="#看视频教程，听播客，看在线研讨会：" class="headerlink" title="看视频教程，听播客，看在线研讨会："></a>看视频教程，听播客，看在线研讨会：</h3><p>从播客和在线研讨会上也能学到很多东西，关键是在自己的电脑上将播客和研讨会力学来的知识进行代码验证是最好的进步环节。</p>
 <p>在给出这个调查表之后有很多程序员/开发者给出了回复和选择，一起来看看他们平时都是怎么来提高自己的技术水平的：</p>
-<p><img src="http://s9.51cto.com/wyfs01/M01/32/AB/wKioJlKK1tLCQHKLAABzCAW0Jwk321.jpg" alt=""></p>
+<p><img src="http://s9.51cto.com/wyfs01/M01/32/AB/wKioJlKK1tLCQHKLAABzCAW0Jwk321.jpg" alt></p>
 <p><strong>很明显，大多数人喜欢把阅读书本、代码和博客作为一种提高技能的手段。同时也有让人惊讶的现象：那就是通过做Kata来实践、参与开源项目、订阅科 技读物的比例实在是太低了，因为这三项在大部分人看来是最容易的，而且效率也是最显著的。另外，写一本书的竟然占到了8%，也很让人吃惊。除了这些，你觉 得还有哪些方式是可以提高你的技术水平的呢？</strong></p>
 <p><br></p>
 <p>来自：<a href="#"> http://mobile.51cto.com/anews-417838.htm </a></p>
@@ -3757,9 +3759,9 @@ dispatch_resume(_timer);
       <title><![CDATA[使用groovy读取excel里面内容]]></title>
       <url>http://gdky005.com/2015/11/20/%E4%BD%BF%E7%94%A8groovy%E8%AF%BB%E5%8F%96excel%E9%87%8C%E9%9D%A2%E5%86%85%E5%AE%B9/</url>
       <content type="html"><![CDATA[<h1 id="使用groovy读取excel里面内容"><a href="#使用groovy读取excel里面内容" class="headerlink" title="使用groovy读取excel里面内容"></a>使用groovy读取excel里面内容</h1><h3 id="需要依赖"><a href="#需要依赖" class="headerlink" title="需要依赖"></a>需要依赖</h3><p><a href="http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip" target="_blank" rel="noopener">apache.org/poi</a></p>
-<h3 id="项目目录结构："><a href="#项目目录结构：" class="headerlink" title="项目目录结构："></a>项目目录结构：</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_1.png" alt=""></p>
+<h3 id="项目目录结构："><a href="#项目目录结构：" class="headerlink" title="项目目录结构："></a>项目目录结构：</h3><p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_1.png" alt></p>
 <p>项目 assets 下面放了一个people.xlsx文件</p>
-<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_2.png" alt=""></p>
+<p><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_2.png" alt></p>
 <h3 id="PS："><a href="#PS：" class="headerlink" title="PS："></a><strong>PS</strong>：</h3><ul>
 <li>本文依赖 <a href="http://blog.csdn.net/andyxuq/article/details/7916098" target="_blank" rel="noopener">Groovy读取excel文件</a> 尝试读取后，发现不能运行</li>
 <li>下载 Apache的POI组建 遇到问题</li>
@@ -3830,10 +3832,10 @@ class TestGroovy {
         a.updateResourceDate();
     }
 }
-</code></pre><p>项目运行结果：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_3.png" alt=""></p>
+</code></pre><p>项目运行结果：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_3.png" alt></p>
 <h3 id="Apache的POI组建-遇到问题"><a href="#Apache的POI组建-遇到问题" class="headerlink" title="Apache的POI组建 遇到问题"></a>Apache的POI组建 遇到问题</h3><p>首先进入网址：<a href="http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip" target="_blank" rel="noopener">http://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.13-20150929.zip</a></p>
-<p>下载文件的时候，一般在工程里面依赖的是 jar,但是下面的是 .zip 很是疑惑,这个文件 26.4M，虽然不相信，但是下载下来后解压开，才明白：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_4.png" alt=""></p>
-<p>其中该项目中使用了<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_5.png" alt=""><br>xmlbeans-2.6.0.jar</p>
+<p>下载文件的时候，一般在工程里面依赖的是 jar,但是下面的是 .zip 很是疑惑,这个文件 26.4M，虽然不相信，但是下载下来后解压开，才明白：<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_4.png" alt></p>
+<p>其中该项目中使用了<br><img src="http://7xlcno.com1.z0.glb.clouddn.com/groovy_excelgroovy_excel_5.png" alt><br>xmlbeans-2.6.0.jar</p>
 <p>这个文件在上面的 lib 下面。</p>
 <p>因为我使用的mac 2010 office， 所以文件保存的是：.xlsx。开始使用的 </p>
 <p><em>HSSFRow</em>  ，发现报错：<br>    Request processing failed; nested exception is org.apache.poi.poifs.filesystem.OfficeXmlFileException: The supplied data appears to be in the Office 2007+ XML. POI only supports OLE2 Office documents</p>
@@ -4090,8 +4092,8 @@ startActivity(intent);
 <p>Launcher 本质也是一个应用程序，和我们的App一样，也是继承自Activity。</p>
 <p>packages/apps/Launcher2/src/com/android/launcher2/Launcher.java<br>    public final class Launcher extends Activity<br>            implements View.OnClickListener, OnLongClickListener, LauncherModel.Callbacks,<br>                       View.OnTouchListener {<br>                       }</p>
 <p>Launcher 实现了点击，长按等回到接口，来接受用户的输入。其实本质和我们的App一样，点击图标 然后 startActivity（） 发送到对应的Intent 请求呗！就是如此的简单。</p>
-<p><img src="DraggedImage.png" alt=""></p>
-<p>程序列表里面：<br><img src="DraggedImage-1.png" alt=""></p>
+<p><img src="DraggedImage.png" alt></p>
+<p>程序列表里面：<br><img src="DraggedImage-1.png" alt></p>
 <p>可以看到的是，调用的是：<br>    mLauncher.startActivitySafely(v, appInfo.intent, appInfo);</p>
 <p>和上面的一样，这叫什么？ 这叫殊途同归！</p>
 <p>所以现在我们明白了一件事：不管从哪里点击图标，调用的都是<br>    Launcher.startActivitySafely()</p>
@@ -4324,7 +4326,7 @@ class ApplicationThreadProxy implements IApplicationThread {}
 </code></pre><p>在Launcher 进程中消息传递， 调用 ActivityThread.handlePauseActivity()， 最终调用  ActivityThread.performPauseActivity() 暂停 指定 Activity，接着通过签名所说的 Binder 通信，通知AMS 已经完成暂停的操作。<br>    ActivityManagerNative.getDefault().activityPaused(token).</p>
 <p>上面的调用关系复杂，源码的判断条件很多，没记住没关系，但是要记住流程，理解了 Android 控制 Activity 的生命周期 是如何操作的，以及通过那几个关键的类进行就可以了。后续遇到问题 明白从什么地方处理就可以了。</p>
 <p>最后 来一张高清五码的大图，方便记忆</p>
-<p><img src="Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png" alt=""></p>
+<p><img src="Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90.png" alt></p>
 <h3 id="一个App的程序入口是什么？"><a href="#一个App的程序入口是什么？" class="headerlink" title="一个App的程序入口是什么？"></a>一个App的程序入口是什么？</h3><p>是ActivityThread.main()</p>
 <h3 id="整个App的主线程的消息循环是在哪里创建的"><a href="#整个App的主线程的消息循环是在哪里创建的" class="headerlink" title="整个App的主线程的消息循环是在哪里创建的?"></a>整个App的主线程的消息循环是在哪里创建的?</h3><p>是在ActivityThread初始化的时候，就已经创建消息循环了，所以在主线程里面创建Hander不需要指定Looper,而如果在其他线程 使用 Handler ，则需要单独使用Looper.prepare() 和 Looper.loop()出埃及消息循环。</p>
 <pre><code>public static void main(String[] args) {
@@ -4985,7 +4987,7 @@ public Bitmap getRoundedBitmap(Bitmap mBitmap) {
 <p>查找bug 的神器： <a href="https://bugtags.com" target="_blank" rel="noopener">bugtags</a></p>
 <p>快速反馈 App Bug 的工具 Bugtags，任何人随时随地一键提交 Bug。<br><br><br></p>
 <pre><code>Bugtags是国内首款为改善移动产品质量而专门打造的测试平台产品。使用Bugtags平台可以随时随地对移动产品提出准确的改善意见，使得测试更简单，修复问题更轻松，产品用户满意度更高。
-</code></pre><p><img src="http://mmbiz.qpic.cn/mmbiz/KfDGLcEiauQjMjV5yhOicj2pQm6m7nJsiarkheNAVo58icUrJzj3y1CojAocibU7jXe0xxlhck079iarhYrZ7Iqg2v7Q/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+</code></pre><p><img src="http://mmbiz.qpic.cn/mmbiz/KfDGLcEiauQjMjV5yhOicj2pQm6m7nJsiarkheNAVo58icUrJzj3y1CojAocibU7jXe0xxlhck079iarhYrZ7Iqg2v7Q/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt></p>
 <h3 id="它在移动端是的主要功能包括："><a href="#它在移动端是的主要功能包括：" class="headerlink" title="它在移动端是的主要功能包括："></a>它在移动端是的主要功能包括：</h3><ol>
 <li><p>任何地方快速标记 Bug，分配给对应开发<br>跟他们官网说的一样，测试从未如此简单！</p>
 </li>
@@ -5071,7 +5073,7 @@ public Bitmap getRoundedBitmap(Bitmap mBitmap) {
       <url>http://gdky005.com/2015/09/19/android-monkey/</url>
       <content type="html"><![CDATA[<h3 id="开始测试："><a href="#开始测试：" class="headerlink" title="开始测试："></a>开始测试：</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monkey -<span class="selector-tag">p</span> com<span class="selector-class">.itings</span><span class="selector-class">.myradio</span> -c android<span class="selector-class">.intent</span><span class="selector-class">.category</span><span class="selector-class">.LAUNCHER</span> -s <span class="number">500</span> --hprof --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --throttle <span class="number">50</span> -v -v <span class="number">600000</span>&gt;/mnt/sdcard/monkey1<span class="selector-class">.txt</span> &amp;</span><br></pre></td></tr></table></figure>
 <h3 id="保存monkey-和-logcat-的日志"><a href="#保存monkey-和-logcat-的日志" class="headerlink" title="保存monkey 和 logcat 的日志"></a>保存monkey 和 logcat 的日志</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monkey -<span class="selector-tag">p</span> com<span class="selector-class">.itings</span><span class="selector-class">.myradio</span> -c android<span class="selector-class">.intent</span><span class="selector-class">.category</span><span class="selector-class">.LAUNCHER</span> -s <span class="number">500</span> --hprof --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --throttle <span class="number">50</span> -v -v -v <span class="number">15000000</span>&gt;&gt;/mnt/sdcard/monkey_kaola<span class="selector-class">.txt</span> &amp; logcat  -v <span class="selector-tag">time</span> &gt;&gt;/mnt/sdcard/logcat.txt</span><br></pre></td></tr></table></figure>
-<h3 id="终止："><a href="#终止：" class="headerlink" title="终止："></a>终止：</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb <span class="keyword">shell</span><span class="bash"></span></span><br><span class="line"><span class="bash">ps|grep monkey</span></span><br><span class="line"><span class="bash"><span class="built_in">kill</span> id</span></span><br></pre></td></tr></table></figure>
+<h3 id="终止："><a href="#终止：" class="headerlink" title="终止："></a>终止：</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb <span class="keyword">shell</span></span><br><span class="line"><span class="keyword">ps</span>|<span class="keyword">grep</span> monkey</span><br><span class="line">kill id</span><br></pre></td></tr></table></figure>
 <h6 id="adb-logcat-s-com-xx-xx"><a href="#adb-logcat-s-com-xx-xx" class="headerlink" title="adb logcat -s com.xx.xx"></a>adb logcat -s com.xx.xx</h6>]]></content>
       
         <categories>
@@ -5260,7 +5262,7 @@ public Bitmap getRoundedBitmap(Bitmap mBitmap) {
 <p><br></p>
 <h2 id="五、5-日志记录信息要完整"><a href="#五、5-日志记录信息要完整" class="headerlink" title="五、5. 日志记录信息要完整"></a>五、5. 日志记录信息要完整</h2><p><br></p>
 <p>问题描述：</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line">-<span class="ruby"> InitMultiUpload（生成一个UploadID）</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">-  ……</span></span><br><span class="line"><span class="ruby">- UploadPart</span></span><br><span class="line"><span class="ruby">- CompleteMultiUpload（AbortMultiUpload）</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">- 在系统启动或初始化时记录重要的系统初始化参数</span></span><br><span class="line"><span class="ruby">- 记录系统运行过程中的所有的错误</span></span><br><span class="line"><span class="ruby">- 记录系统运行过程中的所有的警告</span></span><br><span class="line"><span class="ruby">- 在持久化数据修改时记录修改前和修改后的值</span></span><br><span class="line"><span class="ruby">- 记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span></span><br><span class="line"><span class="ruby">- 重要的状态变化（如NOS中对系统白名单的修改等）</span></span><br><span class="line"><span class="ruby">- 系统中一些长期执行的任务的执行进度</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">NOS提供分块上传的接口，用户可以通过以下的调用序列，来实现一次分块上传的流程：</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>InitMultiUpload（生成一个UploadID）</span><br><span class="line"><span class="bullet">- </span>UploadPart</span><br><span class="line"><span class="bullet">- </span>UploadPart</span><br><span class="line"><span class="bullet">-  </span>……</span><br><span class="line"><span class="bullet">- </span>UploadPart</span><br><span class="line"><span class="bullet">- </span>CompleteMultiUpload（AbortMultiUpload）</span><br><span class="line"></span><br><span class="line">之前在某个产品上线初期，由于其开发人员对NOS的熟悉程度不够等原因。出现过如下问题：客户端常常会收到NoSuchUpload的错误。该错误出现的原因是，用户在未调用InitMultiUpload之前，或者在调用了CompleteMultiUpload（AbortMultiUpload）之后再次调用UploadPart。</span><br><span class="line"></span><br><span class="line">然而当我们查日志，希望可以看到该UploadPart请求对哪个UploadID进行操作，该UploadID又对应哪些操作时，却发现我们的日志中没有记录UploadPart请求对应的UploadID。</span><br><span class="line"></span><br><span class="line">类似的问题还有很多，很多针对特定请求的日志缺失，导致很多问题无法定位。</span><br><span class="line"></span><br><span class="line">因此，需要进一步对日志中需要记录哪些内容进行规定，此处推荐的需要在日志中记录的内容有：</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>在系统启动或初始化时记录重要的系统初始化参数</span><br><span class="line"><span class="bullet">- </span>记录系统运行过程中的所有的错误</span><br><span class="line"><span class="bullet">- </span>记录系统运行过程中的所有的警告</span><br><span class="line"><span class="bullet">- </span>在持久化数据修改时记录修改前和修改后的值</span><br><span class="line"><span class="bullet">- </span>记录系统各主要模块之间的请求和响应（如在NOS中的视频处理模块在接收到请求和发送应答时，或者向客户端发送回调请求时）</span><br><span class="line"><span class="bullet">- </span>重要的状态变化（如NOS中对系统白名单的修改等）</span><br><span class="line"><span class="bullet">- </span>系统中一些长期执行的任务的执行进度</span><br></pre></td></tr></table></figure>
 <p><strong>不推荐记录日志的内容有：</strong></p>
 <ul>
 <li>函数入口信息 —— 除非该函数入口表示了一个重要事件的开始，或者将该信息记入DEBUG级别日志</li>
