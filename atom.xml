@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2019-04-14T03:38:51.894Z</updated>
+  <updated>2019-08-29T03:25:13.012Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flutter 学习脑图笔记，可方便查找与搜索！</title>
+    <link href="http://gdky005.com/2019/08/29/Flutter-%E5%AD%A6%E4%B9%A0%E8%84%91%E5%9B%BE%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%8F%AF%E6%96%B9%E4%BE%BF%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%90%9C%E7%B4%A2%EF%BC%81/"/>
+    <id>http://gdky005.com/2019/08/29/Flutter-学习脑图笔记，可方便查找与搜索！/</id>
+    <published>2019-08-29T03:24:42.000Z</published>
+    <updated>2019-08-29T03:25:13.012Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="FlutterNodeTips"><a href="#FlutterNodeTips" class="headerlink" title="FlutterNodeTips"></a>FlutterNodeTips</h1><p>Flutter 学习笔记思维导图，包含常用组件的基础属性，可在源文件中直接搜索，也可作为一个常用必备的手册。</p><p><img src="https://github.com/gdky005/FlutterNodeTips/blob/master/FlutterNode_%20thumb.png" alt></p><h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><ul><li>新手：便于新手学习和理解常用的组件，以及基础属性。</li><li>大小牛：以备不时需的查找。</li></ul><h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><p>包含三种类型的文件，具体如下：</p><ul><li>PNG  基础图片类型，可以浏览全部，放大缩小，可分区域查看。</li><li>PDF  标准的 PDF，不仅是查阅，也可以直接根据关键字搜索。</li><li>MindNode  原始文件，可以在此基础上查找和修改等。</li></ul><h2 id="源文件"><a href="#源文件" class="headerlink" title="源文件"></a>源文件</h2><p><a href="https://github.com/gdky005/FlutterNodeTips" target="_blank" rel="noopener">https://github.com/gdky005/FlutterNodeTips</a></p><h2 id="其他更多"><a href="#其他更多" class="headerlink" title="其他更多"></a>其他更多</h2><p><a href="https://www.gdky005.com" target="_blank" rel="noopener">https://www.gdky005.com</a></p><h2 id="Flutter-学习交流群"><a href="#Flutter-学习交流群" class="headerlink" title="Flutter 学习交流群"></a>Flutter 学习交流群</h2><p>添加：gdky005，拉群，也可直接扫码进入。</p><p><img src="https://github.com/gdky005/FlutterNodeTips/blob/master/organization.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;FlutterNodeTips&quot;&gt;&lt;a href=&quot;#FlutterNodeTips&quot; class=&quot;headerlink&quot; title=&quot;FlutterNodeTips&quot;&gt;&lt;/a&gt;FlutterNodeTips&lt;/h1&gt;&lt;p&gt;Flutter 学习笔记思维导图，包
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>业务开发中自定义 EditText 光标不显示？</title>
@@ -105,32 +126,6 @@
       
         &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;让我们来尝试做一
-      
-    
-    </summary>
-    
-      <category term="QPM" scheme="http://gdky005.com/categories/QPM/"/>
-    
-    
-      <category term="QPM, 性能优化, 组件" scheme="http://gdky005.com/tags/QPM-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QPM 准备优化前的思考</title>
-    <link href="http://gdky005.com/2019/01/03/QPM-%E5%87%86%E5%A4%87%E4%BC%98%E5%8C%96%E5%89%8D%E7%9A%84%E6%80%9D%E8%80%83/"/>
-    <id>http://gdky005.com/2019/01/03/QPM-准备优化前的思考/</id>
-    <published>2019-01-03T07:20:13.000Z</published>
-    <updated>2019-01-03T07:20:39.043Z</updated>
-    
-    <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p><h2 id="重复的工作能否减少？"><a href="#重复的工作能否减少？" class="headerlink" title="重复的工作能否减少？"></a>重复的工作能否减少？</h2><p>必须可以！</p><p>每天重复着同样的工作，周而复始，枯燥乏味，因此衍生出了自动化操作，比如脚本，工具等，让人们可以把时间节省下来，做更多的事情。</p><h2 id="Android-如何进行性能优化？"><a href="#Android-如何进行性能优化？" class="headerlink" title="Android 如何进行性能优化？"></a>Android 如何进行性能优化？</h2><ol><li>抓包： Charles，Fiddler， Wireshark;</li><li>Android Studio: DDMS, Logcat；</li><li>Android Studio 中 Profiler 的 内存，流量，CPU；</li><li>Android 手机中开发者选项里面有很多辅助性工具。</li></ol><p>这些工具都有一个前提，很多都需要手机连接数据线，再打开工具才能使用，如果客户手机有问题，也如此的话，比较费心费力。对于未 root 的手机要拿到一些信息，着实不易。</p><h2 id="测试同学可以进行性能优化监控吗？"><a href="#测试同学可以进行性能优化监控吗？" class="headerlink" title="测试同学可以进行性能优化监控吗？"></a>测试同学可以进行性能优化监控吗？</h2><p>可以，但是业务测试和需求每天都很多， 测试同学没空，没精力去测试这方面的性能。除非有专业的性能测试团队，每天负责检测。手机发热，界面卡顿都需要监控起来。</p><h2 id="运行-App-即可查看性能"><a href="#运行-App-即可查看性能" class="headerlink" title="运行 App 即可查看性能"></a>运行 App 即可查看性能</h2><p>大家加班，加点，忙需求，没有那么多的时间去看性能问题，最多在几个关键时间点集中处理下。如果我们的 App 运行后，就内置了一个这样的功能，只要打开开关，就可以悬浮窗到主界面上，根据 FPS，内存，CPU，去看一个检测页面卡顿情况就再好不过了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;重复的
       
     
     </summary>
