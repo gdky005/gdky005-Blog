@@ -1,15 +1,13 @@
 title: Flutter 学习脑图笔记，可方便查找与搜索！
 date: 2019-08-29 11:24:42
-categories:
-keywords:
-tags:
+categories: flutter
+keywords: flutter
+tags: flutter
 ---
 
-
-# FlutterNodeTips
 Flutter 学习笔记思维导图，包含常用组件的基础属性，可在源文件中直接搜索，也可作为一个常用必备的手册。
 
-![](https://github.com/gdky005/FlutterNodeTips/blob/master/FlutterNode_%20thumb.png)
+![](https://raw.githubusercontent.com/gdky005/FlutterNodeTips/master/FlutterNode_%20thumb.png)
 
 ## 适合人群
 - 新手：便于新手学习和理解常用的组件，以及基础属性。
@@ -33,6 +31,7 @@ Flutter 学习笔记思维导图，包含常用组件的基础属性，可在源
 ## Flutter 学习交流群
 添加：gdky005，拉群，也可直接扫码进入。
 
-![](https://github.com/gdky005/FlutterNodeTips/blob/master/organization.png)
+![](https://raw.githubusercontent.com/gdky005/FlutterNodeTips/master/organization.png)
+
 
 
