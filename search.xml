@@ -6,8 +6,8 @@
     <entry>
       <title><![CDATA[Flutter 学习脑图笔记，可方便查找与搜索！]]></title>
       <url>http://gdky005.com/2019/08/29/Flutter-%E5%AD%A6%E4%B9%A0%E8%84%91%E5%9B%BE%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%8F%AF%E6%96%B9%E4%BE%BF%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%90%9C%E7%B4%A2%EF%BC%81/</url>
-      <content type="html"><![CDATA[<h1 id="FlutterNodeTips"><a href="#FlutterNodeTips" class="headerlink" title="FlutterNodeTips"></a>FlutterNodeTips</h1><p>Flutter 学习笔记思维导图，包含常用组件的基础属性，可在源文件中直接搜索，也可作为一个常用必备的手册。</p>
-<p><img src="https://github.com/gdky005/FlutterNodeTips/blob/master/FlutterNode_%20thumb.png" alt></p>
+      <content type="html"><![CDATA[<p>Flutter 学习笔记思维导图，包含常用组件的基础属性，可在源文件中直接搜索，也可作为一个常用必备的手册。</p>
+<p><img src="https://raw.githubusercontent.com/gdky005/FlutterNodeTips/master/FlutterNode_%20thumb.png" alt></p>
 <h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><ul>
 <li>新手：便于新手学习和理解常用的组件，以及基础属性。</li>
 <li>大小牛：以备不时需的查找。</li>
@@ -21,9 +21,21 @@
 <h2 id="源文件"><a href="#源文件" class="headerlink" title="源文件"></a>源文件</h2><p><a href="https://github.com/gdky005/FlutterNodeTips" target="_blank" rel="noopener">https://github.com/gdky005/FlutterNodeTips</a></p>
 <h2 id="其他更多"><a href="#其他更多" class="headerlink" title="其他更多"></a>其他更多</h2><p><a href="https://www.gdky005.com" target="_blank" rel="noopener">https://www.gdky005.com</a></p>
 <h2 id="Flutter-学习交流群"><a href="#Flutter-学习交流群" class="headerlink" title="Flutter 学习交流群"></a>Flutter 学习交流群</h2><p>添加：gdky005，拉群，也可直接扫码进入。</p>
-<p><img src="https://github.com/gdky005/FlutterNodeTips/blob/master/organization.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/gdky005/FlutterNodeTips/master/organization.png" alt></p>
 ]]></content>
       
+        <categories>
+            
+            <category> flutter </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> flutter </tag>
+            
+        </tags>
         
     </entry>
     
