@@ -10,9 +10,10 @@
 <p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage.png" alt="DraggedImage.png"></p>
 <p>看到升级提示，立马升级本地 Flutter SDK。</p>
 <p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-1.png" alt="DraggedImage-1.png"></p>
-<h1 id="本期讲解Flutter-路由传递"><a href="#本期讲解Flutter-路由传递" class="headerlink" title="本期讲解Flutter 路由传递"></a>本期讲解Flutter 路由传递</h1><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-2.png" alt="DraggedImage-2.png"></p>
+<h1 id="本期讲解Flutter-路由传递"><a href="#本期讲解Flutter-路由传递" class="headerlink" title="本期讲解Flutter 路由传递"></a>本期讲解Flutter 路由传递</h1><p>这是一个大的概述图。</p>
+<p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-2.png" alt="DraggedImage-2.png"></p>
 <p>当 app 的页面变多的时候，就需要考虑页面传值的问题，在第一个页面如何把数据传递到 另外一个页面？最最基本的方法是在打开新页面，传递参数过去。但当 app 变得很大或者功能变多，你会发现传值是一件费劲的事情。例如前期设计的时候，只需要一个参数，但后面发现业务可能需要三个参数，如果再追加两个参数也不是不可以，就是不太优雅，而且可能要修改很多地方。</p>
-<h2 id="跳转到一个界面"><a href="#跳转到一个界面" class="headerlink" title="跳转到一个界面"></a>跳转到一个界面</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/device-2019-09-09-184344 (1" alt="device-2019-09-09-184344 (1).gif">.gif)</p>
+<h2 id="跳转到一个界面"><a href="#跳转到一个界面" class="headerlink" title="跳转到一个界面"></a>跳转到一个界面</h2><p><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/device-2019-09-09-184344.gif" alt="device-2019-09-09-184344 (1).gif"></p>
 <p>先简单解释一下，下面会使用到， App 启动一个主界面，然后点击中间按钮，会打开第二个界面。点击第二个界面的右上角，会返回到之前的界面。具体代码如下：</p>
 <pre><code>import &apos;package:flutter/material.dart&apos;;
 import &apos;package:flutter/widgets.dart&apos;;
