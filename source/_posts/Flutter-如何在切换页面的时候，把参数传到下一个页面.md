@@ -10,26 +10,26 @@ tags: Flutter
 
 2019年09月10日 Google 刚把 Flutter 1.9 版本发布，相信 2.0 应该不远了。这次更新将 Flutter 的 web 代码合并到主 repo 了，但是 web 的还处于测试版本，2.0 应该是包含 web 的，让我们期待吧。
 
-![DraggedImage.png](https://upload-images.jianshu.io/upload_images/720880-7db8aac7030597a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![DraggedImage.png](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage.png)
 
 
 看到升级提示，立马升级本地 Flutter SDK。
 
 
-![DraggedImage-1.png](https://upload-images.jianshu.io/upload_images/720880-0dd0ef065db46c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![DraggedImage-1.png](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-1.png)
 
 
 # 本期讲解Flutter 路由传递
 
 
-![DraggedImage-2.png](https://upload-images.jianshu.io/upload_images/720880-32f5a6ab49592a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![DraggedImage-2.png](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-2.png)
 
 
 当 app 的页面变多的时候，就需要考虑页面传值的问题，在第一个页面如何把数据传递到 另外一个页面？最最基本的方法是在打开新页面，传递参数过去。但当 app 变得很大或者功能变多，你会发现传值是一件费劲的事情。例如前期设计的时候，只需要一个参数，但后面发现业务可能需要三个参数，如果再追加两个参数也不是不可以，就是不太优雅，而且可能要修改很多地方。
 
 ## 跳转到一个界面
 
-![device-2019-09-09-184344 (1).gif](https://upload-images.jianshu.io/upload_images/720880-035f1afda2686d35.gif?imageMogr2/auto-orient/strip)
+![device-2019-09-09-184344 (1).gif](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/device-2019-09-09-184344 (1).gif)
 
 
 先简单解释一下，下面会使用到， App 启动一个主界面，然后点击中间按钮，会打开第二个界面。点击第二个界面的右上角，会返回到之前的界面。具体代码如下：
