@@ -1,0 +1,1251 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Flutter">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孤独狂饮" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="导语2019年09月10日 Google 刚把 Flutter 1.9 版本发布，相信 2.0 应该不远了。这次更新将 Flutter 的 web 代码合并到主 repo 了，但是 web 的还处于测试版本，2.0 应该是包含 web 的，让我们期待吧。  看到升级提示，立马升级本地 Flutter SDK。  本期讲解Flutter 路由传递 当 app 的页面变多的时候，就需要考虑页面传值的问">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 如何在切换页面的时候，把参数传到下一个页面?">
+<meta property="og:url" content="http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/index.html">
+<meta property="og:site_name" content="孤独狂饮">
+<meta property="og:description" content="导语2019年09月10日 Google 刚把 Flutter 1.9 版本发布，相信 2.0 应该不远了。这次更新将 Flutter 的 web 代码合并到主 repo 了，但是 web 的还处于测试版本，2.0 应该是包含 web 的，让我们期待吧。  看到升级提示，立马升级本地 Flutter SDK。  本期讲解Flutter 路由传递 当 app 的页面变多的时候，就需要考虑页面传值的问">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/720880-7db8aac7030597a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/720880-0dd0ef065db46c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/720880-32f5a6ab49592a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/720880-035f1afda2686d35.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/720880-019451fc09c241a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-10T09:28:32.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 如何在切换页面的时候，把参数传到下一个页面?">
+<meta name="twitter:description" content="导语2019年09月10日 Google 刚把 Flutter 1.9 版本发布，相信 2.0 应该不远了。这次更新将 Flutter 的 web 代码合并到主 repo 了，但是 web 的还处于测试版本，2.0 应该是包含 web 的，让我们期待吧。  看到升级提示，立马升级本地 Flutter SDK。  本期讲解Flutter 路由传递 当 app 的页面变多的时候，就需要考虑页面传值的问">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/720880-7db8aac7030597a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/">
+
+
+
+
+
+  <title>Flutter 如何在切换页面的时候，把参数传到下一个页面? | 孤独狂饮</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?60604cb7585e80203a90adfb670d42bc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孤独狂饮</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">只要有百分之一的梦想，就要付出百分之百的努力。努力不一定成功，但是不努力就一定不会成功！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zhuoketeam">
+          <a href="/categories/ZhuoKeTeam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-android"></i> <br>
+            
+            卓客Team
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-qpm">
+          <a href="/categories/QPM" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pied-piper"></i> <br>
+            
+            QPM_性能优化组件
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-shields">
+          <a href="/categories/shields" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-shield"></i> <br>
+            
+            shields_徽章系列文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gdky005">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孤独狂饮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Flutter 如何在切换页面的时候，把参数传到下一个页面?</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T17:27:24+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-10T17:28:32+08:00">
+                2019-09-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>2019年09月10日 Google 刚把 Flutter 1.9 版本发布，相信 2.0 应该不远了。这次更新将 Flutter 的 web 代码合并到主 repo 了，但是 web 的还处于测试版本，2.0 应该是包含 web 的，让我们期待吧。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/720880-7db8aac7030597a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DraggedImage.png"></p>
+<p>看到升级提示，立马升级本地 Flutter SDK。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/720880-0dd0ef065db46c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DraggedImage-1.png"></p>
+<h1 id="本期讲解Flutter-路由传递"><a href="#本期讲解Flutter-路由传递" class="headerlink" title="本期讲解Flutter 路由传递"></a>本期讲解Flutter 路由传递</h1><p><img src="https://upload-images.jianshu.io/upload_images/720880-32f5a6ab49592a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DraggedImage-2.png"></p>
+<p>当 app 的页面变多的时候，就需要考虑页面传值的问题，在第一个页面如何把数据传递到 另外一个页面？最最基本的方法是在打开新页面，传递参数过去。但当 app 变得很大或者功能变多，你会发现传值是一件费劲的事情。例如前期设计的时候，只需要一个参数，但后面发现业务可能需要三个参数，如果再追加两个参数也不是不可以，就是不太优雅，而且可能要修改很多地方。</p>
+<h2 id="跳转到一个界面"><a href="#跳转到一个界面" class="headerlink" title="跳转到一个界面"></a>跳转到一个界面</h2><p><img src="https://upload-images.jianshu.io/upload_images/720880-035f1afda2686d35.gif?imageMogr2/auto-orient/strip" alt="device-2019-09-09-184344 (1).gif"></p>
+<p>先简单解释一下，下面会使用到， App 启动一个主界面，然后点击中间按钮，会打开第二个界面。点击第二个界面的右上角，会返回到之前的界面。具体代码如下：</p>
+<pre><code>import &apos;package:flutter/material.dart&apos;;
+import &apos;package:flutter/widgets.dart&apos;;
+
+class Test extends StatefulWidget {
+  @override
+  _TestState createState() =&gt; _TestState();
+}
+
+class _TestState extends State&lt;Test&gt; {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&apos;路由&apos;),
+      ),
+      body: Center(
+        child: FloatingActionButton(
+          shape: BeveledRectangleBorder(),
+          child: Text(&apos;按钮&apos;),
+          onPressed: () {
+            //使用路由打开 第二个界面
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) =&gt; TwoPage()));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class TwoPage extends StatefulWidget {
+  @override
+  _TwoPageState createState() =&gt; _TwoPageState();
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&apos;第二页&apos;),
+      ),
+      body: Column(
+        children: &lt;Widget&gt;[
+          SizedBox(height: 100),
+          Text(&apos;传递过来的值：\n&apos;),
+          SizedBox(height: 100),
+          Center(
+            child: FloatingActionButton(
+              shape: BeveledRectangleBorder(),
+              child: Text(&apos;返回&apos;),
+              onPressed: () {
+                // 返回到上一个界面
+                Navigator.pop(context);
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+</code></pre><h2 id="使用构造传参"><a href="#使用构造传参" class="headerlink" title="使用构造传参"></a>使用构造传参</h2><p>使用构造参数把参数传递过去，在 TwoPage 中接受参数可直接用 widget.x , x 表示 _TwoPageState 传递过来的 widget 中包含值。</p>
+<pre><code>class _TestState extends State&lt;Test&gt; {
+        ...
+    onPressed: () {
+        String name = &quot;Wang&quot;;
+        String age = &quot;99&quot;;
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; TwoPage(name, age)));
+      },
+    ...
+}
+
+class TwoPage extends StatefulWidget {
+  String name;
+  String age;
+
+  TwoPage(this.name, this.age);
+    ...
+    Text(&apos;传递过来的值：\n ${widget.name}_${widget.age}&apos;),
+    ...
+}
+</code></pre><h3 id="List（数组）传参"><a href="#List（数组）传参" class="headerlink" title="List（数组）传参"></a>List（数组）传参</h3><p>这里演示了 使用构造传递一个 List 类型的数, 使用 widget.data 的列表脚本获取数据。</p>
+<pre><code>class _TestState extends State&lt;Test&gt; {
+        ...
+
+        dynamic data = [&apos;name1&apos;, &apos;age&apos;];
+    Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; TwoPage(data)));
+
+    ...
+}
+
+class TwoPage extends StatefulWidget {
+    ...
+    dynamic data;
+    TwoPage(this.data);
+    ...
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+    ...
+    Text(&apos;传递过来的值：\n ${widget.data[0]}_${widget.data[1]}&apos;),
+    ...
+}
+</code></pre><h3 id="Map-传参"><a href="#Map-传参" class="headerlink" title="Map 传参"></a>Map 传参</h3><p>这里演示了 使用构造传递一个 map 类型的数据。</p>
+<pre><code>class _TestState extends State&lt;Test&gt; {
+        ...
+
+        dynamic map = {
+              &apos;name&apos;: &quot;Wang_Map&quot;,
+              &apos;age&apos;: &quot;99&quot;,
+            };
+    Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; TwoPage(map)));
+
+    ...
+}
+
+class TwoPage extends StatefulWidget {
+    ...
+    dynamic map;
+    TwoPage(this.map);
+    ...
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+    ...
+    Text(&apos;传递过来的值：\n ${widget.map[&quot;name&quot;]}_${widget.map[&quot;age&quot;]}&apos;),
+    ...
+}
+</code></pre><h2 id="使用带名字的路由传参"><a href="#使用带名字的路由传参" class="headerlink" title="使用带名字的路由传参"></a>使用带名字的路由传参</h2><p>很多时候我们项目比较大，为了统一管理，会使用带名字的路由概念，下面的路由字符串常量可以写成变量，这样后期不管怎么修改里面的值，依赖的地方都是不需要修改的。</p>
+<h2 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h2><p>这里传递了一个 name 值，演示了一下 使用带名字的路由传递值。</p>
+<pre><code>void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: &quot;/&quot;,
+      routes: {
+        &quot;/&quot;: (context) =&gt; OnePage(),
+        &quot;/TwoPage&quot;: (context) =&gt; TwoPage(),
+      },
+    );
+  }
+}
+
+
+class OnePage extends StatefulWidget {
+  @override
+  _OnePageState createState() =&gt; _OnePageState();
+}
+
+class _OnePageState extends State&lt;OnePage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&apos;路由页面&apos;),
+      ),
+      body: Center(
+        child: FloatingActionButton(
+          shape: BeveledRectangleBorder(),
+          child: Text(&apos;按钮&apos;),
+          onPressed: () {
+            String name = &quot;Wang&quot;;
+
+            Navigator.pushNamed(context, &apos;/TwoPage&apos;, arguments: name);
+
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class TwoPage extends StatefulWidget {
+
+  @override
+  _TwoPageState createState() =&gt; _TwoPageState();
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    dynamic name = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&apos;第二页&apos;),
+      ),
+      body: Column(
+        children: &lt;Widget&gt;[
+          SizedBox(height: 100),
+          Text(&apos;传递过来的值：\n $name&apos;),
+          SizedBox(height: 100),
+          Center(
+            child: FloatingActionButton(
+              shape: BeveledRectangleBorder(),
+              child: Text(&apos;返回&apos;),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+</code></pre><h2 id="传递-List（数组）"><a href="#传递-List（数组）" class="headerlink" title="传递 List（数组）"></a>传递 List（数组）</h2><p>我们这里传递的是 List，可以根据角标进行获取对应值，前提是对值了解，一般这里会传递一个列表展示或者一个 List 包含多个不同的值，方便从上一次获取。</p>
+<pre><code>class _OnePageState extends State&lt;OnePage&gt; {
+    ...
+    onPressed: () {
+        dynamic listData = [&apos;name1&apos;, &apos;age&apos;];
+        Navigator.pushNamed(context, &apos;/TwoPage&apos;, arguments: listData);
+    }
+    ...
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    dynamic listData = ModalRoute.of(context).settings.arguments;
+    String name = listData[0];
+    String age = listData[1];
+
+        ...
+        SizedBox(height: 100),
+        Text(&apos;传递过来的值：\n $name _ $age&apos;),
+        SizedBox(height: 100),
+        ...
+  }
+}
+</code></pre><h2 id="传递-Map"><a href="#传递-Map" class="headerlink" title="传递 Map"></a>传递 Map</h2><p>因为我们传递的是 map，所以在接收的时候需要做一次判断，用 is 判断，预防外界传入其他类型，造成我们程序红屏。这里可以从上一次获取多个不同的参数，使用不同名称获取，这里最好对接收到的值做判断，非空校验等。</p>
+<pre><code>class _OnePageState extends State&lt;OnePage&gt; {
+    ...
+    onPressed: () {
+        dynamic listData = [&apos;name1&apos;, &apos;age&apos;];
+        Navigator.pushNamed(context, &apos;/TwoPage&apos;, arguments: listData);
+    }
+    ...
+}
+
+class _TwoPageState extends State&lt;TwoPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    String name;
+    String age;
+
+    dynamic mapData = ModalRoute.of(context).settings.arguments;
+    // 可以做一次校验数据安全，防止类型不匹配
+    if (mapData is Map) {
+      Map data = mapData;
+      name = data[&apos;name&apos;];
+      age = data[&apos;age&apos;];
+    }
+
+        ...
+        SizedBox(height: 100),
+        Text(&apos;传递过来的值：\n $name _ $age&apos;),
+        SizedBox(height: 100),
+        ...
+  }
+}
+</code></pre><h2 id="普通路由带参"><a href="#普通路由带参" class="headerlink" title="普通路由带参"></a>普通路由带参</h2><p>和带路由名字的方式基本一样，不过写的方式略有不同，需要把参数放入 settings 后面。</p>
+<pre><code>Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (context) {
+                      return NewRouteWidget(); //写上要跳转到的页面
+                    },
+                    settings:
+                        RouteSettings(arguments: {&apos;name&apos;: &apos;postbird&apos;}), // 传参
+                    fullscreenDialog: true));
+</code></pre><h2 id="带参数从二级页面返回上一级"><a href="#带参数从二级页面返回上一级" class="headerlink" title="带参数从二级页面返回上一级"></a>带参数从二级页面返回上一级</h2><p>返回上一级：</p>
+<pre><code>Navigator.pop(context);
+</code></pre><p>带参数返回上一级:</p>
+<pre><code>Navigator.pop(context, &apos;返回的文本数据&apos;);
+</code></pre><p>带类型的参数返回：</p>
+<pre><code>Navigator.pop&lt;Map&gt;(context, mapData);
+Navigator.pop&lt;List&gt;(context, listData);
+Navigator.pop&lt;T&gt;(context, data);
+</code></pre><p>在上一级接受返回的值：<br>这里使用 then 接受，也可以使用 await, 只是这种方法更容易理解和接受，逻辑更强，代码简洁。</p>
+<pre><code>Navigator.pushNamed(context, &apos;/TwoPage&apos;, arguments: mapData)
+                .then((dynamic data) {
+              print(&quot;返回的值是：$data&quot;);
+            });
+</code></pre><hr>
+
+<h3 id="往期推荐"><a href="#往期推荐" class="headerlink" title="往期推荐"></a>往期推荐</h3><p><a href="http://mp.weixin.qq.com/s?__biz=MzI5MTM3Mzk4Mg==&amp;mid=2247483767&amp;idx=1&amp;sn=d06bcf7edce0d6cd4f6101afb4dd968b&amp;chksm=ec10d786db675e90b7cda7553d8a318f5da920310be138d189f8f66011a9ec5482e257749da5&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Flutter 学习脑图笔记，可方便查找与搜索！</a> </p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzI5MTM3Mzk4Mg==&amp;mid=2247483756&amp;idx=1&amp;sn=722b424055086420a063135679cf974a&amp;chksm=ec10d79ddb675e8bbe4d4726e525aaa57fb840e365e6f087d18eed8dbcb6e3344398a3d64ae6&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">在云盘至少以 1MB/S 的速度下载 『Flutter 入门到精通全套视频』</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzI5MTM3Mzk4Mg==&amp;mid=2247483723&amp;idx=1&amp;sn=4d3977575f5d9364c794f8dc451e64bc&amp;chksm=ec10d7badb675eac1177a8a083cd04472a58ae16bf00608466a98fd3219210b5159e975f56b4&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Flutter 也能开发 Web? （文末提供 Flutter 学习视频地址哦）</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzI5MTM3Mzk4Mg==&amp;mid=2247483731&amp;idx=1&amp;sn=8b8e2618fe71b58270b5a3b9c777041f&amp;chksm=ec10d7a2db675eb449eaa2bdb13dbcfc13c2c6462bd2b6c2dfb9f147fd476bf503306450164e&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">马云说要 669，而我却整 Flutter 环境踩坑花了一整天 （附加：Flutter快速起步 短视频）</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/720880-019451fc09c241a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpeg" alt="gdky005 wechat" style="width: 200px; max-width: 100%;">
+    <div>加微信好友,一起交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      gdky005
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/" title="Flutter 如何在切换页面的时候，把参数传到下一个页面?">http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/29/Flutter-学习脑图笔记，可方便查找与搜索！/" rel="next" title="Flutter 学习脑图笔记，可方便查找与搜索！">
+                <i class="fa fa-chevron-left"></i> Flutter 学习脑图笔记，可方便查找与搜索！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="gdky005">
+          <p class="site-author-name" itemprop="name">gdky005</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gdky005" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gdky005" target="_blank" title="CSDN博客">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN博客
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/gdky005" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导语"><span class="nav-number">1.</span> <span class="nav-text">导语</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#本期讲解Flutter-路由传递"><span class="nav-number"></span> <span class="nav-text">本期讲解Flutter 路由传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转到一个界面"><span class="nav-number">1.</span> <span class="nav-text">跳转到一个界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用构造传参"><span class="nav-number">2.</span> <span class="nav-text">使用构造传参</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List（数组）传参"><span class="nav-number">2.1.</span> <span class="nav-text">List（数组）传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-传参"><span class="nav-number">2.2.</span> <span class="nav-text">Map 传参</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用带名字的路由传参"><span class="nav-number">3.</span> <span class="nav-text">使用带名字的路由传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递一个参数"><span class="nav-number">4.</span> <span class="nav-text">传递一个参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递-List（数组）"><span class="nav-number">5.</span> <span class="nav-text">传递 List（数组）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递-Map"><span class="nav-number">6.</span> <span class="nav-text">传递 Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通路由带参"><span class="nav-number">7.</span> <span class="nav-text">普通路由带参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带参数从二级页面返回上一级"><span class="nav-number">8.</span> <span class="nav-text">带参数从二级页面返回上一级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#往期推荐"><span class="nav-number">8.1.</span> <span class="nav-text">往期推荐</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gdky005</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gdky005.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://gdky005.com/2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/';
+          this.page.identifier = '2019/09/10/Flutter-如何在切换页面的时候，把参数传到下一个页面/';
+          this.page.title = 'Flutter 如何在切换页面的时候，把参数传到下一个页面?';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://gdky005.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
+
+  
+
+</body>
+</html>
