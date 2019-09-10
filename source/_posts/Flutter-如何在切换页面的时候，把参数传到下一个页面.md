@@ -21,6 +21,8 @@ tags: Flutter
 
 # 本期讲解Flutter 路由传递
 
+这是一个大的概述图。
+
 
 ![DraggedImage-2.png](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/DraggedImage-2.png)
 
@@ -29,7 +31,7 @@ tags: Flutter
 
 ## 跳转到一个界面
 
-![device-2019-09-09-184344 (1).gif](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/device-2019-09-09-184344 (1).gif)
+![device-2019-09-09-184344 (1).gif](https://raw.githubusercontent.com/gdky005/PictureResource/master/flutter_routes/device-2019-09-09-184344.gif)
 
 
 先简单解释一下，下面会使用到， App 启动一个主界面，然后点击中间按钮，会打开第二个界面。点击第二个界面的右上角，会返回到之前的界面。具体代码如下：
