@@ -13,10 +13,15 @@
   {{ __('footer.powered', '<a class="theme-link" href="https://hexo.io">Hexo</a>') }}
 </div>
 
-<div class="theme-info">
+<div class="powered-by">
   {{ __('footer.theme') }} -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.{{ theme.scheme }}
   </a>
 </div>
+
+<div class="theme-info">
+ <a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">京ICP备17002900号-3</a>
+</div>
+
 {% endif %}
