@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gdky005.com/"/>
-  <updated>2019-09-10T09:45:12.249Z</updated>
+  <updated>2021-10-20T15:35:01.678Z</updated>
   <id>http://gdky005.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一次服务器被拿去挖矿的经历</title>
+    <link href="http://gdky005.com/2021/10/20/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%8B%BF%E5%8E%BB%E6%8C%96%E7%9F%BF%E7%9A%84%E7%BB%8F%E5%8E%86/"/>
+    <id>http://gdky005.com/2021/10/20/记录一次服务器被拿去挖矿的经历/</id>
+    <published>2021-10-20T15:34:07.000Z</published>
+    <updated>2021-10-20T15:35:01.678Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="服务器被刷了？"><a href="#服务器被刷了？" class="headerlink" title="服务器被刷了？"></a>服务器被刷了？</h1><p>最近阿里云总是提示各种风险，只是简单处理，没太在意。</p><p>今天想读取服务器的一个 静态文件，总是失败，偶尔成功一两次，连接阿里云服务器也总是挂，一度怀疑公司网络的问题，然后通过远程打包的时候也挂了一次，说明肯定是服务器有问题了。</p><p>回家发现是 Yapi 的一个漏洞导致会被挖矿，于是赶紧禁用 Yapi 的相关服务。</p><p>怀疑可能有残留文件，那就得好好查查。首先根据阿里云报警信息里面的文件路径排查，该删除的删除。</p><h2 id="1-排查到一例："><a href="#1-排查到一例：" class="headerlink" title="1. 排查到一例："></a>1. 排查到一例：</h2><p><img src="https://img-blog.csdnimg.cn/20211020232639907.png" alt="file"></p><p>根据这个地址排查到，这是猫池，进而得到他的偷窃钱包地址。</p><p>猫池地址：<a href="https://c3pool.com/cn/" target="_blank" rel="noopener">https://c3pool.com/cn/</a></p><p><img src="https://img-blog.csdnimg.cn/20211020232640520.png" alt="file"></p><p><strong> 竟然有 277 个矿工为期服务，还赚了好几百。</strong></p><p><strong> 0.0444 = 55 人民币，  0.067/0.004*55 + 55 == 976 人民币。 接近 1 千块，用着别人的服务器，转自己的钱。 </strong></p><p>钱包地址是：43sEd48rjD2TpXjv7ptYWq1XWLGfpRKw25w1XtNd7rQDFpxrtcvu6KrNnmiX2Ui3Zb2rqEmdbGcg4gdW1ptApHGjAc6mqww</p><p>后面可以监控看看，他到底能赚多少。</p><h2 id="2-接着往下追查，发现第二个矿机程序："><a href="#2-接着往下追查，发现第二个矿机程序：" class="headerlink" title="2. 接着往下追查，发现第二个矿机程序："></a>2. 接着往下追查，发现第二个矿机程序：</h2><p><img src="https://img-blog.csdnimg.cn/20211020232640905.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232641178.png" alt="file"></p><p>目前没有量。</p><p>发现另外一个问题：</p><p><img src="https://img-blog.csdnimg.cn/20211020232641454.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232641726.png" alt="file"></p><p>来自上海阿里云服务器的某人。</p><h2 id="3-发现和第一条相同的记录："><a href="#3-发现和第一条相同的记录：" class="headerlink" title="3. 发现和第一条相同的记录："></a>3. 发现和第一条相同的记录：</h2><p>43sEd48rjD2TpXjv7ptYWq1XWLGfpRKw25w1XtNd7rQDFpxrtcvu6KrNnmiX2Ui3Zb2rqEmdbGcg4gdW1ptApHGjAc6mqww</p><p><img src="https://img-blog.csdnimg.cn/20211020232642218.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232642693.png" alt="file"></p><h3 id="3-1-发现第三例："><a href="#3-1-发现第三例：" class="headerlink" title="3.1 发现第三例："></a>3.1 发现第三例：</h3><p><img src="https://img-blog.csdnimg.cn/20211020232643199.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232643519.png" alt="file"></p><h2 id="4-发现特例："><a href="#4-发现特例：" class="headerlink" title="4. 发现特例："></a>4. 发现特例：</h2><p><img src="https://img-blog.csdnimg.cn/20211020232643815.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232644123.png" alt="file"></p><h2 id="5-又发现一例："><a href="#5-又发现一例：" class="headerlink" title="5. 又发现一例："></a>5. 又发现一例：</h2><p>46n4YeKAjUp2FcJnx8SFEb5CMK3kMRJ9o9MEuCzWtv2VEF5LYeq6TJKSWV3h4sEj4CQiUmsb2dNMEQcKJZJM8zCYFp7wFoy</p><p><img src="https://img-blog.csdnimg.cn/20211020232644434.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232644898.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232645262.png" alt="file"></p><p>发现上面的恶意程序，还保存了文件到本地，已经删除处理。</p><h2 id="进一步发现"><a href="#进一步发现" class="headerlink" title="进一步发现"></a>进一步发现</h2><p>所有的域名都从  <a href="https://jhx15.zzlxrj.com/Uploads/image/goods/2021-06-07/mysql.tar.gz" target="_blank" rel="noopener">https://jhx15.zzlxrj.com/Uploads/image/goods/2021-06-07/mysql.tar.gz</a>  下载数据，之前也有，说明肯定是该服务器的使用人操作。</p><p><img src="https://img-blog.csdnimg.cn/20211020232645640.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/2021102023264615.png" alt="file"></p><h3 id="原来是你！！！"><a href="#原来是你！！！" class="headerlink" title="原来是你！！！"></a>原来是你！！！</h3><p><strong>郑州连续软件技术有限公司</strong>，看来得深扒一下。</p><p><img src="https://img-blog.csdnimg.cn/20211020232646382.png" alt="file"></p><p>关联了这么多域名，一看就不是正经的公司。</p><p><img src="https://img-blog.csdnimg.cn/20211020232646590.png" alt="file"></p><p>既然查到了公司，那就QQ 联系下呗。</p><p><img src="https://img-blog.csdnimg.cn/20211020232646825.png" alt="file"></p><p>完整邮箱是：<a href="mailto:domainabuse@service.aliyun.com" target="_blank" rel="noopener">domainabuse@service.aliyun.com</a></p><p><img src="https://img-blog.csdnimg.cn/20211020232647113.png" alt="file"></p><p>新注册了很多域名嘛。</p><p>至此，已经排查完毕。后面就看怎么玩了。</p><p><img src="https://img-blog.csdnimg.cn/20211020232647657.png" alt="file"></p><h3 id="又起疑云？"><a href="#又起疑云？" class="headerlink" title="又起疑云？"></a>又起疑云？</h3><p>第二天早上发现阿里云又有警报，追查了下是越南，上海的 ip 在大量使用内存，重置了下系统。</p><p>立刻升级 YApi 的版本到 1.9.5。</p><p>既然你是通过 YApi 控住我的，那我得查查看你都干了一些什么？</p><p>通过存在的数据库能查到这几张表：</p><p><img src="https://img-blog.csdnimg.cn/20211020232647826.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/2021102023264864.png" alt="file"></p><h3 id="原来是这么攻击我的呀"><a href="#原来是这么攻击我的呀" class="headerlink" title="原来是这么攻击我的呀"></a>原来是这么攻击我的呀</h3><p>感觉 adv_mock 和  adv_mock_case  有点意思，追进去看看：</p><p><img src="https://img-blog.csdnimg.cn/20211020232648374.png" alt="file"></p><p><img src="https://img-blog.csdnimg.cn/20211020232648670.png" alt="file"></p><p>喝，动态执行脚本呢，嗯，有点意思。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;服务器被刷了？&quot;&gt;&lt;a href=&quot;#服务器被刷了？&quot; class=&quot;headerlink&quot; title=&quot;服务器被刷了？&quot;&gt;&lt;/a&gt;服务器被刷了？&lt;/h1&gt;&lt;p&gt;最近阿里云总是提示各种风险，只是简单处理，没太在意。&lt;/p&gt;
+&lt;p&gt;今天想读取服务器的一个 静态文件
+      
+    
+    </summary>
+    
+    
+      <category term="服务器被刷的经历" scheme="http://gdky005.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%88%B7%E7%9A%84%E7%BB%8F%E5%8E%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Flutter 如何在切换页面的时候，把参数传到下一个页面?</title>
@@ -104,32 +128,6 @@
       
         &lt;p&gt;QPM 的注意事项以及和其他同类 PM 类软件的对比。&lt;/p&gt;
 &lt;h2 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h2&gt;&lt;p&gt;QPM 的悬浮窗如果开启过多的功能，可能会影响性能，推
-      
-    
-    </summary>
-    
-      <category term="QPM" scheme="http://gdky005.com/categories/QPM/"/>
-    
-    
-      <category term="QPM, 性能优化, 组件" scheme="http://gdky005.com/tags/QPM-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QPM 之悬浮窗设置信息</title>
-    <link href="http://gdky005.com/2019/01/03/QPM-%E4%B9%8B%E6%82%AC%E6%B5%AE%E7%AA%97%E8%AE%BE%E7%BD%AE%E4%BF%A1%E6%81%AF/"/>
-    <id>http://gdky005.com/2019/01/03/QPM-之悬浮窗设置信息/</id>
-    <published>2019-01-03T07:22:18.000Z</published>
-    <updated>2019-01-03T07:22:44.263Z</updated>
-    
-    <content type="html"><![CDATA[<p>QPM 开源地址：<a href="https://github.com/ZhuoKeTeam/QPM" target="_blank" rel="noopener">https://github.com/ZhuoKeTeam/QPM</a></p><p>更多实用信息：</p><ol><li>手机的基本信息</li><li>AndroidManifest.xml 信息</li><li>App 中所有的 SharePreference 信息</li><li>可配置的开关</li><li>网络接口</li></ol><h2 id="手机基础信息"><a href="#手机基础信息" class="headerlink" title="手机基础信息"></a>手机基础信息</h2><ol><li>再也不用 去手机的复杂界面查看各种数据；</li><li>再也不用 下载 辅助性 apk 获取信息；</li><li>再也不用 因为某些信息没有，查询半天。</li></ol><p>是否 Root, SDK 版本，手机型号，网络，名称，IP，Mac 地址，屏幕分辨率，CPU 架构等等信息。遇到关键的数据，还能复制。</p><p>这里获取的数据更全面<br><img src="https://raw.githubusercontent.com/gdky005/PictureResource/master/qpm/qpm_2.png" alt></p><h2 id="AndroidManifest-xml-信息"><a href="#AndroidManifest-xml-信息" class="headerlink" title="AndroidManifest.xml 信息"></a>AndroidManifest.xml 信息</h2><p>包名，版本号，App 的所有权限，构建 SDK 的版本信息，还有最最重要的注册的四大组件（Activity，Service，Receiver，Provider）。里面的 Activity 可以直接点击后跳转，Service可以查看有多少本地服务，Receiver 可以很明确的知道当前注册了多少广播，Provider 可以查看本地的内容提供者。</p><h2 id="应用的所有-SP-信息"><a href="#应用的所有-SP-信息" class="headerlink" title="应用的所有 SP 信息"></a>应用的所有 SP 信息</h2><p>Root 手机我们直接通过 文件管理器 可以直接查看 SP 文件。</p><p>如果没有 Root 呢？ 笨办法，通过调试代码或者 log 打印输出。</p><p>包含整个 App 的所有 SP 信息，可以查看单个 SP 里面的信息，最最好的是还能直接修改 对应的 Value。</p><p>极大提升程序员们的开发效率。 </p><h2 id="其他开关"><a href="#其他开关" class="headerlink" title="其他开关"></a>其他开关</h2><p>我们提供的了这些基础功能，打开开关后，可以直接在悬浮窗展示相关数据信息。</p><p>自我控制聚焦点，只关注需要的信息。</p><p>所有的开关，可以打开，关闭，对于某些影响性能的操作，可以关闭其他所有的东西，保留关注的指标。</p><p>每一个开关都可以长按开关名称的这一条，上下移动位置，调整开关的顺序。</p><h2 id="网络接口"><a href="#网络接口" class="headerlink" title="网络接口"></a>网络接口</h2><p>获取最近50条网络请求数据，可以查看更多信息：</p><ol><li>请求方式；</li><li>返回状态码；</li><li>请求时长；</li><li>请求大小；</li><li>返回数据大小 </li></ol><p>需要 OkHttp，然后可以获取网络请求的所有数据，包括请求 Request Header，Request Response，Response等数据。</p><h2 id="精简模式"><a href="#精简模式" class="headerlink" title="精简模式"></a>精简模式</h2><p>关注的数据太多会占满屏幕，可以开启精简模式，默认显示开关列表最顶部的两个选项。开关列表可以通过拖动把选项位置移动到想要的前两项。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;QPM 开源地址：&lt;a href=&quot;https://github.com/ZhuoKeTeam/QPM&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/ZhuoKeTeam/QPM&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;更多实用信息：&lt;
       
     
     </summary>
